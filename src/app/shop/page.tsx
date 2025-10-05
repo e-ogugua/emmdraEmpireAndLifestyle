@@ -37,7 +37,19 @@ const products: Product[] = [
   },
 ];
 
+'use client'
+
+import { useEffect } from 'react'
+import { trackPageView } from '@/lib/analytics'
+
 export default function ShopPage() {
+  useEffect(() => {
+    // Track shop page view
+    trackPageView({
+      page_type: 'shop',
+      page_title: 'Shop - Emmdra Empire'
+    })
+  }, [])
   return (
     <div className="py-16 px-4 bg-gray-50">
       <div className="container mx-auto">

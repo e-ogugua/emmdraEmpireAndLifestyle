@@ -154,7 +154,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Location</h3>
-                    <p className="text-gray-600">Lagos, Nigeria</p>
+                    <p className="text-gray-600">No 5 Jesus Power Crescent, New Haven Extension, Enugu, Nigeria</p>
                   </div>
                 </div>
 
@@ -180,8 +180,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Phone</h3>
-                    <a href="tel:+2348012345678" className="text-blue-600 hover:text-blue-800">
-                      +234 801 234 5678
+                    <a href="tel:+2348122394397" className="text-blue-600 hover:text-blue-800">
+                      +234 812 239 4397
                     </a>
                   </div>
                 </div>

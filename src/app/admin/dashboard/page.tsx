@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import ProductList from '@/components/admin/ProductList'
 import ProductForm from '@/components/admin/ProductForm'
+import AnalyticsDashboard from '@/components/admin/analytics/AnalyticsDashboard'
 
 interface Product {
   id: number
@@ -21,7 +22,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [user, setUser] = useState<any>(null)
-  const [activeTab, setActiveTab] = useState<'list' | 'add' | 'edit'>('list')
+  const [activeTab, setActiveTab] = useState<'analytics' | 'list' | 'add' | 'edit'>('analytics')
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
 
   // Check authentication and authorization
@@ -178,6 +179,16 @@ export default function AdminDashboard() {
         <div className="container mx-auto px-4">
           <nav className="flex space-x-8">
             <button
+              onClick={() => setActiveTab('analytics')}
+              className={`py-4 px-2 font-medium ${
+                activeTab === 'analytics'
+                  ? 'border-b-2 border-blue-600 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-800'
+              }`}
+            >
+              📊 Analytics
+            </button>
+            <button
               onClick={() => setActiveTab('list')}
               className={`py-4 px-2 font-medium ${
                 activeTab === 'list'
@@ -203,6 +214,8 @@ export default function AdminDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
+        {activeTab === 'analytics' && <AnalyticsDashboard />}
+
         {activeTab === 'list' && (
           <ProductList
             products={products}

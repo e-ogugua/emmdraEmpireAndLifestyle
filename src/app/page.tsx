@@ -1,8 +1,20 @@
+'use client'
+
+import { useEffect } from 'react'
 import HeroCarousel from '../components/HeroCarousel'
 import CategoryGrid from '../components/CategoryGrid'
 import DiscoverMoreSection from '../components/DiscoverMoreSection'
+import { trackPageView } from '@/lib/analytics'
 
 export default function Home() {
+  useEffect(() => {
+    // Track homepage view
+    trackPageView({
+      page_type: 'home',
+      page_title: 'Emmdra Empire Homepage'
+    })
+  }, [])
+
   return (
     <div className="relative">
       {/* Hero Carousel Section - Standalone */}
@@ -22,13 +34,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/shop"
+              href="#categories"
               className="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors"
             >
               Shop Now
             </a>
             <a
-              href="/diy"
+              href="#discover"
               className="border border-black text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-black hover:text-white transition-colors"
             >
               Explore DIY
@@ -38,10 +50,14 @@ export default function Home() {
       </section>
 
       {/* Category Preview Grid */}
-      <CategoryGrid />
+      <section id="categories">
+        <CategoryGrid />
+      </section>
 
       {/* Discover More Section */}
-      <DiscoverMoreSection />
+      <section id="discover">
+        <DiscoverMoreSection />
+      </section>
     </div>
   )
 }
