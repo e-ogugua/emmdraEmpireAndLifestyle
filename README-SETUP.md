@@ -1,0 +1,117 @@
+# Emmdra Empire - Next.js 14 Project
+
+A modern Next.js 14 application with Tailwind CSS, Supabase integration, and pre-configured routes.
+
+## 🚀 Features
+
+- **Next.js 14** with App Router and TypeScript
+- **Tailwind CSS** for styling
+- **Supabase** integration ready
+- **Pre-configured routes**: Home, Shop, DIY, Blog, About, Contact, Admin Dashboard
+- **Navigation component** with responsive design
+- **Environment configuration** with setup instructions
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with navigation
+│   ├── page.tsx           # Home page
+│   ├── shop/
+│   │   └── page.tsx       # Shop page
+│   ├── diy/
+│   │   └── page.tsx       # DIY projects page
+│   ├── blog/
+│   │   └── page.tsx       # Blog page
+│   ├── about/
+│   │   └── page.tsx       # About page
+│   ├── contact/
+│   │   └── page.tsx       # Contact page
+│   ├── admin/
+│   │   ├── page.tsx       # Admin panel
+│   │   └── dashboard/
+│   │       └── page.tsx   # Admin dashboard
+│   ├── globals.css        # Global styles
+│   └── favicon.ico
+├── components/
+│   └── Navigation.tsx     # Navigation component
+├── lib/
+│   └── supabase.ts        # Supabase client configuration
+└── ...
+
+public/
+└── images/                # Static assets directory
+```
+
+## 🛠️ Setup Instructions
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Set up Supabase**:
+   - Create a new project at [supabase.com](https://supabase.com)
+   - Go to Settings > API in your Supabase dashboard
+   - Copy your project URL and anon key
+
+3. **Configure environment variables**:
+   - Copy `.env.example` to `.env.local`
+   - Fill in your Supabase credentials:
+     ```
+     NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+     ```
+
+4. **Start development server**:
+   ```bash
+   npm run dev
+   ```
+
+## 🌐 Available Routes
+
+- `/` - Home/Landing page
+- `/shop` - E-commerce/shop page
+- `/diy` - DIY projects and tutorials
+- `/blog` - Blog posts and articles
+- `/about` - About us page
+- `/contact` - Contact form and information
+- `/admin` - Admin panel
+- `/admin/dashboard` - Admin dashboard with overview
+
+## 🗄️ Supabase Integration
+
+The project includes a pre-configured Supabase client in `src/lib/supabase.ts`. You can use it throughout your application:
+
+```typescript
+import { supabase } from '@/lib/supabase'
+
+// Example usage
+const { data, error } = await supabase
+  .from('your_table')
+  .select('*')
+```
+
+## 🎨 Styling
+
+The project uses Tailwind CSS for styling. You can customize the design by modifying the classes in each component or updating the global styles in `src/app/globals.css`.
+
+## 🚀 Deployment
+
+This project is ready for deployment to platforms like Vercel, Netlify, or any other hosting service that supports Next.js applications.
+
+## 📝 Next Steps
+
+1. Set up your Supabase database schema
+2. Customize each page with your content
+3. Add authentication if needed
+4. Implement your business logic
+5. Deploy to production
+
+## 🔧 Development Commands
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
