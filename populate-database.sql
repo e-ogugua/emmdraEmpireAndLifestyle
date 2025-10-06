@@ -119,43 +119,43 @@ INSERT INTO blogs (title, slug, category, excerpt, body, tags, featured_image, p
 
 INSERT INTO diy_tutorials (title, slug, category, difficulty, steps, materials, estimated_time, cover_image, published) VALUES
 ('Handmade Beaded Necklace', 'handmade-beaded-necklace', 'Accessories', 'Beginner',
-'[{"title": "Gather Materials", "description": "Collect all beads, string, and clasps", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Design Pattern", "description": "Plan your bead pattern on a flat surface", "image_url": "/images/EmmdraGallary3.png"}, {"title": "String Beads", "description": "Thread beads onto string in your chosen pattern", "image_url": "/images/EmmdraGallary4.png"}, {"title": "Add Clasp", "description": "Secure ends with crimp beads and clasp", "image_url": "/images/EmmdraLogo.png"}]',
+'[{"title": "Gather Materials", "description": "Collect all beads, string, and clasps", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Design Pattern", "description": "Plan your bead pattern on a flat surface", "image_url": "/images/EmmdraGallary4.png"}, {"title": "String Beads", "description": "Thread beads onto string in your chosen pattern", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Add Clasp", "description": "Secure ends with crimp beads and clasp", "image_url": "/images/EmmdraLogo.png"}]',
 '{"assorted beads", "beading string", "crimp beads", "clasp", "scissors"}',
 '45 minutes',
 '/images/HandmadeBeadedNecklace.png', true),
 
 ('Natural Hair Treatment Mask', 'natural-hair-treatment-mask', 'Beauty', 'Beginner',
-'[{"title": "Mix Ingredients", "description": "Combine honey, coconut oil, and essential oils", "image_url": "/images/beautyHub.png"}, {"title": "Apply to Hair", "description": "Section hair and apply mask evenly", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Massage Scalp", "description": "Gently massage for 5 minutes", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Rinse Thoroughly", "description": "Wash with lukewarm water and mild shampoo", "image_url": "/images/EmmdraGallary3.png"}]',
+'[{"title": "Mix Ingredients", "description": "Combine honey, coconut oil, and essential oils", "image_url": "/images/beautyHub.png"}, {"title": "Apply to Hair", "description": "Section hair and apply mask evenly", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Massage Scalp", "description": "Gently massage for 5 minutes", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Rinse Thoroughly", "description": "Wash with lukewarm water and mild shampoo", "image_url": "/images/EmmdraGallary4.png"}]',
 '{"honey", "coconut oil", "lavender oil", "shower cap"}',
 '30 minutes',
 '/images/NaturalHairTreatmentMask.png', true),
 
 ('DIY Ankara Throw Pillow', 'diy-ankara-throw-pillow', 'Home Decor', 'Intermediate',
-'[{"title": "Cut Fabric", "description": "Cut Ankara fabric to pillow size with seam allowance", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Sew Sides", "description": "Sew three sides together with right sides facing", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Insert Filling", "description": "Turn right side out and stuff with filling", "image_url": "/images/EmmdraGallary3.png"}, {"title": "Close Opening", "description": "Hand stitch the opening closed", "image_url": "/images/EmmdraGallary4.png"}]',
+'[{"title": "Cut Fabric", "description": "Cut Ankara fabric to pillow size with seam allowance", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Sew Sides", "description": "Sew three sides together with right sides facing", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Insert Filling", "description": "Turn right side out and stuff with filling", "image_url": "/images/EmmdraGallary4.png"}, {"title": "Close Opening", "description": "Hand stitch the opening closed", "image_url": "/images/EmmdraGallary1.JPG"}]',
 '{"Ankara fabric", "sewing machine", "thread", "scissors", "fiber fill", "pins"}',
 '2 hours',
 '/images/DIYAnkaraThrowPillow.png', true),
 
 ('Handmade Scented Candles', 'handmade-scented-candles', 'Home Decor', 'Beginner',
-'[{"title": "Prepare Wax", "description": "Melt soy wax in double boiler", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Add Fragrance", "description": "Mix in essential oils for scent", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Set Wick", "description": "Place wick in container and secure", "image_url": "/images/EmmdraGallary3.png"}, {"title": "Pour Wax", "description": "Pour wax mixture into container", "image_url": "/images/EmmdraGallary4.png"}]',
+'[{"title": "Prepare Wax", "description": "Melt soy wax in double boiler", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Add Fragrance", "description": "Mix in essential oils for scent", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Set Wick", "description": "Place wick in container and secure", "image_url": "/images/EmmdraGallary4.png"}, {"title": "Pour Wax", "description": "Pour wax mixture into container", "image_url": "/images/EmmdraGallary1.JPG"}]',
 '{"soy wax", "essential oils", "wick", "container", "double boiler"}',
 '1 hour',
 '/images/HandmadeScentedCandles.png', true),
 
 ('Natural Body Scrub', 'natural-body-scrub', 'Beauty', 'Beginner',
-'[{"title": "Mix Base", "description": "Combine sugar and carrier oil", "image_url": "/images/beautyHub.png"}, {"title": "Add Scent", "description": "Mix in essential oils and vitamin E", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Store Properly", "description": "Transfer to airtight container", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Apply to Skin", "description": "Use in shower for exfoliation", "image_url": "/images/EmmdraGallary3.png"}]',
+'[{"title": "Mix Base", "description": "Combine sugar and carrier oil", "image_url": "/images/beautyHub.png"}, {"title": "Add Scent", "description": "Mix in essential oils and vitamin E", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Store Properly", "description": "Transfer to airtight container", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Apply to Skin", "description": "Use in shower for exfoliation", "image_url": "/images/EmmdraGallary4.png"}]',
 '{"sugar", "coconut oil", "essential oils", "vitamin E", "container"}',
 '20 minutes',
 '/images/NaturalBodyScrub.png', true),
 
 ('DIY Ankara Tote Bag', 'diy-ankara-tote-bag', 'Accessories', 'Intermediate',
-'[{"title": "Cut Fabric", "description": "Cut Ankara fabric pieces for bag", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Sew Sides", "description": "Sew side seams and add gusset", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Add Handles", "description": "Attach fabric handles securely", "image_url": "/images/EmmdraGallary3.png"}, {"title": "Finish Edges", "description": "Hem top edge and add lining", "image_url": "/images/EmmdraGallary4.png"}]',
+'[{"title": "Cut Fabric", "description": "Cut Ankara fabric pieces for bag", "image_url": "/images/EmmdraFashionDesignAndAccessories.png"}, {"title": "Sew Sides", "description": "Sew side seams and add gusset", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Add Handles", "description": "Attach fabric handles securely", "image_url": "/images/EmmdraGallary4.png"}, {"title": "Finish Edges", "description": "Hem top edge and add lining", "image_url": "/images/EmmdraGallary1.JPG"}]',
 '{"Ankara fabric", "sewing machine", "thread", "scissors", "pins"}',
 '3 hours',
 '/images/DIYAnkaraToteBag.png', true),
 
 ('Beaded Keychain', 'beaded-keychain', 'Accessories', 'Beginner',
-'[{"title": "Select Beads", "description": "Choose beads for your design", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "String Beads", "description": "Thread beads onto keyring wire", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Create Pattern", "description": "Arrange beads in desired pattern", "image_url": "/images/EmmdraGallary3.png"}, {"title": "Secure Ends", "description": "Crimp wire ends and add keyring", "image_url": "/images/EmmdraGallary4.png"}]',
+'[{"title": "Select Beads", "description": "Choose beads for your design", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "String Beads", "description": "Thread beads onto keyring wire", "image_url": "/images/EmmdraGallary1.JPG"}, {"title": "Create Pattern", "description": "Arrange beads in desired pattern", "image_url": "/images/EmmdraGallary4.png"}, {"title": "Secure Ends", "description": "Crimp wire ends and add keyring", "image_url": "/images/EmmdraGallary1.JPG"}]',
 '{"assorted beads", "wire", "crimp beads", "keyring", "pliers"}',
 '30 minutes',
 '/images/BeadedKeychain.png', true);
