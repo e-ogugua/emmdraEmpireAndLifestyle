@@ -164,7 +164,7 @@ INSERT INTO diy_tutorials (title, slug, category, difficulty, steps, materials, 
 -- 4️⃣ POPULATE WORKSHOPS TABLE
 -- =============================================
 
-INSERT INTO workshops (title, slug, description, category, price, schedule, max_participants, instructor, cover_image, status) VALUES
+INSERT INTO workshops (title, description, category, price, schedule, max_participants, instructor, cover_image, status) VALUES
 ('Fashion Styling Masterclass', 'Learn professional styling techniques and build your signature look', 'Fashion', 25000.00,
 '{"date": "2024-02-15", "time": "10:00 AM", "duration": "3 hours", "location": "Emmdra Studio, Enugu"}',
 20, 'Emmanuel Chuka', '/images/EmmdraFashionDesignAndAccessories.png', 'upcoming'),
