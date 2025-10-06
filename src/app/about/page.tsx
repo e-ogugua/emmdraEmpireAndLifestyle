@@ -246,10 +246,10 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story - Personal Journey */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      <section className="py-12 px-4 bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="container mx-auto">
           <div className="max-w-7xl mx-auto">
-            <div className={`text-center mb-16 transition-all duration-1000 transform ${
+            <div className={`text-center mb-12 transition-all duration-1000 transform ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
