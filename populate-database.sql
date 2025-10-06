@@ -52,7 +52,7 @@ INSERT INTO products (name, price, short_description, description, category, ima
 -- 2️⃣ POPULATE BLOGS TABLE
 -- =============================================
 
-INSERT INTO blogs (title, category, excerpt, body, tags, featured_image, published) VALUES
+INSERT INTO blogs (title, slug, category, excerpt, body, tags, featured_image, published) VALUES
 ('5 Essential Fashion Tips for Nigerian Weather', 'Fashion',
 'Learn how to dress comfortably and stylishly in Nigeria''s tropical climate with these expert tips.',
 'Our comprehensive guide covers breathable fabrics, layering techniques, and must-have accessories for staying cool while looking chic. From corporate wear to weekend casual, discover how to beat the heat in style. We''ll show you how to choose the right materials, colors, and silhouettes that work perfectly for our climate while maintaining your personal style.',
@@ -117,7 +117,7 @@ INSERT INTO blogs (title, category, excerpt, body, tags, featured_image, publish
 -- 3️⃣ POPULATE DIY TUTORIALS TABLE
 -- =============================================
 
-INSERT INTO diy_tutorials (title, category, difficulty, steps, materials, estimated_time, cover_image, published) VALUES
+INSERT INTO diy_tutorials (title, slug, category, difficulty, steps, materials, estimated_time, cover_image, published) VALUES
 ('Handmade Beaded Necklace', 'Accessories', 'Beginner',
 '[{"title": "Gather Materials", "description": "Collect all beads, string, and clasps", "image_url": "/images/EmmdraGallary2.JPG"}, {"title": "Design Pattern", "description": "Plan your bead pattern on a flat surface", "image_url": "/images/EmmdraGallary3.png"}, {"title": "String Beads", "description": "Thread beads onto string in your chosen pattern", "image_url": "/images/EmmdraGallary4.png"}, {"title": "Add Clasp", "description": "Secure ends with crimp beads and clasp", "image_url": "/images/EmmdraLogo.png"}]',
 '{"assorted beads", "beading string", "crimp beads", "clasp", "scissors"}',
@@ -164,7 +164,7 @@ INSERT INTO diy_tutorials (title, category, difficulty, steps, materials, estima
 -- 4️⃣ POPULATE WORKSHOPS TABLE
 -- =============================================
 
-INSERT INTO workshops (title, description, category, price, schedule, max_participants, instructor, cover_image, status) VALUES
+INSERT INTO workshops (title, slug, description, category, price, schedule, max_participants, instructor, cover_image, status) VALUES
 ('Fashion Styling Masterclass', 'Learn professional styling techniques and build your signature look', 'Fashion', 25000.00,
 '{"date": "2024-02-15", "time": "10:00 AM", "duration": "3 hours", "location": "Emmdra Studio, Enugu"}',
 20, 'Emmanuel Chuka', '/images/EmmdraFashionDesignAndAccessories.png', 'upcoming'),
