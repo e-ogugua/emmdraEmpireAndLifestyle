@@ -15,6 +15,7 @@ export default function Footer() {
                     src="/images/EmmdraLogo.png"
                     alt="Emmdra Empire & Lifestyle Logo"
                     fill
+                    unoptimized={true}
                     className="object-contain"
                     sizes="80px"
                   />

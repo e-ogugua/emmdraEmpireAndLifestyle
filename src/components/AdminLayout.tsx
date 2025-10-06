@@ -129,6 +129,7 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
                     src="/images/EmmdraLogo.png"
                     alt="Emmdra Empire Logo"
                     fill
+                    unoptimized={true}
                     className="object-contain"
                     sizes="64px"
                   />

@@ -25,6 +25,7 @@ export default function Navigation() {
                 src="/images/EmmdraLogo.png"
                 alt="Emmdra Empire & Lifestyle"
                 fill
+                unoptimized={true}
                 className="object-contain rounded-2xl transition-transform duration-300 group-hover:scale-105"
                 sizes="128px"
               />
