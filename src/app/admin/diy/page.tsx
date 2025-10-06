@@ -6,41 +6,47 @@ import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 import { trackPageView } from '@/lib/analytics'
 
-interface BlogPost {
+interface DIYTutorial {
   id: number
   title: string
   category: string
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced'
+  estimated_time: string
+  materials: string[]
+  steps: any[]
   featured_image: string
-  excerpt: string
+  description: string
+  tags: string[]
   published: boolean
   featured: boolean
   created_at: string
-  tags?: string[]
+  updated_at: string
 }
 
-export default function AdminBlog() {
-  const [posts, setPosts] = useState<BlogPost[]>([])
+export default function AdminDIY() {
+  const [tutorials, setTutorials] = useState<DIYTutorial[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedDifficulty, setSelectedDifficulty] = useState('all')
 
   useEffect(() => {
-    fetchPosts()
-    trackPageView({ page_type: 'blog' })
+    fetchTutorials()
+    trackPageView({ page_type: 'diy' })
   }, [])
 
-  const fetchPosts = async () => {
+  const fetchTutorials = async () => {
     try {
       setLoading(true)
       const { data, error } = await supabase
-        .from('blog_posts')
+        .from('diy_tutorials')
         .select('*')
         .order('created_at', { ascending: false })
 
       if (error) throw error
-      setPosts(data || [])
+      setTutorials(data || [])
     } catch (err) {
-      console.error('Error fetching blog posts:', err)
+      console.error('Error fetching DIY tutorials:', err)
     } finally {
       setLoading(false)
     }
@@ -53,77 +59,79 @@ export default function AdminBlog() {
 
     try {
       const { error } = await supabase
-        .from('blog_posts')
+        .from('diy_tutorials')
         .delete()
         .eq('id', id)
 
       if (error) throw error
 
-      fetchPosts()
+      fetchTutorials()
     } catch (err) {
-      console.error('Error deleting blog post:', err)
-      alert('Failed to delete blog post. Please try again.')
+      console.error('Error deleting DIY tutorial:', err)
+      alert('Failed to delete DIY tutorial. Please try again.')
     }
   }
 
   const togglePublished = async (id: number, currentStatus: boolean) => {
     try {
       const { error } = await supabase
-        .from('blog_posts')
+        .from('diy_tutorials')
         .update({ published: !currentStatus })
         .eq('id', id)
 
       if (error) throw error
 
-      fetchPosts()
+      fetchTutorials()
     } catch (err) {
-      console.error('Error updating blog post:', err)
-      alert('Failed to update blog post. Please try again.')
+      console.error('Error updating DIY tutorial:', err)
+      alert('Failed to update DIY tutorial. Please try again.')
     }
   }
 
   const toggleFeatured = async (id: number, currentFeatured: boolean) => {
     try {
       const { error } = await supabase
-        .from('blog_posts')
+        .from('diy_tutorials')
         .update({ featured: !currentFeatured })
         .eq('id', id)
 
       if (error) throw error
 
-      fetchPosts()
+      fetchTutorials()
     } catch (err) {
-      console.error('Error updating blog post:', err)
-      alert('Failed to update blog post. Please try again.')
+      console.error('Error updating DIY tutorial:', err)
+      alert('Failed to update DIY tutorial. Please try again.')
     }
   }
 
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory
-    return matchesSearch && matchesCategory
+  const filteredTutorials = tutorials.filter(tutorial => {
+    const matchesSearch = tutorial.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         tutorial.description.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesCategory = selectedCategory === 'all' || tutorial.category === selectedCategory
+    const matchesDifficulty = selectedDifficulty === 'all' || tutorial.difficulty === selectedDifficulty
+    return matchesSearch && matchesCategory && matchesDifficulty
   })
 
-  const categories = ['all', ...Array.from(new Set(posts.map(p => p.category)))]
+  const categories = ['all', ...Array.from(new Set(tutorials.map(t => t.category)))]
+  const difficulties = ['all', 'Beginner', 'Intermediate', 'Advanced']
 
   return (
-    <AdminLayout currentPage="blog">
+    <AdminLayout currentPage="diy">
       <div className="space-y-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Blog Management</h1>
-            <p className="text-gray-600 mt-1">Create and manage your blog content</p>
+            <h1 className="text-3xl font-bold text-gray-900">DIY Tutorials Management</h1>
+            <p className="text-gray-600 mt-1">Manage your DIY tutorial content</p>
           </div>
           <Link
-            href="/admin/blog/new"
+            href="/admin/diy/new"
             className="mt-4 sm:mt-0 bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors inline-flex items-center"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
-            Write New Post
+            Add New Tutorial
           </Link>
         </div>
 
@@ -131,45 +139,45 @@ export default function AdminBlog() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <span className="text-xl">📝</span>
+              <div className="p-2 bg-yellow-100 rounded-lg">
+                <span className="text-xl">🛠️</span>
               </div>
               <div className="ml-3">
-                <p className="text-sm text-gray-600">Total Posts</p>
-                <p className="text-2xl font-bold text-gray-900">{posts.length}</p>
+                <p className="text-sm text-gray-600">Total Tutorials</p>
+                <p className="text-2xl font-bold text-gray-900">{tutorials.length}</p>
               </div>
             </div>
           </div>
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center">
-              <div className="p-2 bg-blue-100 rounded-lg">
+              <div className="p-2 bg-green-100 rounded-lg">
                 <span className="text-xl">📖</span>
               </div>
               <div className="ml-3">
                 <p className="text-sm text-gray-600">Published</p>
-                <p className="text-2xl font-bold text-gray-900">{posts.filter(p => p.published).length}</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg shadow p-4">
-            <div className="flex items-center">
-              <div className="p-2 bg-yellow-100 rounded-lg">
-                <span className="text-xl">⭐</span>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm text-gray-600">Featured</p>
-                <p className="text-2xl font-bold text-gray-900">{posts.filter(p => p.featured).length}</p>
+                <p className="text-2xl font-bold text-gray-900">{tutorials.filter(t => t.published).length}</p>
               </div>
             </div>
           </div>
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center">
               <div className="p-2 bg-purple-100 rounded-lg">
+                <span className="text-xl">⭐</span>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-gray-600">Featured</p>
+                <p className="text-2xl font-bold text-gray-900">{tutorials.filter(t => t.featured).length}</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg shadow p-4">
+            <div className="flex items-center">
+              <div className="p-2 bg-blue-100 rounded-lg">
                 <span className="text-xl">🏷️</span>
               </div>
               <div className="ml-3">
                 <p className="text-sm text-gray-600">Categories</p>
-                <p className="text-2xl font-bold text-gray-900">{new Set(posts.map(p => p.category)).size}</p>
+                <p className="text-2xl font-bold text-gray-900">{new Set(tutorials.map(t => t.category)).size}</p>
               </div>
             </div>
           </div>
@@ -177,17 +185,17 @@ export default function AdminBlog() {
 
         {/* Filters */}
         <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
               <input
                 type="text"
-                placeholder="Search blog posts..."
+                placeholder="Search tutorials..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
               />
             </div>
-            <div className="sm:w-48">
+            <div>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
@@ -199,25 +207,40 @@ export default function AdminBlog() {
                 ))}
               </select>
             </div>
+            <div>
+              <select
+                value={selectedDifficulty}
+                onChange={(e) => setSelectedDifficulty(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+              >
+                <option value="all">All Difficulties</option>
+                {difficulties.filter(diff => diff !== 'all').map(difficulty => (
+                  <option key={difficulty} value={difficulty}>{difficulty}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
-        {/* Blog Posts Table */}
+        {/* DIY Tutorials Table */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-800"></div>
             </div>
-          ) : filteredPosts.length > 0 ? (
+          ) : filteredTutorials.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Post
+                      Tutorial
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Category
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Difficulty
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Status
@@ -231,70 +254,74 @@ export default function AdminBlog() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredPosts.map((post) => (
-                    <tr key={post.id} className="hover:bg-gray-50">
+                  {filteredTutorials.map((tutorial) => (
+                    <tr key={tutorial.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="h-12 w-12 flex-shrink-0">
                             <img
                               className="h-12 w-12 rounded-lg object-cover"
-                              src={post.featured_image}
-                              alt={post.title}
+                              src={tutorial.featured_image}
+                              alt={tutorial.title}
                             />
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900 line-clamp-1">{post.title}</div>
-                            <div className="text-sm text-gray-500 line-clamp-2">{post.excerpt}</div>
+                            <div className="text-sm font-medium text-gray-900 line-clamp-1">{tutorial.title}</div>
+                            <div className="text-sm text-gray-500">⏱️ {tutorial.estimated_time}</div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                          {tutorial.category}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          post.category === 'fashion' ? 'bg-pink-100 text-pink-800' :
-                          post.category === 'beauty' ? 'bg-purple-100 text-purple-800' :
-                          post.category === 'lifestyle' ? 'bg-blue-100 text-blue-800' :
-                          'bg-gray-100 text-gray-800'
+                          tutorial.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
+                          tutorial.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-red-100 text-red-800'
                         }`}>
-                          {post.category}
+                          {tutorial.difficulty}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex flex-col gap-2">
                           <button
-                            onClick={() => togglePublished(post.id, post.published)}
+                            onClick={() => togglePublished(tutorial.id, tutorial.published)}
                             className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                              post.published
+                              tutorial.published
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-red-100 text-red-800'
                             }`}
                           >
-                            {post.published ? '📖 Published' : '📝 Draft'}
+                            {tutorial.published ? '📖 Published' : '📝 Draft'}
                           </button>
                           <button
-                            onClick={() => toggleFeatured(post.id, post.featured)}
+                            onClick={() => toggleFeatured(tutorial.id, tutorial.featured)}
                             className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                              post.featured
+                              tutorial.featured
                                 ? 'bg-yellow-100 text-yellow-800'
                                 : 'bg-gray-100 text-gray-500'
                             }`}
                           >
-                            {post.featured ? '⭐ Featured' : '☆ Not Featured'}
+                            {tutorial.featured ? '⭐ Featured' : '☆ Not Featured'}
                           </button>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {new Date(post.created_at).toLocaleDateString()}
+                        {new Date(tutorial.created_at).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-2">
                           <Link
-                            href={`/admin/blog/${post.id}/edit`}
+                            href={`/admin/diy/${tutorial.id}/edit`}
                             className="text-blue-600 hover:text-blue-900"
                           >
                             Edit
                           </Link>
                           <button
-                            onClick={() => handleDelete(post.id, post.title)}
+                            onClick={() => handleDelete(tutorial.id, tutorial.title)}
                             className="text-red-600 hover:text-red-900"
                           >
                             Delete
@@ -309,15 +336,15 @@ export default function AdminBlog() {
           ) : (
             <div className="text-center py-12">
               <p className="text-gray-600 mb-4">
-                {searchTerm || selectedCategory !== 'all'
-                  ? 'No blog posts match your search criteria.'
-                  : 'No blog posts found. Write your first post to get started.'}
+                {searchTerm || selectedCategory !== 'all' || selectedDifficulty !== 'all'
+                  ? 'No DIY tutorials match your search criteria.'
+                  : 'No DIY tutorials found. Create your first tutorial to get started.'}
               </p>
               <Link
-                href="/admin/blog/new"
+                href="/admin/diy/new"
                 className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
               >
-                Write First Post
+                Create First Tutorial
               </Link>
             </div>
           )}
