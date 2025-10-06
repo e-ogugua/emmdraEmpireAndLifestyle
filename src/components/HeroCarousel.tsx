@@ -82,7 +82,7 @@ export default function HeroCarousel() {
   }
 
   return (
-    <div className={`relative w-full h-[400px] md:h-[70vh] overflow-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`relative w-full h-[400px] md:h-[65vh] overflow-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
@@ -99,14 +99,14 @@ export default function HeroCarousel() {
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover transition-transform duration-[8000ms] ease-out hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
               loading={index === 0 ? 'eager' : 'lazy'}
             />
 
             {/* Content Overlay */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="text-center text-white px-4 max-w-4xl mx-auto">
-                <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-1000 transform drop-shadow-2xl ${
+                <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold mb-6 transition-all duration-1000 transform drop-shadow-2xl ${
                   index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
                   {slide.title}
