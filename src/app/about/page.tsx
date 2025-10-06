@@ -248,7 +248,7 @@ export default function AboutPage() {
       {/* Our Story - Personal Journey */}
       <section className="py-20 px-4 bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="container mx-auto">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className={`text-center mb-16 transition-all duration-1000 transform ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
@@ -269,7 +269,7 @@ export default function AboutPage() {
                   <img
                     src="/images/EmmdraOurStory.JPG"
                     alt="Emmanuel and Chidera - Our Love Story"
-                    className="w-full h-auto max-h-96 object-contain mx-auto"
+                    className="w-full h-auto object-contain"
                   />
                   {/* Overlay with decorative elements */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
