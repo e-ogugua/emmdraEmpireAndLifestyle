@@ -166,11 +166,20 @@ export default function BlogPage() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2">
-                  <img
-                    src={filteredPosts[0].featured_image}
-                    alt={filteredPosts[0].title}
-                    className="w-full h-64 md:h-full object-cover"
-                  />
+                  {filteredPosts[0].featured_image ? (
+                    <img
+                      src={filteredPosts[0].featured_image}
+                      alt={filteredPosts[0].title}
+                      className="w-full h-64 md:h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-64 md:h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">📖</div>
+                        <p className="text-gray-600 text-lg font-medium">Featured Story</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="md:w-1/2 p-8 flex flex-col justify-center">
                   <div className="mb-4">
@@ -218,11 +227,20 @@ export default function BlogPage() {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    <img
-                      src={post.featured_image}
-                      alt={post.title}
-                      className="w-full h-48 object-cover"
-                    />
+                    {post.featured_image ? (
+                      <img
+                        src={post.featured_image}
+                        alt={post.title}
+                        className="w-full h-48 object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="text-4xl mb-2">📝</div>
+                          <p className="text-gray-600 text-sm font-medium">Blog Post</p>
+                        </div>
+                      </div>
+                    )}
                     <div className="absolute top-4 left-4">
                       <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                         post.category === 'Family Life' ? 'bg-green-100 text-green-800' :

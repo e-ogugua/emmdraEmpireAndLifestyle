@@ -292,13 +292,22 @@ export default function DIYPage() {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    <Image
-                      src={tutorial.featured_image}
-                      alt={tutorial.title}
-                      width={400}
-                      height={192}
-                      className="w-full h-48 object-cover"
-                    />
+                    {tutorial.featured_image ? (
+                      <Image
+                        src={tutorial.featured_image}
+                        alt={tutorial.title}
+                        width={400}
+                        height={192}
+                        className="w-full h-48 object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center rounded-t-xl">
+                        <div className="text-center">
+                          <div className="text-4xl mb-2">🎨</div>
+                          <p className="text-gray-600 text-sm font-medium">DIY Tutorial</p>
+                        </div>
+                      </div>
+                    )}
                     <div className="absolute top-4 left-4 flex gap-2">
                       <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                         tutorial.category === 'Accessories' ? 'bg-blue-100 text-blue-800' :
