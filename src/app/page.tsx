@@ -233,7 +233,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/EmmdraGallary1.JPG"
+                  src="/images/HandmadeBeadedNecklace.png"
                   alt="Handmade Beaded Necklace"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -257,7 +257,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/beautyHub.png"
+                  src="/images/NaturalHairTreatmentMask.png"
                   alt="Natural Hair Treatment"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -278,7 +278,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/EmmdraFashionDesignAndAccessories.png"
+                  src="/images/DIYAnkaraThrowPillow.png"
                   alt="DIY Ankara Pillow"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -368,7 +368,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 border border-purple-100">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/EmmdraGallary2.JPG"
+                  src="/images/DIYJewelryMakingWorkshop.png"
                   alt="Jewelry Making Workshop"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -409,7 +409,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 border border-purple-100">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/beautyHub.png"
+                  src="/images/NaturalBeautyWorkshop.png"
                   alt="Natural Beauty Workshop"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -475,7 +475,7 @@ export default function Home() {
             <article className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/EmmdraFashionDesignAndAccessories.png"
+                  src="/images/5EssentialFashionTipsforNigerianWeather.png"
                   alt="Fashion Tips for Nigerian Weather"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -499,7 +499,7 @@ export default function Home() {
             <article className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/beautyHub.png"
+                  src="/images/DIYNaturalBeautyRemediesatHome.png"
                   alt="DIY Natural Beauty Remedies"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -520,7 +520,7 @@ export default function Home() {
             <article className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/EmmdraGallary1.JPG"
+                  src="/images/BuildingaCapsuleWardrobeforBusyProfessionals.png"
                   alt="Capsule Wardrobe Guide"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
