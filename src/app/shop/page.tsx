@@ -1,48 +1,23 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabase'
+import { trackPageView } from '@/lib/analytics'
+
 interface Product {
   id: number
   name: string
+  short_description: string
   description: string
-  price: string
-  image: string
+  price: number
+  image_url: string
 }
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Accessories",
-    description: "Elegant fashion accessories",
-    price: "₦8,500",
-    image: "/images/Accessories.png",
-  },
-  {
-    id: 2,
-    name: "Adult Wears",
-    description: "Stylish clothing for adults",
-    price: "₦15,000",
-    image: "/images/AdultWearsAndFashion.png",
-  },
-  {
-    id: 3,
-    name: "Beauty Hub",
-    description: "Premium beauty products",
-    price: "₦12,000",
-    image: "/images/beautyHub.png",
-  },
-  {
-    id: 4,
-    name: "Kiddies Fashion",
-    description: "Cute and comfy for kids",
-    price: "₦9,000",
-    image: "/images/Kiddies.png",
-  },
-];
-
-'use client'
-
-import { useEffect } from 'react'
-import { trackPageView } from '@/lib/analytics'
-
 export default function ShopPage() {
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
   useEffect(() => {
     // Track shop page view
     trackPageView({
@@ -50,6 +25,79 @@ export default function ShopPage() {
       page_title: 'Shop - Emmdra Empire'
     })
   }, [])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        console.log('🛒 Starting to fetch products...')
+        setLoading(true)
+        setError(null)
+
+        const { data, error: supabaseError } = await supabase
+          .from('products')
+          .select('*')
+          .order('id', { ascending: true })
+
+        console.log('📦 Supabase response:', { dataLength: data?.length, error: supabaseError })
+
+        if (supabaseError) {
+          console.error('❌ Error fetching products:', supabaseError)
+          setError('Failed to load products. Please try again later.')
+          return
+        }
+
+        console.log('✅ Products fetched successfully:', data?.length || 0, 'products')
+        setProducts(data || [])
+      } catch (err) {
+        console.error('❌ Error fetching products:', err)
+        setError('Failed to load products. Please try again later.')
+      } finally {
+        setLoading(false)
+        console.log('🔄 Loading state set to false')
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
+  console.log('🏪 ShopPage render - State:', { 
+    loading, 
+    error: error ? 'HAS ERROR' : 'NO ERROR', 
+    productsCount: products.length 
+  })
+
+  if (loading) {
+    return (
+      <div className="py-16 px-4 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-800 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading products...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="py-16 px-4 bg-gray-50">
+        <div className="container mx-auto text-center">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Error Loading Products</h1>
+          <p className="text-lg text-gray-600 mb-8">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="py-16 px-4 bg-gray-50">
       <div className="container mx-auto">
@@ -64,46 +112,53 @@ export default function ShopPage() {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
-            >
-              {/* Product Image */}
-              <div className="relative w-full h-64 overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-              </div>
+        {products.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+              >
+                {/* Product Image */}
+                <div className="relative w-full h-64 overflow-hidden">
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
 
-              {/* Product Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  {product.name}
-                </h3>
+                {/* Product Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    {product.name}
+                  </h3>
 
-                <p className="text-gray-600 text-sm mb-4">
-                  {product.description}
-                </p>
+                  <p className="text-gray-600 text-sm mb-4">
+                    {product.short_description}
+                  </p>
 
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-gray-800">
-                    {product.price}
-                  </span>
-                  <a
-                    href={`/shop/${product.id}`}
-                    className="bg-black text-white px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors duration-200"
-                  >
-                    View Details
-                  </a>
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-bold text-gray-800">
+                      ₦{product.price.toLocaleString()}
+                    </span>
+                    <a
+                      href={`/shop/${product.id}`}
+                      className="bg-black text-white px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors duration-200"
+                    >
+                      View Details
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">No Products Available</h2>
+            <p className="text-gray-600">Check back later for new products.</p>
+          </div>
+        )}
 
         {/* Pagination Placeholder */}
         <div className="flex items-center justify-center space-x-2 mt-12">

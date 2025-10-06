@@ -10,13 +10,39 @@ export interface PageView {
   ip_address?: string
   session_id?: string
   viewed_at: string
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 }
 
 /**
  * Track a pageview with anonymous analytics data
  */
 export async function trackPageView(pageView: Omit<PageView, 'viewed_at' | 'session_id'>) {
+  // Input validation
+  if (!pageView || typeof pageView !== 'object') {
+    console.error('Analytics tracking error: Invalid pageView parameter - must be a non-null object', {
+      received: pageView,
+      type: typeof pageView
+    })
+    return false
+  }
+
+  if (!pageView.page_type) {
+    console.error('Analytics tracking error: Missing required page_type field', {
+      received: pageView
+    })
+    return false
+  }
+
+  // Validate page_type is one of the allowed values
+  const validPageTypes = ['product', 'blog', 'diy', 'shop', 'contact', 'about', 'home']
+  if (!validPageTypes.includes(pageView.page_type)) {
+    console.error('Analytics tracking error: Invalid page_type value', {
+      received: pageView.page_type,
+      validTypes: validPageTypes
+    })
+    return false
+  }
+
   try {
     // Generate anonymous session ID (client-side only)
     const sessionId = typeof window !== 'undefined'
@@ -41,26 +67,56 @@ export async function trackPageView(pageView: Omit<PageView, 'viewed_at' | 'sess
       // Note: IP address would need to be collected server-side for privacy
     }
 
-    // Insert into Supabase analytics table
-    const { error } = await supabase
-      .from('page_views')
-      .insert(analyticsData)
-
-    if (error) {
-      console.error('Analytics tracking error:', error)
+    // Insert into Supabase analytics table with comprehensive error handling
+    try {
+      await supabase
+        .from('page_views')
+        .insert(analyticsData)
+    } catch (insertError) {
+      // Catch network errors, connection issues, or other unexpected errors during insert
+      console.error('Analytics tracking insert operation failed:', {
+        error: insertError instanceof Error ? {
+          message: insertError.message,
+          stack: insertError.stack,
+          name: insertError.name
+        } : insertError,
+        attemptedData: {
+          page_type: pageView.page_type,
+          page_id: pageView.page_id,
+          hasReferrer: !!referrer,
+          hasUserAgent: !!userAgent,
+          sessionId: sessionId.substring(0, 8) + '...',
+          dataSize: JSON.stringify(analyticsData).length
+        },
+        originalPageView: {
+          ...pageView,
+          // Sanitize for logging (remove any potentially sensitive data)
+          page_title: pageView.page_title,
+          page_id: pageView.page_id,
+          page_type: pageView.page_type
+        },
+        timestamp: new Date().toISOString(),
+        context: 'Supabase insert operation'
+      })
       return false
     }
 
     return true
   } catch (error) {
-    console.error('Analytics tracking failed:', error)
+    // Catch any unexpected errors during the entire tracking process
+    console.error('Analytics tracking unexpected error:', {
+      error: error instanceof Error ? {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      } : error,
+      pageView: pageView,
+      timestamp: new Date().toISOString(),
+      context: 'trackPageView outer catch'
+    })
     return false
   }
 }
-
-/**
- * Get analytics summary for admin dashboard
- */
 export async function getAnalyticsSummary(dateRange?: { from: string; to: string }) {
   try {
     let query = supabase
@@ -77,7 +133,21 @@ export async function getAnalyticsSummary(dateRange?: { from: string; to: string
     const { data: pageViews, error } = await query
 
     if (error) {
-      console.error('Analytics fetch error:', error)
+      console.error('Analytics fetch error:', {
+        error: {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint,
+          fullError: error
+        },
+        attemptedQuery: {
+          table: 'page_views',
+          dateRange: dateRange,
+          hasDateRange: !!dateRange
+        },
+        timestamp: new Date().toISOString()
+      })
       return null
     }
 
@@ -122,7 +192,18 @@ export async function getAnalyticsSummary(dateRange?: { from: string; to: string
 
     return summary
   } catch (error) {
-    console.error('Analytics summary error:', error)
+    console.error('Analytics summary unexpected error:', {
+      error: error instanceof Error ? {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      } : error,
+      parameters: {
+        dateRange: dateRange,
+        hasDateRange: !!dateRange
+      },
+      timestamp: new Date().toISOString()
+    })
     return null
   }
 }
@@ -148,16 +229,37 @@ export async function getContentAnalytics(
 
     const { data: views, error } = await query
 
-    if (error || !views) return null
+    if (error) {
+      console.error('Content analytics fetch error:', {
+        error: {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint,
+          fullError: error
+        },
+        attemptedQuery: {
+          table: 'page_views',
+          contentType: contentType,
+          dateRange: dateRange,
+          hasDateRange: !!dateRange
+        },
+        timestamp: new Date().toISOString()
+      })
+      return null
+    }
+
+    if (!views) return null
 
     // Group by content ID and calculate metrics
-    const contentStats = {} as Record<string, {
+    const contentStats: Record<string, {
       id: string | number
       title?: string
       total_views: number
       unique_viewers: number
       avg_time_on_page?: number
-    }>
+      [key: string]: string | number | boolean | undefined // Index signature for dynamic session tracking
+    }> = {}
 
     views.forEach(view => {
       const contentId = view.page_id?.toString() || 'unknown'
@@ -187,7 +289,19 @@ export async function getContentAnalytics(
       .slice(0, 20) // Top 20 items
 
   } catch (error) {
-    console.error('Content analytics error:', error)
+    console.error('Content analytics unexpected error:', {
+      error: error instanceof Error ? {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      } : error,
+      parameters: {
+        contentType: contentType,
+        dateRange: dateRange,
+        hasDateRange: !!dateRange
+      },
+      timestamp: new Date().toISOString()
+    })
     return null
   }
 }
