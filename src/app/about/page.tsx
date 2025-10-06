@@ -138,16 +138,16 @@ export default function AboutPage() {
 
               {/* Timeline Items */}
               <div className="space-y-12">
-                {/* 2020 - The Beginning */}
+                {/* Dec 2023 - The Foundation */}
                 <div className={`flex items-center transition-all duration-1000 delay-300 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
                   <div className="w-1/2 pr-6 text-right">
                     <div className="bg-blue-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-blue-800 mb-2">2020 - The Spark</h3>
+                      <h3 className="text-lg font-bold text-blue-800 mb-2">Dec 2023 - Foundation</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
-                        Emmanuel and Chidera discovered their shared passion for fashion and creativity.
-                        What started as weekend projects became a vision for something bigger.
+                        Emmanuel and Chidera laid the groundwork for Emmdra Empire, combining their passion
+                        for fashion, beauty, and family values into a cohesive vision.
                       </p>
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
                   <div className="w-1/2"></div>
                 </div>
 
-                {/* 2021 - First Steps */}
+                {/* Jan 2024 - Brand Identity */}
                 <div className={`flex items-center transition-all duration-1000 delay-500 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
@@ -163,25 +163,25 @@ export default function AboutPage() {
                   <div className="w-4 h-4 bg-purple-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
                   <div className="w-1/2 pl-6">
                     <div className="bg-purple-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-purple-800 mb-2">2021 - First Collection</h3>
+                      <h3 className="text-lg font-bold text-purple-800 mb-2">Jan 2024 - Brand Launch</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
-                        Launched our first fashion collection, focusing on quality materials and unique designs.
-                        The response from friends and family gave us the confidence to dream bigger.
+                        Official launch of Emmdra Empire with curated fashion collections, beauty essentials,
+                        and DIY content that resonates with modern families.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* 2022 - Expansion */}
+                {/* Mar 2024 - Community Building */}
                 <div className={`flex items-center transition-all duration-1000 delay-700 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
                   <div className="w-1/2 pr-6 text-right">
                     <div className="bg-pink-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-pink-800 mb-2">2022 - Beauty & Lifestyle</h3>
+                      <h3 className="text-lg font-bold text-pink-800 mb-2">Mar 2024 - Community Growth</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
-                        Expanded into beauty products and lifestyle content. Our DIY tutorials and beauty tips
-                        started building a loyal community of creative families.
+                        Started building our community through workshops, blog content, and social media engagement.
+                        Families began discovering our unique approach to lifestyle.
                       </p>
                     </div>
                   </div>
@@ -189,7 +189,7 @@ export default function AboutPage() {
                   <div className="w-1/2"></div>
                 </div>
 
-                {/* 2023 - Community Growth */}
+                {/* Jun 2024 - Digital Expansion */}
                 <div className={`flex items-center transition-all duration-1000 delay-900 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
@@ -197,30 +197,47 @@ export default function AboutPage() {
                   <div className="w-4 h-4 bg-green-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
                   <div className="w-1/2 pl-6">
                     <div className="bg-green-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-green-800 mb-2">2023 - Community Focus</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">Jun 2024 - Online Presence</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
-                        Started workshops and training sessions. Our family grew beyond just us -
-                        we now have a community of families embracing creativity and style together.
+                        Expanded our digital footprint with a comprehensive website featuring shop, blog,
+                        and workshop bookings. Enhanced customer experience with seamless online shopping.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* 2024 - Emmdra Empire */}
+                {/* Sep 2024 - Product Diversification */}
                 <div className={`flex items-center transition-all duration-1000 delay-1100 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
                   <div className="w-1/2 pr-6 text-right">
-                    <div className="bg-yellow-50 p-5 rounded-2xl shadow-lg border-2 border-yellow-200">
-                      <h3 className="text-lg font-bold text-yellow-800 mb-2">2024 - Emmdra Empire</h3>
+                    <div className="bg-orange-50 p-5 rounded-2xl shadow-lg">
+                      <h3 className="text-lg font-bold text-orange-800 mb-2">Sep 2024 - Product Expansion</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
-                        Today, Emmdra Empire is more than a brand - it&apos;s a movement. We&apos;re building
-                        a community where families can express themselves, learn together, and create beautiful memories.
+                        Diversified our product range with new categories including accessories, beauty products,
+                        and lifestyle items. Enhanced our DIY tutorial library with step-by-step guides.
                       </p>
                     </div>
                   </div>
-                  <div className="w-4 h-4 bg-yellow-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-4 h-4 bg-orange-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
                   <div className="w-1/2"></div>
+                </div>
+
+                {/* Dec 2024 - Current & Future */}
+                <div className={`flex items-center transition-all duration-1000 delay-1300 transform ${
+                  isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
+                }`}>
+                  <div className="w-1/2"></div>
+                  <div className="w-4 h-4 bg-yellow-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-1/2 pl-6">
+                    <div className="bg-yellow-50 p-5 rounded-2xl shadow-lg border-2 border-yellow-200">
+                      <h3 className="text-lg font-bold text-yellow-800 mb-2">Today - Growing Strong</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm">
+                        Emmdra Empire continues to grow as a beloved lifestyle brand. We&apos;re expanding our community,
+                        creating more workshops, and developing new products that celebrate Nigerian creativity and family bonds.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -461,7 +478,7 @@ export default function AboutPage() {
                 </div>
                 <div className="text-center">
                   <h3 className="font-semibold mb-1">✉️ Email</h3>
-                  <p className="text-sm">hello@emmdraempire.com</p>
+                  <p className="text-sm">emmdraempire@gmail.com</p>
                 </div>
               </div>
             </div>
