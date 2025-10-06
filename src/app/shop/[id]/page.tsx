@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 
 interface Product {
@@ -10,6 +11,11 @@ interface Product {
   description: string
   price: number
   image_url: string
+  category?: string
+  featured?: boolean
+  in_stock?: boolean
+  created_at?: string
+  updated_at?: string
 }
 
 interface ProductDetailsPageProps {
@@ -109,12 +115,12 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
               : "There was an error loading the product. Please try again."
             }
           </p>
-          <a
+          <Link
             href="/shop"
             className="inline-block bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300"
           >
             Back to Shop
-          </a>
+          </Link>
         </div>
       </div>
     )
@@ -129,7 +135,7 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
       <div className="container mx-auto">
         {/* Back to Shop Link */}
         <div className="mb-6">
-          <a
+          <Link
             href="/shop"
             className="inline-flex items-center text-gray-600 hover:text-gray-800 transition-colors duration-200"
           >
@@ -137,7 +143,7 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Shop
-          </a>
+          </Link>
         </div>
 
         {/* Product Details - Two Column Layout */}
@@ -170,17 +176,16 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
                 {product.description}
               </p>
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="flex-1 bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors duration-300">
                   Add to Cart
                 </button>
-                <a
+                <Link
                   href="/shop"
                   className="flex-1 bg-gray-200 text-gray-800 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-300 transition-colors duration-300 text-center"
                 >
                   Continue Shopping
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -195,7 +200,7 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedProducts.map((relatedProduct) => (
-                <a
+                <Link
                   key={relatedProduct.id}
                   href={`/shop/${relatedProduct.id}`}
                   className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg group"
@@ -219,7 +224,7 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
                       ₦{relatedProduct.price.toLocaleString()}
                     </p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

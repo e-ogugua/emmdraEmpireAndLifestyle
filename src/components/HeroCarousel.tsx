@@ -14,27 +14,43 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: '/images/heroSlide1image.png',
-    title: 'Welcome to Emmdra Empire',
-    subtitle: 'Discover amazing products and experiences',
-    ctaText: 'Shop Now',
-    ctaLink: '/shop'
+    image: '/images/EmmdraFamilyHero.jpg',
+    title: 'Welcome to the Emmdra Family',
+    subtitle: 'Where fashion meets family, creativity blooms, and every moment becomes a masterpiece',
+    ctaText: 'Join Our Family',
+    ctaLink: '/about'
   },
   {
     id: 2,
-    image: '/images/heroslide2image.jpg',
-    title: 'DIY Projects & Crafts',
-    subtitle: 'Unleash your creativity with our tutorials',
-    ctaText: 'Explore DIY',
-    ctaLink: '/diy'
+    image: '/images/EmmdraFashionShowcase.jpg',
+    title: 'Style That Speaks',
+    subtitle: 'Discover fashion that tells your story - from casual chic to elegant statements',
+    ctaText: 'Shop Fashion',
+    ctaLink: '/shop'
   },
   {
     id: 3,
-    image: '/images/heroSlide3Image.png',
-    title: 'Fashion & Accessories',
-    subtitle: 'Style that speaks to your soul',
-    ctaText: 'View Collection',
+    image: '/images/EmmdraBeautyAndWellness.jpg',
+    title: 'Beauty & Wellness',
+    subtitle: 'Nourish your skin, hair, and soul with our premium beauty collections',
+    ctaText: 'Explore Beauty',
     ctaLink: '/shop'
+  },
+  {
+    id: 4,
+    image: '/images/EmmdraDIYCrafts.jpg',
+    title: 'Create & Inspire',
+    subtitle: 'DIY tutorials and workshops to unleash your inner artist and craft beautiful memories',
+    ctaText: 'Start Creating',
+    ctaLink: '/diy'
+  },
+  {
+    id: 5,
+    image: '/images/EmmdraLifestyleStories.jpg',
+    title: 'Stories That Inspire',
+    subtitle: 'Read our lifestyle blog for tips, trends, and tales from the Emmdra community',
+    ctaText: 'Read Stories',
+    ctaLink: '/blog'
   }
 ]
 
