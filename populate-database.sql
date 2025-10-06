@@ -164,32 +164,32 @@ INSERT INTO diy_tutorials (title, slug, category, difficulty, steps, materials, 
 -- 4️⃣ POPULATE WORKSHOPS TABLE
 -- =============================================
 
-INSERT INTO workshops (title, slug, description, category, price, schedule, max_participants, instructor, cover_image, status) VALUES
-('Fashion Styling Masterclass', 'fashion-styling-masterclass', 'Learn professional styling techniques and build your signature look', 'Fashion', 25000.00,
+INSERT INTO workshops (title, description, category, price, schedule, max_participants, instructor, cover_image, status) VALUES
+('Fashion Styling Masterclass', 'Learn professional styling techniques and build your signature look', 'Fashion', 25000.00,
 '{"date": "2024-02-15", "time": "10:00 AM", "duration": "3 hours", "location": "Emmdra Studio, Enugu"}',
 20, 'Emmanuel Chuka', '/images/EmmdraFashionDesignAndAccessories.png', 'upcoming'),
 
-('DIY Jewelry Making Workshop', 'diy-jewelry-making', 'Create beautiful handmade jewelry while learning essential crafting skills', 'Crafts', 15000.00,
+('DIY Jewelry Making Workshop', 'Create beautiful handmade jewelry while learning essential crafting skills', 'Crafts', 15000.00,
 '{"date": "2024-02-22", "time": "2:00 PM", "duration": "4 hours", "location": "Emmdra Workshop Space"}',
 15, 'Chidera Lois', '/images/DIYJewelryMakingWorkshop.png', 'upcoming'),
 
-('Natural Beauty Workshop', 'natural-beauty-workshop', 'Discover the secrets of natural beauty and create your own products', 'Beauty', 18000.00,
+('Natural Beauty Workshop', 'Discover the secrets of natural beauty and create your own products', 'Beauty', 18000.00,
 '{"date": "2024-03-01", "time": "11:00 AM", "duration": "2.5 hours", "location": "Emmdra Beauty Hub"}',
 12, 'Amara Nwosu', '/images/NaturalBeautyWorkshop.png', 'upcoming'),
 
-('Natural Skincare DIY Workshop', 'natural-skincare-diy-workshop', 'Learn to create natural skincare products using organic ingredients', 'Beauty', 22000.00,
+('Natural Skincare DIY Workshop', 'Learn to create natural skincare products using organic ingredients', 'Beauty', 22000.00,
 '{"date": "2024-03-08", "time": "10:00 AM", "duration": "3 hours", "location": "Emmdra Beauty Hub"}',
 10, 'Amara Nwosu', '/images/NaturalSkincareDIYWorkshop.png', 'upcoming'),
 
-('Eco-Friendly Accessories Workshop', 'eco-friendly-accessories-workshop', 'Create sustainable fashion accessories using recycled materials', 'Fashion', 12000.00,
+('Eco-Friendly Accessories Workshop', 'Create sustainable fashion accessories using recycled materials', 'Fashion', 12000.00,
 '{"date": "2024-03-15", "time": "1:00 PM", "duration": "2 hours", "location": "Emmdra Studio, Enugu"}',
 18, 'Emmanuel Chuka', '/images/EcoFriendlyAccessoriesWorkshop.png', 'upcoming'),
 
-('Kids Craft Fun Workshop', 'kids-craft-fun-workshop', 'Fun and educational craft activities designed for children aged 6-12', 'Kids', 8000.00,
+('Kids Craft Fun Workshop', 'Fun and educational craft activities designed for children aged 6-12', 'Kids', 8000.00,
 '{"date": "2024-03-22", "time": "9:00 AM", "duration": "2 hours", "location": "Emmdra Workshop Space"}',
 25, 'Chidera Lois', '/images/KidsCraftFunWorkshop.png', 'upcoming'),
 
-('Home Décor DIY Workshop', 'home-decor-diy-workshop', 'Transform your living space with creative DIY home decoration projects', 'Home', 20000.00,
+('Home Décor DIY Workshop', 'Transform your living space with creative DIY home decoration projects', 'Home', 20000.00,
 '{"date": "2024-03-29", "time": "11:00 AM", "duration": "4 hours", "location": "Emmdra Workshop Space"}',
 15, 'Amara Nwosu', '/images/HomeDecorDIYWorkshop.png', 'upcoming');
 
