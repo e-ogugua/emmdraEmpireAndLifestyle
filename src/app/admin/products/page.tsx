@@ -25,7 +25,7 @@ export default function AdminProducts() {
 
   useEffect(() => {
     fetchProducts()
-    trackPageView({ page_type: 'admin_products' })
+    trackPageView({ page_type: 'product' })
   }, [])
 
   const fetchProducts = async () => {

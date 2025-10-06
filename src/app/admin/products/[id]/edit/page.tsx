@@ -25,6 +25,7 @@ interface Product {
   image_url: string
   featured: boolean
   in_stock: boolean
+  created_at: string
 }
 
 export default function EditProduct({ params }: { params: { id: string } }) {
@@ -45,41 +46,41 @@ export default function EditProduct({ params }: { params: { id: string } }) {
   const router = useRouter()
 
   useEffect(() => {
-    fetchProduct()
-    trackPageView({ page_type: 'admin_edit_product' })
-  }, [params.id])
+    const fetchProduct = async () => {
+      try {
+        setFetchLoading(true)
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .eq('id', params.id)
+          .single()
 
-  const fetchProduct = async () => {
-    try {
-      setFetchLoading(true)
-      const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        .eq('id', params.id)
-        .single()
+        if (error) throw error
 
-      if (error) throw error
-
-      if (data) {
-        setProduct(data)
-        setFormData({
-          name: data.name,
-          price: data.price.toString(),
-          short_description: data.short_description || '',
-          description: data.description || '',
-          category: data.category,
-          image_url: data.image_url,
-          featured: data.featured,
-          in_stock: data.in_stock
-        })
+        if (data) {
+          setProduct(data)
+          setFormData({
+            name: data.name,
+            price: data.price.toString(),
+            short_description: data.short_description || '',
+            description: data.description || '',
+            category: data.category,
+            image_url: data.image_url,
+            featured: data.featured,
+            in_stock: data.in_stock
+          })
+        }
+      } catch (err: unknown) {
+        console.error('Error fetching product:', err)
+        setError('Product not found or failed to load.')
+      } finally {
+        setFetchLoading(false)
       }
-    } catch (err: any) {
-      console.error('Error fetching product:', err)
-      setError('Product not found or failed to load.')
-    } finally {
-      setFetchLoading(false)
     }
-  }
+
+    fetchProduct()
+    trackPageView({ page_type: 'product' })
+  }, [params.id])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -102,9 +103,9 @@ export default function EditProduct({ params }: { params: { id: string } }) {
       if (error) throw error
 
       router.push('/admin/products')
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Error updating product:', err)
-      setError(err.message || 'Failed to update product. Please try again.')
+      setError('Failed to update product. Please try again.')
     } finally {
       setLoading(false)
     }

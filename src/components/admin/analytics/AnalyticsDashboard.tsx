@@ -108,7 +108,7 @@ export default function AnalyticsDashboard() {
           ].map((range) => (
             <button
               key={range.value}
-              onClick={() => handleDateRangeChange(range.value as any)}
+              onClick={() => handleDateRangeChange(range.value as '7d' | '30d' | '90d' | 'all')}
               className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                 (!dateRange && range.value === 'all') || (dateRange && range.value !== 'all')
                   ? 'bg-blue-600 text-white'
@@ -132,7 +132,7 @@ export default function AnalyticsDashboard() {
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as 'overview' | 'products' | 'blogs' | 'diy')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === tab.id
                   ? 'border-blue-500 text-blue-600'

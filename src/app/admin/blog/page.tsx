@@ -33,7 +33,7 @@ export default function AdminBlog() {
     try {
       setLoading(true)
       const { data, error } = await supabase
-        .from('blog_posts')
+        .from('blogs')
         .select('*')
         .order('created_at', { ascending: false })
 
@@ -53,7 +53,7 @@ export default function AdminBlog() {
 
     try {
       const { error } = await supabase
-        .from('blog_posts')
+        .from('blogs')
         .delete()
         .eq('id', id)
 
@@ -69,7 +69,7 @@ export default function AdminBlog() {
   const togglePublished = async (id: number, currentStatus: boolean) => {
     try {
       const { error } = await supabase
-        .from('blog_posts')
+        .from('blogs')
         .update({ published: !currentStatus })
         .eq('id', id)
 
@@ -85,7 +85,7 @@ export default function AdminBlog() {
   const toggleFeatured = async (id: number, currentFeatured: boolean) => {
     try {
       const { error } = await supabase
-        .from('blog_posts')
+        .from('blogs')
         .update({ featured: !currentFeatured })
         .eq('id', id)
 

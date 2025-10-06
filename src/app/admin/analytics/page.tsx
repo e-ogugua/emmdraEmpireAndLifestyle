@@ -1,11 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 import { trackPageView } from '@/lib/analytics'
-import { Bar, Line } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -55,78 +54,71 @@ export default function AdminAnalytics() {
     recentViews: [],
     topPages: []
   })
-  const [loading, setLoading] = useState(true)
   const [timeRange, setTimeRange] = useState('30') // days
 
   useEffect(() => {
-    fetchAnalytics()
-    trackPageView({ page_type: 'about' }) // Using 'about' as closest match for analytics
+    const loadData = async () => {
+      await fetchAnalytics()
+      trackPageView({ page_type: 'about' }) // Using 'about' as closest match for analytics
+    }
+    loadData()
   }, [timeRange])
 
   const fetchAnalytics = async () => {
-    try {
-      setLoading(true)
+    // Calculate date range
+    const endDate = new Date()
+    const startDate = new Date()
+    startDate.setDate(endDate.getDate() - parseInt(timeRange))
 
-      // Calculate date range
-      const endDate = new Date()
-      const startDate = new Date()
-      startDate.setDate(endDate.getDate() - parseInt(timeRange))
+    // Fetch page views in the time range
+    const { data: viewsData, error: viewsError } = await supabase
+      .from('page_views')
+      .select('*')
+      .gte('viewed_at', startDate.toISOString())
+      .order('viewed_at', { ascending: false })
 
-      // Fetch page views in the time range
-      const { data: viewsData, error: viewsError } = await supabase
-        .from('page_views')
-        .select('*')
-        .gte('viewed_at', startDate.toISOString())
-        .order('viewed_at', { ascending: false })
+    if (viewsError) throw viewsError
 
-      if (viewsError) throw viewsError
+    // Process data
+    const totalViews = viewsData?.length || 0
 
-      // Process data
-      const totalViews = viewsData?.length || 0
+    // Group by page type
+    const pageViewsMap = new Map<string, number>()
+    viewsData?.forEach((view: { page_type: string; page_title?: string }) => {
+      const count = pageViewsMap.get(view.page_type) || 0
+      pageViewsMap.set(view.page_type, count + 1)
+    })
 
-      // Group by page type
-      const pageViewsMap = new Map<string, number>()
-      viewsData?.forEach(view => {
-        const count = pageViewsMap.get(view.page_type) || 0
-        pageViewsMap.set(view.page_type, count + 1)
+    const pageViews = Array.from(pageViewsMap.entries()).map(([page_type, count]) => ({
+      page_type,
+      count
+    }))
+
+    // Get recent views (last 10)
+    const recentViews = viewsData?.slice(0, 10) || []
+
+    // Get top pages
+    const topPagesMap = new Map<string, number>()
+    viewsData?.forEach((view: { page_type: string; page_title?: string }) => {
+      const key = `${view.page_type}${view.page_title ? `-${view.page_title}` : ''}`
+      const count = topPagesMap.get(key) || 0
+      topPagesMap.set(key, count + 1)
+    })
+
+    const topPages = Array.from(topPagesMap.entries())
+      .map(([key, views]) => {
+        const [page_type, page_title] = key.split('-', 2)
+        return { page_type, page_title, views }
       })
+      .sort((a, b) => b.views - a.views)
+      .slice(0, 10)
 
-      const pageViews = Array.from(pageViewsMap.entries()).map(([page_type, count]) => ({
-        page_type,
-        count
-      }))
-
-      // Get recent views (last 10)
-      const recentViews = viewsData?.slice(0, 10) || []
-
-      // Get top pages
-      const topPagesMap = new Map<string, number>()
-      viewsData?.forEach(view => {
-        const key = `${view.page_type}${view.page_title ? `-${view.page_title}` : ''}`
-        const count = topPagesMap.get(key) || 0
-        topPagesMap.set(key, count + 1)
-      })
-
-      const topPages = Array.from(topPagesMap.entries())
-        .map(([key, views]) => {
-          const [page_type, page_title] = key.split('-', 2)
-          return { page_type, page_title, views }
-        })
-        .sort((a, b) => b.views - a.views)
-        .slice(0, 10)
-
-      setData({
-        totalViews,
-        pageViews,
-        recentViews,
-        topPages
-      })
-
-    } catch (err) {
-      console.error('Error fetching analytics:', err)
-    } finally {
-      setLoading(false)
-    }
+    setData({
+      totalViews,
+      pageViews,
+      recentViews,
+      topPages
+    })
   }
 
   const chartData = {

@@ -28,7 +28,7 @@ export default function AdminLogin() {
       })
 
       // Check if user is authorized
-      const allowedEmails = ['emmanuel@example.com', 'chidera@example.com']
+      const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
       if (!allowedEmails.includes(email)) {
         setError('Access denied. You are not authorized to access the admin dashboard.')
         await supabase.auth.signOut()

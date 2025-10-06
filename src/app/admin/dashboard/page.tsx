@@ -63,7 +63,7 @@ export default function AdminDashboard() {
         }
 
         // Check if user is authorized
-        const allowedEmails = ['emmanuel@example.com', 'chidera@example.com']
+        const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
         if (!allowedEmails.includes(user.email || '')) {
           setError('Access denied. You are not authorized to access this dashboard.')
           return
@@ -88,7 +88,7 @@ export default function AdminDashboard() {
       // Fetch counts for all content types
       const [productsRes, blogsRes, diyRes, workshopsRes, bookingsRes] = await Promise.all([
         supabase.from('products').select('id', { count: 'exact', head: true }),
-        supabase.from('blog_posts').select('id', { count: 'exact', head: true }),
+        supabase.from('blogs').select('id', { count: 'exact', head: true }),
         supabase.from('diy_tutorials').select('id', { count: 'exact', head: true }),
         supabase.from('workshops').select('id', { count: 'exact', head: true }),
         supabase.from('bookings').select('id', { count: 'exact', head: true })
@@ -97,7 +97,7 @@ export default function AdminDashboard() {
       // Fetch recent activity
       const recentActivityPromises = [
         supabase.from('products').select('id, name, created_at').order('created_at', { ascending: false }).limit(3),
-        supabase.from('blog_posts').select('id, title, created_at').order('created_at', { ascending: false }).limit(3),
+        supabase.from('blogs').select('id, title, created_at').order('created_at', { ascending: false }).limit(3),
         supabase.from('diy_tutorials').select('id, title, created_at').order('created_at', { ascending: false }).limit(3),
         supabase.from('workshops').select('id, title, created_at').order('created_at', { ascending: false }).limit(3),
         supabase.from('bookings').select('id, name, created_at').order('created_at', { ascending: false }).limit(3)
@@ -256,7 +256,7 @@ export default function AdminDashboard() {
                     <p className="text-2xl font-bold text-gray-900">{stats.blogs}</p>
                   </div>
                 </div>
-                <Link href="/admin/blogs" className="mt-4 inline-block text-green-600 hover:text-green-800 text-sm font-medium">
+                <Link href="/admin/blog" className="mt-4 inline-block text-green-600 hover:text-green-800 text-sm font-medium">
                   Manage Blogs →
                 </Link>
               </div>
@@ -367,7 +367,7 @@ export default function AdminDashboard() {
                   </div>
                 </Link>
 
-                <Link href="/admin/blogs/add" className="bg-green-50 hover:bg-green-100 p-4 rounded-lg border border-green-200 transition-colors">
+                <Link href="/admin/blog/new" className="bg-green-50 hover:bg-green-100 p-4 rounded-lg border border-green-200 transition-colors">
                   <div className="flex items-center">
                     <svg className="w-5 h-5 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />

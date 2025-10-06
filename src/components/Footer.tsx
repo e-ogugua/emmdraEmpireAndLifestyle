@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
@@ -8,9 +10,11 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-3 mb-4">
               <div className="bg-white rounded-2xl p-3 shadow-lg">
-                <img
+                <Image
                   src="/images/EmmdraLogo.png"
                   alt="Emmdra Empire & Lifestyle Logo"
+                  width={80}
+                  height={80}
                   className="w-20 h-20 object-contain"
                 />
               </div>

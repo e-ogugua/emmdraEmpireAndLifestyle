@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
-import { trackPageView } from '@/lib/analytics'
 
 const categories = [
   'Fashion',
@@ -43,7 +42,7 @@ export default function AddProduct() {
         in_stock: Boolean(formData.in_stock)
       }
 
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('products')
         .insert([productData])
         .select()
@@ -51,9 +50,10 @@ export default function AddProduct() {
       if (error) throw error
 
       router.push('/admin/products')
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Error adding product:', err)
-      setError(err.message || 'Failed to add product. Please try again.')
+      const errorMessage = err instanceof Error ? err.message : 'Failed to add product. Please try again.'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }

@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import type { User } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
 import DIYGrid from '@/components/admin/diy/DIYGrid'
 import DIYFormModal from '@/components/admin/diy/DIYFormModal'
@@ -23,7 +25,7 @@ export default function AdminDIYPage() {
   const [tutorials, setTutorials] = useState<DIYTutorial[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [modalMode, setModalMode] = useState<ModalMode>(null)
   const [editingTutorial, setEditingTutorial] = useState<DIYTutorial | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
@@ -160,12 +162,12 @@ export default function AdminDIYPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Access Denied</h1>
           <p className="text-gray-600 mb-6">{error}</p>
-          <a
+          <Link
             href="/"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Go to Homepage
-          </a>
+          </Link>
         </div>
       </div>
     )

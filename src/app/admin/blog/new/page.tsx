@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
-import { trackPageView } from '@/lib/analytics'
 
 const categories = [
   'Fashion',
@@ -46,7 +45,7 @@ export default function AddBlogPost() {
         featured: Boolean(formData.featured)
       }
 
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('blogs')
         .insert([blogData])
         .select()
@@ -54,9 +53,10 @@ export default function AddBlogPost() {
       if (error) throw error
 
       router.push('/admin/blog')
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Error adding blog post:', err)
-      setError(err.message || 'Failed to add blog post. Please try again.')
+      const errorMessage = err instanceof Error ? err.message : 'Failed to add blog post. Please try again.'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }
