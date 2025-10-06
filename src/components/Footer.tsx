@@ -7,12 +7,17 @@ export default function Footer() {
           {/* Logo & About Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3 mb-4">
-              <img
-                src="/images/EmmdraLogo.png"
-                alt="Emmdra Empire & Lifestyle Logo"
-                className="w-16 h-16 object-contain rounded-lg"
-              />
-              <h3 className="text-xl font-bold text-white">Emmdra Empire & Lifestyle</h3>
+              <div className="bg-white rounded-2xl p-3 shadow-lg">
+                <img
+                  src="/images/EmmdraLogo.png"
+                  alt="Emmdra Empire & Lifestyle Logo"
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white">Emmdra</h3>
+                <p className="text-sm font-medium text-gray-300">Empire & Lifestyle</p>
+              </div>
             </div>
             <p className="text-sm leading-relaxed">
               Your one-stop destination for fashion, creativity, and lifestyle.
