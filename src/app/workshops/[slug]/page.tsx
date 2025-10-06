@@ -10,17 +10,19 @@ interface Workshop {
   title: string
   category: string
   description: string
-  date: string | null
-  time: string | null
-  duration: string | null
+  schedule: {
+    date: string
+    time: string
+    duration: string
+    location: string
+  } | null
   price: number
-  capacity: number | null
-  location: string | null
+  max_participants: number | null
+  current_participants: number | null
   instructor: string | null
-  featured_image: string
-  requirements: string[] | null
-  what_youll_learn: string[] | null
-  tags: string[] | null
+  cover_image: string
+  images: string[] | null
+  status: string
   published: boolean
   featured: boolean
   created_at: string
@@ -63,12 +65,12 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
             .trim();
         }
 
-        // First get all workshops to find the one with matching slug
+        // Find workshop with matching slug
         const { data: allWorkshops, error: allWorkshopsError } = await supabase
           .from('workshops')
           .select('*')
-          .eq('published', true)
-          .order('date', { ascending: true, nullsFirst: false })
+          .eq('status', 'upcoming')
+          .order('schedule->date', { ascending: true, nullsFirst: false })
 
         if (allWorkshopsError) {
           console.error('❌ Error fetching workshops:', allWorkshopsError)
@@ -97,7 +99,7 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
         const { data: relatedData, error: relatedError } = await supabase
           .from('workshops')
           .select('*')
-          .eq('published', true)
+          .eq('status', 'upcoming')
           .eq('category', matchingWorkshop.category)
           .neq('id', matchingWorkshop.id)
           .limit(3)
@@ -197,7 +199,7 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
           {/* Featured Image */}
           <div className="relative w-full h-64 md:h-96 overflow-hidden">
             <img
-              src={workshop.featured_image}
+              src={workshop.cover_image}
               alt={workshop.title}
               className="w-full h-full object-cover"
             />
@@ -232,11 +234,11 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
             {/* Workshop Meta Grid */}
             <div className="bg-gray-50 rounded-xl p-6 mb-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {workshop.date && (
+                {workshop.schedule?.date && (
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gray-800 mb-1">📅</div>
                     <p className="text-sm text-gray-600">Date</p>
-                    <p className="font-semibold text-gray-800">{new Date(workshop.date).toLocaleDateString()}</p>
+                    <p className="font-semibold text-gray-800">{new Date(workshop.schedule.date).toLocaleDateString()}</p>
                   </div>
                 )}
                 <div className="text-center">
@@ -244,18 +246,18 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                   <p className="text-sm text-gray-600">Price</p>
                   <p className="font-semibold text-gray-800">₦{workshop.price.toLocaleString()}</p>
                 </div>
-                {workshop.duration && (
+                {workshop.schedule?.duration && (
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gray-800 mb-1">⏱️</div>
                     <p className="text-sm text-gray-600">Duration</p>
-                    <p className="font-semibold text-gray-800">{workshop.duration}</p>
+                    <p className="font-semibold text-gray-800">{workshop.schedule.duration}</p>
                   </div>
                 )}
-                {workshop.capacity && (
+                {workshop.max_participants && (
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gray-800 mb-1">👥</div>
                     <p className="text-sm text-gray-600">Capacity</p>
-                    <p className="font-semibold text-gray-800">{workshop.capacity} people</p>
+                    <p className="font-semibold text-gray-800">{workshop.max_participants} people</p>
                   </div>
                 )}
               </div>
@@ -268,56 +270,6 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                 {workshop.description}
               </p>
             </div>
-
-            {/* What You'll Learn */}
-            {workshop.what_youll_learn && workshop.what_youll_learn.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">What You'll Learn</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {workshop.what_youll_learn.map((item, index) => (
-                    <div key={index} className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
-                      <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-sm font-bold text-blue-600">{index + 1}</span>
-                      </div>
-                      <span className="text-gray-700">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Requirements */}
-            {workshop.requirements && workshop.requirements.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Requirements</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {workshop.requirements.map((requirement, index) => (
-                    <div key={index} className="flex items-start gap-3 p-4 bg-green-50 rounded-lg">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-sm font-bold text-green-600">{index + 1}</span>
-                      </div>
-                      <span className="text-gray-700">{requirement}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Tags */}
-            {workshop.tags && workshop.tags.length > 0 && (
-              <div className="mb-8">
-                <div className="flex flex-wrap gap-2">
-                  {workshop.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Registration Form */}
             <div className="mt-12 pt-8 border-t border-gray-200">
@@ -418,7 +370,7 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                 >
                   <div className="relative">
                     <img
-                      src={relatedWorkshop.featured_image}
+                      src={relatedWorkshop.cover_image}
                       alt={relatedWorkshop.title}
                       className="w-full h-48 object-cover"
                     />

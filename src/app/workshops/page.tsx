@@ -11,17 +11,19 @@ interface Workshop {
   slug?: string
   category: string
   description: string
-  date: string | null
-  time: string | null
-  duration: string | null
+  schedule: {
+    date: string
+    time: string
+    duration: string
+    location: string
+  } | null
   price: number
-  capacity: number | null
-  location: string | null
+  max_participants: number | null
+  current_participants: number | null
   instructor: string | null
-  featured_image: string
-  requirements: string[] | null
-  what_youll_learn: string[] | null
-  tags: string[] | null
+  cover_image: string
+  images: string[] | null
+  status: string
   published: boolean
   featured: boolean
   created_at: string
@@ -60,8 +62,8 @@ export default function WorkshopsPage() {
         const { data, error: supabaseError } = await supabase
           .from('workshops')
           .select('*')
-          .eq('published', true)
-          .order('date', { ascending: true, nullsFirst: false })
+          .eq('status', 'upcoming')
+          .order('schedule->date', { ascending: true, nullsFirst: false })
           .order('created_at', { ascending: false })
 
         if (supabaseError) {
@@ -176,7 +178,7 @@ export default function WorkshopsPage() {
               <div className="md:flex">
                 <div className="md:w-1/2">
                   <img
-                    src={filteredWorkshops[0].featured_image}
+                    src={filteredWorkshops[0].cover_image}
                     alt={filteredWorkshops[0].title}
                     className="w-full h-64 md:h-full object-cover"
                   />
@@ -201,12 +203,12 @@ export default function WorkshopsPage() {
 
                   {/* Workshop Meta */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    {filteredWorkshops[0].date && (
+                    {filteredWorkshops[0].schedule?.date && (
                       <div className="flex items-center gap-2 text-sm text-gray-600">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                         </svg>
-                        {new Date(filteredWorkshops[0].date).toLocaleDateString()}
+                        {new Date(filteredWorkshops[0].schedule.date).toLocaleDateString()}
                       </div>
                     )}
                     <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -215,20 +217,20 @@ export default function WorkshopsPage() {
                       </svg>
                       ₦{filteredWorkshops[0].price.toLocaleString()}
                     </div>
-                    {filteredWorkshops[0].duration && (
+                    {filteredWorkshops[0].schedule?.duration && (
                       <div className="flex items-center gap-2 text-sm text-gray-600">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                         </svg>
-                        {filteredWorkshops[0].duration}
+                        {filteredWorkshops[0].schedule.duration}
                       </div>
                     )}
-                    {filteredWorkshops[0].capacity && (
+                    {filteredWorkshops[0].max_participants && (
                       <div className="flex items-center gap-2 text-sm text-gray-600">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
                         </svg>
-                        {filteredWorkshops[0].capacity} spots
+                        {filteredWorkshops[0].max_participants} spots
                       </div>
                     )}
                   </div>
@@ -263,7 +265,7 @@ export default function WorkshopsPage() {
                 >
                   <div className="relative">
                     <img
-                      src={workshop.featured_image}
+                      src={workshop.cover_image}
                       alt={workshop.title}
                       className="w-full h-48 object-cover"
                     />
@@ -296,12 +298,12 @@ export default function WorkshopsPage() {
 
                     {/* Workshop Meta */}
                     <div className="space-y-2 mb-4">
-                      {workshop.date && (
+                      {workshop.schedule?.date && (
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                           </svg>
-                          {new Date(workshop.date).toLocaleDateString()}
+                          {new Date(workshop.schedule.date).toLocaleDateString()}
                         </div>
                       )}
                       <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -312,7 +314,8 @@ export default function WorkshopsPage() {
                       </div>
                     </div>
 
-                    {/* Tags */}
+                    {/* Tags - Remove since they don't exist in the database */}
+                    {/* 
                     {workshop.tags && workshop.tags.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
                         {workshop.tags.slice(0, 3).map((tag, index) => (
@@ -325,6 +328,7 @@ export default function WorkshopsPage() {
                         ))}
                       </div>
                     )}
+                    */}
 
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500">
