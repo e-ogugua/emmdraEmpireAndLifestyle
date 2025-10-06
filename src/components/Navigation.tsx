@@ -6,13 +6,19 @@ export default function Navigation() {
   return (
     <nav className="bg-white shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-32">
+        <div className="flex justify-between items-center h-36">
           <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-colors">
-            <img
-              src="/images/EmmdraLogo.png"
-              alt="Emmdra Empire & Lifestyle"
-              className="w-36 h-36 object-contain rounded-lg"
-            />
+            <div className="bg-white rounded-2xl p-3 shadow-lg mr-4">
+              <img
+                src="/images/EmmdraLogo.png"
+                alt="Emmdra Empire & Lifestyle"
+                className="w-28 h-28 object-contain"
+              />
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold text-gray-800 leading-tight">Emmdra</h3>
+              <p className="text-base font-medium text-gray-600 -mt-1">Empire & Lifestyle</p>
+            </div>
           </Link>
 
           <div className="hidden md:flex space-x-8">
