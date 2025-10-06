@@ -124,14 +124,15 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
           <div className="flex flex-1 flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
               <div className="p-2 bg-gray-50 rounded-lg mr-4">
-                <Image
-                  src="/images/EmmdraLogo.png"
-                  alt="Emmdra Empire Logo"
-                  width={64}
-                  height={64}
-                  className="w-16 h-16"
-                  style={{ aspectRatio: '1 / 1' }}
-                />
+                <div className="relative w-16 h-16">
+                  <Image
+                    src="/images/EmmdraLogo.png"
+                    alt="Emmdra Empire Logo"
+                    fill
+                    className="object-contain"
+                    sizes="64px"
+                  />
+                </div>
               </div>
               <span className="text-2xl font-black text-gray-900 tracking-tight">Emmdra Admin</span>
             </div>

@@ -20,14 +20,15 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-40">
           <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-all duration-500 group relative">
-            <Image
-              src="/images/EmmdraLogo.png"
-              alt="Emmdra Empire & Lifestyle"
-              width={128}
-              height={128}
-              className="w-32 h-32 rounded-2xl mr-5 transition-transform duration-300 group-hover:scale-105"
-              style={{ aspectRatio: '1 / 1' }}
-            />
+            <div className="relative w-32 h-32 mr-5">
+              <Image
+                src="/images/EmmdraLogo.png"
+                alt="Emmdra Empire & Lifestyle"
+                fill
+                className="object-contain rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                sizes="128px"
+              />
+            </div>
             <div className="hidden sm:block">
               <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 leading-tight group-hover:from-purple-600 group-hover:via-blue-600 group-hover:to-purple-800 transition-all duration-500">Emmdra</h3>
               <p className="text-lg font-semibold text-gray-600 -mt-2 group-hover:text-gray-800 transition-all duration-300">Empire & Lifestyle</p>

@@ -10,14 +10,15 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-3 mb-4">
               <div className="bg-white rounded-2xl p-3 shadow-lg">
-                <Image
-                  src="/images/EmmdraLogo.png"
-                  alt="Emmdra Empire & Lifestyle Logo"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20"
-                  style={{ aspectRatio: '1 / 1' }}
-                />
+                <div className="relative w-20 h-20">
+                  <Image
+                    src="/images/EmmdraLogo.png"
+                    alt="Emmdra Empire & Lifestyle Logo"
+                    fill
+                    className="object-contain"
+                    sizes="80px"
+                  />
+                </div>
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-600">Emmdra</h3>
