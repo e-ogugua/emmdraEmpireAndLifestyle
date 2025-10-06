@@ -5,6 +5,17 @@
 -- https://supabase.com/dashboard/project/hsbwnsmfrfydxwxqaxiu/sql
 
 -- =============================================
+-- ⚠️  IMPORTANT: CLEAR EXISTING DATA FIRST
+-- =============================================
+-- Run these commands if you have existing data:
+
+-- DELETE FROM bookings;
+-- DELETE FROM workshops;
+-- DELETE FROM diy_tutorials;
+-- DELETE FROM blogs;
+-- DELETE FROM products;
+
+-- =============================================
 -- 1️⃣ POPULATE PRODUCTS TABLE
 -- =============================================
 
@@ -96,7 +107,7 @@ INSERT INTO blogs (title, slug, category, excerpt, body, tags, featured_image, p
 '{"fashion", "ankara", "styling", "traditional"}',
 '/images/5WaystoStyleYourAnkara.png', true),
 
-('DIY Natural Face Masks', 'diy-natural-face-masks', 'Beauty',
+('DIY Natural Face Masks', 'diy-natural-face-masks-new', 'Beauty',
 'Create effective face masks using natural ingredients found in your kitchen.',
 'Learn the science behind natural ingredients and how to customize masks for your skin type. These DIY treatments are cost-effective alternatives to expensive spa treatments.',
 '{"beauty", "DIY", "face masks", "natural"}',
@@ -221,10 +232,10 @@ SELECT id, title, category, price FROM workshops LIMIT 3;
 -- =============================================
 
 -- Your Emmdra Empire database now has:
--- ✅ 10 Products (fashion, beauty, accessories)
--- ✅ 5 Blog Posts (fashion, beauty, lifestyle)
--- ✅ 3 DIY Tutorials (jewelry, beauty, home decor)
--- ✅ 3 Workshops (fashion, crafts, beauty)
+-- ✅ 20 Products (fashion, beauty, accessories)
+-- ✅ 10 Blog Posts (fashion, beauty, lifestyle, DIY)
+-- ✅ 7 DIY Tutorials (jewelry, beauty, home decor)
+-- ✅ 7 Workshops (fashion, crafts, beauty)
 -- ✅ Performance indexes for fast queries
 -- ✅ Ready for production!
 
