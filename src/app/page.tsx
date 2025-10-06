@@ -409,7 +409,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 border border-purple-100">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src="/images/NaturalBeautyWorkshop.png"
+                  src="/images/beautyHub.png"
                   alt="Natural Beauty Workshop"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
