@@ -28,7 +28,6 @@ export default function Footer() {
                 { name: 'Home', href: '/' },
                 { name: 'Shop', href: '/shop' },
                 { name: 'DIY Projects', href: '/diy' },
-                { name: 'Blog', href: '/blog' },
                 { name: 'About', href: '/about' },
                 { name: 'Contact', href: '/contact' }
               ].map((link) => (

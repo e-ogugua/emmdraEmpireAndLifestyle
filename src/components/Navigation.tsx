@@ -25,8 +25,8 @@ export default function Navigation() {
             <Link href="/diy" className="text-gray-600 hover:text-gray-900">
               DIY
             </Link>
-            <Link href="/blog" className="text-gray-600 hover:text-gray-900">
-              Blog
+            <Link href="/workshops" className="text-gray-600 hover:text-gray-900">
+              Workshops
             </Link>
             <Link href="/about" className="text-gray-600 hover:text-gray-900">
               About
