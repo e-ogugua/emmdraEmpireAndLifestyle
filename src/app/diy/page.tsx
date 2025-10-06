@@ -13,15 +13,16 @@ interface DIYTutorial {
   category: string
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced'
   estimated_time: string
-  materials: string[]
-  steps: {
+  materials?: string[]
+  steps?: {
     title: string
     description: string
     image_url?: string
   }[]
-  featured_image: string
-  description: string
-  tags: string[]
+  cover_image: string
+  images?: string[]
+  description?: string
+  tags?: string[]
   published: boolean
   featured: boolean
   created_at: string
@@ -225,13 +226,22 @@ export default function DIYPage() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2">
-                  <Image
-                    src={filteredTutorials[0].featured_image}
-                    alt={filteredTutorials[0].title}
-                    width={600}
-                    height={400}
-                    className="w-full h-64 md:h-full object-cover"
-                  />
+                  {filteredTutorials[0].cover_image ? (
+                    <Image
+                      src={filteredTutorials[0].cover_image}
+                      alt={filteredTutorials[0].title}
+                      width={600}
+                      height={400}
+                      className="w-full h-64 md:h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-64 md:h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-6xl mb-4">🎨</div>
+                        <p className="text-gray-600 text-lg font-medium">Featured DIY Tutorial</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="md:w-1/2 p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-4">
@@ -292,9 +302,9 @@ export default function DIYPage() {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    {tutorial.featured_image ? (
+                    {tutorial.cover_image ? (
                       <Image
-                        src={tutorial.featured_image}
+                        src={tutorial.cover_image}
                         alt={tutorial.title}
                         width={400}
                         height={192}

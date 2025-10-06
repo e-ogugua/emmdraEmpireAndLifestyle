@@ -17,7 +17,7 @@ interface DIYTutorial {
     description: string
     image_url?: string
   }[]
-  featured_image: string
+  cover_image: string
   description: string
   tags: string[]
   published: boolean
@@ -168,7 +168,7 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
           {/* Featured Image */}
           <div className="relative w-full h-64 md:h-96 overflow-hidden">
             <img
-              src={tutorial.featured_image}
+              src={tutorial.cover_image}
               alt={tutorial.title}
               className="w-full h-full object-cover"
             />
@@ -350,7 +350,7 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
                 >
                   <div className="relative">
                     <img
-                      src={relatedTutorial.featured_image}
+                      src={relatedTutorial.cover_image}
                       alt={relatedTutorial.title}
                       className="w-full h-48 object-cover"
                     />

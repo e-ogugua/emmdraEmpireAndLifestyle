@@ -19,7 +19,7 @@ interface DIYTutorial {
     description: string
     image_url?: string
   }[]
-  featured_image: string
+  cover_image: string
   description: string
   tags: string[]
   published: boolean
@@ -264,10 +264,10 @@ export default function AdminDIY() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="h-12 w-12 flex-shrink-0">
-                            {tutorial.featured_image ? (
+                            {tutorial.cover_image ? (
                               <Image
                                 className="h-12 w-12 rounded-lg object-cover"
-                                src={tutorial.featured_image}
+                                src={tutorial.cover_image}
                                 alt={tutorial.title}
                                 width={48}
                                 height={48}
