@@ -3,7 +3,6 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import HeroCarousel from '../components/HeroCarousel'
-import CategoryGrid from '../components/CategoryGrid'
 import DiscoverMoreSection from '../components/DiscoverMoreSection'
 import { trackPageView } from '@/lib/analytics'
 
@@ -28,7 +27,7 @@ export default function Home() {
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-              Welcome to <span className="text-blue-600">Emmdra Empire</span>
+              Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">Emmdra Empire</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-6 leading-relaxed">
               Your complete lifestyle destination where <strong className="text-gray-800">Fashion</strong>, <strong className="text-gray-800">Beauty</strong>, <strong className="text-gray-800">DIY</strong>, <strong className="text-gray-800">Lifestyle</strong>, and <strong className="text-gray-800">Family</strong> come together in perfect harmony.
@@ -104,11 +103,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Category Preview Grid */}
-      <section id="categories">
-        <CategoryGrid />
       </section>
 
       {/* Discover More Section */}

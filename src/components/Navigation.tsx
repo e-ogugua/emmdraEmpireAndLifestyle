@@ -8,14 +8,11 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-40">
           <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-all duration-500 group relative">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <img
-                src="/images/EmmdraLogo.png"
-                alt="Emmdra Empire & Lifestyle"
-                className="relative w-32 h-32 object-contain rounded-2xl p-2 bg-white shadow-lg mr-5 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-2xl"
-              />
-            </div>
+            <img
+              src="/images/EmmdraLogo.png"
+              alt="Emmdra Empire & Lifestyle"
+              className="w-32 h-32 object-contain rounded-2xl mr-5 transition-transform duration-300 group-hover:scale-105"
+            />
             <div className="hidden sm:block">
               <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 leading-tight group-hover:from-purple-600 group-hover:via-blue-600 group-hover:to-purple-800 transition-all duration-500">Emmdra</h3>
               <p className="text-lg font-semibold text-gray-600 -mt-2 group-hover:text-gray-800 transition-all duration-300">Empire & Lifestyle</p>

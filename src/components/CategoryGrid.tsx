@@ -41,7 +41,7 @@ const categories: Category[] = [
   {
     id: 'diy-projects',
     title: 'DIY Projects & Crafts',
-    image: '/images/EmmdraDIYCrafts.jpg',
+    image: '/images/Slide2DiyProjectsAndCrafts.png',
     link: '/diy'
   },
   {

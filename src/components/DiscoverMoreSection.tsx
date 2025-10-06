@@ -12,37 +12,55 @@ interface DiscoverCard {
 
 const discoverCards: DiscoverCard[] = [
   {
-    id: 'fashion-shop',
-    title: 'Fashion Collection',
+    id: 'adult-wears',
+    title: 'Adult Wears & Fashion',
     subtitle: 'Discover trendy outfits and accessories for every occasion',
-    image: '/images/EmmdraFashionShowcase.jpg',
+    image: '/images/AdultWearsAndFashion.png',
     link: '/shop',
     category: 'Fashion',
     featured: true
   },
   {
-    id: 'beauty-hub',
-    title: 'Beauty & Wellness',
-    subtitle: 'Premium skincare, haircare, and beauty essentials',
-    image: '/images/EmmdraBeautyAndWellness.jpg',
+    id: 'kiddies',
+    title: 'Kiddies Collection',
+    subtitle: 'Adorable outfits and accessories for your little ones',
+    image: '/images/Kiddies.png',
     link: '/shop',
-    category: 'Beauty',
+    category: 'Fashion',
     featured: true
   },
   {
-    id: 'diy-tutorials',
-    title: 'DIY Projects',
+    id: 'accessories',
+    title: 'Accessories',
+    subtitle: 'Complete your look with our stunning accessory collection',
+    image: '/images/Accessories.png',
+    link: '/shop',
+    category: 'Fashion',
+    featured: true
+  },
+  {
+    id: 'workshops',
+    title: 'Workshops & Training',
+    subtitle: 'Learn fashion design, styling, and creative skills',
+    image: '/images/workshopsAndTraning.png',
+    link: '/workshops',
+    category: 'Education',
+    featured: true
+  },
+  {
+    id: 'diy-projects',
+    title: 'DIY Projects & Crafts',
     subtitle: 'Step-by-step tutorials for creative crafts and home decor',
-    image: '/images/EmmdraDIYCrafts.jpg',
+    image: '/images/Slide2DiyProjectsAndCrafts.png',
     link: '/diy',
     category: 'DIY',
     featured: true
   },
   {
-    id: 'lifestyle-blog',
-    title: 'Lifestyle Stories',
+    id: 'blog-lifestyle',
+    title: 'Blog & Lifestyle Stories',
     subtitle: 'Tips, trends, and inspiring stories from our community',
-    image: '/images/EmmdraLifestyleStories.jpg',
+    image: '/images/EmmdraBlog.png',
     link: '/blog',
     category: 'Lifestyle',
     featured: true
@@ -56,7 +74,7 @@ export default function DiscoverMoreSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-            Explore <span className="text-blue-600">Emmdra Empire</span>
+            Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">Emmdra Empire</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             From fashion that makes you shine to DIY projects that inspire creativity,
@@ -65,7 +83,7 @@ export default function DiscoverMoreSection() {
         </div>
 
         {/* Featured Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {discoverCards.map((card) => (
             <Link
               key={card.id}
@@ -89,6 +107,8 @@ export default function DiscoverMoreSection() {
                     card.category === 'Fashion' ? 'bg-pink-500 text-white' :
                     card.category === 'Beauty' ? 'bg-purple-500 text-white' :
                     card.category === 'DIY' ? 'bg-green-500 text-white' :
+                    card.category === 'Education' ? 'bg-blue-500 text-white' :
+                    card.category === 'Lifestyle' ? 'bg-orange-500 text-white' :
                     'bg-blue-500 text-white'
                   }`}>
                     {card.category}

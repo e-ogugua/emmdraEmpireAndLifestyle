@@ -22,7 +22,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    image: '/images/fashion2.png',
+    image: '/images/emmdraTravel12.png',
     title: 'Style That Speaks',
     subtitle: 'Express yourself with fashion that tells your unique story',
     ctaText: 'Shop Fashion',
