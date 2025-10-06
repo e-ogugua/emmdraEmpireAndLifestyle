@@ -175,7 +175,7 @@ INSERT INTO workshops (title, description, category, price, schedule, max_partic
 
 ('Natural Beauty Workshop', 'Discover the secrets of natural beauty and create your own products', 'Beauty', 18000.00,
 '{"date": "2024-03-01", "time": "11:00 AM", "duration": "2.5 hours", "location": "Emmdra Beauty Hub"}',
-12, 'Amara Nwosu', '/images/NaturalBeautyWorkshop.png', 'upcoming'),
+12, 'Amara Nwosu', '/images/beautyHub.png', 'upcoming'),
 
 ('Natural Skincare DIY Workshop', 'Learn to create natural skincare products using organic ingredients', 'Beauty', 22000.00,
 '{"date": "2024-03-08", "time": "10:00 AM", "duration": "3 hours", "location": "Emmdra Beauty Hub"}',
