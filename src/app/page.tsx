@@ -22,7 +22,7 @@ export default function Home() {
       </section>
 
       {/* Hero Text Section - Enhanced Introduction */}
-      <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="relative z-10 py-16 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">

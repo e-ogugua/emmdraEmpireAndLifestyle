@@ -82,7 +82,7 @@ export default function HeroCarousel() {
   }
 
   return (
-    <div className={`relative w-full h-[500px] md:h-[80vh] overflow-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`relative w-full h-[400px] md:h-[70vh] overflow-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
