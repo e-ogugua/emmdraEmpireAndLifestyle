@@ -8,13 +8,11 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-36">
           <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-colors">
-            <div className="bg-white rounded-2xl p-3 shadow-lg mr-4">
-              <img
-                src="/images/EmmdraLogo.png"
-                alt="Emmdra Empire & Lifestyle"
-                className="w-28 h-28 object-contain"
-              />
-            </div>
+            <img
+              src="/images/EmmdraLogo.png"
+              alt="Emmdra Empire & Lifestyle"
+              className="w-28 h-28 object-contain rounded-lg mr-4"
+            />
             <div>
               <h3 className="text-3xl font-bold text-gray-800 leading-tight">Emmdra</h3>
               <p className="text-base font-medium text-gray-600 -mt-1">Empire & Lifestyle</p>
