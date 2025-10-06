@@ -10,18 +10,18 @@
 
 INSERT INTO products (name, price, short_description, description, category, image_url) VALUES
 -- Fashion Items
-('Premium Leather Handbag', 45000.00, 'Elegant genuine leather handbag', 'Handcrafted from premium Nigerian leather with attention to detail. Features multiple compartments and adjustable strap.', 'Accessories', '/images/Accessories.png'),
-('Classic White Sneakers', 25000.00, 'Comfortable everyday sneakers', 'Versatile white sneakers perfect for casual and semi-formal occasions. Made with breathable materials.', 'Fashion', '/images/AdultWearsAndFashion.png'),
-('Designer Kids Dress', 18000.00, 'Adorable dress for little ones', 'Beautifully designed dress made from soft, comfortable fabric. Perfect for special occasions.', 'Kids Fashion', '/images/Kiddies.png'),
-('Statement Earrings', 8500.00, 'Bold and beautiful earrings', 'Eye-catching statement earrings that add glamour to any outfit. Available in gold and silver.', 'Accessories', '/images/Accessories.png'),
+('Premium Leather Handbag', 45000.00, 'Elegant genuine leather handbag', 'Handcrafted from premium Nigerian leather with attention to detail. Features multiple compartments and adjustable strap.', 'Accessories', '/images/PremiumLeatherHandBags.png'),
+('Classic White Sneakers', 25000.00, 'Comfortable everyday sneakers', 'Versatile white sneakers perfect for casual and semi-formal occasions. Made with breathable materials.', 'Fashion', '/images/pairOfShoes.png'),
+('Designer Kids Dress', 18000.00, 'Adorable dress for little ones', 'Beautifully designed dress made from soft, comfortable fabric. Perfect for special occasions.', 'Kids Fashion', '/images/DesignerKidsDress.png'),
+('Statement Earrings', 8500.00, 'Bold and beautiful earrings', 'Eye-catching statement earrings that add glamour to any outfit. Available in gold and silver.', 'Accessories', '/images/StatementEarrings.png'),
 
 -- Beauty Products
 ('Luxury Skincare Set', 35000.00, 'Complete skincare routine', 'Premium skincare products including cleanser, toner, serum, and moisturizer for radiant skin.', 'Beauty', '/images/beautyHub.png'),
-('Natural Hair Oil', 12000.00, 'Nourishing hair treatment', 'Organic hair oil blend for healthy, shiny hair. Contains coconut, jojoba, and argan oils.', 'Beauty', '/images/beautyHub.png'),
+('Natural Hair Oil', 12000.00, 'Nourishing hair treatment', 'Organic hair oil blend for healthy, shiny hair. Contains coconut, jojoba, and argan oils.', 'Beauty', '/images/NaturalHairOil.png'),
 
 -- More Fashion
-('Ankara Print Blouse', 15000.00, 'Traditional meets modern', 'Beautiful Ankara print blouse with contemporary cut. Perfect for office or casual wear.', 'Fashion', '/images/AdultWearsAndFashion.png'),
-('Beaded Necklace Set', 7500.00, 'Handcrafted beaded jewelry', 'Traditional beaded necklace set made by local artisans. Each piece tells a story.', 'Accessories', '/images/Accessories.png'),
+('Ankara Print Blouse', 15000.00, 'Traditional meets modern', 'Beautiful Ankara print blouse with contemporary cut. Perfect for office or casual wear.', 'Fashion', '/images/AnkaraPrintBlouses.png'),
+('Beaded Necklace Set', 7500.00, 'Handcrafted beaded jewelry', 'Traditional beaded necklace set made by local artisans. Each piece tells a story.', 'Accessories', '/images/BeadedNecklaceSet.png'),
 ('Kids Ankara Outfit', 12000.00, 'Cultural pride for children', 'Adorable Ankara outfit for kids. Comfortable fit with vibrant traditional patterns.', 'Kids Fashion', '/images/Kiddies.png'),
 ('Luxury Perfume', 28000.00, 'Signature fragrance collection', 'Premium perfume with notes of jasmine, vanilla, and sandalwood. Long-lasting scent.', 'Beauty', '/images/beautyHub.png');
 

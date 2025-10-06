@@ -24,6 +24,7 @@ export default function Navigation() {
               { name: 'Home', href: '/', color: 'blue' },
               { name: 'Shop', href: '/shop', color: 'blue' },
               { name: 'DIY', href: '/diy', color: 'blue' },
+              { name: 'Blog', href: '/blog', color: 'blue' },
               { name: 'Workshops', href: '/workshops', color: 'blue' },
               { name: 'About', href: '/about', color: 'blue' },
               { name: 'Contact', href: '/contact', color: 'blue' },

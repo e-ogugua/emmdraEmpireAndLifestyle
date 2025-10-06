@@ -8,6 +8,7 @@ import { trackPageView } from '@/lib/analytics'
 interface BlogPost {
   id: number
   title: string
+  slug: string
   category: string
   featured_image: string
   excerpt: string
@@ -37,17 +38,26 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         setLoading(true)
         setError(null)
 
-        // Generate slug from title to find the post
-        const generateSlug = (title: string) => {
-          return title
-            .toLowerCase()
-            .replace(/[^a-z0-9\s-]/g, '')
-            .replace(/\s+/g, '-')
-            .replace(/-+/g, '-')
-            .trim();
+        // Fetch blog post by slug from database
+        const { data: postData, error: postError } = await supabase
+          .from('blogs')
+          .select('*')
+          .eq('slug', params.slug)
+          .eq('published', true)
+          .single()
+
+        if (postError) {
+          console.error('Error fetching blog post:', postError)
+          setError('Blog post not found')
+          return
         }
 
-        // First get all posts to find the one with matching slug
+        if (!postData) {
+          setError('Blog post not found')
+          return
+        }
+
+        setPost(postData)
         const { data: allPosts, error: allPostsError } = await supabase
           .from('blogs')
           .select('*')
@@ -61,7 +71,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         }
 
         // Find the post with matching slug
-        const matchingPost = allPosts?.find(p => generateSlug(p.title) === params.slug)
+        const matchingPost = allPosts?.find(p => p.slug === params.slug)
 
         if (!matchingPost) {
           setError('Blog post not found.')
@@ -283,7 +293,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                       {relatedPost.excerpt}
                     </p>
                     <Link
-                      href={`/blog/${relatedPost.title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim()}`}
+                      href={`/blog/${relatedPost.slug}`}
                       className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                     >
                       Read More →

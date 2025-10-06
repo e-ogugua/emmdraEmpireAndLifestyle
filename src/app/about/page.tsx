@@ -69,13 +69,44 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="relative">
-                  <div className="w-full h-64 bg-gradient-to-br from-blue-200 to-purple-200 rounded-2xl flex items-center justify-center">
-                    <div className="text-center text-gray-600">
-                      <svg className="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Emmanuel Portrait */}
+                    <div className="relative group">
+                      <div className="w-full h-48 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
+                        <img
+                          src="/images/EmmdraEmmanuelPotrait10.png"
+                          alt="Emmanuel - Co-Founder"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <p className="text-xs font-semibold text-gray-700">Emmanuel</p>
+                        <p className="text-xs text-gray-600">Creative Director</p>
+                      </div>
+                    </div>
+
+                    {/* Chidera Portrait */}
+                    <div className="relative group">
+                      <div className="w-full h-48 bg-gradient-to-br from-purple-200 to-pink-300 rounded-xl overflow-hidden shadow-lg">
+                        <img
+                          src="/images/EmmdraChideraPotrait11.png"
+                          alt="Chidera - Co-Founder"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <p className="text-xs font-semibold text-gray-700">Chidera</p>
+                        <p className="text-xs text-gray-600">Style Curator</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Heart Connection Icon */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center shadow-lg">
+                      <svg className="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                       </svg>
-                      <p className="text-sm">Family Portrait Placeholder</p>
-                      <p className="text-xs mt-1">Emmanuel & Chidera</p>
                     </div>
                   </div>
                 </div>
@@ -188,6 +219,107 @@ export default function AboutPage() {
                   </div>
                   <div className="w-4 h-4 bg-yellow-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
                   <div className="w-1/2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story - Personal Journey */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+        <div className="container mx-auto">
+          <div className="max-w-6xl mx-auto">
+            <div className={`text-center mb-16 transition-all duration-1000 transform ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                Our <span className="text-blue-600">Story</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Every love story has a beginning, and ours started with creativity, passion, and a shared dream.
+              </p>
+            </div>
+
+            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center transition-all duration-1000 delay-300 transform ${
+              isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
+            }`}>
+              {/* Story Image */}
+              <div className="relative">
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                  <img
+                    src="/images/EmmdraOurStory.JPG"
+                    alt="Emmanuel and Chidera - Our Love Story"
+                    className="w-full h-96 object-cover"
+                  />
+                  {/* Overlay with decorative elements */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                  <div className="absolute top-6 left-6">
+                    <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
+                      <span className="text-sm font-semibold text-gray-800">Our Journey</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Quote */}
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl max-w-xs">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-700 italic leading-relaxed">
+                        &ldquo;From fashion sketches to family dreams, every creation tells our story.&rdquo;
+                      </p>
+                      <p className="text-xs text-gray-500 mt-2">— Emmanuel & Chidera</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Story Content */}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                    Where It All Began
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    Our story started in the vibrant city of Enugu, where two creative souls discovered
+                    their shared passion for fashion, beauty, and family. What began as weekend crafting
+                    sessions evolved into a mission to empower families to express their unique style.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center p-6 bg-white rounded-xl shadow-lg">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                      </svg>
+                    </div>
+                    <h4 className="font-semibold text-gray-800 mb-2">Partnership</h4>
+                    <p className="text-sm text-gray-600">Creative collaboration that sparks magic</p>
+                  </div>
+
+                  <div className="text-center p-6 bg-white rounded-xl shadow-lg">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <h4 className="font-semibold text-gray-800 mb-2">Community</h4>
+                    <p className="text-sm text-gray-600">Building families through creativity</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border-l-4 border-blue-400">
+                  <p className="text-gray-700 leading-relaxed">
+                    &ldquo;We don&apos;t just create products; we create experiences that bring families together.
+                    Every design, every tutorial, every workshop is crafted with love and the belief that
+                    creativity should be accessible to all families.&rdquo;
+                  </p>
                 </div>
               </div>
             </div>

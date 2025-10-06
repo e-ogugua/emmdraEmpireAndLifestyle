@@ -8,6 +8,7 @@ import { trackPageView } from '@/lib/analytics'
 interface BlogPost {
   id: number
   title: string
+  slug: string
   category: string
   featured_image: string
   excerpt: string
@@ -261,7 +262,7 @@ export default function BlogPage() {
                         {new Date(post.created_at).toLocaleDateString()}
                       </span>
                       <Link
-                        href={`/blog/${generateSlug(post.title)}`}
+                        href={`/blog/${post.slug}`}
                         className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                       >
                         Read More →
