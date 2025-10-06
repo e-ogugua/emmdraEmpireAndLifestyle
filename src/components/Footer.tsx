@@ -15,7 +15,8 @@ export default function Footer() {
                   alt="Emmdra Empire & Lifestyle Logo"
                   width={80}
                   height={80}
-                  className="w-20 h-20 object-contain"
+                  className="w-20 h-20"
+                  style={{ aspectRatio: '1 / 1' }}
                 />
               </div>
               <div>

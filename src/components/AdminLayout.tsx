@@ -129,7 +129,8 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
                   alt="Emmdra Empire Logo"
                   width={64}
                   height={64}
-                  className="w-16 h-16 object-contain"
+                  className="w-16 h-16"
+                  style={{ aspectRatio: '1 / 1' }}
                 />
               </div>
               <span className="text-2xl font-black text-gray-900 tracking-tight">Emmdra Admin</span>

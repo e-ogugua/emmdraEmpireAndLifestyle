@@ -25,8 +25,8 @@ export default function Navigation() {
               alt="Emmdra Empire & Lifestyle"
               width={128}
               height={128}
-              priority={true}
-              className="object-contain rounded-2xl mr-5 transition-transform duration-300 group-hover:scale-105"
+              className="w-32 h-32 rounded-2xl mr-5 transition-transform duration-300 group-hover:scale-105"
+              style={{ aspectRatio: '1 / 1' }}
             />
             <div className="hidden sm:block">
               <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 leading-tight group-hover:from-purple-600 group-hover:via-blue-600 group-hover:to-purple-800 transition-all duration-500">Emmdra</h3>
