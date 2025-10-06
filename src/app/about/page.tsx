@@ -74,7 +74,7 @@ export default function AboutPage() {
                     <div className="relative group">
                       <div className="w-full h-48 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
                         <img
-                          src="/images/EmmdraEmmanuelPotrait10.png"
+                          src="/images/EmmdraEmmanuelPotrait11.png"
                           alt="Emmanuel - Co-Founder"
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
@@ -89,7 +89,7 @@ export default function AboutPage() {
                     <div className="relative group">
                       <div className="w-full h-48 bg-gradient-to-br from-purple-200 to-pink-300 rounded-xl overflow-hidden shadow-lg">
                         <img
-                          src="/images/EmmdraChideraPotrait11.png"
+                          src="/images/emmdraChideraPotrait10.png"
                           alt="Chidera - Co-Founder"
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
@@ -246,11 +246,11 @@ export default function AboutPage() {
             }`}>
               {/* Story Image */}
               <div className="relative">
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-gray-100">
                   <img
                     src="/images/EmmdraOurStory.JPG"
                     alt="Emmanuel and Chidera - Our Love Story"
-                    className="w-full h-96 object-cover"
+                    className="w-full h-auto max-h-96 object-contain mx-auto"
                   />
                   {/* Overlay with decorative elements */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
