@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 import { trackPageView } from '@/lib/analytics'
-
 interface BlogPost {
   id: number
   title: string
@@ -236,11 +235,17 @@ export default function AdminBlog() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="h-12 w-12 flex-shrink-0">
-                            <img
-                              className="h-12 w-12 rounded-lg object-cover"
-                              src={post.featured_image}
-                              alt={post.title}
-                            />
+                            {post.featured_image ? (
+                              <img
+                                className="h-12 w-12 rounded-lg object-cover"
+                                src={post.featured_image}
+                                alt={post.title}
+                              />
+                            ) : (
+                              <div className="h-12 w-12 rounded-lg bg-gray-200 flex items-center justify-center">
+                                <span className="text-gray-400 text-lg">🖼️</span>
+                              </div>
+                            )}
                           </div>
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900 line-clamp-1">{post.title}</div>

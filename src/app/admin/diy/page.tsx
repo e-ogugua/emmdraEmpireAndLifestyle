@@ -264,13 +264,19 @@ export default function AdminDIY() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="h-12 w-12 flex-shrink-0">
-                            <Image
-                              className="h-12 w-12 rounded-lg object-cover"
-                              src={tutorial.featured_image}
-                              alt={tutorial.title}
-                              width={48}
-                              height={48}
-                            />
+                            {tutorial.featured_image ? (
+                              <Image
+                                className="h-12 w-12 rounded-lg object-cover"
+                                src={tutorial.featured_image}
+                                alt={tutorial.title}
+                                width={48}
+                                height={48}
+                              />
+                            ) : (
+                              <div className="h-12 w-12 rounded-lg bg-gray-200 flex items-center justify-center">
+                                <span className="text-gray-400 text-lg">📷</span>
+                              </div>
+                            )}
                           </div>
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900 line-clamp-1">{tutorial.title}</div>
