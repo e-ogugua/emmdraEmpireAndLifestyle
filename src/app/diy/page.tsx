@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
@@ -14,8 +15,8 @@ interface DIYTutorial {
   estimated_time: string
   materials: string[]
   steps: {
-    step_number: number
-    instruction: string
+    title: string
+    description: string
     image_url?: string
   }[]
   featured_image: string
@@ -224,9 +225,11 @@ export default function DIYPage() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2">
-                  <img
+                  <Image
                     src={filteredTutorials[0].featured_image}
                     alt={filteredTutorials[0].title}
+                    width={600}
+                    height={400}
                     className="w-full h-64 md:h-full object-cover"
                   />
                 </div>
@@ -289,9 +292,11 @@ export default function DIYPage() {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={tutorial.featured_image}
                       alt={tutorial.title}
+                      width={400}
+                      height={192}
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-4 left-4 flex gap-2">

@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
@@ -17,16 +18,12 @@ interface AdminLayoutProps {
 }
 
 export default function AdminLayout({ children, currentPage = 'dashboard' }: AdminLayoutProps) {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<{ email?: string } | null>(null)
   const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const router = useRouter()
 
-  useEffect(() => {
-    checkAuth()
-  }, [])
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       const { data: { session } } = await supabase.auth.getSession()
       if (session && AUTHORIZED_ADMIN_EMAILS.includes(session.user.email || '')) {
@@ -40,7 +37,11 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
     } finally {
       setLoading(false)
     }
-  }
+  }, [router])
+
+  useEffect(() => {
+    checkAuth()
+  }, [checkAuth])
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -123,9 +124,11 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
           <div className="flex flex-1 flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
               <div className="p-2 bg-gray-50 rounded-lg mr-4">
-                <img
+                <Image
                   src="/images/EmmdraLogo.png"
                   alt="Emmdra Empire Logo"
+                  width={64}
+                  height={64}
                   className="w-16 h-16 object-contain"
                 />
               </div>

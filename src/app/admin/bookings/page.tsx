@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 import { trackPageView } from '@/lib/analytics'
@@ -15,7 +14,7 @@ interface Booking {
   type: string
   status: 'new' | 'seen' | 'replied' | 'completed'
   created_at: string
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 }
 
 export default function AdminBookings() {
@@ -239,7 +238,7 @@ export default function AdminBookings() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <select
                           value={booking.status}
-                          onChange={(e) => handleStatusChange(booking.id, e.target.value as any)}
+                          onChange={(e) => handleStatusChange(booking.id, e.target.value as 'new' | 'seen' | 'replied' | 'completed')}
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             booking.status === 'new' ? 'bg-red-100 text-red-800' :
                             booking.status === 'seen' ? 'bg-orange-100 text-orange-800' :

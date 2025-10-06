@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import BookingsGrid from '@/components/admin/bookings/BookingsGrid'
 import BookingDetailsModal from '@/components/admin/bookings/BookingDetailsModal'
@@ -24,7 +25,7 @@ export default function AdminBookingsPage() {
   const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<{ email?: string } | null>(null)
   const [modalMode, setModalMode] = useState<ModalMode>(null)
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
@@ -154,12 +155,12 @@ export default function AdminBookingsPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Access Denied</h1>
           <p className="text-gray-600 mb-6">{error}</p>
-          <a
+          <Link
             href="/"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Go to Homepage
-          </a>
+          </Link>
         </div>
       </div>
     )

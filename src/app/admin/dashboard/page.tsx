@@ -49,7 +49,7 @@ export default function AdminDashboard() {
   })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<{ email?: string } | null>(null)
 
   // Check authentication and authorization
   useEffect(() => {

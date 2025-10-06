@@ -1,6 +1,5 @@
-'use client'
-
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
@@ -13,7 +12,11 @@ interface DIYTutorial {
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced'
   estimated_time: string
   materials: string[]
-  steps: any[]
+  steps: {
+    title: string
+    description: string
+    image_url?: string
+  }[]
   featured_image: string
   description: string
   tags: string[]
@@ -259,10 +262,12 @@ export default function AdminDIY() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="h-12 w-12 flex-shrink-0">
-                            <img
+                            <Image
                               className="h-12 w-12 rounded-lg object-cover"
                               src={tutorial.featured_image}
                               alt={tutorial.title}
+                              width={48}
+                              height={48}
                             />
                           </div>
                           <div className="ml-4">

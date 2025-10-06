@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
@@ -158,9 +159,11 @@ export default function ShopPage() {
               >
                 {/* Product Image */}
                 <div className="relative w-full h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={product.image_url}
                     alt={product.name}
+                    width={400}
+                    height={256}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   />
 
@@ -258,7 +261,7 @@ export default function ShopPage() {
             Need Help Finding Something?
           </h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Our team is here to help you find the perfect items for your needs. Whether it's styling advice, product recommendations, or custom orders.
+            Our team is here to help you find the perfect items for your needs. Whether it&apos;s styling advice, product recommendations, or custom orders.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

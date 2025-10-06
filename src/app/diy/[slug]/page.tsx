@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
@@ -13,8 +13,8 @@ interface DIYTutorial {
   estimated_time: string
   materials: string[]
   steps: {
-    step_number: number
-    instruction: string
+    title: string
+    description: string
     image_url?: string
   }[]
   featured_image: string
@@ -27,12 +27,11 @@ interface DIYTutorial {
 }
 
 interface DIYTutorialPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }>
 }
 
 export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
+  const { slug } = use(params)
   const [tutorial, setTutorial] = useState<DIYTutorial | null>(null)
   const [relatedTutorials, setRelatedTutorials] = useState<DIYTutorial[]>([])
   const [loading, setLoading] = useState(true)
@@ -68,7 +67,7 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
         }
 
         // Find the tutorial with matching slug
-        const matchingTutorial = allTutorials?.find(t => generateSlug(t.title) === params.slug)
+        const matchingTutorial = allTutorials?.find(t => generateSlug(t.title) === slug)
 
         if (!matchingTutorial) {
           setError('DIY tutorial not found.')
@@ -107,10 +106,10 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
       }
     }
 
-    if (params.slug) {
+    if (slug) {
       fetchTutorialData()
     }
-  }, [params.slug])
+  }, [slug])
 
   if (loading) {
     return (
@@ -262,22 +261,23 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
 
               <div className="space-y-8">
                 {tutorial.steps?.map((step, index) => (
-                  <div key={step.step_number} className="flex gap-6">
+                  <div key={`step-${index}`} className="flex gap-6">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        {step.step_number}
+                        {index + 1}
                       </div>
                     </div>
                     <div className="flex-1">
                       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-3">{step.title}</h3>
                         <p className="text-lg text-gray-800 leading-relaxed mb-4">
-                          {step.instruction}
+                          {step.description}
                         </p>
                         {step.image_url && (
                           <div className="mt-4">
                             <img
                               src={step.image_url}
-                              alt={`Step ${step.step_number}`}
+                              alt={`Step ${index + 1}`}
                               className="w-full max-w-md rounded-lg shadow-md"
                             />
                           </div>

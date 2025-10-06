@@ -135,7 +135,7 @@ export default function ContactPage() {
               Get In Touch
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              Ready to transform your style? Let's discuss how we can help you look and feel your best.
+              Ready to transform your style? Let&apos;s discuss how we can help you look and feel your best.
             </p>
           </div>
 
@@ -222,7 +222,7 @@ export default function ContactPage() {
                     </svg>
                     <span className="text-green-800 font-medium">Message sent successfully!</span>
                   </div>
-                  <p className="text-green-700 text-sm mt-1">We'll get back to you soon.</p>
+                  <p className="text-green-700 text-sm mt-1">We&apos;ll get back to you soon.</p>
                 </div>
               )}
 

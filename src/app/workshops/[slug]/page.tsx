@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
@@ -30,12 +31,11 @@ interface Workshop {
 }
 
 interface WorkshopPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }>
 }
 
 export default function WorkshopPage({ params }: WorkshopPageProps) {
+  const { slug } = use(params)
   const [workshop, setWorkshop] = useState<Workshop | null>(null)
   const [relatedWorkshops, setRelatedWorkshops] = useState<Workshop[]>([])
   const [loading, setLoading] = useState(true)
@@ -79,7 +79,7 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
         }
 
         // Find the workshop with matching slug
-        const matchingWorkshop = allWorkshops?.find(w => generateSlug(w.title) === params.slug)
+        const matchingWorkshop = allWorkshops?.find(w => generateSlug(w.title) === slug)
 
         if (!matchingWorkshop) {
           setError('Workshop not found.')
@@ -110,18 +110,18 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
           setRelatedWorkshops(relatedData || [])
         }
 
-      } catch (err) {
-        console.error('Error fetching workshop:', err)
+      } catch {
+        console.error('Error fetching workshop')
         setError('Failed to load workshop.')
       } finally {
         setLoading(false)
       }
     }
 
-    if (params.slug) {
+    if (slug) {
       fetchWorkshopData()
     }
-  }, [params.slug])
+  }, [slug])
 
   const handleRegistrationSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -135,7 +135,7 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
 
       setSubmitMessage('✅ Registration submitted successfully! We\'ll contact you soon.')
       setRegistrationForm({ name: '', email: '', phone: '', message: '' })
-    } catch (err) {
+    } catch {
       setSubmitMessage('❌ Failed to submit registration. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -198,9 +198,11 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
         <article className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
           {/* Featured Image */}
           <div className="relative w-full h-64 md:h-96 overflow-hidden">
-            <img
+            <Image
               src={workshop.cover_image}
               alt={workshop.title}
+              width={800}
+              height={400}
               className="w-full h-full object-cover"
             />
 
@@ -369,9 +371,11 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={relatedWorkshop.cover_image}
                       alt={relatedWorkshop.title}
+                      width={400}
+                      height={192}
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-4 left-4">

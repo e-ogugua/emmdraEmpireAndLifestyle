@@ -3,7 +3,7 @@ import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
 
 interface NotificationData {
   type: 'booking' | 'order' | 'contact'
-  data: Record<string, any>
+  data: Record<string, unknown>
 }
 
 export async function POST(request: NextRequest) {
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     // Create email content based on notification type
     let subject = ''
     let content = ''
-    let emailData: { [key: string]: any } = {}
+    let emailData: { [key: string]: unknown } = {}
 
     switch (type) {
       case 'booking':
@@ -59,8 +59,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Create HTML and text versions
-    const htmlBody = createEmailTemplate(content, emailData.type)
-    const textBody = createTextEmail(content, emailData.type)
+    const htmlBody = createEmailTemplate(content, emailData.type as string)
+    const textBody = createTextEmail(content, emailData.type as string)
 
     // Send email
     const emailSent = await sendEmail({
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
 
 // Email content creators for different notification types
 
-function createBookingEmailContent(data: NotificationData['data']): string {
+function createBookingEmailContent(data: Record<string, unknown>): string {
   return `
     <div class="highlight">
       <strong>New Booking Received!</strong>
@@ -171,11 +171,11 @@ function createOrderEmailContent(data: NotificationData['data']): string {
         <div class="value">₦${data.amount.toLocaleString()}</div>
       ` : ''}
 
-      ${data.items && data.items.length > 0 ? `
+      ${data.items && (data.items as string[]).length > 0 ? `
         <div class="label">Items:</div>
         <div class="value">
           <ul>
-            ${data.items.map((item: string) => `<li>${item}</li>`).join('')}
+            ${(data.items as string[]).map((item: string) => `<li>${item}</li>`).join('')}
           </ul>
         </div>
       ` : ''}
