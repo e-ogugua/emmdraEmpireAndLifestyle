@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
 
@@ -11,12 +12,28 @@ interface Product {
   description: string
   price: number
   image_url: string
+  category?: string
+  featured?: boolean
+  in_stock?: boolean
+  created_at?: string
+  updated_at?: string
 }
+
+const categories = [
+  { id: 'All', name: 'All Products' },
+  { id: 'Fashion', name: 'Adult Wears' },
+  { id: 'Kids Fashion', name: 'Kiddies Wears' },
+  { id: 'Accessories', name: 'Accessories' },
+  { id: 'Beauty', name: 'Beauty Hub' },
+  { id: 'Workshops', name: 'Workshops & Training' }
+]
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([])
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<string>('All')
 
   useEffect(() => {
     // Track shop page view
@@ -38,8 +55,6 @@ export default function ShopPage() {
           .select('*')
           .order('id', { ascending: true })
 
-        console.log('📦 Supabase response:', { dataLength: data?.length, error: supabaseError })
-
         if (supabaseError) {
           console.error('❌ Error fetching products:', supabaseError)
           setError('Failed to load products. Please try again later.')
@@ -48,23 +63,26 @@ export default function ShopPage() {
 
         console.log('✅ Products fetched successfully:', data?.length || 0, 'products')
         setProducts(data || [])
+        setFilteredProducts(data || [])
       } catch (err) {
         console.error('❌ Error fetching products:', err)
         setError('Failed to load products. Please try again later.')
       } finally {
         setLoading(false)
-        console.log('🔄 Loading state set to false')
       }
     }
 
     fetchProducts()
   }, [])
 
-  console.log('🏪 ShopPage render - State:', { 
-    loading, 
-    error: error ? 'HAS ERROR' : 'NO ERROR', 
-    productsCount: products.length 
-  })
+  // Filter products by category
+  useEffect(() => {
+    if (selectedCategory === 'All') {
+      setFilteredProducts(products)
+    } else {
+      setFilteredProducts(products.filter(product => product.category === selectedCategory))
+    }
+  }, [selectedCategory, products])
 
   if (loading) {
     return (
@@ -106,15 +124,34 @@ export default function ShopPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
             Shop Our Collection
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover quality fashion, beauty, and lifestyle products
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Discover quality fashion, beauty, and lifestyle products curated for the modern family.
           </p>
         </div>
 
+        {/* Category Filter Tabs */}
+        <div className="mb-12">
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
+                  selectedCategory === category.id
+                    ? 'bg-black text-white shadow-lg'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Product Grid */}
-        {products.length > 0 ? (
+        {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <div
                 key={product.id}
                 className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
@@ -126,6 +163,39 @@ export default function ShopPage() {
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   />
+
+                  {/* Category Badge */}
+                  {product.category && (
+                    <div className="absolute top-3 left-3">
+                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                        product.category === 'Fashion' ? 'bg-pink-500 text-white' :
+                        product.category === 'Beauty' ? 'bg-purple-500 text-white' :
+                        product.category === 'Accessories' ? 'bg-blue-500 text-white' :
+                        product.category === 'Kids Fashion' ? 'bg-orange-500 text-white' :
+                        'bg-gray-500 text-white'
+                      }`}>
+                        {product.category}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Featured Badge */}
+                  {product.featured && (
+                    <div className="absolute top-3 right-3">
+                      <span className="px-2 py-1 rounded-full text-xs font-semibold bg-yellow-500 text-white">
+                        Featured
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Stock Status */}
+                  {!product.in_stock && (
+                    <div className="absolute bottom-3 right-3">
+                      <span className="px-2 py-1 rounded-full text-xs font-semibold bg-red-500 text-white">
+                        Out of Stock
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Product Info */}
@@ -142,12 +212,12 @@ export default function ShopPage() {
                     <span className="text-2xl font-bold text-gray-800">
                       ₦{product.price.toLocaleString()}
                     </span>
-                    <a
+                    <Link
                       href={`/shop/${product.id}`}
                       className="bg-black text-white px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors duration-200"
                     >
                       View Details
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -155,8 +225,14 @@ export default function ShopPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">No Products Available</h2>
-            <p className="text-gray-600">Check back later for new products.</p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">No Products in This Category</h2>
+            <p className="text-gray-600 mb-6">Try selecting a different category or check back later for new products.</p>
+            <button
+              onClick={() => setSelectedCategory('All')}
+              className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300"
+            >
+              View All Products
+            </button>
           </div>
         )}
 
@@ -165,34 +241,39 @@ export default function ShopPage() {
           <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200">
             Previous
           </button>
-
           <button className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors duration-200">
             1
           </button>
-
           <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200">
             2
           </button>
-
           <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200">
             Next
           </button>
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 bg-white rounded-3xl p-12 shadow-lg">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
             Need Help Finding Something?
           </h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Our team is here to help you find the perfect items for your needs.
+            Our team is here to help you find the perfect items for your needs. Whether it's styling advice, product recommendations, or custom orders.
           </p>
-          <a
-            href="/contact"
-            className="inline-block bg-gray-800 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-700 transition-colors duration-300"
-          >
-            Contact Us
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              📞 Contact Us
+            </Link>
+            <Link
+              href="/about"
+              className="border-2 border-gray-800 text-gray-800 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 hover:text-white transition-all duration-300"
+            >
+              👨‍👩‍👧‍👦 Learn About Us
+            </Link>
+          </div>
         </div>
       </div>
     </div>
