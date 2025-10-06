@@ -14,41 +14,41 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: '/images/EmmdraFamilyHero.jpg',
-    title: 'Welcome to the Emmdra Family',
-    subtitle: 'Where fashion meets family, creativity blooms, and every moment becomes a masterpiece',
-    ctaText: 'Join Our Family',
+    image: '/images/heroSlide1image.png',
+    title: 'Welcome to Emmdra',
+    subtitle: 'Your gateway to fashion, beauty, and lifestyle excellence',
+    ctaText: 'Explore Our World',
     ctaLink: '/about'
   },
   {
     id: 2,
-    image: '/images/EmmdraFashionShowcase.jpg',
+    image: '/images/fashion2.png',
     title: 'Style That Speaks',
-    subtitle: 'Discover fashion that tells your story - from casual chic to elegant statements',
+    subtitle: 'Express yourself with fashion that tells your unique story',
     ctaText: 'Shop Fashion',
     ctaLink: '/shop'
   },
   {
     id: 3,
-    image: '/images/EmmdraBeautyAndWellness.jpg',
+    image: '/images/beautyAndWellness.png',
     title: 'Beauty & Wellness',
-    subtitle: 'Nourish your skin, hair, and soul with our premium beauty collections',
-    ctaText: 'Explore Beauty',
+    subtitle: 'Discover the secrets to radiant beauty and inner wellness',
+    ctaText: 'Beauty Collection',
     ctaLink: '/shop'
   },
   {
     id: 4,
-    image: '/images/EmmdraDIYCrafts.jpg',
+    image: '/images/Slide2DiyProjectsAndCrafts.png',
     title: 'Create & Inspire',
-    subtitle: 'DIY tutorials and workshops to unleash your inner artist and craft beautiful memories',
+    subtitle: 'Unleash your creativity with our DIY projects and crafts',
     ctaText: 'Start Creating',
     ctaLink: '/diy'
   },
   {
     id: 5,
-    image: '/images/EmmdraLifestyleStories.jpg',
+    image: '/images/EmmdraTourAndTravel.png',
     title: 'Stories That Inspire',
-    subtitle: 'Read our lifestyle blog for tips, trends, and tales from the Emmdra community',
+    subtitle: 'Journey through inspiring stories and lifestyle adventures',
     ctaText: 'Read Stories',
     ctaLink: '/blog'
   }
@@ -82,7 +82,7 @@ export default function HeroCarousel() {
   }
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`relative w-full h-96 md:h-[70vh] overflow-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (

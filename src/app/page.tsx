@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Hero Carousel Section - Standalone */}
-      <section className="relative" style={{ height: '100vh' }}>
+      <section className="relative">
         <HeroCarousel />
       </section>
 
