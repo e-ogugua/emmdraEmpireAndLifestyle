@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
 
 interface Product {
@@ -51,20 +50,74 @@ export default function ShopPage() {
         setLoading(true)
         setError(null)
 
-        const { data, error: supabaseError } = await supabase
-          .from('products')
-          .select('*')
-          .order('id', { ascending: true })
+        // Use API route instead of direct Supabase call for better production reliability
+        const response = await fetch('/api/products')
 
-        if (supabaseError) {
-          console.error('❌ Error fetching products:', supabaseError)
+        if (!response.ok) {
+          console.warn('⚠️ API route failed, falling back to static products')
+          // Fallback to static products if API fails
+          const staticProducts = [
+            {
+              id: 1,
+              name: 'Premium Leather Handbag',
+              short_description: 'Elegant genuine leather handbag with multiple compartments',
+              description: 'Handcrafted from premium Nigerian leather with attention to detail. Features multiple compartments and adjustable strap.',
+              price: 45000,
+              image_url: '/images/PremiumLeatherHandBags.png',
+              category: 'Accessories',
+              featured: true,
+              in_stock: true
+            },
+            {
+              id: 2,
+              name: 'Natural Hair Oil',
+              short_description: 'Organic hair treatment with coconut and jojoba oils',
+              description: 'Organic hair oil blend for healthy, shiny hair. Contains coconut, jojoba, and argan oils.',
+              price: 12000,
+              image_url: '/images/NaturalHairOil.png',
+              category: 'Beauty',
+              featured: false,
+              in_stock: true
+            },
+            {
+              id: 3,
+              name: 'Ankara Print Blouse',
+              short_description: 'Traditional meets modern with contemporary cut',
+              description: 'Beautiful Ankara print blouse with contemporary cut. Perfect for office or casual wear.',
+              price: 15000,
+              image_url: '/images/AnkaraPrintBlouses.png',
+              category: 'Fashion',
+              featured: false,
+              in_stock: true
+            },
+            {
+              id: 4,
+              name: 'Statement Earrings',
+              short_description: 'Bold and beautiful earrings that add glamour',
+              description: 'Eye-catching statement earrings that add glamour to any outfit. Available in gold and silver.',
+              price: 8500,
+              image_url: '/images/StatementEarrings.png',
+              category: 'Accessories',
+              featured: false,
+              in_stock: true
+            }
+          ]
+          setProducts(staticProducts)
+          setFilteredProducts(staticProducts)
+          return
+        }
+
+        const data = await response.json()
+
+        if (data.error) {
+          console.error('❌ Error from API:', data.error)
           setError('Failed to load products. Please try again later.')
           return
         }
 
-        console.log('✅ Products fetched successfully:', data?.length || 0, 'products')
-        setProducts(data || [])
-        setFilteredProducts(data || [])
+        console.log('✅ Products fetched successfully:', data.count, 'products')
+        setProducts(data.products || [])
+        setFilteredProducts(data.products || [])
       } catch (err) {
         console.error('❌ Error fetching products:', err)
         setError('Failed to load products. Please try again later.')

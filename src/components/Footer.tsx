@@ -22,7 +22,7 @@ export default function Footer() {
                 </div>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-600">Emmdra</h3>
+                <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-600">Emmdra</h3>
                 <p className="text-sm font-medium text-gray-300">Empire & Lifestyle</p>
               </div>
             </div>
