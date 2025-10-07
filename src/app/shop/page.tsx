@@ -120,7 +120,7 @@ export default function ShopPage() {
   return (
     <div className="relative">
       {/* Hero Section with Beautiful Background */}
-      <section className="relative py-20 px-4 min-h-[60vh] flex items-center overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -139,11 +139,11 @@ export default function ShopPage() {
 
         <div className="container mx-auto relative z-10">
           {/* Page Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 drop-shadow-lg">
               Shop Our Collection
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
               Discover quality fashion, beauty, and lifestyle products curated for the modern family.
             </p>
           </div>

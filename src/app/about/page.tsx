@@ -22,7 +22,7 @@ export default function AboutPage() {
   return (
     <div className="relative">
       {/* Hero Section - Family Portrait with Beautiful Background */}
-      <section className="relative py-20 px-4 min-h-[70vh] flex items-center overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -44,10 +44,10 @@ export default function AboutPage() {
             <div className={`text-center transition-all duration-1000 transform ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-lg">
                 Meet the <span className="text-blue-300">Emmdra</span> Family
               </h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12 drop-shadow-md">
+              <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12 drop-shadow-md px-2">
                 A husband-and-wife duo turning passion into purpose, creativity into community,
                 and family values into a lifestyle empire.
               </p>
@@ -87,10 +87,10 @@ export default function AboutPage() {
                     </div>
                   </div>
                   <div className="relative">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                       {/* Emmanuel Portrait */}
                       <div className="relative group">
-                        <div className="w-full h-48 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
+                        <div className="w-full h-40 sm:h-48 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
                           <Image
                             src="/images/EmmdraEmmanuelPotrait11.png"
                             alt="Emmanuel - Co-Founder"
@@ -99,7 +99,7 @@ export default function AboutPage() {
                             sizes="(max-width: 640px) 100vw, 50vw"
                           />
                         </div>
-                        <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 bg-white/90 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
                           <p className="text-xs font-semibold text-gray-700">Emmanuel</p>
                           <p className="text-xs text-gray-600">Creative Director</p>
                         </div>
@@ -107,7 +107,7 @@ export default function AboutPage() {
 
                       {/* Chidera Portrait */}
                       <div className="relative group">
-                        <div className="w-full h-48 bg-gradient-to-br from-purple-200 to-pink-300 rounded-xl overflow-hidden shadow-lg">
+                        <div className="w-full h-40 sm:h-48 bg-gradient-to-br from-purple-200 to-pink-300 rounded-xl overflow-hidden shadow-lg">
                           <Image
                             src="/images/emmdraChideraPotrait10.png"
                             alt="Chidera - Co-Founder"
@@ -116,7 +116,7 @@ export default function AboutPage() {
                             sizes="(max-width: 640px) 100vw, 50vw"
                           />
                         </div>
-                        <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 bg-white/90 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
                           <p className="text-xs font-semibold text-gray-700">Chidera</p>
                           <p className="text-xs text-gray-600">Style Curator</p>
                         </div>
@@ -154,37 +154,37 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* Timeline */}
             <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-600 to-purple-600 h-full"></div>
+              {/* Timeline Line - Hidden on mobile, visible on larger screens */}
+              <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-600 to-purple-600 h-full"></div>
 
               {/* Timeline Items */}
-              <div className="space-y-12">
+              <div className="space-y-8 sm:space-y-12">
                 {/* Dec 2023 - The Foundation */}
-                <div className={`flex items-center transition-all duration-1000 delay-300 transform ${
+                <div className={`flex flex-col sm:flex-row sm:items-center transition-all duration-1000 delay-300 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
-                  <div className="w-1/2 pr-6 text-right">
-                    <div className="bg-blue-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-blue-800 mb-2">Dec 2023 - Foundation</h3>
+                  <div className="w-full sm:w-1/2 sm:pr-6 text-center sm:text-right mb-4 sm:mb-0">
+                    <div className="bg-blue-50 p-4 sm:p-5 rounded-2xl shadow-lg inline-block w-full sm:w-auto">
+                      <h3 className="text-base sm:text-lg font-bold text-blue-800 mb-2">Dec 2023 - Foundation</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
                         Emmanuel and Chidera laid the groundwork for Emmdra Empire, combining their passion
                         for fashion, beauty, and family values into a cohesive vision.
                       </p>
                     </div>
                   </div>
-                  <div className="w-4 h-4 bg-blue-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
-                  <div className="w-1/2"></div>
+                  <div className="w-4 h-4 bg-blue-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-full sm:w-1/2"></div>
                 </div>
 
                 {/* Jan 2024 - Brand Identity */}
-                <div className={`flex items-center transition-all duration-1000 delay-500 transform ${
+                <div className={`flex flex-col sm:flex-row sm:items-center transition-all duration-1000 delay-500 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
-                  <div className="w-1/2"></div>
-                  <div className="w-4 h-4 bg-purple-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
-                  <div className="w-1/2 pl-6">
-                    <div className="bg-purple-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-purple-800 mb-2">Jan 2024 - Brand Launch</h3>
+                  <div className="w-full sm:w-1/2"></div>
+                  <div className="w-4 h-4 bg-purple-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-full sm:w-1/2 sm:pl-6 text-center sm:text-left mt-4 sm:mt-0">
+                    <div className="bg-purple-50 p-4 sm:p-5 rounded-2xl shadow-lg inline-block w-full sm:w-auto">
+                      <h3 className="text-base sm:text-lg font-bold text-purple-800 mb-2">Jan 2024 - Brand Launch</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
                         Official launch of Emmdra Empire with curated fashion collections, beauty essentials,
                         and DIY content that resonates with modern families.
@@ -194,31 +194,31 @@ export default function AboutPage() {
                 </div>
 
                 {/* Mar 2024 - Community Building */}
-                <div className={`flex items-center transition-all duration-1000 delay-700 transform ${
+                <div className={`flex flex-col sm:flex-row sm:items-center transition-all duration-1000 delay-700 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
-                  <div className="w-1/2 pr-6 text-right">
-                    <div className="bg-pink-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-pink-800 mb-2">Mar 2024 - Community Growth</h3>
+                  <div className="w-full sm:w-1/2 sm:pr-6 text-center sm:text-right mb-4 sm:mb-0">
+                    <div className="bg-pink-50 p-4 sm:p-5 rounded-2xl shadow-lg inline-block w-full sm:w-auto">
+                      <h3 className="text-base sm:text-lg font-bold text-pink-800 mb-2">Mar 2024 - Community Growth</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
                         Started building our community through workshops, blog content, and social media engagement.
                         Families began discovering our unique approach to lifestyle.
                       </p>
                     </div>
                   </div>
-                  <div className="w-4 h-4 bg-pink-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
-                  <div className="w-1/2"></div>
+                  <div className="w-4 h-4 bg-pink-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-full sm:w-1/2"></div>
                 </div>
 
                 {/* Jun 2024 - Digital Expansion */}
-                <div className={`flex items-center transition-all duration-1000 delay-900 transform ${
+                <div className={`flex flex-col sm:flex-row sm:items-center transition-all duration-1000 delay-900 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
-                  <div className="w-1/2"></div>
-                  <div className="w-4 h-4 bg-green-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
-                  <div className="w-1/2 pl-6">
-                    <div className="bg-green-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-green-800 mb-2">Jun 2024 - Online Presence</h3>
+                  <div className="w-full sm:w-1/2"></div>
+                  <div className="w-4 h-4 bg-green-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-full sm:w-1/2 sm:pl-6 text-center sm:text-left mt-4 sm:mt-0">
+                    <div className="bg-green-50 p-4 sm:p-5 rounded-2xl shadow-lg inline-block w-full sm:w-auto">
+                      <h3 className="text-base sm:text-lg font-bold text-green-800 mb-2">Jun 2024 - Online Presence</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
                         Expanded our digital footprint with a comprehensive website featuring shop, blog,
                         and workshop bookings. Enhanced customer experience with seamless online shopping.
@@ -228,31 +228,31 @@ export default function AboutPage() {
                 </div>
 
                 {/* Sep 2024 - Product Diversification */}
-                <div className={`flex items-center transition-all duration-1000 delay-1100 transform ${
+                <div className={`flex flex-col sm:flex-row sm:items-center transition-all duration-1000 delay-1100 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
-                  <div className="w-1/2 pr-6 text-right">
-                    <div className="bg-orange-50 p-5 rounded-2xl shadow-lg">
-                      <h3 className="text-lg font-bold text-orange-800 mb-2">Sep 2024 - Product Expansion</h3>
+                  <div className="w-full sm:w-1/2 sm:pr-6 text-center sm:text-right mb-4 sm:mb-0">
+                    <div className="bg-orange-50 p-4 sm:p-5 rounded-2xl shadow-lg inline-block w-full sm:w-auto">
+                      <h3 className="text-base sm:text-lg font-bold text-orange-800 mb-2">Sep 2024 - Product Expansion</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
                         Diversified our product range with new categories including accessories, beauty products,
                         and lifestyle items. Enhanced our DIY tutorial library with step-by-step guides.
                       </p>
                     </div>
                   </div>
-                  <div className="w-4 h-4 bg-orange-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
-                  <div className="w-1/2"></div>
+                  <div className="w-4 h-4 bg-orange-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-full sm:w-1/2"></div>
                 </div>
 
                 {/* Dec 2024 - Current & Future */}
-                <div className={`flex items-center transition-all duration-1000 delay-1300 transform ${
+                <div className={`flex flex-col sm:flex-row sm:items-center transition-all duration-1000 delay-1300 transform ${
                   isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
-                  <div className="w-1/2"></div>
-                  <div className="w-4 h-4 bg-yellow-600 rounded-full mx-4 relative z-10 shadow-lg"></div>
-                  <div className="w-1/2 pl-6">
-                    <div className="bg-yellow-50 p-5 rounded-2xl shadow-lg border-2 border-yellow-200">
-                      <h3 className="text-lg font-bold text-yellow-800 mb-2">Today - Growing Strong</h3>
+                  <div className="w-full sm:w-1/2"></div>
+                  <div className="w-4 h-4 bg-yellow-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
+                  <div className="w-full sm:w-1/2 sm:pl-6 text-center sm:text-left mt-4 sm:mt-0">
+                    <div className="bg-yellow-50 p-4 sm:p-5 rounded-2xl shadow-lg border-2 border-yellow-200 inline-block w-full sm:w-auto">
+                      <h3 className="text-base sm:text-lg font-bold text-yellow-800 mb-2">Today - Growing Strong</h3>
                       <p className="text-gray-700 leading-relaxed text-sm">
                         Emmdra Empire continues to grow as a beloved lifestyle brand. We&apos;re expanding our community,
                         creating more workshops, and developing new products that celebrate Nigerian creativity and family bonds.

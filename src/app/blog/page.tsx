@@ -130,7 +130,7 @@ export default function BlogPage() {
   return (
     <div className="relative">
       {/* Hero Section with Beautiful Background */}
-      <section className="relative py-20 px-4 min-h-[60vh] flex items-center overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -149,11 +149,11 @@ export default function BlogPage() {
 
         <div className="container mx-auto relative z-10">
           {/* Page Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
               Our <span className="text-blue-300">Stories</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
               Discover insights, tips, and inspiration for fashion, beauty, DIY projects, and family life.
               Join our community of creatives and style enthusiasts.
             </p>
