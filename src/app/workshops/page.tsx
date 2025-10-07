@@ -139,18 +139,36 @@ export default function WorkshopsPage() {
   }
 
   return (
-    <div className="py-16 px-4 bg-gray-50">
-      <div className="container mx-auto">
-        {/* Page Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-            Creative <span className="text-blue-600">Workshops</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Join our hands-on workshops and masterclasses. Learn from experts,
-            connect with fellow creatives, and take your skills to the next level.
-          </p>
+    <div className="relative">
+      {/* Hero Section with Beautiful Background */}
+      <section className="relative py-20 px-4 min-h-[60vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/workshopsAndTraning.png"
+            alt="Emmdra Workshops Background - Creative Learning and Training"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Elegant overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-transparent"></div>
+          {/* Brand color accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-yellow-900/30 mix-blend-multiply"></div>
         </div>
+
+        <div className="container mx-auto relative z-10">
+          {/* Page Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+              Creative <span className="text-yellow-300">Workshops</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+              Join our hands-on workshops and masterclasses. Learn from experts,
+              connect with fellow creatives, and take your skills to the next level.
+            </p>
+          </div>
 
         {/* Category Filter Tabs */}
         <div className="mb-12">
@@ -395,6 +413,7 @@ export default function WorkshopsPage() {
           </p>
         </div>
       </div>
+    </section>
     </div>
   )
 }

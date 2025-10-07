@@ -21,17 +21,33 @@ export default function AboutPage() {
 
   return (
     <div className="relative">
-      {/* Hero Section - Family Portrait */}
-      <section className="relative py-20 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-        <div className="container mx-auto px-4">
+      {/* Hero Section - Family Portrait with Beautiful Background */}
+      <section className="relative py-20 px-4 min-h-[70vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/EmmdraOurStory.JPG"
+            alt="Emmdra Family Story Background"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Elegant overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-transparent"></div>
+          {/* Brand color accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-pink-900/20 mix-blend-multiply"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className={`text-center transition-all duration-1000 transform ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-                Meet the <span className="text-blue-600">Emmdra</span> Family
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                Meet the <span className="text-blue-300">Emmdra</span> Family
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
+              <p className="text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12 drop-shadow-md">
                 A husband-and-wife duo turning passion into purpose, creativity into community,
                 and family values into a lifestyle empire.
               </p>

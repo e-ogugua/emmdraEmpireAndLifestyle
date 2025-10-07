@@ -128,18 +128,36 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="py-16 px-4 bg-gray-50">
-      <div className="container mx-auto">
-        {/* Page Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-            Our <span className="text-blue-600">Stories</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Discover insights, tips, and inspiration for fashion, beauty, DIY projects, and family life.
-            Join our community of creatives and style enthusiasts.
-          </p>
+    <div className="relative">
+      {/* Hero Section with Beautiful Background */}
+      <section className="relative py-20 px-4 min-h-[60vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/EmmdraBlog.png"
+            alt="Emmdra Blog Background - Stories and Inspiration"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Elegant overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-transparent"></div>
+          {/* Brand color accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-purple-900/20 to-pink-900/30 mix-blend-multiply"></div>
         </div>
+
+        <div className="container mx-auto relative z-10">
+          {/* Page Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+              Our <span className="text-blue-300">Stories</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+              Discover insights, tips, and inspiration for fashion, beauty, DIY projects, and family life.
+              Join our community of creatives and style enthusiasts.
+            </p>
+          </div>
 
         {/* Category Filter Tabs */}
         <div className="mb-12">
@@ -335,6 +353,7 @@ export default function BlogPage() {
           </p>
         </div>
       </div>
+    </section>
     </div>
   )
 }
