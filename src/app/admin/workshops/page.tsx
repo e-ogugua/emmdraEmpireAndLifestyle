@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 import { trackPageView } from '@/lib/analytics'
@@ -267,10 +268,12 @@ export default function AdminWorkshops() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="h-12 w-12 flex-shrink-0">
-                            <img
+                            <Image
                               className="h-12 w-12 rounded-lg object-cover"
                               src={workshop.cover_image}
                               alt={workshop.title}
+                              width={48}
+                              height={48}
                             />
                           </div>
                           <div className="ml-4">

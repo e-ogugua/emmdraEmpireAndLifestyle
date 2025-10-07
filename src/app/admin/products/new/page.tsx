@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 
@@ -27,6 +28,7 @@ export default function AddProduct() {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [imageError, setImageError] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -156,15 +158,27 @@ export default function AddProduct() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                   placeholder="/images/Accessories.png"
                 />
-                {formData.image_url && (
+                {formData.image_url && !imageError && (
                   <div className="mt-2">
-                    <img
+                    <Image
                       src={formData.image_url}
                       alt="Product preview"
+                      width={80}
+                      height={80}
                       className="h-20 w-20 object-cover rounded-lg border"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/images/placeholder.png'
-                      }}
+                      onError={() => setImageError(true)}
+                      unoptimized
+                    />
+                  </div>
+                )}
+                {formData.image_url && imageError && (
+                  <div className="mt-2">
+                    <Image
+                      src="/images/placeholder.png"
+                      alt="Product preview"
+                      width={80}
+                      height={80}
+                      className="h-20 w-20 object-cover rounded-lg border"
                     />
                   </div>
                 )}

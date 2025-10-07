@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 
@@ -25,6 +26,7 @@ export default function AddBlogPost() {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [imageError, setImageError] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -141,15 +143,27 @@ export default function AddBlogPost() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                   placeholder="/images/EmmdraFashionDesignAndAccessories.png"
                 />
-                {formData.featured_image && (
+                {formData.featured_image && !imageError && (
                   <div className="mt-2">
-                    <img
+                    <Image
                       src={formData.featured_image}
                       alt="Featured image preview"
+                      width={192}
+                      height={128}
                       className="h-32 w-48 object-cover rounded-lg border"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/images/placeholder.png'
-                      }}
+                      onError={() => setImageError(true)}
+                      unoptimized
+                    />
+                  </div>
+                )}
+                {formData.featured_image && imageError && (
+                  <div className="mt-2">
+                    <Image
+                      src="/images/placeholder.png"
+                      alt="Featured image preview"
+                      width={192}
+                      height={128}
+                      className="h-32 w-48 object-cover rounded-lg border"
                     />
                   </div>
                 )}

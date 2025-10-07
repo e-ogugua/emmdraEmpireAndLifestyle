@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface DiscoverCard {
   id: string
@@ -92,10 +93,12 @@ export default function DiscoverMoreSection() {
             >
               {/* Card Image Container */}
               <div className="relative w-full h-64 overflow-hidden">
-                <img
+                <Image
                   src={card.image}
                   alt={card.title}
+                  fill
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
 
                 {/* Gradient Overlay */}

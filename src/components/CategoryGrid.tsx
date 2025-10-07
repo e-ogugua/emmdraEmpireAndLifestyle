@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Category {
   id: string
@@ -76,10 +77,12 @@ export default function CategoryGrid() {
             >
               {/* Category Image Container */}
               <div className="relative w-full h-48 overflow-hidden">
-                <img
+                <Image
                   src={category.image}
                   alt={category.title}
+                  fill
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                 />
 
                 {/* Dark Overlay */}

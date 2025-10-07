@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
 
@@ -171,10 +172,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <article className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
           {/* Featured Image */}
           <div className="relative w-full h-64 md:h-96 overflow-hidden">
-            <img
+            <Image
               src={post.featured_image}
               alt={post.title}
+              fill
               className="w-full h-full object-cover"
+              priority
+              sizes="100vw"
             />
 
             {/* Category Badge */}
@@ -268,10 +272,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={relatedPost.featured_image}
                       alt={relatedPost.title}
+                      fill
                       className="w-full h-48 object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute top-4 left-4">
                       <span className={`px-2 py-1 rounded-full text-xs font-semibold ${

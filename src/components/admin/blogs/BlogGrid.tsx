@@ -10,6 +10,8 @@ interface BlogPost {
   updated_at: string
 }
 
+import Image from 'next/image'
+
 interface BlogGridProps {
   blogs: BlogPost[]
   loading: boolean
@@ -65,10 +67,12 @@ export default function BlogGrid({ blogs, loading, onEdit, onDelete, onRefresh }
               <div key={blog.id} className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-200">
                 {/* Blog Cover Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={blog.cover_image_url}
                     alt={blog.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute top-3 left-3">
                     <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${

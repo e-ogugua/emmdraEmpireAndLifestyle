@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import HeroCarousel from '../components/HeroCarousel'
 import { trackPageView } from '@/lib/analytics'
 
@@ -120,10 +121,12 @@ export default function Home() {
             {/* Product 1 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/PremiumLeatherHandBags.png"
                   alt="Premium Leather Handbag"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                 />
                 <div className="absolute top-3 left-3">
                   <span className="bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Featured</span>
@@ -144,10 +147,12 @@ export default function Home() {
             {/* Product 2 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/NaturalHairOil.png"
                   alt="Natural Hair Oil"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                 />
               </div>
               <div className="p-4">
@@ -165,10 +170,12 @@ export default function Home() {
             {/* Product 3 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/AnkaraPrintBlouses.png"
                   alt="Ankara Print Blouse"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                 />
               </div>
               <div className="p-4">
@@ -186,10 +193,12 @@ export default function Home() {
             {/* Product 4 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/StatementEarrings.png"
                   alt="Statement Earrings"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                 />
               </div>
               <div className="p-4">
@@ -232,10 +241,12 @@ export default function Home() {
             {/* DIY 1 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/HandmadeBeadedNecklace.png"
                   alt="Handmade Beaded Necklace"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute top-3 left-3">
                   <span className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Popular</span>
@@ -256,10 +267,12 @@ export default function Home() {
             {/* DIY 2 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/NaturalHairTreatmentMask.png"
                   alt="Natural Hair Treatment"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-4">
@@ -277,10 +290,12 @@ export default function Home() {
             {/* DIY 3 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/DIYAnkaraThrowPillow.png"
                   alt="DIY Ankara Pillow"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-4">
@@ -323,10 +338,12 @@ export default function Home() {
             {/* Workshop 1 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 border border-purple-100">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/EmmdraFashionDesignAndAccessories.png"
                   alt="Fashion Styling Workshop"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute top-3 left-3">
                   <span className="bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Upcoming</span>
@@ -367,10 +384,12 @@ export default function Home() {
             {/* Workshop 2 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 border border-purple-100">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/DIYJewelryMakingWorkshop.png"
                   alt="Jewelry Making Workshop"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-4">
@@ -408,10 +427,12 @@ export default function Home() {
             {/* Workshop 3 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 border border-purple-100">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/beautyHub.png"
                   alt="Natural Beauty Workshop"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-4">
@@ -474,10 +495,12 @@ export default function Home() {
             {/* Blog 1 */}
             <article className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/5EssentialFashionTipsforNigerianWeather.png"
                   alt="Fashion Tips for Nigerian Weather"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute top-3 left-3">
                   <span className="bg-indigo-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Fashion</span>
@@ -498,10 +521,12 @@ export default function Home() {
             {/* Blog 2 */}
             <article className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/DIYNaturalBeautyRemediesatHome.png"
                   alt="DIY Natural Beauty Remedies"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-4">
@@ -519,10 +544,12 @@ export default function Home() {
             {/* Blog 3 */}
             <article className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src="/images/BuildingaCapsuleWardrobeforBusyProfessionals.png"
                   alt="Capsule Wardrobe Guide"
+                  fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-4">

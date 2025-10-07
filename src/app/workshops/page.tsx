@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
 
@@ -177,10 +178,13 @@ export default function WorkshopsPage() {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2">
-                  <img
+                  <Image
                     src={filteredWorkshops[0].cover_image}
                     alt={filteredWorkshops[0].title}
+                    fill
                     className="w-full h-64 md:h-full object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="md:w-1/2 p-8 flex flex-col justify-center">
@@ -264,10 +268,12 @@ export default function WorkshopsPage() {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={workshop.cover_image}
                       alt={workshop.title}
+                      fill
                       className="w-full h-48 object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute top-4 left-4">
                       <span className={`px-2 py-1 rounded-full text-xs font-semibold ${

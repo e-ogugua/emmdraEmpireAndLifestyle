@@ -9,6 +9,8 @@ interface Product {
   updated_at: string
 }
 
+import Image from 'next/image'
+
 interface ProductGridProps {
   products: Product[]
   loading: boolean
@@ -64,10 +66,12 @@ export default function ProductGrid({ products, loading, onEdit, onDelete, onRef
               <div key={product.id} className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-200">
                 {/* Product Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={product.image_url}
                     alt={product.name}
+                    fill
                     className="w-full h-full object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   />
                   <div className="absolute top-2 right-2">
                     <span className="bg-white bg-opacity-90 text-gray-800 text-xs px-2 py-1 rounded-full font-medium">

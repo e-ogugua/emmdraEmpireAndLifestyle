@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 
 interface Product {
@@ -151,10 +152,13 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left Column - Product Image */}
             <div className="relative">
-              <img
+              <Image
                 src={product.image_url}
                 alt={product.name}
+                fill
                 className="w-full h-96 lg:h-full object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
 
@@ -280,10 +284,12 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
                   className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg group"
                 >
                   <div className="relative w-full h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={relatedProduct.image_url}
                       alt={relatedProduct.name}
+                      fill
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
 

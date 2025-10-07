@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
 
@@ -167,10 +168,13 @@ export default function BlogPage() {
               <div className="md:flex">
                 <div className="md:w-1/2">
                   {filteredPosts[0].featured_image ? (
-                    <img
+                    <Image
                       src={filteredPosts[0].featured_image}
                       alt={filteredPosts[0].title}
+                      fill
                       className="w-full h-64 md:h-full object-cover"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   ) : (
                     <div className="w-full h-64 md:h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
@@ -228,10 +232,12 @@ export default function BlogPage() {
                 >
                   <div className="relative">
                     {post.featured_image ? (
-                      <img
+                      <Image
                         src={post.featured_image}
                         alt={post.title}
+                        fill
                         className="w-full h-48 object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     ) : (
                       <div className="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, use } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
 
@@ -167,10 +168,13 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
         <article className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
           {/* Featured Image */}
           <div className="relative w-full h-64 md:h-96 overflow-hidden">
-            <img
+            <Image
               src={tutorial.cover_image}
               alt={tutorial.title}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
             />
 
             {/* Category & Difficulty Badges */}
@@ -275,10 +279,13 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
                         </p>
                         {step.image_url && (
                           <div className="mt-4">
-                            <img
+                            <Image
                               src={step.image_url}
                               alt={`Step ${index + 1}`}
+                              width={400}
+                              height={300}
                               className="w-full max-w-md rounded-lg shadow-md"
+                              unoptimized
                             />
                           </div>
                         )}
@@ -349,9 +356,11 @@ export default function DIYTutorialPage({ params }: DIYTutorialPageProps) {
                   className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={relatedTutorial.cover_image}
                       alt={relatedTutorial.title}
+                      width={400}
+                      height={192}
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-4 left-4 flex gap-2">

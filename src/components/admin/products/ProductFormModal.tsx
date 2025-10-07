@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface Product {
   id: number
@@ -30,6 +31,7 @@ export default function ProductFormModal({ mode, product, onSubmit, onClose }: P
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
     if (product && mode === 'edit') {
@@ -40,6 +42,7 @@ export default function ProductFormModal({ mode, product, onSubmit, onClose }: P
         price: product.price.toString(),
         image_url: product.image_url
       })
+      setImageError(false)
     } else {
       setFormData({
         name: '',
@@ -48,6 +51,7 @@ export default function ProductFormModal({ mode, product, onSubmit, onClose }: P
         price: '',
         image_url: ''
       })
+      setImageError(false)
     }
     setErrors({})
   }, [product, mode])
@@ -236,17 +240,32 @@ export default function ProductFormModal({ mode, product, onSubmit, onClose }: P
             {errors.image_url && <p className="text-red-500 text-sm mt-1">{errors.image_url}</p>}
 
             {/* Image Preview */}
-            {formData.image_url && (
+            {formData.image_url && !imageError && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-2">Preview:</p>
                 <div className="relative">
-                  <img
+                  <Image
                     src={formData.image_url}
                     alt="Preview"
+                    width={128}
+                    height={128}
                     className="w-32 h-32 object-cover rounded-lg border"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/images/placeholder.png'
-                    }}
+                    onError={() => setImageError(true)}
+                    unoptimized
+                  />
+                </div>
+              </div>
+            )}
+            {formData.image_url && imageError && (
+              <div className="mt-3">
+                <p className="text-sm text-gray-600 mb-2">Preview:</p>
+                <div className="relative">
+                  <Image
+                    src="/images/placeholder.png"
+                    alt="Preview"
+                    width={128}
+                    height={128}
+                    className="w-32 h-32 object-cover rounded-lg border"
                   />
                 </div>
               </div>

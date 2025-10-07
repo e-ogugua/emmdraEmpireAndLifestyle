@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { trackPageView } from '@/lib/analytics'
 
 export default function AboutPage() {
@@ -74,10 +75,12 @@ export default function AboutPage() {
                       {/* Emmanuel Portrait */}
                       <div className="relative group">
                         <div className="w-full h-48 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
-                          <img
+                          <Image
                             src="/images/EmmdraEmmanuelPotrait11.png"
                             alt="Emmanuel - Co-Founder"
+                            fill
                             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            sizes="(max-width: 640px) 100vw, 50vw"
                           />
                         </div>
                         <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -89,10 +92,12 @@ export default function AboutPage() {
                       {/* Chidera Portrait */}
                       <div className="relative group">
                         <div className="w-full h-48 bg-gradient-to-br from-purple-200 to-pink-300 rounded-xl overflow-hidden shadow-lg">
-                          <img
+                          <Image
                             src="/images/emmdraChideraPotrait10.png"
                             alt="Chidera - Co-Founder"
+                            fill
                             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            sizes="(max-width: 640px) 100vw, 50vw"
                           />
                         </div>
                         <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -266,10 +271,12 @@ export default function AboutPage() {
               {/* Story Image */}
               <div className="relative">
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-gray-100">
-                  <img
+                  <Image
                     src="/images/EmmdraOurStory.JPG"
                     alt="Emmanuel and Chidera - Our Love Story"
+                    fill
                     className="w-full h-auto object-contain"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   {/* Overlay with decorative elements */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>

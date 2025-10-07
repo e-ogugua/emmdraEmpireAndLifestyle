@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface Slide {
   id: number
@@ -96,11 +97,13 @@ export default function HeroCarousel() {
           >
             {/* Background Image */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10" />
-            <img
+            <Image
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
-              loading={index === 0 ? 'eager' : 'lazy'}
+              fill
+              className="object-cover transition-transform duration-700 ease-out hover:scale-105"
+              priority={index === 0}
+              sizes="100vw"
             />
 
             {/* Content Overlay */}

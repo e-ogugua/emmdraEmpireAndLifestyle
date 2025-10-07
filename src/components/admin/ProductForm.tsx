@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface Product {
   id: number
@@ -30,6 +31,7 @@ export default function ProductForm({ product, onSubmit, onCancel, isEditing }: 
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
     if (product) {
@@ -40,6 +42,7 @@ export default function ProductForm({ product, onSubmit, onCancel, isEditing }: 
         price: product.price.toString(),
         image_url: product.image_url
       })
+      setImageError(false)
     } else {
       setFormData({
         name: '',
@@ -48,6 +51,7 @@ export default function ProductForm({ product, onSubmit, onCancel, isEditing }: 
         price: '',
         image_url: ''
       })
+      setImageError(false)
     }
     setErrors({})
   }, [product])
@@ -221,16 +225,29 @@ export default function ProductForm({ product, onSubmit, onCancel, isEditing }: 
               placeholder="https://example.com/image.jpg"
             />
             {errors.image_url && <p className="text-red-500 text-sm mt-1">{errors.image_url}</p>}
-            {formData.image_url && (
+            {formData.image_url && !imageError && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-2">Preview:</p>
-                <img
+                <Image
                   src={formData.image_url}
                   alt="Preview"
+                  width={128}
+                  height={128}
                   className="w-32 h-32 object-cover rounded-lg border"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/images/placeholder.png'
-                  }}
+                  onError={() => setImageError(true)}
+                  unoptimized
+                />
+              </div>
+            )}
+            {formData.image_url && imageError && (
+              <div className="mt-3">
+                <p className="text-sm text-gray-600 mb-2">Preview:</p>
+                <Image
+                  src="/images/placeholder.png"
+                  alt="Preview"
+                  width={128}
+                  height={128}
+                  className="w-32 h-32 object-cover rounded-lg border"
                 />
               </div>
             )}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { getAnalyticsSummary, getContentAnalytics } from '@/lib/analytics'
 
 interface AnalyticsSummary {
@@ -34,11 +34,7 @@ export default function AnalyticsDashboard() {
   const [dateRange, setDateRange] = useState<{ from: string; to: string } | undefined>()
   const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'blogs' | 'diy'>('overview')
 
-  useEffect(() => {
-    loadAnalytics()
-  }, [dateRange])
-
-  const loadAnalytics = async () => {
+  const loadAnalytics = useCallback(async () => {
     setLoading(true)
     try {
       const [summaryData, productsData, blogsData, diyData] = await Promise.all([
@@ -59,7 +55,11 @@ export default function AnalyticsDashboard() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [dateRange])
+
+  useEffect(() => {
+    loadAnalytics()
+  }, [dateRange, loadAnalytics])
 
   const handleDateRangeChange = (range: '7d' | '30d' | '90d' | 'all') => {
     const now = new Date()

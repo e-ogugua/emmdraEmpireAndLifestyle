@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 import { trackPageView } from '@/lib/analytics'
@@ -236,10 +237,12 @@ export default function AdminBlog() {
                         <div className="flex items-center">
                           <div className="h-12 w-12 flex-shrink-0">
                             {post.featured_image ? (
-                              <img
+                              <Image
                                 className="h-12 w-12 rounded-lg object-cover"
                                 src={post.featured_image}
                                 alt={post.title}
+                                width={48}
+                                height={48}
                               />
                             ) : (
                               <div className="h-12 w-12 rounded-lg bg-gray-200 flex items-center justify-center">

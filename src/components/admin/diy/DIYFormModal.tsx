@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface DIYTutorial {
   id: number
@@ -48,6 +49,7 @@ export default function DIYFormModal({ mode, tutorial, onSubmit, onClose }: DIYF
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
     if (tutorial && mode === 'edit') {
@@ -59,6 +61,7 @@ export default function DIYFormModal({ mode, tutorial, onSubmit, onClose }: DIYF
         steps: tutorial.steps.length > 0 ? tutorial.steps : [''],
         cover_image_url: tutorial.cover_image_url
       })
+      setImageError(false)
     } else {
       setFormData({
         title: '',
@@ -68,6 +71,7 @@ export default function DIYFormModal({ mode, tutorial, onSubmit, onClose }: DIYF
         steps: [''],
         cover_image_url: ''
       })
+      setImageError(false)
     }
     setErrors({})
   }, [tutorial, mode])
@@ -308,17 +312,32 @@ export default function DIYFormModal({ mode, tutorial, onSubmit, onClose }: DIYF
             {errors.cover_image_url && <p className="text-red-500 text-sm mt-1">{errors.cover_image_url}</p>}
 
             {/* Image Preview */}
-            {formData.cover_image_url && (
+            {formData.cover_image_url && !imageError && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-2">Preview:</p>
                 <div className="relative">
-                  <img
+                  <Image
                     src={formData.cover_image_url}
                     alt="Cover Preview"
+                    width={192}
+                    height={128}
                     className="w-48 h-32 object-cover rounded-lg border"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/images/placeholder.png'
-                    }}
+                    onError={() => setImageError(true)}
+                    unoptimized
+                  />
+                </div>
+              </div>
+            )}
+            {formData.cover_image_url && imageError && (
+              <div className="mt-3">
+                <p className="text-sm text-gray-600 mb-2">Preview:</p>
+                <div className="relative">
+                  <Image
+                    src="/images/placeholder.png"
+                    alt="Cover Preview"
+                    width={192}
+                    height={128}
+                    className="w-48 h-32 object-cover rounded-lg border"
                   />
                 </div>
               </div>

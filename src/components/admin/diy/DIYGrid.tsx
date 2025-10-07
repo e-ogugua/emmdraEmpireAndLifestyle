@@ -10,6 +10,8 @@ interface DIYTutorial {
   updated_at: string
 }
 
+import Image from 'next/image'
+
 interface DIYGridProps {
   tutorials: DIYTutorial[]
   loading: boolean
@@ -65,10 +67,12 @@ export default function DIYGrid({ tutorials, loading, onEdit, onDelete, onRefres
               <div key={tutorial.id} className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-200">
                 {/* Tutorial Cover Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={tutorial.cover_image_url}
                     alt={tutorial.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="absolute top-3 left-3 flex gap-2">
                     <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${

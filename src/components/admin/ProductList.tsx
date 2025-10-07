@@ -9,6 +9,8 @@ interface Product {
   updated_at: string
 }
 
+import Image from 'next/image'
+
 interface ProductListProps {
   products: Product[]
   loading: boolean
@@ -62,10 +64,12 @@ export default function ProductList({ products, loading, onEdit, onDelete, onRef
             <div key={product.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
               {/* Product Image */}
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={product.image_url}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
 

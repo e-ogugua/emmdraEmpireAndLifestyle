@@ -170,8 +170,8 @@ async function verifyDatabaseSetup() {
         await supabase.from(table.name).delete().eq('id', insertData[0].id)
         console.log(`🗑️  Sample row cleaned up from ${table.name}`)
       }
-    } catch (err: any) {
-      console.error(`❌ Error with ${table.name}:`, err.message)
+    } catch (err: unknown) {
+      console.error(`❌ Error with ${table.name}:`, err instanceof Error ? err.message : err)
     }
   }
 

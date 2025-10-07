@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 import AdminLayout from '@/components/AdminLayout'
 import { trackPageView } from '@/lib/analytics'
@@ -56,15 +56,7 @@ export default function AdminAnalytics() {
   })
   const [timeRange, setTimeRange] = useState('30') // days
 
-  useEffect(() => {
-    const loadData = async () => {
-      await fetchAnalytics()
-      trackPageView({ page_type: 'about' }) // Using 'about' as closest match for analytics
-    }
-    loadData()
-  }, [timeRange])
-
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = useCallback(async () => {
     // Calculate date range
     const endDate = new Date()
     const startDate = new Date()
@@ -119,7 +111,15 @@ export default function AdminAnalytics() {
       recentViews,
       topPages
     })
-  }
+  }, [timeRange])
+
+  useEffect(() => {
+    const loadData = async () => {
+      await fetchAnalytics()
+      trackPageView({ page_type: 'about' }) // Using 'about' as closest match for analytics
+    }
+    loadData()
+  }, [fetchAnalytics])
 
   const chartData = {
     labels: data.pageViews.map(view => view.page_type.charAt(0).toUpperCase() + view.page_type.slice(1)),
