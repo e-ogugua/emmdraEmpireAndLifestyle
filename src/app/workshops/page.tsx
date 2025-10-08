@@ -401,7 +401,7 @@ export default function WorkshopsPage() {
               🎨 View All Workshops
             </Link>
             <Link
-              href="/contact"
+              href="/workshop"
               className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300"
             >
               📞 Request Custom Workshop

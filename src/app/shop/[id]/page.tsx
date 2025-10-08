@@ -214,14 +214,14 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/contact"
+                    href="/order"
                     className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-center"
                   >
-                    📞 Contact to Buy
+                    🛒 Order This Product
                   </Link>
                   {product.category === 'Fashion' && (
                     <Link
-                      href="/contact"
+                      href="/consultation"
                       className="flex-1 bg-gradient-to-r from-pink-600 to-rose-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-pink-700 hover:to-rose-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-center"
                     >
                       💃 Book Styling Session
@@ -229,7 +229,7 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
                   )}
                   {product.category === 'Beauty' && (
                     <Link
-                      href="/contact"
+                      href="/consultation"
                       className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-center"
                     >
                       ✨ Book Beauty Consultation
@@ -237,7 +237,7 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
                   )}
                   {product.category === 'Workshops' && (
                     <Link
-                      href="/contact"
+                      href="/workshop"
                       className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-center"
                     >
                       🎨 Book Training Session
