@@ -41,6 +41,8 @@ export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
 
     console.log('📧 Sending email via Resend to:', options.to)
     console.log('📧 Subject:', options.subject)
+    console.log('📧 API Key exists:', !!process.env.RESEND_API_KEY)
+    console.log('📧 API Key prefix:', process.env.RESEND_API_KEY.substring(0, 10) + '...')
 
     const result = await resend.emails.send({
       from: 'no-reply@resend.com',
@@ -53,11 +55,13 @@ export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
     return true
   } catch (error) {
     console.error('❌ Email sending failed:', error)
+    console.error('❌ Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      options: options
+    })
     return false
   }
-}
-
-// Create text-only email (fallback)
 export const createTextEmail = (content: string, type: string) => {
   return `New ${type} - Emmdra Empire
 
