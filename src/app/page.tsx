@@ -122,7 +122,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="/images/PremiumLeatherHandBags.png"
+                  src="/images/PremiumLeatherHandbags.png"
                   alt="Premium Leather Handbag"
                   fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
