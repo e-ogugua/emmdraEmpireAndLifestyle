@@ -1,6 +1,20 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+interface Product {
+  id: number
+  name: string
+  short_description: string
+  description: string
+  price: number
+  image_url: string
+  category: string
+  featured: boolean
+  in_stock: boolean
+  created_at?: string
+  updated_at?: string
+}
+
 export async function GET() {
   try {
     console.log('🛒 API: Fetching products...')
@@ -22,7 +36,7 @@ export async function GET() {
           short_description: 'Elegant genuine leather handbag with multiple compartments',
           description: 'Handcrafted from premium Nigerian leather with attention to detail. Features multiple compartments and adjustable strap.',
           price: 45000,
-          image_url: '/images/PremiumLeatherHandBags.png',
+          image_url: '/images/PremiumLeatherHandbags.png', // Fixed filename
           category: 'Accessories',
           featured: true,
           in_stock: true
@@ -70,11 +84,22 @@ export async function GET() {
       })
     }
 
-    console.log('✅ API: Products fetched successfully:', data?.length || 0, 'products')
+    // Fix image URL for Premium Leather Handbag if it has the wrong filename
+    const fixedProducts = (data || []).map((product: Product) => {
+      if (product.name === 'Premium Leather Handbag' && product.image_url === '/images/PremiumLeatherHandBags.png') {
+        return {
+          ...product,
+          image_url: '/images/PremiumLeatherHandbags.png' // Fix the filename
+        }
+      }
+      return product
+    })
+
+    console.log('✅ API: Products fetched successfully:', fixedProducts?.length || 0, 'products')
 
     return NextResponse.json({
-      products: data || [],
-      count: data?.length || 0,
+      products: fixedProducts,
+      count: fixedProducts?.length || 0,
       fallback: false
     })
   } catch (error) {
@@ -88,7 +113,7 @@ export async function GET() {
         short_description: 'Elegant genuine leather handbag with multiple compartments',
         description: 'Handcrafted from premium Nigerian leather with attention to detail. Features multiple compartments and adjustable strap.',
         price: 45000,
-        image_url: '/images/PremiumLeatherHandBags.png',
+        image_url: '/images/PremiumLeatherHandbags.png',
         category: 'Accessories',
         featured: true,
         in_stock: true
