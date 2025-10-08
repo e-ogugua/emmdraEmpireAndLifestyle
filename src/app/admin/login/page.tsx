@@ -32,14 +32,6 @@ export default function AdminLogin() {
       const normalizedEmail = email.toLowerCase().trim()
       const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
 
-      console.log('🔍 Admin Login Debug:', {
-        originalEmail: email,
-        normalizedEmail,
-        allowedEmails,
-        normalizedAllowedEmails,
-        isAuthorized: normalizedAllowedEmails.includes(normalizedEmail)
-      })
-
       if (!normalizedAllowedEmails.includes(normalizedEmail)) {
         setError('Access denied. You are not authorized to access the admin dashboard.')
         await supabase.auth.signOut()

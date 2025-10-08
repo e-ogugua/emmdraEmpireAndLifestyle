@@ -77,38 +77,17 @@ export default function ContactPage() {
         throw new Error('Failed to submit form')
       }
 
-      // Trigger email notification
-      const notificationResponse = await fetch('/api/notify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          type: 'contact',
-          data: {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            service_type: formData.service_type,
-            message: formData.message,
-            submitted_at: new Date().toISOString()
-          }
-        }),
+      // Show success message (skip email notification for now)
+      setSubmitStatus('success')
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service_type: 'Personal Styling',
+        message: ''
       })
 
-      if (notificationResponse.ok) {
-        setSubmitStatus('success')
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service_type: 'Personal Styling',
-          message: ''
-        })
-      } else {
-        console.error('Failed to send notification email')
-        setSubmitStatus('error')
-      }
+      console.log('✅ Contact form submitted successfully')
 
     } catch (error) {
       console.error('Form submission error:', error)
