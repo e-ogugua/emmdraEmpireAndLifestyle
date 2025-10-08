@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 interface OrderFormData {
@@ -18,7 +17,6 @@ interface OrderFormData {
 }
 
 export default function OrderPage() {
-  const router = useRouter()
   const [formData, setFormData] = useState<OrderFormData>({
     name: '',
     email: '',
@@ -123,7 +121,7 @@ export default function OrderPage() {
               Place Your Order
             </h1>
             <p className="text-lg text-gray-600">
-              Fill out the form below and we'll get back to you with pricing and availability
+              Fill out the form below and we&apos;ll get back to you with pricing and availability
             </p>
           </div>
 
@@ -136,7 +134,7 @@ export default function OrderPage() {
                 </svg>
                 <span className="text-green-800 font-medium">Order submitted successfully!</span>
               </div>
-              <p className="text-green-700 text-sm mt-1">We'll contact you within 24 hours with pricing and next steps.</p>
+              <p className="text-green-700 text-sm mt-1">We&apos;ll contact you within 24 hours with pricing and next steps.</p>
             </div>
           )}
 

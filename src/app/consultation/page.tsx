@@ -140,7 +140,7 @@ export default function ConsultationPage() {
                 </svg>
                 <span className="text-green-800 font-medium">Consultation request submitted!</span>
               </div>
-              <p className="text-green-700 text-sm mt-1">We'll contact you within 24 hours to schedule your consultation.</p>
+              <p className="text-green-700 text-sm mt-1">We&apos;ll contact you within 24 hours to schedule your consultation.</p>
             </div>
           )}
 

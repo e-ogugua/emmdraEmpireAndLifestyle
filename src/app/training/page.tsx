@@ -162,7 +162,7 @@ export default function TrainingPage() {
                 </svg>
                 <span className="text-green-800 font-medium">Training enrollment submitted!</span>
               </div>
-              <p className="text-green-700 text-sm mt-1">We'll contact you within 24 hours to discuss your training options.</p>
+              <p className="text-green-700 text-sm mt-1">We&apos;ll contact you within 24 hours to discuss your training options.</p>
             </div>
           )}
 

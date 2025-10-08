@@ -150,7 +150,7 @@ export default function WorkshopPage() {
                 </svg>
                 <span className="text-green-800 font-medium">Workshop registration submitted!</span>
               </div>
-              <p className="text-green-700 text-sm mt-1">We'll contact you within 24 hours to confirm your registration.</p>
+              <p className="text-green-700 text-sm mt-1">We&apos;ll contact you within 24 hours to confirm your registration.</p>
             </div>
           )}
 
