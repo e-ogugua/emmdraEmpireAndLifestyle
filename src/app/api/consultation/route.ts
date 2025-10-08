@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
     const textBody = createTextEmail(consultationContent, 'Consultation Request')
 
     // Send email to admin (you can configure multiple admin emails)
-    const adminEmails = process.env.ADMIN_EMAILS?.split(',') || ['emmdraempire@gmail.com']
+    const adminEmails = process.env.ADMIN_EMAILS?.split(',') || [process.env.NOTIFY_EMAIL || process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com']
     for (const adminEmail of adminEmails) {
       if (adminEmail.trim()) {
         const emailOptions = {

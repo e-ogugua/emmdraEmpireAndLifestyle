@@ -28,11 +28,11 @@ export async function sendEmail(params: SendEmailParams): Promise<boolean> {
     const smtpPort = process.env.EMAIL_PORT || process.env.SMTP_PORT
     const smtpUser = process.env.EMAIL_USER || process.env.SMTP_USER
     const smtpPass = process.env.EMAIL_PASSWORD || process.env.SMTP_PASS
-    const notifyEmail = process.env.NOTIFY_EMAIL || process.env.EMAIL_FROM?.match(/<([^>]+)>/)?.[1] || 'emmdraempire@gmail.com'
+    const notifyEmail = process.env.NOTIFY_EMAIL || process.env.ORDER_NOTIFICATIONS_EMAIL || process.env.EMAIL_FROM?.match(/<([^>]+)>/)?.[1] || 'emmdraempire@gmail.com'
 
     if (!smtpHost || !smtpPort || !smtpUser || !smtpPass || !notifyEmail) {
       console.error('Email notification: Missing required environment variables')
-      console.error('Required: EMAIL_SERVER or SMTP_HOST, EMAIL_PORT or SMTP_PORT, EMAIL_USER or SMTP_USER, EMAIL_PASSWORD or SMTP_PASS, NOTIFY_EMAIL')
+      console.error('Required: EMAIL_SERVER or SMTP_HOST, EMAIL_PORT or SMTP_PORT, EMAIL_USER or SMTP_USER, EMAIL_PASSWORD or SMTP_PASS, NOTIFY_EMAIL or ORDER_NOTIFICATIONS_EMAIL')
       return false
     }
 
