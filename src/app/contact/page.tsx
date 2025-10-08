@@ -83,7 +83,7 @@ export default function ContactPage() {
       }
 
       // Prepare form data for the appropriate API
-      let submitData: Record<string, any> = formData
+      let submitData: Record<string, string>
 
       if (apiEndpoint === '/api/consultation') {
         // Map service_type to consultation_type for consultation API
@@ -92,6 +92,15 @@ export default function ContactPage() {
           email: formData.email,
           phone: formData.phone,
           consultation_type: formData.service_type,
+          message: formData.message
+        }
+      } else {
+        // Use original form data for other endpoints
+        submitData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service_type: formData.service_type,
           message: formData.message
         }
       }
