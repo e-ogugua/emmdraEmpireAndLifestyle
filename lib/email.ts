@@ -43,7 +43,7 @@ export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
     console.log('📧 Subject:', options.subject)
 
     const result = await resend.emails.send({
-      from: 'Emmdra Empire <no-reply@emmdraempire.com>',
+      from: 'no-reply@resend.com',
       to: options.to,
       subject: options.subject,
       html: options.html,
