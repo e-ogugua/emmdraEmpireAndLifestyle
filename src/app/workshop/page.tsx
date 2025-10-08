@@ -128,15 +128,15 @@ export default function WorkshopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">
               Register for Workshop
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-base sm:text-lg text-gray-600 px-2">
               Join our hands-on workshops and learn from industry experts
             </p>
           </div>
@@ -167,10 +167,10 @@ export default function WorkshopPage() {
           )}
 
           {/* Workshop Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Personal Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
@@ -180,7 +180,7 @@ export default function WorkshopPage() {
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Enter your full name"
@@ -197,7 +197,7 @@ export default function WorkshopPage() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="your@email.com"
@@ -215,7 +215,7 @@ export default function WorkshopPage() {
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                   placeholder="+234 801 234 5678"
                 />
               </div>
@@ -233,7 +233,7 @@ export default function WorkshopPage() {
                       id="workshop_name"
                       value={formData.workshop_name}
                       onChange={(e) => handleInputChange('workshop_name', e.target.value)}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                         errors.workshop_name ? 'border-red-500' : 'border-gray-300'
                       }`}
                     >
@@ -254,7 +254,7 @@ export default function WorkshopPage() {
                       id="workshop_date"
                       value={formData.workshop_date}
                       onChange={(e) => handleInputChange('workshop_date', e.target.value)}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                         errors.workshop_date ? 'border-red-500' : 'border-gray-300'
                       }`}
                     />
@@ -271,7 +271,7 @@ export default function WorkshopPage() {
                       id="experience_level"
                       value={formData.experience_level}
                       onChange={(e) => handleInputChange('experience_level', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     >
                       {experienceLevels.map(level => (
                         <option key={level} value={level}>{level}</option>
@@ -287,7 +287,7 @@ export default function WorkshopPage() {
                       id="group_size"
                       value={formData.group_size}
                       onChange={(e) => handleInputChange('group_size', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     >
                       <option value="1">Just me</option>
                       <option value="2">2 people</option>
@@ -307,7 +307,7 @@ export default function WorkshopPage() {
                     id="budget"
                     value={formData.budget}
                     onChange={(e) => handleInputChange('budget', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     placeholder="e.g., 25,000"
                   />
                 </div>
@@ -321,7 +321,7 @@ export default function WorkshopPage() {
                     rows={3}
                     value={formData.special_requirements}
                     onChange={(e) => handleInputChange('special_requirements', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none text-gray-900 placeholder:text-gray-500"
                     placeholder="Any dietary restrictions, accessibility needs, or special requests..."
                   />
                 </div>
@@ -337,7 +337,7 @@ export default function WorkshopPage() {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none text-gray-900 placeholder:text-gray-500"
                   placeholder="Why are you interested in this workshop? Any specific learning goals?"
                 />
               </div>

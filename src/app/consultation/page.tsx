@@ -118,15 +118,15 @@ export default function ConsultationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">
               Book a Consultation
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-base sm:text-lg text-gray-600 px-2">
               Get personalized styling advice from our expert consultants
             </p>
           </div>
@@ -157,10 +157,10 @@ export default function ConsultationPage() {
           )}
 
           {/* Consultation Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Personal Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
@@ -170,7 +170,7 @@ export default function ConsultationPage() {
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Enter your full name"
@@ -187,7 +187,7 @@ export default function ConsultationPage() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="your@email.com"
@@ -205,16 +205,16 @@ export default function ConsultationPage() {
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                   placeholder="+234 801 234 5678"
                 />
               </div>
 
               {/* Consultation Details */}
-              <div className="border-t pt-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Consultation Details</h3>
+              <div className="border-t pt-4 sm:pt-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Consultation Details</h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="consultation_type" className="block text-sm font-medium text-gray-700 mb-2">
                       Consultation Type *
@@ -223,7 +223,7 @@ export default function ConsultationPage() {
                       id="consultation_type"
                       value={formData.consultation_type}
                       onChange={(e) => handleInputChange('consultation_type', e.target.value)}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                         errors.consultation_type ? 'border-red-500' : 'border-gray-300'
                       }`}
                     >
@@ -243,13 +243,13 @@ export default function ConsultationPage() {
                       id="budget"
                       value={formData.budget}
                       onChange={(e) => handleInputChange('budget', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                       placeholder="e.g., 50,000 - 100,000"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-4">
                   <div>
                     <label htmlFor="preferred_date" className="block text-sm font-medium text-gray-700 mb-2">
                       Preferred Date
@@ -259,7 +259,7 @@ export default function ConsultationPage() {
                       id="preferred_date"
                       value={formData.preferred_date}
                       onChange={(e) => handleInputChange('preferred_date', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     />
                   </div>
 
@@ -271,7 +271,7 @@ export default function ConsultationPage() {
                       id="preferred_time"
                       value={formData.preferred_time}
                       onChange={(e) => handleInputChange('preferred_time', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     >
                       <option value="">Select time</option>
                       <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
@@ -283,20 +283,20 @@ export default function ConsultationPage() {
               </div>
 
               {/* Additional Information */}
-              <div className="border-t pt-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Additional Information</h3>
+              <div className="border-t pt-4 sm:pt-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Additional Information</h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="current_style" className="block text-sm font-medium text-gray-700 mb-2">
                       Current Style Description
                     </label>
                     <textarea
                       id="current_style"
-                      rows={3}
+                      rows={2}
                       value={formData.current_style}
                       onChange={(e) => handleInputChange('current_style', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none text-gray-900 placeholder:text-gray-500"
                       placeholder="Describe your current style preferences..."
                     />
                   </div>
@@ -307,10 +307,10 @@ export default function ConsultationPage() {
                     </label>
                     <textarea
                       id="goals"
-                      rows={3}
+                      rows={2}
                       value={formData.goals}
                       onChange={(e) => handleInputChange('goals', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none text-gray-900 placeholder:text-gray-500"
                       placeholder="What do you want to achieve with this consultation?"
                     />
                   </div>
@@ -324,10 +324,10 @@ export default function ConsultationPage() {
                 </label>
                 <textarea
                   id="message"
-                  rows={4}
+                  rows={3}
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none text-gray-900 placeholder:text-gray-500"
                   placeholder="Any specific requirements or questions..."
                 />
               </div>
@@ -336,7 +336,7 @@ export default function ConsultationPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-purple-600 text-white py-3 sm:py-4 px-6 rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 {isSubmitting ? (
                   <>
@@ -356,8 +356,8 @@ export default function ConsultationPage() {
           </div>
 
           {/* Back Button */}
-          <div className="text-center mt-6">
-            <Link href="/shop" className="text-purple-600 hover:text-purple-800 transition-colors">
+          <div className="text-center mt-4 sm:mt-6">
+            <Link href="/shop" className="text-purple-600 hover:text-purple-800 transition-colors text-sm sm:text-base">
               ← Back to Shop
             </Link>
           </div>

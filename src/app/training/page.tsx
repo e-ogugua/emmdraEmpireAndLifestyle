@@ -192,7 +192,7 @@ export default function TrainingPage() {
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Enter your full name"
@@ -209,7 +209,7 @@ export default function TrainingPage() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="your@email.com"
@@ -227,7 +227,7 @@ export default function TrainingPage() {
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                   placeholder="+234 801 234 5678"
                 />
               </div>
@@ -245,7 +245,7 @@ export default function TrainingPage() {
                       id="training_program"
                       value={formData.training_program}
                       onChange={(e) => handleInputChange('training_program', e.target.value)}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                         errors.training_program ? 'border-red-500' : 'border-gray-300'
                       }`}
                     >
@@ -266,7 +266,7 @@ export default function TrainingPage() {
                       id="training_date"
                       value={formData.training_date}
                       onChange={(e) => handleInputChange('training_date', e.target.value)}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-gray-900 placeholder:text-gray-500 ${
                         errors.training_date ? 'border-red-500' : 'border-gray-300'
                       }`}
                     />
@@ -283,7 +283,7 @@ export default function TrainingPage() {
                       id="experience_level"
                       value={formData.experience_level}
                       onChange={(e) => handleInputChange('experience_level', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     >
                       {experienceLevels.map(level => (
                         <option key={level} value={level}>{level}</option>
@@ -299,7 +299,7 @@ export default function TrainingPage() {
                       id="duration_preference"
                       value={formData.duration_preference}
                       onChange={(e) => handleInputChange('duration_preference', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     >
                       {durationOptions.map(option => (
                         <option key={option} value={option}>{option}</option>
@@ -318,7 +318,7 @@ export default function TrainingPage() {
                       id="budget"
                       value={formData.budget}
                       onChange={(e) => handleInputChange('budget', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                       placeholder="e.g., 100,000 - 200,000"
                     />
                   </div>
@@ -331,7 +331,7 @@ export default function TrainingPage() {
                       id="location_preference"
                       value={formData.location_preference}
                       onChange={(e) => handleInputChange('location_preference', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
                     >
                       <option value="In-person">In-person</option>
                       <option value="Online">Online</option>
@@ -354,7 +354,7 @@ export default function TrainingPage() {
                     rows={3}
                     value={formData.goals}
                     onChange={(e) => handleInputChange('goals', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900 placeholder:text-gray-500"
                     placeholder="Describe your career goals, what you want to learn, and how this training fits into your plans..."
                   />
                 </div>
@@ -368,7 +368,7 @@ export default function TrainingPage() {
                     rows={3}
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900 placeholder:text-gray-500"
                     placeholder="Any questions about the training, scheduling preferences, or special requirements..."
                   />
                 </div>
