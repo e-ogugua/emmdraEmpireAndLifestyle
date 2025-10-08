@@ -128,13 +128,13 @@ export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
       to: options.to,
       subject: options.subject,
       html: options.html,
-      text: options.text || options.html.replace(/<[^>]*>/g, ''), // Strip HTML for text version
+      text: options.text || options.html.replace(/<[^>]*>/g, ''),
     }
 
     console.log('📧 Sending email to:', options.to)
     console.log('📧 Subject:', options.subject)
 
-    const result = await transporter.sendMail(mailOptions as nodemailer.SendMailOptions)
+    const result = await transporter.sendMail(mailOptions as any)
     console.log('✅ Email sent successfully:', result.messageId)
 
     return true
