@@ -12,7 +12,7 @@ interface BlogPost {
   category: string
   excerpt: string
   content: string
-  cover_image_url: string
+  featured_image: string
   published_at: string
   created_at: string
   updated_at: string
@@ -184,7 +184,15 @@ export default function AdminBlogsPage() {
             <div className="flex items-center gap-4">
               <span className="text-sm text-gray-600">Welcome, {user?.email}</span>
               <button
-                onClick={() => supabase.auth.signOut()}
+                onClick={async () => {
+                  try {
+                    await supabase.auth.signOut()
+                    window.location.href = '/admin/login'
+                  } catch (error) {
+                    console.error('Sign out error:', error)
+                    alert('Error signing out. Please try again.')
+                  }
+                }}
                 className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm"
               >
                 Sign Out

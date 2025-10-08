@@ -9,7 +9,7 @@ interface BlogPost {
   category: string
   excerpt: string
   content: string
-  cover_image_url: string
+  featured_image: string
   published_at: string
   created_at: string
   updated_at: string
@@ -35,7 +35,7 @@ export default function BlogFormModal({ mode, blog, onSubmit, onClose }: BlogFor
     category: 'Fashion',
     excerpt: '',
     content: '',
-    cover_image_url: '',
+    featured_image: '',
     published_at: new Date().toISOString().split('T')[0] // Today's date
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -49,7 +49,7 @@ export default function BlogFormModal({ mode, blog, onSubmit, onClose }: BlogFor
         category: blog.category,
         excerpt: blog.excerpt,
         content: blog.content,
-        cover_image_url: blog.cover_image_url,
+        featured_image: blog.featured_image,
         published_at: blog.published_at.split('T')[0]
       })
       setImageError(false)
@@ -59,7 +59,7 @@ export default function BlogFormModal({ mode, blog, onSubmit, onClose }: BlogFor
         category: 'Fashion',
         excerpt: '',
         content: '',
-        cover_image_url: '',
+        featured_image: '',
         published_at: new Date().toISOString().split('T')[0]
       })
       setImageError(false)
@@ -82,10 +82,10 @@ export default function BlogFormModal({ mode, blog, onSubmit, onClose }: BlogFor
       newErrors.content = 'Content is required'
     }
 
-    if (!formData.cover_image_url.trim()) {
-      newErrors.cover_image_url = 'Cover image URL is required'
-    } else if (!formData.cover_image_url.match(/^https?:\/\/.+/)) {
-      newErrors.cover_image_url = 'Please enter a valid URL'
+    if (!formData.featured_image.trim()) {
+      newErrors.featured_image = 'Cover image URL is required'
+    } else if (!formData.featured_image.match(/^https?:\/\/.+/)) {
+      newErrors.featured_image = 'Please enter a valid URL'
     }
 
     setErrors(newErrors)
@@ -107,7 +107,7 @@ export default function BlogFormModal({ mode, blog, onSubmit, onClose }: BlogFor
         category: formData.category,
         excerpt: formData.excerpt.trim(),
         content: formData.content.trim(),
-        cover_image_url: formData.cover_image_url.trim(),
+        featured_image: formData.featured_image.trim(),
         published_at: new Date(formData.published_at).toISOString()
       }
 
@@ -242,28 +242,28 @@ export default function BlogFormModal({ mode, blog, onSubmit, onClose }: BlogFor
 
           {/* Cover Image URL */}
           <div>
-            <label htmlFor="cover_image_url" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="featured_image" className="block text-sm font-medium text-gray-700 mb-2">
               Cover Image URL *
             </label>
             <input
               type="url"
-              id="cover_image_url"
-              value={formData.cover_image_url}
-              onChange={(e) => handleInputChange('cover_image_url', e.target.value)}
+              id="featured_image"
+              value={formData.featured_image}
+              onChange={(e) => handleInputChange('featured_image', e.target.value)}
               className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                errors.cover_image_url ? 'border-red-500' : 'border-gray-300'
+                errors.featured_image ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="https://example.com/cover-image.jpg"
             />
-            {errors.cover_image_url && <p className="text-red-500 text-sm mt-1">{errors.cover_image_url}</p>}
+            {errors.featured_image && <p className="text-red-500 text-sm mt-1">{errors.featured_image}</p>}
 
             {/* Image Preview */}
-            {formData.cover_image_url && !imageError && (
+            {formData.featured_image && !imageError && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-2">Preview:</p>
                 <div className="relative">
                   <Image
-                    src={formData.cover_image_url}
+                    src={formData.featured_image}
                     alt="Cover Preview"
                     width={192}
                     height={128}
@@ -274,7 +274,7 @@ export default function BlogFormModal({ mode, blog, onSubmit, onClose }: BlogFor
                 </div>
               </div>
             )}
-            {formData.cover_image_url && imageError && (
+            {formData.featured_image && imageError && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-2">Preview:</p>
                 <div className="relative">

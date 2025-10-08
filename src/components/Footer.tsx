@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import NewsletterSignup from './NewsletterSignup'
 
 export default function Footer() {
   return (
@@ -107,16 +108,11 @@ export default function Footer() {
             <p className="text-sm">
               Subscribe to our newsletter for the latest updates and exclusive offers.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition-colors duration-200">
-                Subscribe
-              </button>
-            </div>
+            <NewsletterSignup
+              title=""
+              description=""
+              className="bg-gray-800 border border-gray-700 p-6 rounded-lg"
+            />
           </div>
         </div>
       </div>

@@ -55,13 +55,17 @@ export default function NewsletterSignup({
   }
 
   return (
-    <div className={`bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 sm:p-12 text-center text-white ${className}`}>
-      <h2 className="text-2xl md:text-3xl font-bold mb-4">
-        {title}
-      </h2>
-      <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-        {description}
-      </p>
+    <div className={`rounded-3xl p-8 sm:p-12 text-center ${className}`}>
+      {title && (
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+          {title}
+        </h2>
+      )}
+      {description && (
+        <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto text-white/90">
+          {description}
+        </p>
+      )}
 
       {status === 'success' ? (
         <div className="bg-green-100 text-green-800 p-4 rounded-full mb-4 max-w-md mx-auto">
@@ -79,13 +83,13 @@ export default function NewsletterSignup({
             placeholder="Enter your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+            className="flex-1 px-4 py-3 rounded-full text-gray-900 bg-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-white border-2 border-white/30"
             disabled={status === 'loading'}
           />
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed border-2 border-white/30"
           >
             {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
           </button>

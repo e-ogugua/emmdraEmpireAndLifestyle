@@ -228,14 +228,13 @@ export default function TrainingPage() {
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
-                  placeholder="+234 801 234 5678"
+                  placeholder="Enter your phone number"
                 />
               </div>
 
               {/* Training Details */}
               <div className="border-t pt-6">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">Training Details</h3>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="training_program" className="block text-sm font-medium text-gray-700 mb-2">

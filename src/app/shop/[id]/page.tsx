@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect, use } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
@@ -20,12 +20,14 @@ interface Product {
 }
 
 interface ProductDetailsPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export default function ProductDetailsPage({ params }: ProductDetailsPageProps) {
+  // Unwrap the params Promise for Next.js 15 compatibility
+  const { id } = use(params)
   const [product, setProduct] = useState<Product | null>(null)
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
@@ -34,16 +36,18 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        setLoading(true)
-        setError(null)
+        // Use the unwrapped id parameter
+        if (!id) {
+          setError('Invalid product ID')
+          return
+        }
 
-        const productId = parseInt(params.id)
-
-        // Fetch the main product
+        // Fetch product by ID from database
         const { data: productData, error: productError } = await supabase
           .from('products')
           .select('*')
-          .eq('id', productId)
+          .eq('id', parseInt(id))
+          .eq('published', true)
           .single()
 
         if (productError) {
@@ -66,7 +70,7 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
         const { data: relatedData, error: relatedError } = await supabase
           .from('products')
           .select('*')
-          .neq('id', productId)
+          .neq('id', parseInt(id))
           .limit(3)
 
         if (relatedError) {
@@ -83,10 +87,10 @@ export default function ProductDetailsPage({ params }: ProductDetailsPageProps) 
       }
     }
 
-    if (params.id) {
+    if (id) {
       fetchProductData()
     }
-  }, [params.id])
+  }, [id])
 
   if (loading) {
     return (

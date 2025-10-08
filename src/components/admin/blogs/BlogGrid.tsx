@@ -4,7 +4,7 @@ interface BlogPost {
   category: string
   excerpt: string
   content: string
-  cover_image_url: string
+  featured_image: string
   published_at: string
   created_at: string
   updated_at: string
@@ -68,7 +68,7 @@ export default function BlogGrid({ blogs, loading, onEdit, onDelete, onRefresh }
                 {/* Blog Cover Image */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={blog.cover_image_url}
+                    src={blog.featured_image}
                     alt={blog.title}
                     fill
                     className="object-cover"

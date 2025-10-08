@@ -163,10 +163,10 @@ export default function DIYPage() {
             priority
             sizes="100vw"
           />
-          {/* Elegant overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-transparent"></div>
-          {/* Brand color accent overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/30 via-teal-900/20 to-blue-900/30 mix-blend-multiply"></div>
+          {/* Elegant overlay for text readability - Much more subtle */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/10 to-transparent"></div>
+          {/* Brand color accent overlay - Very faded */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-teal-900/05 to-blue-900/10 mix-blend-multiply"></div>
         </div>
 
         <div className="container mx-auto relative z-10">

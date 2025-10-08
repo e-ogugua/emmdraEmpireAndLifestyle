@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-interface EmailOptions {
+export interface EmailOptions {
   to: string
   subject: string
   html: string
@@ -134,7 +134,7 @@ export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
     console.log('📧 Sending email to:', options.to)
     console.log('📧 Subject:', options.subject)
 
-    const result = await transporter.sendMail(mailOptions as nodemailer.SendMailOptions & { to: string })
+    const result = await transporter.sendMail(mailOptions as nodemailer.SendMailOptions)
     console.log('✅ Email sent successfully:', result.messageId)
 
     return true

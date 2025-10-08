@@ -8,6 +8,10 @@ interface ContactFormData {
   phone: string
   service_type: string
   message: string
+  // Optional fields for different API endpoints
+  consultation_type?: string
+  training_type?: string
+  workshop_type?: string
 }
 
 const serviceTypes = [
@@ -78,13 +82,27 @@ export default function ContactPage() {
         apiEndpoint = '/api/training'
       }
 
+      // Prepare form data for the appropriate API
+      let submitData: Record<string, any> = formData
+
+      if (apiEndpoint === '/api/consultation') {
+        // Map service_type to consultation_type for consultation API
+        submitData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          consultation_type: formData.service_type,
+          message: formData.message
+        }
+      }
+
       // Submit to the appropriate endpoint
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submitData),
       })
 
       if (!response.ok) {
@@ -245,7 +263,7 @@ export default function ContactPage() {
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-gray-900 placeholder-gray-600 ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Enter your full name"
@@ -263,7 +281,7 @@ export default function ContactPage() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-gray-900 placeholder-gray-600 ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="your@email.com"
@@ -281,8 +299,8 @@ export default function ContactPage() {
                     id="phone"
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="+234 801 234 5678"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-600"
+                    placeholder="Enter your phone number"
                   />
                 </div>
 
@@ -295,7 +313,7 @@ export default function ContactPage() {
                     id="service_type"
                     value={formData.service_type}
                     onChange={(e) => handleInputChange('service_type', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
                   >
                     {serviceTypes.map(type => (
                       <option key={type} value={type}>{type}</option>
@@ -313,7 +331,7 @@ export default function ContactPage() {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none ${
+                    className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none bg-white text-gray-900 placeholder-gray-600 ${
                       errors.message ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Tell us about your styling needs, preferred consultation type, or any questions you have..."

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
@@ -23,12 +23,14 @@ interface BlogPost {
 }
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
+  // Unwrap the params Promise for Next.js 15 compatibility
+  const { slug } = use(params)
   const [post, setPost] = useState<BlogPost | null>(null)
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
@@ -40,11 +42,17 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         setLoading(true)
         setError(null)
 
+        // Use the unwrapped slug parameter
+        if (!slug) {
+          setError('Invalid blog post URL')
+          return
+        }
+
         // Fetch blog post by slug from database
         const { data: postData, error: postError } = await supabase
           .from('blogs')
           .select('*')
-          .eq('slug', params.slug)
+          .eq('slug', slug)
           .eq('published', true)
           .single()
 
@@ -73,7 +81,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         }
 
         // Find the post with matching slug
-        const matchingPost = allPosts?.find(p => p.slug === params.slug)
+        const matchingPost = allPosts?.find(p => p.slug === slug)
 
         if (!matchingPost) {
           setError('Blog post not found.')
@@ -112,10 +120,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       }
     }
 
-    if (params.slug) {
+    if (slug) {
       fetchPostData()
     }
-  }, [params.slug])
+  }, [slug]) // Include slug in dependency array
 
   if (loading) {
     return (

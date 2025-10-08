@@ -94,7 +94,7 @@ CREATE POLICY "Allow admin read access on orders" ON orders
             SELECT 1 FROM auth.users
             WHERE auth.users.email IN (
                 SELECT value FROM jsonb_array_elements_text(
-                    COALESCE(current_setting('app.admin_emails', true), '[]')
+                    COALESCE(current_setting('app.admin_emails', true), '[]')::jsonb
                 )
             )
         )
@@ -106,7 +106,7 @@ CREATE POLICY "Allow admin read access on consultations" ON consultations
             SELECT 1 FROM auth.users
             WHERE auth.users.email IN (
                 SELECT value FROM jsonb_array_elements_text(
-                    COALESCE(current_setting('app.admin_emails', true), '[]')
+                    COALESCE(current_setting('app.admin_emails', true), '[]')::jsonb
                 )
             )
         )
@@ -118,7 +118,7 @@ CREATE POLICY "Allow admin read access on training_requests" ON training_request
             SELECT 1 FROM auth.users
             WHERE auth.users.email IN (
                 SELECT value FROM jsonb_array_elements_text(
-                    COALESCE(current_setting('app.admin_emails', true), '[]')
+                    COALESCE(current_setting('app.admin_emails', true), '[]')::jsonb
                 )
             )
         )
@@ -130,7 +130,7 @@ CREATE POLICY "Allow admin read access on contact_messages" ON contact_messages
             SELECT 1 FROM auth.users
             WHERE auth.users.email IN (
                 SELECT value FROM jsonb_array_elements_text(
-                    COALESCE(current_setting('app.admin_emails', true), '[]')
+                    COALESCE(current_setting('app.admin_emails', true), '[]')::jsonb
                 )
             )
         )
@@ -142,7 +142,7 @@ CREATE POLICY "Allow admin read access on newsletter_subscribers" ON newsletter_
             SELECT 1 FROM auth.users
             WHERE auth.users.email IN (
                 SELECT value FROM jsonb_array_elements_text(
-                    COALESCE(current_setting('app.admin_emails', true), '[]')
+                    COALESCE(current_setting('app.admin_emails', true), '[]')::jsonb
                 )
             )
         )

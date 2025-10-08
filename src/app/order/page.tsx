@@ -181,7 +181,7 @@ export default function OrderPage() {
                       💡 Try refreshing the page and submitting again
                     </p>
                     <p className="text-sm text-red-600 mt-1">
-                      📞 Call us: +234 801 234 5678 for immediate assistance
+                      📞 Call us: +234 812 239 4397 for immediate assistance
                     </p>
                     <p className="text-sm text-red-600 mt-1">
                       📧 Email: emmdraempire@gmail.com
