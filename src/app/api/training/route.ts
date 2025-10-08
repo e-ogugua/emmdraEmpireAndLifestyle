@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
+import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, service_type, message, training_program, training_date, experience_level, goals } = body
+    const { name, email, phone, training_type, experience_level, availability, goals, message } = body
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !training_type) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name, email, and training type are required' },
         { status: 400 }
       )
     }
@@ -23,92 +23,36 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create training-specific email content
-    const subject = `New Training Enrollment from ${name} - Emmdra Empire`
-    const trainingContent = `
-      <div class="highlight">
-        <strong>New Training Enrollment!</strong>
-      </div>
+    // Store training request in database
+    const { data: trainingData, error: trainingError } = await supabase
+      .from('training_requests')
+      .insert({
+        name,
+        email,
+        phone,
+        training_type,
+        experience_level,
+        availability,
+        goals,
+        message
+      })
+      .select()
+      .single()
 
-      <div class="details">
-        <div class="label">Customer Name:</div>
-        <div class="value">${name}</div>
-
-        <div class="label">Email:</div>
-        <div class="value">
-          <a href="mailto:${email}">${email}</a>
-        </div>
-
-        ${phone ? `
-          <div class="label">Phone:</div>
-          <div class="value">
-            <a href="tel:${phone}">${phone}</a>
-          </div>
-        ` : ''}
-
-        ${training_program ? `
-          <div class="label">Training Program:</div>
-          <div class="value">${training_program}</div>
-        ` : ''}
-
-        ${training_date ? `
-          <div class="label">Preferred Start Date:</div>
-          <div class="value">${training_date}</div>
-        ` : ''}
-
-        ${experience_level ? `
-          <div class="label">Current Experience:</div>
-          <div class="value">${experience_level}</div>
-        ` : ''}
-
-        ${goals ? `
-          <div class="label">Training Goals:</div>
-          <div class="value">${goals}</div>
-        ` : ''}
-
-        <div class="label">Message:</div>
-        <div class="value">${message}</div>
-      </div>
-
-      <p>
-        <a href="mailto:${email}?subject=Regarding your training enrollment" class="button">
-          Reply to Customer
-        </a>
-      </p>
-    `
-
-    // Create HTML and text versions
-    const htmlBody = createEmailTemplate(trainingContent, 'Training Enrollment')
-    const textBody = createTextEmail(trainingContent, 'Training Enrollment')
-
-    // Send email
-    const emailSent = await sendEmail({
-      subject,
-      bodyHtml: htmlBody,
-      bodyText: textBody
-    })
-
-    if (!emailSent) {
+    if (trainingError) {
+      console.error('Database error:', trainingError)
       return NextResponse.json(
-        { error: 'Failed to send training notification email' },
+        { error: 'Failed to save training request to database' },
         { status: 500 }
       )
     }
 
+    console.log('🎓 Training request stored in database:', trainingData)
+
     return NextResponse.json({
       success: true,
       message: 'Training enrollment submitted successfully - we will contact you soon!',
-      data: {
-        name,
-        email,
-        phone,
-        service_type,
-        training_program,
-        training_date,
-        experience_level,
-        goals,
-        message
-      }
+      data: trainingData
     })
 
   } catch (error) {

@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, service_type, message } = body
+    const { name, email, phone, subject, message } = body
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !subject || !message) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name, email, subject, and message are required' },
         { status: 400 }
       )
     }
@@ -22,30 +23,33 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // For now, we'll store in a simple format or use localStorage/sessionStorage
-    // In a real application, you would create a contact_submissions table
-    console.log('📧 Contact form submission:', {
-      name,
-      email,
-      phone,
-      service_type,
-      message,
-      timestamp: new Date().toISOString()
-    })
+    // Store contact message in database
+    const { data: contactData, error: contactError } = await supabase
+      .from('contact_messages')
+      .insert({
+        name,
+        email,
+        phone,
+        subject,
+        message
+      })
+      .select()
+      .single()
 
-    // You can implement email sending here using a service like Resend, SendGrid, etc.
-    // For now, we'll just log the submission and return success
+    if (contactError) {
+      console.error('Database error:', contactError)
+      return NextResponse.json(
+        { error: 'Failed to save contact message to database' },
+        { status: 500 }
+      )
+    }
+
+    console.log('📧 Contact message stored in database:', contactData)
 
     return NextResponse.json({
       success: true,
       message: 'Contact form submitted successfully - we will get back to you soon!',
-      data: {
-        name,
-        email,
-        phone,
-        service_type,
-        message
-      }
+      data: contactData
     })
 
   } catch (error) {

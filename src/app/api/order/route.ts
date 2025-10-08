@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, service_type, message, product_details, quantity, budget } = body
+    const { name, email, phone, product_name, product_id, quantity, budget, size, color, message } = body
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !product_name || !quantity) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name, email, product name, and quantity are required' },
         { status: 400 }
       )
     }
@@ -22,37 +23,38 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Email content prepared for future use when SMTP is configured
-    // const subject = `New Product Order from ${name} - Emmdra Empire`
-    // const orderContent = `...` (content prepared above)
+    // Store order in database
+    const { data: orderData, error: orderError } = await supabase
+      .from('orders')
+      .insert({
+        name,
+        email,
+        phone,
+        product_name,
+        product_id,
+        quantity,
+        budget,
+        size,
+        color,
+        message
+      })
+      .select()
+      .single()
 
-    // For development/testing, we'll log the order and return success
-    // In production, the email sending will work with proper SMTP config
-    console.log('📦 New order received:', {
-      name,
-      email,
-      phone,
-      service_type,
-      product_details,
-      quantity,
-      budget,
-      message,
-      timestamp: new Date().toISOString()
-    })
+    if (orderError) {
+      console.error('Database error:', orderError)
+      return NextResponse.json(
+        { error: 'Failed to save order to database' },
+        { status: 500 }
+      )
+    }
+
+    console.log('📦 Order stored in database:', orderData)
 
     return NextResponse.json({
       success: true,
       message: 'Order submitted successfully - we will contact you soon!',
-      data: {
-        name,
-        email,
-        phone,
-        service_type,
-        product_details,
-        quantity,
-        budget,
-        message
-      }
+      data: orderData
     })
 
   } catch (error) {

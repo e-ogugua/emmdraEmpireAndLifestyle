@@ -29,6 +29,10 @@ interface DashboardStats {
   diyTutorials: number
   workshops: number
   bookings: number
+  orders: number
+  consultations: number
+  trainingRequests: number
+  contactMessages: number
   recentActivity: Array<{
     id: number
     type: string
@@ -45,6 +49,10 @@ export default function AdminDashboard() {
     diyTutorials: 0,
     workshops: 0,
     bookings: 0,
+    orders: 0,
+    consultations: 0,
+    trainingRequests: 0,
+    contactMessages: 0,
     recentActivity: []
   })
   const [loading, setLoading] = useState(true)
@@ -85,13 +93,17 @@ export default function AdminDashboard() {
       setLoading(true)
       setError(null)
 
-      // Fetch counts for all content types
-      const [productsRes, blogsRes, diyRes, workshopsRes, bookingsRes] = await Promise.all([
+      // Fetch counts for all content types including submissions
+      const [productsRes, blogsRes, diyRes, workshopsRes, bookingsRes, ordersRes, consultationsRes, trainingRes, contactRes] = await Promise.all([
         supabase.from('products').select('id', { count: 'exact', head: true }),
         supabase.from('blogs').select('id', { count: 'exact', head: true }),
         supabase.from('diy_tutorials').select('id', { count: 'exact', head: true }),
         supabase.from('workshops').select('id', { count: 'exact', head: true }),
-        supabase.from('bookings').select('id', { count: 'exact', head: true })
+        supabase.from('bookings').select('id', { count: 'exact', head: true }),
+        supabase.from('orders').select('id', { count: 'exact', head: true }),
+        supabase.from('consultations').select('id', { count: 'exact', head: true }),
+        supabase.from('training_requests').select('id', { count: 'exact', head: true }),
+        supabase.from('contact_messages').select('id', { count: 'exact', head: true })
       ])
 
       // Fetch recent activity
@@ -120,6 +132,10 @@ export default function AdminDashboard() {
         diyTutorials: diyRes.count || 0,
         workshops: workshopsRes.count || 0,
         bookings: bookingsRes.count || 0,
+        orders: ordersRes.count || 0,
+        consultations: consultationsRes.count || 0,
+        trainingRequests: trainingRes.count || 0,
+        contactMessages: contactRes.count || 0,
         recentActivity: allActivity
       })
 
@@ -132,24 +148,32 @@ export default function AdminDashboard() {
   }
 
   const chartData = {
-    labels: ['Products', 'Blogs', 'DIY Tutorials', 'Workshops', 'Bookings'],
+    labels: ['Products', 'Blogs', 'DIY Tutorials', 'Workshops', 'Bookings', 'Orders', 'Consultations', 'Training', 'Messages'],
     datasets: [
       {
         label: 'Count',
-        data: [stats.products, stats.blogs, stats.diyTutorials, stats.workshops, stats.bookings],
+        data: [stats.products, stats.blogs, stats.diyTutorials, stats.workshops, stats.bookings, stats.orders, stats.consultations, stats.trainingRequests, stats.contactMessages],
         backgroundColor: [
           'rgba(59, 130, 246, 0.8)',
           'rgba(16, 185, 129, 0.8)',
           'rgba(245, 158, 11, 0.8)',
           'rgba(139, 92, 246, 0.8)',
-          'rgba(239, 68, 68, 0.8)'
+          'rgba(239, 68, 68, 0.8)',
+          'rgba(6, 182, 212, 0.8)',
+          'rgba(168, 85, 247, 0.8)',
+          'rgba(245, 101, 101, 0.8)',
+          'rgba(34, 197, 94, 0.8)'
         ],
         borderColor: [
           'rgba(59, 130, 246, 1)',
           'rgba(16, 185, 129, 1)',
           'rgba(245, 158, 11, 1)',
           'rgba(139, 92, 246, 1)',
-          'rgba(239, 68, 68, 1)'
+          'rgba(239, 68, 68, 1)',
+          'rgba(6, 182, 212, 1)',
+          'rgba(168, 85, 247, 1)',
+          'rgba(245, 101, 101, 1)',
+          'rgba(34, 197, 94, 1)'
         ],
         borderWidth: 1,
       },
@@ -226,7 +250,7 @@ export default function AdminDashboard() {
         ) : (
           <>
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
               <div className="bg-white rounded-xl shadow-sm p-6">
                 <div className="flex items-center">
                   <div className="p-3 bg-blue-100 rounded-lg">
@@ -309,6 +333,74 @@ export default function AdminDashboard() {
                 </div>
                 <Link href="/admin/bookings" className="mt-4 inline-block text-red-600 hover:text-red-800 text-sm font-medium">
                   Manage Bookings →
+                </Link>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center">
+                  <div className="p-3 bg-cyan-100 rounded-lg">
+                    <svg className="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Orders</p>
+                    <p className="text-2xl font-bold text-gray-900">{stats.orders}</p>
+                  </div>
+                </div>
+                <Link href="/admin/orders" className="mt-4 inline-block text-cyan-600 hover:text-cyan-800 text-sm font-medium">
+                  Manage Orders →
+                </Link>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center">
+                  <div className="p-3 bg-violet-100 rounded-lg">
+                    <svg className="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Consultations</p>
+                    <p className="text-2xl font-bold text-gray-900">{stats.consultations}</p>
+                  </div>
+                </div>
+                <Link href="/admin/consultations" className="mt-4 inline-block text-violet-600 hover:text-violet-800 text-sm font-medium">
+                  Manage Consultations →
+                </Link>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center">
+                  <div className="p-3 bg-pink-100 rounded-lg">
+                    <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Training Requests</p>
+                    <p className="text-2xl font-bold text-gray-900">{stats.trainingRequests}</p>
+                  </div>
+                </div>
+                <Link href="/admin/training-requests" className="mt-4 inline-block text-pink-600 hover:text-pink-800 text-sm font-medium">
+                  Manage Training →
+                </Link>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center">
+                  <div className="p-3 bg-green-100 rounded-lg">
+                    <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Contact Messages</p>
+                    <p className="text-2xl font-bold text-gray-900">{stats.contactMessages}</p>
+                  </div>
+                </div>
+                <Link href="/admin/contact-messages" className="mt-4 inline-block text-green-600 hover:text-green-800 text-sm font-medium">
+                  Manage Messages →
                 </Link>
               </div>
             </div>

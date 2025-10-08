@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, service_type, message, consultation_type, preferred_date, preferred_time } = body
+    const { name, email, phone, consultation_type, budget, preferred_date, preferred_time, current_style, goals, message } = body
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !consultation_type) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name, email, and consultation type are required' },
         { status: 400 }
       )
     }
@@ -22,37 +23,38 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Email content prepared for future use when SMTP is configured
-    // const subject = `New Consultation Request from ${name} - Emmdra Empire`
-    // const consultationContent = `...` (content prepared above)
+    // Store consultation in database
+    const { data: consultationData, error: consultationError } = await supabase
+      .from('consultations')
+      .insert({
+        name,
+        email,
+        phone,
+        consultation_type,
+        budget,
+        preferred_date,
+        preferred_time,
+        current_style,
+        goals,
+        message
+      })
+      .select()
+      .single()
 
-    // For development/testing, we'll log the consultation and return success
-    // In production, the email sending will work with proper SMTP config
-    console.log('💅 New consultation received:', {
-      name,
-      email,
-      phone,
-      service_type,
-      consultation_type,
-      preferred_date,
-      preferred_time,
-      message,
-      timestamp: new Date().toISOString()
-    })
+    if (consultationError) {
+      console.error('Database error:', consultationError)
+      return NextResponse.json(
+        { error: 'Failed to save consultation to database' },
+        { status: 500 }
+      )
+    }
+
+    console.log('💅 Consultation stored in database:', consultationData)
 
     return NextResponse.json({
       success: true,
       message: 'Consultation request submitted successfully - we will contact you soon!',
-      data: {
-        name,
-        email,
-        phone,
-        service_type,
-        consultation_type,
-        preferred_date,
-        preferred_time,
-        message
-      }
+      data: consultationData
     })
 
   } catch (error) {
