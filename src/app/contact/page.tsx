@@ -64,8 +64,27 @@ export default function ContactPage() {
     setSubmitStatus('idle')
 
     try {
-      // Submit to your backend/database (e.g., Supabase)
-      const response = await fetch('/api/contact', {
+      // Route to appropriate API endpoint based on service type
+      let apiEndpoint = '/api/contact'
+      let notificationType = 'contact'
+
+      // Map service types to appropriate endpoints
+      if (formData.service_type === 'Product Inquiry') {
+        apiEndpoint = '/api/order'
+        notificationType = 'order'
+      } else if (formData.service_type === 'Wardrobe Consultation' || formData.service_type === 'Personal Styling') {
+        apiEndpoint = '/api/consultation'
+        notificationType = 'consultation'
+      } else if (formData.service_type === 'Fashion Workshop') {
+        apiEndpoint = '/api/workshop'
+        notificationType = 'workshop'
+      } else if (formData.service_type === 'Beauty Training') {
+        apiEndpoint = '/api/training'
+        notificationType = 'training'
+      }
+
+      // Submit to the appropriate endpoint
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,10 +93,13 @@ export default function ContactPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Failed to submit form')
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to submit form')
       }
 
-      // Show success message (skip email notification for now)
+      const responseData = await response.json()
+
+      // Show success message
       setSubmitStatus('success')
       setFormData({
         name: '',
@@ -87,7 +109,7 @@ export default function ContactPage() {
         message: ''
       })
 
-      console.log('✅ Contact form submitted successfully')
+      console.log(`✅ ${formData.service_type} form submitted successfully`)
 
     } catch (error) {
       console.error('Form submission error:', error)

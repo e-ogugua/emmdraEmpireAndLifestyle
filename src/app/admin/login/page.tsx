@@ -38,8 +38,11 @@ export default function AdminLogin() {
         return
       }
 
-      // Redirect to dashboard on successful login
-      window.location.href = '/admin/dashboard'
+      // Clear any existing error and redirect to dashboard
+      setError(null)
+
+      // Use Next.js router for client-side navigation instead of window.location
+      window.location.href = '/admin'
 
     } catch (err) {
       console.error('Login error:', err)
