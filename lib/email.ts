@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
 export interface EmailOptions {
   to: string
@@ -7,21 +7,8 @@ export interface EmailOptions {
   text?: string
 }
 
-// Create transporter using SMTP configuration
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: process.env.EMAIL_USER || 'emmdraempire@gmail.com', // Your Gmail address
-      pass: process.env.EMAIL_PASS || 'your-app-password', // Your Gmail app password
-    },
-    tls: {
-      ciphers: 'SSLv3'
-    }
-  })
-}
+// Initialize Resend with API key
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Email template function
 export const createEmailTemplate = (content: string, type: string) => {
@@ -118,25 +105,26 @@ export const createEmailTemplate = (content: string, type: string) => {
   `
 }
 
-// Send email function
+// Send email function using Resend
 export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
   try {
-    const transporter = createTransporter()
-
-    const mailOptions = {
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER || 'emmdraempire@gmail.com',
-      to: options.to,
-      subject: options.subject,
-      html: options.html,
-      text: options.text || options.html.replace(/<[^>]*>/g, ''),
+    if (!process.env.RESEND_API_KEY) {
+      console.error('❌ RESEND_API_KEY not found')
+      return false
     }
 
-    console.log('📧 Sending email to:', options.to)
+    console.log('📧 Sending email via Resend to:', options.to)
     console.log('📧 Subject:', options.subject)
 
-    const result = await transporter.sendMail(mailOptions as nodemailer.SendMailOptions)
-    console.log('✅ Email sent successfully:', result.messageId)
+    const result = await resend.emails.send({
+      from: 'Emmdra Empire <hello@emmdraempire.com>',
+      to: [options.to],
+      subject: options.subject,
+      html: options.html,
+      text: options.text,
+    })
 
+    console.log('✅ Email sent successfully:', result.data?.id)
     return true
   } catch (error) {
     console.error('❌ Email sending failed:', error)
