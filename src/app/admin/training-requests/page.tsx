@@ -33,9 +33,12 @@ export default function AdminTrainingRequests() {
           return
         }
 
-        // Check if user is authorized
+        // Check if user is authorized (case-insensitive and trimmed)
         const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
-        if (!allowedEmails.includes(user.email || '')) {
+        const normalizedUserEmail = user.email?.toLowerCase().trim() || ''
+        const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
+
+        if (!normalizedAllowedEmails.includes(normalizedUserEmail)) {
           setError('Access denied. You are not authorized to access this page.')
           return
         }
