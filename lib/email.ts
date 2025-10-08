@@ -1,4 +1,4 @@
-import { Resend } from 'resend'
+import nodemailer from 'nodemailer'
 
 export interface EmailOptions {
   to: string
@@ -7,8 +7,20 @@ export interface EmailOptions {
   text?: string
 }
 
-// Initialize Resend with API key
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Create Gmail SMTP transporter
+const createTransporter = () => {
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    port: parseInt(process.env.SMTP_PORT || '587'),
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: process.env.SMTP_USER || 'emmdraempire@gmail.com',
+    },
+    tls: {
+      ciphers: 'SSLv3'
+    }
+  })
+}
 
 // Email template function
 export const createEmailTemplate = (content: string, type: string) => {
@@ -25,44 +37,37 @@ export const createEmailTemplate = (content: string, type: string) => {
         ${content}
         <hr>
         <p>This email was sent from your Emmdra Empire website</p>
-      </div>
     </body>
     </html>
   `
 }
 
-// Send email function using Resend
+// Send email function using Gmail SMTP
 export const sendEmail = async (options: EmailOptions): Promise<boolean> => {
   try {
-    if (!process.env.RESEND_API_KEY) {
-      console.error('❌ RESEND_API_KEY not found')
-      return false
-    }
+    const transporter = createTransporter()
 
-    console.log('📧 Sending email via Resend to:', options.to)
-    console.log('📧 Subject:', options.subject)
-    console.log('📧 API Key exists:', !!process.env.RESEND_API_KEY)
-    console.log('📧 API Key prefix:', process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.substring(0, 10) + '...' : 'undefined')
-
-    const result = await resend.emails.send({
-      from: 'no-reply@resend.com',
+    const mailOptions = {
+      from: process.env.SMTP_USER || 'emmdraempire@gmail.com',
       to: options.to,
       subject: options.subject,
       html: options.html,
-    })
+      text: options.text || options.html.replace(/<[^>]*>/g, ''),
+    }
 
-    console.log('✅ Email sent successfully:', result.data?.id)
+    console.log('📧 Sending email via Gmail SMTP to:', options.to)
+    console.log('📧 Subject:', options.subject)
+    console.log('📧 SMTP config exists:', !!process.env.SMTP_HOST)
+
+    const result = await transporter.sendMail(mailOptions as nodemailer.SendMailOptions)
+    console.log('✅ Email sent successfully:', result.messageId)
     return true
   } catch (error) {
     console.error('❌ Email sending failed:', error)
-    console.error('❌ Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-      options: options
-    })
     return false
   }
 }
+
 // Create text-only email (fallback)
 export const createTextEmail = (content: string, type: string) => {
   return `New ${type} - Emmdra Empire
