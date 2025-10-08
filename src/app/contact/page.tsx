@@ -104,6 +104,15 @@ export default function ContactPage() {
           quantity: '1', // Default quantity
           message: formData.message
         }
+      } else if (apiEndpoint === '/api/workshop') {
+        // Map service_type to workshop_name for workshop API
+        submitData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          workshop_name: formData.service_type,
+          message: formData.message
+        }
       } else {
         // Use original form data for other endpoints
         submitData = {
