@@ -201,21 +201,21 @@ export default function AdminPage() {
             </p>
           </Link>
 
-          {/* Bookings */}
-          <Link href="/admin/bookings" className="bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-shadow border border-gray-200">
+          {/* Workshop Registrations */}
+          <Link href="/admin/workshop-registrations" className="bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-shadow border border-gray-200">
             <div className="flex items-center mb-4">
-              <div className="p-3 bg-indigo-100 rounded-lg">
-                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              <div className="p-3 bg-orange-100 rounded-lg">
+                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                 </svg>
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900">Bookings</h3>
-                <p className="text-sm text-gray-600">Manage bookings</p>
+                <h3 className="text-lg font-semibold text-gray-900">Workshop Registrations</h3>
+                <p className="text-sm text-gray-600">Manage workshop signups</p>
               </div>
             </div>
             <p className="text-sm text-gray-500">
-              View and manage customer bookings and reservations.
+              View and manage customer workshop registrations and inquiries.
             </p>
           </Link>
         </div>
@@ -223,7 +223,7 @@ export default function AdminPage() {
         {/* Quick Stats */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Quick Overview</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             <div className="bg-white rounded-lg shadow-sm p-6 text-center">
               <div className="text-3xl font-bold text-blue-600 mb-2">--</div>
               <p className="text-sm text-gray-600">Total Products</p>
@@ -239,6 +239,10 @@ export default function AdminPage() {
             <div className="bg-white rounded-lg shadow-sm p-6 text-center">
               <div className="text-3xl font-bold text-purple-600 mb-2">--</div>
               <p className="text-sm text-gray-600">Workshops</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm p-6 text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">--</div>
+              <p className="text-sm text-gray-600">Registrations</p>
             </div>
           </div>
         </div>

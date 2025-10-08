@@ -10,6 +10,7 @@
 
 DROP TABLE IF EXISTS bookings CASCADE;
 DROP TABLE IF EXISTS workshops CASCADE;
+DROP TABLE IF EXISTS workshop_registrations CASCADE;
 DROP TABLE IF EXISTS diy_tutorials CASCADE;
 DROP TABLE IF EXISTS blogs CASCADE;
 DROP TABLE IF EXISTS products CASCADE;
@@ -86,6 +87,24 @@ CREATE TABLE workshops (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Workshop Registrations Table (User signups for workshops)
+CREATE TABLE workshop_registrations (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phone TEXT,
+  workshop_name TEXT NOT NULL,
+  workshop_date TEXT,
+  experience_level TEXT,
+  group_size TEXT DEFAULT '1',
+  budget TEXT,
+  special_requirements TEXT,
+  message TEXT,
+  status TEXT CHECK (status IN ('pending', 'confirmed', 'cancelled')) DEFAULT 'pending',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Bookings Table (Contact form submissions)
 CREATE TABLE bookings (
   id SERIAL PRIMARY KEY,
@@ -109,6 +128,7 @@ ALTER TABLE products ENABLE ROW LEVEL SECURITY;
 ALTER TABLE blogs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE diy_tutorials ENABLE ROW LEVEL SECURITY;
 ALTER TABLE workshops ENABLE ROW LEVEL SECURITY;
+ALTER TABLE workshop_registrations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE bookings ENABLE ROW LEVEL SECURITY;
 
 -- Public read access for content tables
@@ -120,12 +140,16 @@ CREATE POLICY "Public read workshops" ON workshops FOR SELECT USING (status = 'u
 -- Public insert for bookings (contact forms)
 CREATE POLICY "Public insert bookings" ON bookings FOR INSERT WITH CHECK (true);
 
+-- Public insert for workshop registrations
+CREATE POLICY "Public insert workshop_registrations" ON workshop_registrations FOR INSERT WITH CHECK (true);
+
 -- Admin-only write access (you'll need to create admin role check)
 -- For now, allowing all writes for development
 CREATE POLICY "Allow all writes products" ON products FOR ALL USING (true);
 CREATE POLICY "Allow all writes blogs" ON blogs FOR ALL USING (true);
 CREATE POLICY "Allow all writes diy_tutorials" ON diy_tutorials FOR ALL USING (true);
 CREATE POLICY "Allow all writes workshops" ON workshops FOR ALL USING (true);
+CREATE POLICY "Allow all writes workshop_registrations" ON workshop_registrations FOR ALL USING (true);
 
 -- =============================================
 -- 4️⃣ POPULATE INITIAL CONTENT
@@ -194,6 +218,8 @@ UNION ALL
 SELECT 'diy_tutorials' as table_name, COUNT(*) as count FROM diy_tutorials
 UNION ALL
 SELECT 'workshops' as table_name, COUNT(*) as count FROM workshops
+UNION ALL
+SELECT 'workshop_registrations' as table_name, COUNT(*) as count FROM workshop_registrations
 UNION ALL
 SELECT 'bookings' as table_name, COUNT(*) as count FROM bookings;
 

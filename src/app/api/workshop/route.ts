@@ -1,15 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
+import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, service_type, message, workshop_name, workshop_date, experience_level } = body
+    const {
+      name,
+      email,
+      phone,
+      workshop_name,
+      workshop_date,
+      experience_level,
+      special_requirements,
+      group_size,
+      budget,
+      message
+    } = body
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !workshop_name) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name, email, and workshop name are required' },
         { status: 400 }
       )
     }
@@ -22,6 +34,36 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
+
+    // Save to database first
+    const { data: registrationData, error: dbError } = await supabase
+      .from('workshop_registrations')
+      .insert([
+        {
+          name,
+          email,
+          phone,
+          workshop_name,
+          workshop_date,
+          experience_level,
+          special_requirements,
+          group_size,
+          budget,
+          message
+        }
+      ])
+      .select()
+      .single()
+
+    if (dbError) {
+      console.error('Database error:', dbError)
+      return NextResponse.json(
+        { error: 'Failed to save workshop registration' },
+        { status: 500 }
+      )
+    }
+
+    console.log('💅 Workshop registration stored in database:', registrationData)
 
     // Create workshop-specific email content
     const subject = `New Workshop Registration from ${name} - Emmdra Empire`
@@ -46,10 +88,8 @@ export async function POST(request: NextRequest) {
           </div>
         ` : ''}
 
-        ${workshop_name ? `
-          <div class="label">Workshop Interest:</div>
-          <div class="value">${workshop_name}</div>
-        ` : ''}
+        <div class="label">Workshop Interest:</div>
+        <div class="value">${workshop_name}</div>
 
         ${workshop_date ? `
           <div class="label">Preferred Date:</div>
@@ -61,8 +101,25 @@ export async function POST(request: NextRequest) {
           <div class="value">${experience_level}</div>
         ` : ''}
 
-        <div class="label">Message:</div>
-        <div class="value">${message}</div>
+        ${group_size ? `
+          <div class="label">Group Size:</div>
+          <div class="value">${group_size}</div>
+        ` : ''}
+
+        ${budget ? `
+          <div class="label">Budget:</div>
+          <div class="value">₦${budget}</div>
+        ` : ''}
+
+        ${special_requirements ? `
+          <div class="label">Special Requirements:</div>
+          <div class="value">${special_requirements}</div>
+        ` : ''}
+
+        ${message ? `
+          <div class="label">Message:</div>
+          <div class="value">${message}</div>
+        ` : ''}
       </div>
 
       <p>
@@ -84,25 +141,13 @@ export async function POST(request: NextRequest) {
     })
 
     if (!emailSent) {
-      return NextResponse.json(
-        { error: 'Failed to send workshop notification email' },
-        { status: 500 }
-      )
+      console.warn('Email notification failed, but registration was saved to database')
     }
 
     return NextResponse.json({
       success: true,
       message: 'Workshop registration submitted successfully - we will contact you soon!',
-      data: {
-        name,
-        email,
-        phone,
-        service_type,
-        workshop_name,
-        workshop_date,
-        experience_level,
-        message
-      }
+      data: registrationData
     })
 
   } catch (error) {
