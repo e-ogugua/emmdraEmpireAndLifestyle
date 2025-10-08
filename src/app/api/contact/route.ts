@@ -4,15 +4,18 @@ import { supabase } from '@/lib/supabase'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, subject, message } = body
+    const { name, email, phone, service_type, subject, message } = body
 
     // Validate required fields
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Name, email, subject, and message are required' },
+        { error: 'Name, email, and message are required' },
         { status: 400 }
       )
     }
+
+    // Derive subject from service_type if not provided
+    const finalSubject = subject || service_type || 'General Inquiry'
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -30,7 +33,7 @@ export async function POST(request: NextRequest) {
         name,
         email,
         phone,
-        subject,
+        subject: finalSubject,
         message
       })
       .select()
