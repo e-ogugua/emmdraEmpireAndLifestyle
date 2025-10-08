@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,6 +51,88 @@ export async function POST(request: NextRequest) {
     }
 
     console.log('💅 Consultation stored in database:', consultationData)
+
+    // Send email notification to admin
+    const subject = `New Consultation Request from ${name} - Emmdra Empire`
+
+    const consultationContent = `
+      <div class="highlight">
+        <strong>New Consultation Request Received!</strong>
+      </div>
+
+      <div class="details">
+        <div class="label">Customer Name:</div>
+        <div class="value">${name}</div>
+
+        <div class="label">Email:</div>
+        <div class="value">
+          <a href="mailto:${email}">${email}</a>
+        </div>
+
+        ${phone ? `
+          <div class="label">Phone:</div>
+          <div class="value">
+            <a href="tel:${phone}">${phone}</a>
+          </div>
+        ` : ''}
+
+        <div class="label">Consultation Type:</div>
+        <div class="value">${consultation_type}</div>
+
+        ${budget ? `
+          <div class="label">Budget:</div>
+          <div class="value">₦${budget}</div>
+        ` : ''}
+
+        ${preferred_date ? `
+          <div class="label">Preferred Date:</div>
+          <div class="value">${new Date(preferred_date).toLocaleDateString()}</div>
+        ` : ''}
+
+        ${preferred_time ? `
+          <div class="label">Preferred Time:</div>
+          <div class="value">${preferred_time}</div>
+        ` : ''}
+
+        ${current_style ? `
+          <div class="label">Current Style:</div>
+          <div class="value">${current_style}</div>
+        ` : ''}
+
+        ${goals ? `
+          <div class="label">Goals:</div>
+          <div class="value">${goals}</div>
+        ` : ''}
+
+        ${message ? `
+          <div class="label">Additional Message:</div>
+          <div class="value">${message}</div>
+        ` : ''}
+      </div>
+
+      <p>
+        <a href="mailto:${email}?subject=Regarding your consultation request" class="button">
+          Reply to Customer
+        </a>
+      </p>
+    `
+
+    const htmlBody = createEmailTemplate(consultationContent, 'Consultation Request')
+    const textBody = createTextEmail(consultationContent, 'Consultation Request')
+
+    // Send email to admin (you can configure multiple admin emails)
+    const adminEmails = process.env.ADMIN_EMAILS?.split(',') || ['emmdraempire@gmail.com']
+
+    for (const adminEmail of adminEmails) {
+      if (adminEmail.trim()) {
+        await sendEmail({
+          to: adminEmail.trim(),
+          subject,
+          html: htmlBody,
+          text: textBody
+        })
+      }
+    }
 
     return NextResponse.json({
       success: true,
