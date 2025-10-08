@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { trackPageView } from '@/lib/analytics'
+import NewsletterSignup from '@/components/NewsletterSignup'
 
 interface BlogPost {
   id: number
@@ -312,29 +313,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         )}
 
         {/* Newsletter Sign-up */}
-        <div className="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Love Our Stories?
-          </h2>
-          <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Get the latest fashion tips, DIY tutorials, beauty hacks, and family stories delivered to your inbox.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300">
-              Subscribe
-            </button>
-          </div>
-
-          <p className="text-sm opacity-75 mt-4">
-            Join 1,000+ subscribers. Unsubscribe anytime.
-          </p>
-        </div>
+        <NewsletterSignup
+          title="Love Our Stories?"
+          description="Get the latest fashion tips, DIY tutorials, beauty hacks, and family stories delivered to your inbox."
+        />
       </div>
     </div>
   )

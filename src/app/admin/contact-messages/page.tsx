@@ -17,7 +17,6 @@ export default function AdminContactMessages() {
   const [messages, setMessages] = useState<ContactMessage[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [user, setUser] = useState<{ email?: string } | null>(null)
   const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(null)
 
   // Check authentication and authorization
@@ -38,7 +37,6 @@ export default function AdminContactMessages() {
           return
         }
 
-        setUser(user)
         fetchMessages()
       } catch (err) {
         console.error('Auth error:', err)

@@ -20,7 +20,6 @@ export default function AdminTrainingRequests() {
   const [requests, setRequests] = useState<TrainingRequest[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [user, setUser] = useState<{ email?: string } | null>(null)
   const [selectedRequest, setSelectedRequest] = useState<TrainingRequest | null>(null)
 
   // Check authentication and authorization
@@ -41,7 +40,6 @@ export default function AdminTrainingRequests() {
           return
         }
 
-        setUser(user)
         fetchRequests()
       } catch (err) {
         console.error('Auth error:', err)

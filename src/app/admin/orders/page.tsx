@@ -22,7 +22,6 @@ export default function AdminOrders() {
   const [orders, setOrders] = useState<Order[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [user, setUser] = useState<{ email?: string } | null>(null)
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
 
   // Check authentication and authorization
@@ -43,7 +42,6 @@ export default function AdminOrders() {
           return
         }
 
-        setUser(user)
         fetchOrders()
       } catch (err) {
         console.error('Auth error:', err)

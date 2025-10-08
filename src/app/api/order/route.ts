@@ -113,22 +113,22 @@ export async function POST(request: NextRequest) {
           Reply to Customer
         </a>
       </p>
-    `
 
     const htmlBody = createEmailTemplate(orderContent, 'Product Order')
     const textBody = createTextEmail(orderContent, 'Product Order')
 
     // Send email to admin (you can configure multiple admin emails)
     const adminEmails = process.env.ADMIN_EMAILS?.split(',') || ['emmdraempire@gmail.com']
-
     for (const adminEmail of adminEmails) {
       if (adminEmail.trim()) {
-        await sendEmail({
+        const mailOptions = {
           to: adminEmail.trim(),
           subject,
           html: htmlBody,
-          text: textBody
-        })
+          text: textBody,
+        }
+
+        await sendEmail(mailOptions as any)
       }
     }
 

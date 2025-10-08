@@ -22,7 +22,6 @@ export default function AdminConsultations() {
   const [consultations, setConsultations] = useState<Consultation[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [user, setUser] = useState<{ email?: string } | null>(null)
   const [selectedConsultation, setSelectedConsultation] = useState<Consultation | null>(null)
 
   // Check authentication and authorization
@@ -43,7 +42,6 @@ export default function AdminConsultations() {
           return
         }
 
-        setUser(user)
         fetchConsultations()
       } catch (err) {
         console.error('Auth error:', err)
