@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS page_views (
   page_title TEXT,
   referrer TEXT,
   user_agent TEXT,
+  ip_address TEXT, -- Added missing ip_address column
   session_id TEXT NOT NULL,
   viewed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   metadata JSONB,
@@ -37,6 +38,7 @@ CREATE INDEX IF NOT EXISTS idx_page_views_type ON page_views(page_type);
 CREATE INDEX IF NOT EXISTS idx_page_views_session ON page_views(session_id);
 CREATE INDEX IF NOT EXISTS idx_page_views_date ON page_views(viewed_at);
 CREATE INDEX IF NOT EXISTS idx_page_views_content ON page_views(page_type, page_id);
+CREATE INDEX IF NOT EXISTS idx_page_views_ip ON page_views(ip_address);
 
 -- =============================================
 -- VERIFICATION QUERY
@@ -46,9 +48,12 @@ CREATE INDEX IF NOT EXISTS idx_page_views_content ON page_views(page_type, page_
 SELECT 'page_views' as table_name, COUNT(*) as count FROM page_views;
 
 -- =============================================
--- SETUP COMPLETE
+-- SETUP COMPLETE - UPDATED
 -- =============================================
 
--- Your analytics table is now ready!
--- The "Failed to fetch" errors should be resolved.
--- Analytics tracking will now work properly.
+-- Your analytics table has been updated with the missing ip_address column!
+-- If you're getting "Could not find the 'ip_address' column" errors,
+-- you need to run this updated SQL script in your Supabase dashboard.
+--
+-- The "Failed to fetch" errors should now be resolved.
+-- Analytics tracking will now work properly with IP address tracking.

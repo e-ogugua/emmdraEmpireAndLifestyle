@@ -96,7 +96,7 @@ export default function HeroCarousel() {
             }`}
           >
             {/* Background Image */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10" />
             <Image
               src={slide.image}
               alt={slide.title}
@@ -112,21 +112,21 @@ export default function HeroCarousel() {
                 <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-1000 transform ${
                   index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
-                  <span className="bg-gradient-to-r from-yellow-300 via-white to-yellow-300 bg-clip-text text-transparent drop-shadow-2xl">
+                  <span className="bg-gradient-to-r from-yellow-300 via-white to-yellow-300 bg-clip-text text-transparent drop-shadow-2xl [text-shadow:_0_0_20px_rgb(255_255_255_/_80%),_0_0_40px_rgb(255_255_255_/_60%)]">
                     {slide.title}
                   </span>
                 </h1>
                 <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 transition-all duration-1000 delay-300 transform ${
                   index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
-                  <span className="bg-gradient-to-r from-blue-200 via-white to-blue-200 bg-clip-text text-transparent drop-shadow-xl font-medium">
+                  <span className="bg-gradient-to-r from-blue-200 via-white to-cyan-200 bg-clip-text text-transparent drop-shadow-xl font-medium [text-shadow:_0_0_15px_rgb(255_255_255_/_70%)]">
                     {slide.subtitle}
                   </span>
                 </p>
                 {slide.ctaText && slide.ctaLink && (
                   <a
                     href={slide.ctaLink}
-                    className={`inline-block bg-white/95 backdrop-blur-md text-gray-900 px-8 py-4 rounded-full font-semibold text-lg border-2 border-white/60 shadow-2xl hover:bg-white hover:scale-105 transition-all duration-300 transform ${
+                    className={`inline-block bg-gradient-to-r from-white/90 via-white to-white/90 backdrop-blur-md text-gray-900 px-10 py-4 rounded-full font-bold text-lg border-2 border-white/70 shadow-2xl hover:from-white hover:to-white/95 hover:scale-105 transition-all duration-300 transform ${
                       index === currentSlide ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'
                     }`}
                     style={{ transitionDelay: '600ms' }}
