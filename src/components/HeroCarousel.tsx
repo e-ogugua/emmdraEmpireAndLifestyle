@@ -109,15 +109,19 @@ export default function HeroCarousel() {
             {/* Content Overlay */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="text-center text-white px-4 max-w-4xl mx-auto">
-                <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-1000 transform drop-shadow-2xl ${
+                <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-1000 transform ${
                   index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
-                  {slide.title}
+                  <span className="bg-gradient-to-r from-yellow-300 via-white to-yellow-300 bg-clip-text text-transparent drop-shadow-2xl">
+                    {slide.title}
+                  </span>
                 </h1>
-                <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 transition-all duration-1000 delay-300 transform drop-shadow-xl ${
+                <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 transition-all duration-1000 delay-300 transform ${
                   index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
-                  {slide.subtitle}
+                  <span className="bg-gradient-to-r from-blue-200 via-white to-blue-200 bg-clip-text text-transparent drop-shadow-xl font-medium">
+                    {slide.subtitle}
+                  </span>
                 </p>
                 {slide.ctaText && slide.ctaLink && (
                   <a

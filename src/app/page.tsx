@@ -27,7 +27,7 @@ export default function Home() {
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
             <h1 className="heading-1 text-brand-neutral-900 mb-6 sm:mb-8">
-              Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-dark-teal via-brand-vibrant-green to-brand-burnt-orange">Emmdra</span> Empire
+              Welcome to <span className="bg-gradient-to-r from-brand-dark-teal via-brand-burnt-orange to-brand-vibrant-green bg-clip-text text-transparent font-black drop-shadow-sm">Emmdra</span> Empire
             </h1>
             <p className="text-body-lg text-brand-neutral-700 max-w-4xl mx-auto mb-6 sm:mb-8">
               Your complete lifestyle destination where <strong className="text-brand-neutral-900 font-semibold">Fashion</strong>, <strong className="text-brand-neutral-900 font-semibold">Beauty</strong>, <strong className="text-brand-neutral-900 font-semibold">DIY</strong>, <strong className="text-brand-neutral-900 font-semibold">Lifestyle</strong>, and <strong className="text-brand-neutral-900 font-semibold">Family</strong> come together in perfect harmony.
@@ -39,16 +39,16 @@ export default function Home() {
             {/* Category Pills */}
             <div className="flex flex-wrap justify-center gap-3 mb-10 sm:mb-12">
               {[
-                { name: 'Fashion', link: '/shop', color: 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light border-2 border-brand-burnt-orange' },
-                { name: 'Beauty', link: '/shop', color: 'bg-brand-vibrant-green text-white hover:bg-brand-vibrant-green-light border-2 border-brand-vibrant-green' },
-                { name: 'DIY', link: '/diy', color: 'bg-brand-dark-teal text-white hover:bg-brand-dark-teal-light border-2 border-brand-dark-teal' },
-                { name: 'Lifestyle', link: '/blog', color: 'bg-brand-light-beige text-brand-neutral-800 hover:bg-brand-light-beige-dark border-2 border-brand-light-beige-dark font-semibold' },
-                { name: 'Family', link: '/about', color: 'bg-gradient-to-r from-brand-burnt-orange to-brand-vibrant-green text-white hover:from-brand-burnt-orange-light hover:to-brand-vibrant-green-light' }
+                { name: 'Fashion', link: '/shop', color: 'bg-gradient-to-r from-brand-burnt-orange to-brand-burnt-orange-light text-white border-2 border-brand-burnt-orange/30 shadow-lg hover:shadow-xl hover:scale-105' },
+                { name: 'Beauty', link: '/shop', color: 'bg-gradient-to-r from-brand-vibrant-green to-brand-vibrant-green-light text-white border-2 border-brand-vibrant-green/30 shadow-lg hover:shadow-xl hover:scale-105' },
+                { name: 'DIY', link: '/diy', color: 'bg-gradient-to-r from-brand-dark-teal to-brand-dark-teal-light text-white border-2 border-brand-dark-teal/30 shadow-lg hover:shadow-xl hover:scale-105' },
+                { name: 'Lifestyle', link: '/blog', color: 'bg-gradient-to-r from-brand-light-beige to-brand-light-beige-dark text-brand-neutral-800 border-2 border-brand-light-beige-dark/50 shadow-lg hover:shadow-xl hover:scale-105 font-semibold' },
+                { name: 'Family', link: '/about', color: 'bg-gradient-to-r from-brand-burnt-orange via-brand-vibrant-green to-brand-dark-teal text-white border-2 border-brand-burnt-orange/30 shadow-lg hover:shadow-xl hover:scale-105' }
               ].map((category) => (
                 <Link
                   key={category.name}
                   href={category.link}
-                  className={`${category.color} px-4 py-3 rounded-full font-medium text-sm hover:shadow-lg transition-all duration-200 hover:scale-105 min-h-[44px] flex items-center shadow-md`}
+                  className={`${category.color} px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 min-h-[48px] flex items-center backdrop-blur-sm`}
                 >
                   {category.name}
                 </Link>
@@ -59,19 +59,19 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center">
               <Link
                 href="/shop"
-                className="btn btn-primary btn-lg"
+                className="bg-gradient-to-r from-brand-burnt-orange via-brand-burnt-orange-light to-brand-burnt-orange text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange/50 hover:border-brand-burnt-orange min-h-[56px] flex items-center justify-center"
               >
                 🛍️ Shop Our Collection
               </Link>
               <Link
                 href="/diy"
-                className="btn btn-primary btn-lg"
+                className="bg-gradient-to-r from-brand-vibrant-green via-brand-vibrant-green-light to-brand-vibrant-green text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green/50 hover:border-brand-vibrant-green min-h-[56px] flex items-center justify-center"
               >
                 ✨ Start Creating
               </Link>
               <Link
                 href="/blog"
-                className="btn btn-primary btn-lg"
+                className="bg-gradient-to-r from-brand-dark-teal via-brand-dark-teal-light to-brand-dark-teal text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal/50 hover:border-brand-dark-teal min-h-[56px] flex items-center justify-center"
               >
                 📖 Read Stories
               </Link>
@@ -79,25 +79,25 @@ export default function Home() {
 
             {/* Trust Indicators */}
             <div className="mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-brand-neutral-300">
-              <p className="text-body text-brand-neutral-700 mb-4 sm:mb-6 font-semibold">Trusted by families across Nigeria</p>
-              <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-8 text-brand-neutral-600">
-                <div className="flex items-center gap-2">
+              <p className="text-body text-brand-neutral-800 mb-4 sm:mb-6 font-bold text-lg">Trusted by families across Nigeria</p>
+              <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-8">
+                <div className="flex items-center gap-2 bg-brand-vibrant-green/10 px-4 py-2 rounded-full border border-brand-vibrant-green/30">
                   <svg className="w-5 h-5 text-brand-vibrant-green" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-semibold">Premium Quality</span>
+                  <span className="text-sm font-bold text-brand-neutral-800">Premium Quality</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 bg-brand-dark-teal/10 px-4 py-2 rounded-full border border-brand-dark-teal/30">
                   <svg className="w-5 h-5 text-brand-dark-teal" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-semibold">Fast Delivery</span>
+                  <span className="text-sm font-bold text-brand-neutral-800">Fast Delivery</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 bg-brand-burnt-orange/10 px-4 py-2 rounded-full border border-brand-burnt-orange/30">
                   <svg className="w-5 h-5 text-brand-burnt-orange" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-semibold">Expert Support</span>
+                  <span className="text-sm font-bold text-brand-neutral-800">Expert Support</span>
                 </div>
               </div>
             </div>
@@ -106,11 +106,12 @@ export default function Home() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-16 px-3 sm:px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-        <div className="container mx-auto">
+      <section className="py-16 px-3 sm:px-4 bg-gradient-to-br from-brand-light-beige via-brand-neutral-50 to-brand-light-beige-dark relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-primary-light/30 via-transparent to-brand-vibrant-green/20"></div>
+        <div className="container mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-3 sm:mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-dark-teal">Products</span>
+              Featured <span className="bg-gradient-to-r from-brand-dark-teal via-brand-burnt-orange to-brand-vibrant-green bg-clip-text text-transparent font-bold">Products</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Discover our handpicked selection of premium fashion, beauty, and lifestyle essentials
@@ -129,7 +130,7 @@ export default function Home() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                  <span className="bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Featured</span>
+                  <span className="bg-gradient-to-r from-brand-burnt-orange to-brand-burnt-orange-light text-white px-3 py-1 rounded-full text-xs font-bold shadow-md border border-brand-burnt-orange/30">Featured</span>
                 </div>
               </div>
               <div className="p-3 sm:p-4">
@@ -226,11 +227,12 @@ export default function Home() {
       </section>
 
       {/* Featured DIY Projects Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-green-50 to-teal-50">
-        <div className="container mx-auto">
+      <section className="py-16 px-4 bg-gradient-to-br from-brand-vibrant-green/10 via-brand-light-beige/30 to-brand-vibrant-green/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-vibrant-green/20 via-transparent to-brand-primary-light/20"></div>
+        <div className="container mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-vibrant-green">DIY Projects</span>
+              Featured <span className="bg-gradient-to-r from-brand-vibrant-green via-brand-dark-teal to-brand-burnt-orange bg-clip-text text-transparent font-bold">DIY Projects</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Unleash your creativity with our step-by-step tutorials and craft ideas
@@ -249,7 +251,7 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Popular</span>
+                  <span className="bg-gradient-to-r from-brand-vibrant-green to-brand-vibrant-green-light text-white px-3 py-1 rounded-full text-xs font-bold shadow-md border border-brand-vibrant-green/30">Popular</span>
                 </div>
               </div>
               <div className="p-4">
@@ -323,11 +325,12 @@ export default function Home() {
       </section>
 
       {/* Featured Workshops Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
+      <section className="py-16 px-4 bg-gradient-to-br from-brand-burnt-orange/10 via-brand-light-beige/20 to-brand-burnt-orange/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-burnt-orange/15 via-transparent to-brand-dark-teal/15"></div>
+        <div className="container mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-burnt-orange">Workshops</span>
+              Featured <span className="bg-gradient-to-r from-brand-burnt-orange via-brand-dark-teal to-brand-vibrant-green bg-clip-text text-transparent font-bold">Workshops</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Join our hands-on workshops and learn from industry experts
@@ -346,7 +349,7 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Upcoming</span>
+                  <span className="bg-gradient-to-r from-brand-burnt-orange to-brand-burnt-orange-light text-white px-3 py-1 rounded-full text-xs font-bold shadow-md border border-brand-burnt-orange/30">Upcoming</span>
                 </div>
               </div>
               <div className="p-4">
@@ -480,11 +483,12 @@ export default function Home() {
       </section>
 
       {/* Featured Blog Posts Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
-        <div className="container mx-auto">
+      <section className="py-16 px-4 bg-gradient-to-br from-brand-dark-teal/10 via-brand-light-beige/25 to-brand-dark-teal/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark-teal/15 via-transparent to-brand-burnt-orange/15"></div>
+        <div className="container mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-dark-teal">Stories</span>
+              Featured <span className="bg-gradient-to-r from-brand-dark-teal via-brand-burnt-orange to-brand-vibrant-green bg-clip-text text-transparent font-bold">Stories</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Read inspiring stories, fashion tips, and lifestyle advice from our community
@@ -503,7 +507,7 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="bg-indigo-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Fashion</span>
+                  <span className="bg-gradient-to-r from-brand-dark-teal to-brand-dark-teal-light text-white px-3 py-1 rounded-full text-xs font-bold shadow-md border border-brand-dark-teal/30">Fashion</span>
                 </div>
               </div>
               <div className="p-4">
