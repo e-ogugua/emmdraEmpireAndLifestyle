@@ -18,9 +18,9 @@ export default function Navigation() {
   return (
     <nav className="bg-white shadow-lg border-b border-gray-100 sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16 sm:h-20">
+        <div className="flex justify-between items-center min-h-[64px] sm:h-20">
           <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-all duration-300">
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 mr-3 sm:mr-4">
+            <div className="relative w-16 h-16 sm:w-24 sm:h-24 mr-2 sm:mr-4">
               <div className="absolute inset-0 bg-white rounded-full shadow-md border border-gray-200"></div>
               <Image
                 src="/images/EmmdraLogo.png"
@@ -29,12 +29,12 @@ export default function Navigation() {
                 priority
                 unoptimized={true}
                 className="object-contain p-1 sm:p-2 rounded-full"
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 96px"
+                sizes="(max-width: 640px) 64px, (max-width: 768px) 96px, 96px"
               />
             </div>
             <div className="hidden sm:block">
-              <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 leading-tight">Emmdra</h3>
-              <p className="text-sm font-medium text-gray-600 -mt-1">Empire & Lifestyle</p>
+              <h3 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 leading-tight">Emmdra</h3>
+              <p className="text-xs sm:text-sm font-medium text-gray-600 -mt-1">Empire & Lifestyle</p>
             </div>
           </Link>
 
@@ -52,7 +52,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-all duration-200 border border-transparent hover:border-emerald-100"
+                className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-all duration-200 border border-transparent hover:border-emerald-100 min-h-[44px] flex items-center"
               >
                 {item.name}
               </Link>
@@ -61,7 +61,7 @@ export default function Navigation() {
             {/* Admin Button - Different Style */}
             <Link
               href="/admin"
-              className="ml-4 px-6 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-sm font-medium rounded-md hover:from-emerald-700 hover:to-green-700 transition-all duration-200 shadow-sm hover:shadow-md"
+              className="ml-3 sm:ml-4 px-4 sm:px-6 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-sm font-medium rounded-md hover:from-emerald-700 hover:to-green-700 transition-all duration-200 shadow-sm hover:shadow-md min-h-[44px] flex items-center"
             >
               Admin
             </Link>
@@ -71,7 +71,7 @@ export default function Navigation() {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500 min-h-[44px] min-w-[44px]"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -106,10 +106,9 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                  item.name === 'Admin'
-                    ? 'bg-emerald-600 text-white hover:bg-emerald-700'
-                    : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
+                className={`block px-3 py-3 sm:py-4 rounded-md text-base font-medium transition-colors duration-200 min-h-[48px] flex items-center ${item.name === 'Admin'
+                  ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+                  : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
                 }`}
                 onClick={closeMobileMenu}
               >

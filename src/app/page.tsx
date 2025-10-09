@@ -23,21 +23,21 @@ export default function Home() {
       </section>
 
       {/* Hero Text Section - Enhanced Introduction */}
-      <section className="relative z-10 py-16 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="relative z-10 py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
               Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-800">Emmdra</span> Empire
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-6 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-4 sm:mb-6 leading-relaxed">
               Your complete lifestyle destination where <strong className="text-gray-800">Fashion</strong>, <strong className="text-gray-800">Beauty</strong>, <strong className="text-gray-800">DIY</strong>, <strong className="text-gray-800">Lifestyle</strong>, and <strong className="text-gray-800">Family</strong> come together in perfect harmony.
             </p>
-            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 leading-relaxed">
               From trendy outfits that make you shine, to beauty secrets that glow from within, creative DIY projects that inspire, lifestyle tips that transform, and family moments that last forever — we have got everything to make your world more beautiful.
             </p>
 
             {/* Category Pills */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
               {[
                 { name: 'Fashion', link: '/shop', color: 'bg-pink-100 text-pink-800' },
                 { name: 'Beauty', link: '/shop', color: 'bg-purple-100 text-purple-800' },
@@ -48,7 +48,7 @@ export default function Home() {
                 <Link
                   key={category.name}
                   href={category.link}
-                  className={`${category.color} px-4 py-2 rounded-full font-medium text-sm hover:shadow-md transition-all duration-200 hover:scale-105`}
+                  className={`${category.color} px-3 sm:px-4 py-2 rounded-full font-medium text-xs sm:text-sm hover:shadow-md transition-all duration-200 hover:scale-105 min-h-[40px] flex items-center`}
                 >
                   {category.name}
                 </Link>
@@ -56,48 +56,48 @@ export default function Home() {
             </div>
 
             {/* Main CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center">
               <Link
                 href="/shop"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
               >
                 🛍️ Shop Our Collection
               </Link>
               <Link
                 href="/diy"
-                className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
               >
                 ✨ Start Creating
               </Link>
               <Link
                 href="/blog"
-                className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-orange-700 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-orange-700 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
               >
                 📖 Read Stories
               </Link>
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
-              <p className="text-sm text-gray-500 mb-4">Trusted by families across Nigeria</p>
-              <div className="flex justify-center items-center gap-8 text-gray-400">
+            <div className="mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
+              <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">Trusted by families across Nigeria</p>
+              <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 text-gray-400">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm">Premium Quality</span>
+                  <span className="text-xs sm:text-sm">Premium Quality</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm">Fast Delivery</span>
+                  <span className="text-xs sm:text-sm">Fast Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm">Expert Support</span>
+                  <span className="text-xs sm:text-sm">Expert Support</span>
                 </div>
               </div>
             </div>
@@ -106,38 +106,38 @@ export default function Home() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">
               Featured <span className="text-blue-600">Products</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our handpicked selection of premium fashion, beauty, and lifestyle essentials
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10">
             {/* Product 1 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <Image
                   src="/images/PremiumLeatherHandbags.png"
                   alt="Premium Leather Handbag"
                   fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute top-3 left-3">
+                <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
                   <span className="bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Featured</span>
                 </div>
               </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2">Premium Leather Handbag</h3>
-                <p className="text-gray-600 text-sm mb-3">Elegant genuine leather handbag with multiple compartments</p>
+              <div className="p-3 sm:p-4">
+                <h3 className="font-bold text-gray-800 mb-2 text-sm sm:text-base">Premium Leather Handbag</h3>
+                <p className="text-gray-600 text-xs sm:text-sm mb-3">Elegant genuine leather handbag with multiple compartments</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-lg text-blue-600">₦45,000</span>
-                  <Link href="/shop" className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700">
+                  <span className="font-bold text-base sm:text-lg text-blue-600">₦45,000</span>
+                  <Link href="/shop" className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-blue-700 min-h-[36px] flex items-center">
                     Shop
                   </Link>
                 </div>
@@ -146,21 +146,21 @@ export default function Home() {
 
             {/* Product 2 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <Image
                   src="/images/NaturalHairOil.png"
                   alt="Natural Hair Oil"
                   fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
               </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2">Natural Hair Oil</h3>
-                <p className="text-gray-600 text-sm mb-3">Organic hair treatment with coconut and jojoba oils</p>
+              <div className="p-3 sm:p-4">
+                <h3 className="font-bold text-gray-800 mb-2 text-sm sm:text-base">Natural Hair Oil</h3>
+                <p className="text-gray-600 text-xs sm:text-sm mb-3">Organic hair treatment with coconut and jojoba oils</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-lg text-blue-600">₦12,000</span>
-                  <Link href="/shop" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700">
+                  <span className="font-bold text-base sm:text-lg text-blue-600">₦12,000</span>
+                  <Link href="/shop" className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-purple-700 min-h-[36px] flex items-center">
                     Shop
                   </Link>
                 </div>
@@ -169,21 +169,21 @@ export default function Home() {
 
             {/* Product 3 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <Image
                   src="/images/AnkaraPrintBlouses.png"
                   alt="Ankara Print Blouse"
                   fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
               </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2">Ankara Print Blouse</h3>
-                <p className="text-gray-600 text-sm mb-3">Traditional meets modern with contemporary cut</p>
+              <div className="p-3 sm:p-4">
+                <h3 className="font-bold text-gray-800 mb-2 text-sm sm:text-base">Ankara Print Blouse</h3>
+                <p className="text-gray-600 text-xs sm:text-sm mb-3">Traditional meets modern with contemporary cut</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-lg text-blue-600">₦15,000</span>
-                  <Link href="/shop" className="bg-pink-600 text-white px-3 py-1 rounded-full text-sm hover:bg-pink-700">
+                  <span className="font-bold text-base sm:text-lg text-blue-600">₦15,000</span>
+                  <Link href="/shop" className="bg-pink-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-pink-700 min-h-[36px] flex items-center">
                     Shop
                   </Link>
                 </div>
@@ -192,21 +192,21 @@ export default function Home() {
 
             {/* Product 4 */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <Image
                   src="/images/StatementEarrings.png"
                   alt="Statement Earrings"
                   fill
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
               </div>
-              <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2">Statement Earrings</h3>
-                <p className="text-gray-600 text-sm mb-3">Bold and beautiful earrings that add glamour</p>
+              <div className="p-3 sm:p-4">
+                <h3 className="font-bold text-gray-800 mb-2 text-sm sm:text-base">Statement Earrings</h3>
+                <p className="text-gray-600 text-xs sm:text-sm mb-3">Bold geometric design perfect for special occasions</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-lg text-blue-600">₦8,500</span>
-                  <Link href="/shop" className="bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700">
+                  <span className="font-bold text-base sm:text-lg text-blue-600">₦8,500</span>
+                  <Link href="/shop" className="bg-green-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-green-700 min-h-[36px] flex items-center">
                     Shop
                   </Link>
                 </div>
@@ -217,7 +217,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/shop"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
             >
               🛍️ View All Products
             </Link>

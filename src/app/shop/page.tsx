@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { trackPageView } from '@/lib/analytics'
 
 interface Product {
@@ -153,6 +152,20 @@ export default function ShopPage() {
     )
   }
 
+    return (
+      <div className="py-16 px-4 bg-gray-50">
+        <div className="container mx-auto text-center">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Error Loading Products</h1>
+          <p className="text-lg text-gray-600 mb-8">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-black text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 min-h-[48px] flex items-center justify-center"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    )
   if (error) {
     return (
       <div className="py-16 px-4 bg-gray-50">
@@ -161,7 +174,7 @@ export default function ShopPage() {
           <p className="text-lg text-gray-600 mb-8">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300"
+            className="bg-black text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 min-h-[48px] flex items-center justify-center"
           >
             Try Again
           </button>
@@ -174,24 +187,7 @@ export default function ShopPage() {
     <div className="relative">
       {/* Hero Section with Beautiful Background */}
       <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/PremiumLeatherHandbags.png"
-            alt="Emmdra Shop Background - Premium Fashion Collection"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-          {/* Elegant overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-transparent"></div>
-          {/* Brand color accent overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-blue-900/30 mix-blend-multiply"></div>
-        </div>
-
         <div className="container mx-auto relative z-10">
-          {/* Page Header */}
           <div className="text-center mb-8 sm:mb-12">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 drop-shadow-lg">
               Shop Our Collection
@@ -200,18 +196,21 @@ export default function ShopPage() {
               Discover quality fashion, beauty, and lifestyle products curated for the modern family.
             </p>
           </div>
+        </div>
+      </section>
 
-        {/* Category Filter Tabs */}
-        <div className="mb-12">
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
+      {/* Category Filter Section */}
+      <section className="py-8 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
+                className={`px-6 py-3 rounded-full font-semibold transition-colors duration-300 min-h-[48px] flex items-center justify-center ${
                   selectedCategory === category.id
-                    ? 'bg-black text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                    ? 'bg-black text-white'
+                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                 }`}
               >
                 {category.name}
@@ -219,138 +218,64 @@ export default function ShopPage() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Product Grid */}
-        {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      {/* Products Grid Section */}
+      <section className="py-8 px-4 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
-              >
-                {/* Product Image */}
-                <div className="relative w-full h-64 overflow-hidden">
+              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="aspect-square bg-gray-200 relative">
                   <Image
                     src={product.image_url}
                     alt={product.name}
-                    width={400}
-                    height={256}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    fill
+                    className="object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/placeholder.png';
+                    }}
                   />
-
-                  {/* Category Badge */}
-                  {product.category && (
-                    <div className="absolute top-3 left-3">
-                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                        product.category === 'Fashion' ? 'bg-pink-500 text-white' :
-                        product.category === 'Beauty' ? 'bg-purple-500 text-white' :
-                        product.category === 'Accessories' ? 'bg-blue-500 text-white' :
-                        product.category === 'Kids Fashion' ? 'bg-orange-500 text-white' :
-                        'bg-gray-500 text-white'
-                      }`}>
-                        {product.category}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Featured Badge */}
-                  {product.featured && (
-                    <div className="absolute top-3 right-3">
-                      <span className="px-2 py-1 rounded-full text-xs font-semibold bg-yellow-500 text-white">
+                </div>
+                <div className="p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">
+                      {product.name}
+                    </h3>
+                    {product.featured && (
+                      <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full ml-2">
                         Featured
                       </span>
-                    </div>
-                  )}
-
-                  {/* Stock Status */}
-                  {!product.in_stock && (
-                    <div className="absolute bottom-3 right-3">
-                      <span className="px-2 py-1 rounded-full text-xs font-semibold bg-red-500 text-white">
-                        Out of Stock
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Product Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    {product.name}
-                  </h3>
-
-                  <p className="text-gray-600 text-sm mb-4">
+                    )}
+                  </div>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                     {product.short_description}
                   </p>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-gray-800">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xl font-bold text-gray-800">
                       ₦{product.price.toLocaleString()}
                     </span>
-                    <Link
-                      href={`/shop/${product.id}`}
-                      className="bg-black text-white px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors duration-200"
-                    >
-                      View Details
-                    </Link>
+                    <span className={`text-sm px-2 py-1 rounded-full ${
+                      product.in_stock
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'
+                    }`}>
+                      {product.in_stock ? 'In Stock' : 'Out of Stock'}
+                    </span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        ) : (
-          <div className="text-center py-16">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">No Products in This Category</h2>
-            <p className="text-gray-600 mb-6">Try selecting a different category or check back later for new products.</p>
-            <button
-              onClick={() => setSelectedCategory('All')}
-              className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300"
-            >
-              View All Products
-            </button>
-          </div>
-        )}
 
-        {/* Pagination Placeholder */}
-        <div className="flex items-center justify-center space-x-2 mt-12">
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200">
-            Previous
-          </button>
-          <button className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors duration-200">
-            1
-          </button>
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200">
-            2
-          </button>
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200">
-            Next
-          </button>
+          {filteredProducts.length === 0 && !loading && (
+            <div className="text-center py-16">
+              <p className="text-gray-600 text-lg">No products found in this category.</p>
+            </div>
+          )}
         </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16 bg-white rounded-3xl p-12 shadow-lg">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-            Need Help Finding Something?
-          </h2>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Our team is here to help you find the perfect items for your needs. Whether it&apos;s styling advice, product recommendations, or custom orders.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              📞 Contact Us
-            </Link>
-            <Link
-              href="/about"
-              className="border-2 border-gray-800 text-gray-800 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 hover:text-white transition-all duration-300"
-            >
-              👨‍👩‍👧‍👦 Learn About Us
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
     </div>
   )
 }

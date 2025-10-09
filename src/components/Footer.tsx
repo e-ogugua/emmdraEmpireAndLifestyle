@@ -47,7 +47,7 @@ export default function Footer() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm hover:text-white transition-colors duration-200"
+                  className="text-sm hover:text-white transition-colors duration-200 py-2 px-1 rounded min-h-[44px] flex items-center"
                 >
                   {link.name}
                 </a>
