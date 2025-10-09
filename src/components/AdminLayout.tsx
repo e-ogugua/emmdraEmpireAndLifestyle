@@ -28,6 +28,7 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
   const checkAuth = useCallback(async () => {
     try {
       const { data: { session } } = await supabase.auth.getSession()
+
       if (session && AUTHORIZED_ADMIN_EMAILS.includes(session.user.email || '')) {
         setUser(session.user)
       } else {
