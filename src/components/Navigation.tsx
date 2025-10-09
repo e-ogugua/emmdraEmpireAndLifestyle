@@ -26,6 +26,7 @@ export default function Navigation() {
                 src="/images/EmmdraLogo.png"
                 alt="Emmdra Empire & Lifestyle"
                 fill
+                priority
                 unoptimized={true}
                 className="object-contain p-1 sm:p-2 rounded-full transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 128px"
@@ -48,107 +49,69 @@ export default function Navigation() {
               { name: 'About', href: '/about', color: 'blue' },
               { name: 'Contact', href: '/contact', color: 'blue' },
               { name: 'Admin', href: '/admin', color: 'green' }
-            ].map((link) => (
+            ].map((item) => (
               <Link
-                key={link.name}
-                href={link.href}
-                className={`relative px-4 sm:px-5 py-2 sm:py-3 rounded-xl font-semibold text-sm transition-all duration-300 group overflow-hidden min-h-[44px] ${
-                  link.color === 'green'
-                    ? 'text-green-700 hover:text-white bg-green-50 hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-500 border border-green-200 hover:border-green-400'
-                    : 'text-gray-700 hover:text-white bg-gray-50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 border border-gray-200 hover:border-blue-400'
+                key={item.name}
+                href={item.href}
+                className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
+                  item.color === 'green'
+                    ? 'bg-green-600 text-white hover:bg-green-700'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
               >
-                <span className="relative z-10 transition-transform duration-300 group-hover:scale-105">{link.name}</span>
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                  link.color === 'green'
-                    ? 'bg-gradient-to-r from-green-400 to-emerald-500'
-                    : 'bg-gradient-to-r from-blue-400 to-purple-500'
-                }`}></div>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {item.name}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Hamburger Menu Button */}
+          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="relative p-2 sm:p-3 rounded-xl text-gray-700 hover:text-white bg-gray-100 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 transition-all duration-300 group border border-gray-200 hover:border-blue-400 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              aria-expanded="false"
             >
-              <svg className="h-7 w-7 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="sr-only">Open main menu</span>
+              {!isMobileMenuOpen ? (
+                <svg className="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden">
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
-            onClick={closeMobileMenu}
-          />
-
-          {/* Mobile Menu Panel */}
-          <div className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-200 z-50 transform transition-transform duration-300 max-h-[80vh] overflow-y-auto">
-            <div className="container mx-auto px-4 py-6">
-              <div className="grid gap-3 sm:gap-2">
-                {[
-                  { name: 'Home', href: '/', color: 'blue' },
-                  { name: 'Shop', href: '/shop', color: 'blue' },
-                  { name: 'DIY', href: '/diy', color: 'blue' },
-                  { name: 'Blog', href: '/blog', color: 'blue' },
-                  { name: 'Workshops', href: '/workshops', color: 'blue' },
-                  { name: 'About', href: '/about', color: 'blue' },
-                  { name: 'Contact', href: '/contact', color: 'blue' },
-                  { name: 'Admin', href: '/admin', color: 'green' }
-                ].map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={closeMobileMenu}
-                    className={`block px-4 py-3 sm:px-4 sm:py-3 rounded-xl font-semibold text-sm transition-all duration-300 min-h-[48px] ${
-                      link.color === 'green'
-                        ? 'text-green-700 hover:text-white bg-green-50 hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-500 border border-green-200 hover:border-green-400'
-                        : 'text-gray-700 hover:text-white bg-gray-50 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 border border-gray-200 hover:border-blue-400'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Mobile Logo Section */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="relative w-20 h-20 mr-3">
-                    <div className="absolute inset-0 bg-white rounded-full shadow-lg border-2 border-emerald-200"></div>
-                    <Image
-                      src="/images/EmmdraLogo.png"
-                      alt="Emmdra Empire & Lifestyle"
-                      fill
-                      unoptimized={true}
-                      className="object-contain p-1 rounded-full"
-                      sizes="80px"
-                    />
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-800 leading-tight">Emmdra</h3>
-                    <p className="text-xs font-semibold text-slate-600">Empire & Lifestyle</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+            {[
+              { name: 'Home', href: '/' },
+              { name: 'Shop', href: '/shop' },
+              { name: 'DIY', href: '/diy' },
+              { name: 'Blog', href: '/blog' },
+              { name: 'Workshops', href: '/workshops' },
+              { name: 'About', href: '/about' },
+              { name: 'Contact', href: '/contact' },
+              { name: 'Admin', href: '/admin' }
+            ].map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                onClick={closeMobileMenu}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       )}
-
-      {/* Decorative gradient line */}
-      <div className="h-1 bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
     </nav>
   )
 }

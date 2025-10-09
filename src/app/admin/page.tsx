@@ -65,6 +65,27 @@ export default function AdminPage() {
     }
 
     checkAuth()
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
+        const normalizedUserEmail = session.user.email?.toLowerCase().trim() || ''
+        const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
+
+        if (normalizedAllowedEmails.includes(normalizedUserEmail)) {
+          setUser(session.user)
+          fetchStats()
+        } else {
+          setUser(null)
+        }
+      } else {
+        setUser(null)
+      }
+      setLoading(false)
+    })
+
+    return () => subscription.unsubscribe()
   }, [])
 
   if (loading) {
