@@ -148,12 +148,12 @@ export default function WorkshopsPage() {
             src="/images/workshopsAndTraning.png"
             alt="Emmdra Workshops Background - Creative Learning and Training"
             fill
-            className="object-cover object-center"
+            className="object-cover object-center blur-[2px] scale-105"
             priority
             sizes="100vw"
           />
           {/* Elegant overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-transparent"></div>
           {/* Brand color accent overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-yellow-900/30 mix-blend-multiply"></div>
         </div>
@@ -177,10 +177,10 @@ export default function WorkshopsPage() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 backdrop-blur-sm border-2 ${
                   selectedCategory === category.id
-                    ? 'bg-black text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                    ? 'bg-black/80 text-white shadow-lg border-black/60'
+                    : 'bg-white/80 text-gray-700 hover:bg-white/90 border-white/60 shadow-md'
                 }`}
               >
                 {category.name}
@@ -192,7 +192,7 @@ export default function WorkshopsPage() {
         {/* Featured Workshop Section */}
         {filteredWorkshops.length > 0 && filteredWorkshops[0]?.featured && (
           <div className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-8">Featured Workshop</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-8 drop-shadow-lg">Featured Workshop</h2>
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2">
@@ -207,11 +207,11 @@ export default function WorkshopsPage() {
                 </div>
                 <div className="md:w-1/2 p-8 flex flex-col justify-center">
                   <div className="mb-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      filteredWorkshops[0].category === 'Fashion' ? 'bg-pink-100 text-pink-800' :
-                      filteredWorkshops[0].category === 'Beauty' ? 'bg-purple-100 text-purple-800' :
-                      filteredWorkshops[0].category === 'Crafts' ? 'bg-blue-100 text-blue-800' :
-                      'bg-green-100 text-green-800'
+                    <span className={`px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm border ${
+                      filteredWorkshops[0].category === 'Fashion' ? 'bg-pink-500/90 text-white border-pink-400/60' :
+                      filteredWorkshops[0].category === 'Beauty' ? 'bg-purple-500/90 text-white border-purple-400/60' :
+                      filteredWorkshops[0].category === 'Crafts' ? 'bg-blue-500/90 text-white border-blue-400/60' :
+                      'bg-green-500/90 text-white border-green-400/60'
                     }`}>
                       {filteredWorkshops[0].category}
                     </span>
@@ -274,7 +274,7 @@ export default function WorkshopsPage() {
 
         {/* Workshops Grid */}
         <div className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-8 drop-shadow-lg">
             {selectedCategory === 'all' ? 'All Workshops' : `${categories.find(c => c.id === selectedCategory)?.name} Workshops`}
           </h2>
 
@@ -294,18 +294,18 @@ export default function WorkshopsPage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                        workshop.category === 'Fashion' ? 'bg-pink-100 text-pink-800' :
-                        workshop.category === 'Beauty' ? 'bg-purple-100 text-purple-800' :
-                        workshop.category === 'Crafts' ? 'bg-blue-100 text-blue-800' :
-                        'bg-green-100 text-green-800'
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border ${
+                        workshop.category === 'Fashion' ? 'bg-pink-500/90 text-white border-pink-400/60' :
+                        workshop.category === 'Beauty' ? 'bg-purple-500/90 text-white border-purple-400/60' :
+                        workshop.category === 'Crafts' ? 'bg-blue-500/90 text-white border-blue-400/60' :
+                        'bg-green-500/90 text-white border-green-400/60'
                       }`}>
                         {workshop.category}
                       </span>
                     </div>
                     {workshop.featured && (
                       <div className="absolute top-4 right-4">
-                        <span className="px-2 py-1 rounded-full text-xs font-semibold bg-yellow-500 text-white">
+                        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/90 backdrop-blur-sm text-white border border-yellow-400/60">
                           Featured
                         </span>
                       </div>
@@ -371,11 +371,11 @@ export default function WorkshopsPage() {
             </div>
           ) : (
             <div className="text-center py-16">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">No Workshops Found</h3>
-              <p className="text-gray-600 mb-6">Check back later for new workshops in this category.</p>
+              <h3 className="text-xl font-bold text-white mb-4 drop-shadow-md">No Workshops Found</h3>
+              <p className="text-white/80 mb-6 drop-shadow-sm">Check back later for new workshops in this category.</p>
               <button
                 onClick={() => setSelectedCategory('all')}
-                className="bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300"
+                className="bg-white/90 backdrop-blur-sm text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-white border border-white/60 transition-colors duration-300 shadow-lg"
               >
                 View All Workshops
               </button>

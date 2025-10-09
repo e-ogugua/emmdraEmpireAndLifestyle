@@ -47,7 +47,7 @@ export default function Footer() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm hover:text-white transition-colors duration-200 py-2 px-1 rounded min-h-[44px] flex items-center"
+                  className="text-sm hover:text-white transition-colors duration-200 py-2 px-3 rounded-lg min-h-[44px] flex items-center hover:bg-gray-800"
                 >
                   {link.name}
                 </a>
@@ -111,7 +111,7 @@ export default function Footer() {
             <NewsletterSignup
               title=""
               description=""
-              className="bg-gray-800 border border-gray-700 p-6 rounded-lg"
+              className="bg-gray-800 border border-gray-700 p-6 rounded-xl"
             />
           </div>
         </div>

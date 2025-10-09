@@ -52,16 +52,16 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-all duration-200 border border-transparent hover:border-emerald-100 min-h-[44px] flex items-center"
+                className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all duration-200 border border-transparent hover:border-emerald-100 min-h-[44px] flex items-center"
               >
                 {item.name}
               </Link>
             ))}
-            
+
             {/* Admin Button - Different Style */}
             <Link
               href="/admin"
-              className="ml-3 sm:ml-4 px-4 sm:px-6 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-sm font-medium rounded-md hover:from-emerald-700 hover:to-green-700 transition-all duration-200 shadow-sm hover:shadow-md min-h-[44px] flex items-center"
+              className="ml-3 sm:ml-4 px-4 sm:px-6 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-sm font-medium rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all duration-200 shadow-sm hover:shadow-md min-h-[44px] flex items-center"
             >
               Admin
             </Link>
@@ -106,7 +106,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-3 sm:py-4 rounded-md text-base font-medium transition-colors duration-200 min-h-[48px] flex items-center ${item.name === 'Admin'
+                className={`block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-colors duration-200 min-h-[48px] flex items-center ${item.name === 'Admin'
                   ? 'bg-emerald-600 text-white hover:bg-emerald-700'
                   : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
                 }`}
