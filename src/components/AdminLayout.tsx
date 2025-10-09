@@ -8,8 +8,7 @@ import { supabase } from '@/lib/supabase'
 
 // Authorized admin emails
 const AUTHORIZED_ADMIN_EMAILS = [
-  'emmanuel@emmdraempire.com',
-  'chidera@emmdraempire.com'
+  'emmdraempire@gmail.com'
 ]
 
 interface AdminLayoutProps {
