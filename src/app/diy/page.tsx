@@ -163,10 +163,10 @@ export default function DIYPage() {
             priority
             sizes="100vw"
           />
-          {/* Elegant overlay for text readability - Much more subtle */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/10 to-transparent"></div>
-          {/* Brand color accent overlay - Very faded */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-teal-900/05 to-blue-900/10 mix-blend-multiply"></div>
+          {/* Enhanced overlay for better card readability - More prominent */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/20"></div>
+          {/* Brand color accent overlay - More visible */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900/20 via-teal-900/15 to-blue-900/10 mix-blend-multiply"></div>
         </div>
 
         <div className="container mx-auto relative z-10">
@@ -183,7 +183,7 @@ export default function DIYPage() {
 
         {/* Filter Controls */}
         <div className="mb-12">
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Category Filter */}
               <div>
@@ -241,7 +241,7 @@ export default function DIYPage() {
         {filteredTutorials.length > 0 && filteredTutorials[0]?.featured && (
           <div className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-8">Featured Tutorial</h2>
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-white/20">
               <div className="md:flex">
                 <div className="md:w-1/2">
                   {filteredTutorials[0].cover_image ? (
@@ -317,7 +317,7 @@ export default function DIYPage() {
               {filteredTutorials.map((tutorial) => (
                 <div
                   key={tutorial.id}
-                  className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+                  className="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl border border-white/20"
                 >
                   <div className="relative">
                     {tutorial.cover_image ? (

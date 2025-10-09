@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { sendEmail, createEmailTemplate, createTextEmail } from '@/../lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,6 +49,79 @@ export async function POST(request: NextRequest) {
     }
 
     console.log('🎓 Training request stored in database:', trainingData)
+
+    // Send email notification to admin
+    const subject = `New Training Request from ${name} - Emmdra Empire`
+
+    const trainingContent = `
+      <div class="highlight">
+        <strong>New Training Enrollment Request!</strong>
+      </div>
+
+      <div class="details">
+        <div class="label">Student Name:</div>
+        <div class="value">${name}</div>
+
+        <div class="label">Email:</div>
+        <div class="value">
+          <a href="mailto:${email}">${email}</a>
+        </div>
+
+        ${phone ? `
+          <div class="label">Phone:</div>
+          <div class="value">
+            <a href="tel:${phone}">${phone}</a>
+          </div>
+        ` : ''}
+
+        <div class="label">Training Type:</div>
+        <div class="value">${training_type}</div>
+
+        ${experience_level ? `
+          <div class="label">Experience Level:</div>
+          <div class="value">${experience_level}</div>
+        ` : ''}
+
+        ${availability ? `
+          <div class="label">Availability:</div>
+          <div class="value">${availability}</div>
+        ` : ''}
+
+        ${goals ? `
+          <div class="label">Goals:</div>
+          <div class="value">${goals}</div>
+        ` : ''}
+
+        ${message ? `
+          <div class="label">Additional Message:</div>
+          <div class="value">${message}</div>
+        ` : ''}
+      </div>
+
+      <p>
+        <a href="mailto:${email}?subject=Regarding your training enrollment" class="button">
+          Reply to Student
+        </a>
+      </p>
+    `
+
+    const htmlBody = createEmailTemplate(trainingContent, 'Training Request')
+    const textBody = createTextEmail(trainingContent, 'Training Request')
+
+    // Send email to admin (you can configure multiple admin emails)
+    const adminEmails = process.env.ADMIN_EMAILS?.split(',') || [process.env.NOTIFY_EMAIL || process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com']
+    for (const adminEmail of adminEmails) {
+      if (adminEmail.trim()) {
+        const emailOptions = {
+          to: adminEmail.trim(),
+          subject,
+          html: htmlBody,
+          text: textBody,
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        await sendEmail(emailOptions as any)
+      }
+    }
 
     return NextResponse.json({
       success: true,
