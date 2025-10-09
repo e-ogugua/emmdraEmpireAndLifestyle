@@ -113,6 +113,18 @@ export default function ContactPage() {
           workshop_name: formData.service_type,
           message: formData.message
         }
+      } else if (apiEndpoint === '/api/training') {
+        // Map service_type to training_type for training API
+        submitData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          training_type: formData.service_type,
+          experience_level: '', // Optional field - can be empty
+          availability: '', // Optional field - can be empty
+          goals: '', // Optional field - can be empty
+          message: formData.message
+        }
       } else {
         // Use original form data for other endpoints
         submitData = {
