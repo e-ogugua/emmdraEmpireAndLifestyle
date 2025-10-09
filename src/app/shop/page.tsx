@@ -152,20 +152,6 @@ export default function ShopPage() {
     )
   }
 
-    return (
-      <div className="py-16 px-4 bg-gray-50">
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Error Loading Products</h1>
-          <p className="text-lg text-gray-600 mb-8">{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="bg-black text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 min-h-[48px] flex items-center justify-center"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    )
   if (error) {
     return (
       <div className="py-16 px-4 bg-gray-50">
@@ -187,6 +173,22 @@ export default function ShopPage() {
     <div className="relative">
       {/* Hero Section with Beautiful Background */}
       <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/AdultWearsAndFashion.png"
+            alt="Emmdra Shop Background - Fashion and Lifestyle Collection"
+            fill
+            className="object-cover object-center blur-[2px] scale-105"
+            priority
+            sizes="100vw"
+          />
+          {/* Elegant overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-transparent"></div>
+          {/* Brand color accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-yellow-900/30 mix-blend-multiply"></div>
+        </div>
+
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-12">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 drop-shadow-lg">
@@ -231,6 +233,7 @@ export default function ShopPage() {
                     src={product.image_url}
                     alt={product.name}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     className="object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
