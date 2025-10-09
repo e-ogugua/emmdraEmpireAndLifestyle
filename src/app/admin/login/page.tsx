@@ -15,14 +15,13 @@ export default function AdminLogin() {
 
     if (!email || !password) {
       setError('Please enter both email and password')
-      return
     }
 
     setLoading(true)
     setError(null)
 
     // Check if email is authorized (client-side validation)
-    const allowedEmails = process.env.ADMIN_EMAILS?.split(',') || []
+    const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
     const normalizedEmail = email.toLowerCase().trim()
     const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
 

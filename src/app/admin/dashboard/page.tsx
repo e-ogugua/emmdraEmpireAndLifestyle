@@ -71,7 +71,7 @@ export default function AdminDashboard() {
         }
 
         // Check if user is authorized (case-insensitive and trimmed)
-        const allowedEmails = process.env.ADMIN_EMAILS?.split(',') || []
+        const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
         const normalizedUserEmail = user.email?.toLowerCase().trim() || ''
         const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
 

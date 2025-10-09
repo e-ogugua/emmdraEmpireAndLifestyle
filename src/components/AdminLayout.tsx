@@ -8,7 +8,7 @@ import { supabase } from '@/lib/supabase'
 
 // Authorized admin emails - fallback to environment variable or empty array (no hardcoded fallback)
 const getAuthorizedEmails = () => {
-  const envEmails = process.env.ADMIN_EMAILS?.split(',') || []
+  const envEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
   return envEmails.length > 0 ? envEmails : []
 }
 
