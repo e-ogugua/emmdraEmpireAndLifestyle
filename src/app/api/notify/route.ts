@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
+import { sendEmail, createEmailTemplate, createTextEmail } from '@/../lib/email'
 
 interface NotificationData {
   type: 'booking' | 'order' | 'contact'
@@ -63,13 +63,14 @@ export async function POST(request: NextRequest) {
     const textBody = createTextEmail(content, emailData.type as string)
 
     // Send email
-    const emailSent = await sendEmail({
+    const emailResult = await sendEmail({
+      to: process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com',
       subject,
-      bodyHtml: htmlBody,
-      bodyText: textBody
+      html: htmlBody,
+      text: textBody
     })
 
-    if (!emailSent) {
+    if (!emailResult.success) {
       return NextResponse.json(
         { error: 'Failed to send notification email' },
         { status: 500 }

@@ -1,10 +1,10 @@
 import nodemailer from 'nodemailer'
 
 export interface EmailOptions {
-  to: string
-  subject: string
-  html: string
-  text?: string
+  to: string;
+  subject: string;
+  html: string;
+  text?: string;
 }
 
 // Create Gmail SMTP transporter
@@ -52,7 +52,20 @@ export const createEmailTemplate = (content: string, type: string) => {
 }
 
 // Send email function using Gmail SMTP
-export const sendEmail = async (options: EmailOptions): Promise<{ success: boolean; error?: string; details?: any }> => {
+interface EmailResponse {
+  success: boolean;
+  error?: string;
+  details?: {
+    messageId?: string;
+    code?: string;
+    command?: string;
+    response?: string;
+    missingVariables?: string[];
+    availableVariables?: string[];
+  };
+}
+
+export async function sendEmail(options: EmailOptions): Promise<EmailResponse> {
   try {
     console.log('🔍 Starting email send process...');
     
@@ -95,21 +108,22 @@ export const sendEmail = async (options: EmailOptions): Promise<{ success: boole
     const result = await transporter.sendMail(mailOptions as nodemailer.SendMailOptions)
     console.log('✅ Email sent successfully:', result.messageId)
     return { success: true, details: { messageId: result.messageId } }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const err = error as Error & { code?: string; command?: string; response?: string };
     console.error('❌ Email sending failed:', {
-      error: error.message,
-      stack: error.stack,
-      code: error.code,
-      response: error.response
+      error: err.message,
+      stack: err.stack,
+      code: err.code,
+      response: err.response
     });
     
     return { 
       success: false, 
-      error: error.message,
+      error: err.message,
       details: {
-        code: error.code,
-        command: error.command,
-        response: error.response
+        code: err.code,
+        command: err.command,
+        response: err.response
       }
     };
   }

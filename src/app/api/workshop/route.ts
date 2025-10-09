@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
+import { sendEmail, createEmailTemplate, createTextEmail } from '@/../lib/email'
 import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
@@ -134,13 +134,14 @@ export async function POST(request: NextRequest) {
     const textBody = createTextEmail(workshopContent, 'Workshop Registration')
 
     // Send email
-    const emailSent = await sendEmail({
+    const emailResult = await sendEmail({
+      to: process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com',
       subject,
-      bodyHtml: htmlBody,
-      bodyText: textBody
+      html: htmlBody,
+      text: textBody
     })
 
-    if (!emailSent) {
+    if (!emailResult.success) {
       console.warn('Email notification failed, but registration was saved to database')
     }
 

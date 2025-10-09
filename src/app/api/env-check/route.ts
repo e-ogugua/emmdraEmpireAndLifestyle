@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
-import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
+import { sendEmail, createEmailTemplate, createTextEmail } from '@/../lib/email'
 
 export async function GET() {
   const results: {
@@ -73,17 +73,18 @@ export async function GET() {
 
   // Test email functionality
   try {
-    const testEmailSent = await sendEmail({
+    const emailResult = await sendEmail({
+      to: process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com',
       subject: 'Environment Test - ' + new Date().toISOString(),
-      bodyHtml: createEmailTemplate('<p>This is a test email to verify your environment configuration is working correctly.</p>', 'Environment Test'),
-      bodyText: createTextEmail('This is a test email to verify your environment configuration is working correctly.', 'Environment Test')
+      html: createEmailTemplate('<p>This is a test email to verify your environment configuration is working correctly.</p>', 'Environment Test'),
+      text: createTextEmail('This is a test email to verify your environment configuration is working correctly.', 'Environment Test')
     })
 
     results.checks.email_functionality = {
-      success: testEmailSent,
-      message: testEmailSent
+      success: emailResult.success,
+      message: emailResult.success
         ? 'Test email sent successfully'
-        : 'Failed to send test email - check RESEND_API_KEY and email configuration'
+        : `Failed to send test email: ${emailResult.error || 'Unknown error'}`
     }
   } catch (error) {
     results.checks.email_functionality = {

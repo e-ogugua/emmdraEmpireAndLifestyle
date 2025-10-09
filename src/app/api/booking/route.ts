@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
+import { sendEmail, createEmailTemplate, createTextEmail } from '@/../lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -83,9 +83,10 @@ export async function POST(request: NextRequest) {
 
     // Send email
     const emailSent = await sendEmail({
+      to: process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com',
       subject,
-      bodyHtml: htmlBody,
-      bodyText: textBody
+      html: htmlBody,
+      text: textBody
     })
 
     if (!emailSent) {

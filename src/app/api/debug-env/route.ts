@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server'
-import { sendEmail, createEmailTemplate, createTextEmail } from '@/lib/email'
+import { sendEmail, createEmailTemplate, createTextEmail } from '@/../lib/email'
 
 export async function GET() {
   try {
     // Test email configuration
     const testEmailSent = await sendEmail({
+      to: process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com',
       subject: 'Email Configuration Test',
-      bodyHtml: createEmailTemplate('<p>This is a test email to verify SMTP configuration.</p>', 'Test'),
-      bodyText: createTextEmail('This is a test email to verify SMTP configuration.', 'Test')
+      html: createEmailTemplate('<p>This is a test email to verify SMTP configuration.</p>', 'Test'),
+      text: createTextEmail('This is a test email to verify SMTP configuration.', 'Test')
     })
 
     if (testEmailSent) {
