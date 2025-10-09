@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 
-// Authorized admin emails - fallback to environment variable or hardcoded default
+// Authorized admin emails - fallback to environment variable or empty array (no hardcoded fallback)
 const getAuthorizedEmails = () => {
   const envEmails = process.env.ADMIN_EMAILS?.split(',') || []
-  return envEmails.length > 0 ? envEmails : ['emmdraempire@gmail.com']
+  return envEmails.length > 0 ? envEmails : []
 }
 
 const AUTHORIZED_ADMIN_EMAILS = getAuthorizedEmails()
