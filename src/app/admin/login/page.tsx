@@ -37,7 +37,7 @@ export default function AdminLogin() {
       console.log('🔧 Ensuring admin user exists...')
       try {
         await fetch('/api/admin-signup', { method: 'POST' })
-      } catch (signupError) {
+      } catch {
         console.log('Signup endpoint not available, continuing with sign in...')
       }
 

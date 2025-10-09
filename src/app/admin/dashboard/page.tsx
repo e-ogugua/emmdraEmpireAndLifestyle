@@ -189,7 +189,7 @@ export default function AdminDashboard() {
         labels: {
           font: {
             size: 12,
-            weight: '500'
+            weight: 500
           },
           color: '#374151'
         }
@@ -199,7 +199,7 @@ export default function AdminDashboard() {
         text: 'Content Overview',
         font: {
           size: 16,
-          weight: '600'
+          weight: 600
         },
         color: '#111827'
       },
@@ -209,7 +209,7 @@ export default function AdminDashboard() {
         ticks: {
           font: {
             size: 11,
-            weight: '500'
+            weight: 500
           },
           color: '#6B7280'
         },
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
         ticks: {
           font: {
             size: 11,
-            weight: '500'
+            weight: 500
           },
           color: '#6B7280'
         },
