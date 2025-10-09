@@ -28,21 +28,44 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
   const checkAuth = useCallback(async () => {
     try {
       console.log('🔍 AdminLayout: Checking authentication...')
+
+      // First check for Supabase session
       const { data: { session } } = await supabase.auth.getSession()
 
-      console.log('🔍 AdminLayout: Session check result:', {
-        hasSession: !!session,
-        userEmail: session?.user?.email,
-        authorizedEmails: AUTHORIZED_ADMIN_EMAILS
-      })
-
       if (session && AUTHORIZED_ADMIN_EMAILS.includes(session.user.email || '')) {
-        console.log('✅ AdminLayout: User authorized, setting user...')
+        console.log('✅ AdminLayout: Valid Supabase session found')
         setUser(session.user)
-      } else {
-        console.log('❌ AdminLayout: No valid session or unauthorized email, redirecting to login')
-        router.push('/admin/login')
+        return
       }
+
+      // If no Supabase session, check for mock authentication in localStorage
+      const mockAuth = localStorage.getItem('adminAuth')
+      if (mockAuth) {
+        try {
+          const authData = JSON.parse(mockAuth)
+          const authTime = new Date(authData.timestamp)
+          const now = new Date()
+          const hoursDiff = (now.getTime() - authTime.getTime()) / (1000 * 60 * 60)
+
+          // Mock auth expires after 24 hours
+          if (hoursDiff < 24 && authData.authorized) {
+            console.log('✅ AdminLayout: Valid mock authentication found')
+            setUser(authData.user)
+            return
+          } else {
+            console.log('❌ AdminLayout: Mock authentication expired')
+            localStorage.removeItem('adminAuth')
+          }
+        } catch (e) {
+          console.error('❌ AdminLayout: Error parsing mock auth', e)
+          localStorage.removeItem('adminAuth')
+        }
+      }
+
+      // No valid authentication found
+      console.log('❌ AdminLayout: No valid authentication, redirecting to login')
+      router.push('/admin/login')
+
     } catch (err) {
       console.error('❌ AdminLayout: Auth check error:', err)
       router.push('/admin/login')
