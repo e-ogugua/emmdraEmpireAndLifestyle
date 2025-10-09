@@ -96,7 +96,7 @@ export default function HeroCarousel() {
             }`}
           >
             {/* Background Image */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10" />
             <Image
               src={slide.image}
               alt={slide.title}
@@ -109,12 +109,12 @@ export default function HeroCarousel() {
             {/* Content Overlay */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="text-center text-white px-4 max-w-4xl mx-auto">
-                <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold mb-6 transition-all duration-1000 transform drop-shadow-2xl ${
+                <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-1000 transform drop-shadow-2xl ${
                   index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
                   {slide.title}
                 </h1>
-                <p className={`text-lg md:text-xl lg:text-2xl mb-8 transition-all duration-1000 delay-300 transform drop-shadow-xl ${
+                <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 transition-all duration-1000 delay-300 transform drop-shadow-xl ${
                   index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
                   {slide.subtitle}
@@ -122,7 +122,7 @@ export default function HeroCarousel() {
                 {slide.ctaText && slide.ctaLink && (
                   <a
                     href={slide.ctaLink}
-                    className={`inline-block bg-white/90 backdrop-blur-md text-gray-900 px-8 py-4 rounded-full font-semibold text-lg border-2 border-white/50 shadow-2xl hover:bg-white hover:scale-105 transition-all duration-300 transform ${
+                    className={`inline-block bg-white/95 backdrop-blur-md text-gray-900 px-8 py-4 rounded-full font-semibold text-lg border-2 border-white/60 shadow-2xl hover:bg-white hover:scale-105 transition-all duration-300 transform ${
                       index === currentSlide ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'
                     }`}
                     style={{ transitionDelay: '600ms' }}

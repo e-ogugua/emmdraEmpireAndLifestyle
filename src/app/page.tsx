@@ -26,29 +26,29 @@ export default function Home() {
       <section className="relative z-10 py-16 px-3 sm:px-4 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
-            <h1 className="heading-1 text-gray-800 mb-6 sm:mb-8">
-              Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-800">Emmdra</span> Empire
+            <h1 className="heading-1 text-brand-neutral-900 mb-6 sm:mb-8">
+              Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-dark-teal via-brand-vibrant-green to-brand-burnt-orange">Emmdra</span> Empire
             </h1>
-            <p className="text-body-lg text-gray-600 max-w-4xl mx-auto mb-6 sm:mb-8">
-              Your complete lifestyle destination where <strong className="text-gray-800">Fashion</strong>, <strong className="text-gray-800">Beauty</strong>, <strong className="text-gray-800">DIY</strong>, <strong className="text-gray-800">Lifestyle</strong>, and <strong className="text-gray-800">Family</strong> come together in perfect harmony.
+            <p className="text-body-lg text-brand-neutral-700 max-w-4xl mx-auto mb-6 sm:mb-8">
+              Your complete lifestyle destination where <strong className="text-brand-neutral-900 font-semibold">Fashion</strong>, <strong className="text-brand-neutral-900 font-semibold">Beauty</strong>, <strong className="text-brand-neutral-900 font-semibold">DIY</strong>, <strong className="text-brand-neutral-900 font-semibold">Lifestyle</strong>, and <strong className="text-brand-neutral-900 font-semibold">Family</strong> come together in perfect harmony.
             </p>
-            <p className="text-body text-gray-700 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16">
+            <p className="text-body text-brand-neutral-700 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16">
               From trendy outfits that make you shine, to beauty secrets that glow from within, creative DIY projects that inspire, lifestyle tips that transform, and family moments that last forever — we have got everything to make your world more beautiful.
             </p>
 
             {/* Category Pills */}
             <div className="flex flex-wrap justify-center gap-3 mb-10 sm:mb-12">
               {[
-                { name: 'Fashion', link: '/shop', color: 'bg-pink-100 text-pink-800 hover:bg-pink-200' },
-                { name: 'Beauty', link: '/shop', color: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
-                { name: 'DIY', link: '/diy', color: 'bg-green-100 text-green-800 hover:bg-green-200' },
-                { name: 'Lifestyle', link: '/blog', color: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
-                { name: 'Family', link: '/about', color: 'bg-orange-100 text-orange-800 hover:bg-orange-200' }
+                { name: 'Fashion', link: '/shop', color: 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light border-2 border-brand-burnt-orange' },
+                { name: 'Beauty', link: '/shop', color: 'bg-brand-vibrant-green text-white hover:bg-brand-vibrant-green-light border-2 border-brand-vibrant-green' },
+                { name: 'DIY', link: '/diy', color: 'bg-brand-dark-teal text-white hover:bg-brand-dark-teal-light border-2 border-brand-dark-teal' },
+                { name: 'Lifestyle', link: '/blog', color: 'bg-brand-light-beige text-brand-neutral-800 hover:bg-brand-light-beige-dark border-2 border-brand-light-beige-dark font-semibold' },
+                { name: 'Family', link: '/about', color: 'bg-gradient-to-r from-brand-burnt-orange to-brand-vibrant-green text-white hover:from-brand-burnt-orange-light hover:to-brand-vibrant-green-light' }
               ].map((category) => (
                 <Link
                   key={category.name}
                   href={category.link}
-                  className={`${category.color} px-4 py-2 rounded-full font-medium text-sm hover:shadow-md transition-all duration-200 hover:scale-105 min-h-[40px] flex items-center`}
+                  className={`${category.color} px-4 py-3 rounded-full font-medium text-sm hover:shadow-lg transition-all duration-200 hover:scale-105 min-h-[44px] flex items-center shadow-md`}
                 >
                   {category.name}
                 </Link>
@@ -78,26 +78,26 @@ export default function Home() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-gray-300">
-              <p className="text-base text-gray-700 mb-4 sm:mb-6 font-medium">Trusted by families across Nigeria</p>
-              <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-8 text-gray-600">
+            <div className="mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-brand-neutral-300">
+              <p className="text-body text-brand-neutral-700 mb-4 sm:mb-6 font-semibold">Trusted by families across Nigeria</p>
+              <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-8 text-brand-neutral-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-brand-vibrant-green" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-medium">Premium Quality</span>
+                  <span className="text-sm font-semibold">Premium Quality</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-brand-dark-teal" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-medium">Fast Delivery</span>
+                  <span className="text-sm font-semibold">Fast Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-brand-burnt-orange" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-medium">Expert Support</span>
+                  <span className="text-sm font-semibold">Expert Support</span>
                 </div>
               </div>
             </div>
@@ -109,10 +109,10 @@ export default function Home() {
       <section className="py-16 px-3 sm:px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
         <div className="container mx-auto">
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-            <h2 className="heading-2 text-gray-900 mb-3 sm:mb-4 drop-shadow-sm">
-              Featured <span className="text-blue-700">Products</span>
+            <h2 className="heading-2 text-brand-neutral-900 mb-3 sm:mb-4 drop-shadow-sm">
+              Featured <span className="text-brand-dark-teal">Products</span>
             </h2>
-            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Discover our handpicked selection of premium fashion, beauty, and lifestyle essentials
             </p>
           </div>
@@ -133,11 +133,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-3 sm:p-4">
-                <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base leading-tight">Premium Leather Handbag</h3>
-                <p className="text-gray-700 text-sm sm:text-base mb-3 leading-relaxed">Elegant genuine leather handbag with multiple compartments</p>
+                <h3 className="font-bold text-brand-neutral-900 mb-2 text-sm sm:text-base leading-tight">Premium Leather Handbag</h3>
+                <p className="text-brand-neutral-700 text-sm sm:text-base mb-3 leading-relaxed">Elegant genuine leather handbag with multiple compartments</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-base sm:text-lg text-blue-700">₦45,000</span>
-                  <Link href="/shop" className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-blue-700 min-h-[36px] flex items-center font-medium">
+                  <span className="font-bold text-base sm:text-lg text-brand-burnt-orange">₦45,000</span>
+                  <Link href="/shop" className="bg-brand-dark-teal text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-brand-dark-teal-light min-h-[36px] flex items-center font-medium">
                     Shop
                   </Link>
                 </div>
@@ -156,11 +156,11 @@ export default function Home() {
                 />
               </div>
               <div className="p-3 sm:p-4">
-                <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base leading-tight">Natural Hair Oil</h3>
-                <p className="text-gray-700 text-sm sm:text-base mb-3 leading-relaxed">Organic hair treatment with coconut and jojoba oils</p>
+                <h3 className="font-bold text-brand-neutral-900 mb-2 text-sm sm:text-base leading-tight">Natural Hair Oil</h3>
+                <p className="text-brand-neutral-700 text-sm sm:text-base mb-3 leading-relaxed">Organic hair treatment with coconut and jojoba oils</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-base sm:text-lg text-blue-700">₦12,000</span>
-                  <Link href="/shop" className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-purple-700 min-h-[36px] flex items-center font-medium">
+                  <span className="font-bold text-base sm:text-lg text-brand-burnt-orange">₦12,000</span>
+                  <Link href="/shop" className="bg-brand-vibrant-green text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-brand-vibrant-green-light min-h-[36px] flex items-center font-medium">
                     Shop
                   </Link>
                 </div>
@@ -179,11 +179,11 @@ export default function Home() {
                 />
               </div>
               <div className="p-3 sm:p-4">
-                <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base leading-tight">Ankara Print Blouse</h3>
-                <p className="text-gray-700 text-sm sm:text-base mb-3 leading-relaxed">Traditional meets modern with contemporary cut</p>
+                <h3 className="font-bold text-brand-neutral-900 mb-2 text-sm sm:text-base leading-tight">Ankara Print Blouse</h3>
+                <p className="text-brand-neutral-700 text-sm sm:text-base mb-3 leading-relaxed">Traditional meets modern with contemporary cut</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-base sm:text-lg text-blue-700">₦15,000</span>
-                  <Link href="/shop" className="bg-pink-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-pink-700 min-h-[36px] flex items-center font-medium">
+                  <span className="font-bold text-base sm:text-lg text-brand-burnt-orange">₦15,000</span>
+                  <Link href="/shop" className="bg-brand-burnt-orange text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-brand-burnt-orange-light min-h-[36px] flex items-center font-medium">
                     Shop
                   </Link>
                 </div>
@@ -202,11 +202,11 @@ export default function Home() {
                 />
               </div>
               <div className="p-3 sm:p-4">
-                <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base leading-tight">Statement Earrings</h3>
-                <p className="text-gray-700 text-sm sm:text-base mb-3 leading-relaxed">Bold geometric design perfect for special occasions</p>
+                <h3 className="font-bold text-brand-neutral-900 mb-2 text-sm sm:text-base leading-tight">Statement Earrings</h3>
+                <p className="text-brand-neutral-700 text-sm sm:text-base mb-3 leading-relaxed">Bold geometric design perfect for special occasions</p>
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-base sm:text-lg text-blue-700">₦8,500</span>
-                  <Link href="/shop" className="bg-green-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-green-700 min-h-[36px] flex items-center font-medium">
+                  <span className="font-bold text-base sm:text-lg text-brand-burnt-orange">₦8,500</span>
+                  <Link href="/shop" className="bg-brand-dark-teal text-white px-3 py-1 rounded-full text-xs sm:text-sm hover:bg-brand-dark-teal-light min-h-[36px] flex items-center font-medium">
                     Shop
                   </Link>
                 </div>
@@ -229,10 +229,10 @@ export default function Home() {
       <section className="py-16 px-4 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="heading-2 text-gray-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-green-700">DIY Projects</span>
+            <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
+              Featured <span className="text-brand-vibrant-green">DIY Projects</span>
             </h2>
-            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Unleash your creativity with our step-by-step tutorials and craft ideas
             </p>
           </div>
@@ -253,11 +253,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-900 mb-2 text-lg leading-tight">Handmade Beaded Necklace</h3>
-                <p className="text-gray-700 text-sm mb-3 leading-relaxed">Create beautiful jewelry with step-by-step guidance</p>
+                <h3 className="font-bold text-brand-neutral-900 mb-2 text-lg leading-tight">Handmade Beaded Necklace</h3>
+                <p className="text-brand-neutral-700 text-sm mb-3 leading-relaxed">Create beautiful jewelry with step-by-step guidance</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-green-700 font-semibold text-sm">Beginner • 45 min</span>
-                  <Link href="/diy/handmade-beaded-necklace" className="bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700 font-medium">
+                  <span className="text-brand-vibrant-green font-semibold text-sm">Beginner • 45 min</span>
+                  <Link href="/diy/handmade-beaded-necklace" className="bg-brand-vibrant-green text-white px-3 py-1 rounded-full text-sm hover:bg-brand-vibrant-green-light font-medium">
                     Try It
                   </Link>
                 </div>
@@ -276,11 +276,11 @@ export default function Home() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-900 mb-2 text-lg leading-tight">Natural Hair Treatment</h3>
-                <p className="text-gray-700 text-sm mb-3 leading-relaxed">DIY hair mask using natural ingredients</p>
+                <h3 className="font-bold text-brand-neutral-900 mb-2 text-lg leading-tight">Natural Hair Treatment</h3>
+                <p className="text-brand-neutral-700 text-sm mb-3 leading-relaxed">DIY hair mask using natural ingredients</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-green-700 font-semibold text-sm">Beginner • 30 min</span>
-                  <Link href="/diy/natural-hair-treatment-mask" className="bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700 font-medium">
+                  <span className="text-brand-vibrant-green font-semibold text-sm">Beginner • 30 min</span>
+                  <Link href="/diy/natural-hair-treatment-mask" className="bg-brand-vibrant-green text-white px-3 py-1 rounded-full text-sm hover:bg-brand-vibrant-green-light font-medium">
                     Try It
                   </Link>
                 </div>
@@ -299,11 +299,11 @@ export default function Home() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-900 mb-2 text-lg leading-tight">DIY Ankara Throw Pillow</h3>
-                <p className="text-gray-700 text-sm mb-3 leading-relaxed">Create beautiful home decor with Ankara fabric</p>
+                <h3 className="font-bold text-brand-neutral-900 mb-2 text-lg leading-tight">DIY Ankara Throw Pillow</h3>
+                <p className="text-brand-neutral-700 text-sm mb-3 leading-relaxed">Create beautiful home decor with Ankara fabric</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-green-700 font-semibold text-sm">Intermediate • 2 hrs</span>
-                  <Link href="/diy/diy-ankara-throw-pillow" className="bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700 font-medium">
+                  <span className="text-brand-vibrant-green font-semibold text-sm">Intermediate • 2 hrs</span>
+                  <Link href="/diy/diy-ankara-throw-pillow" className="bg-brand-vibrant-green text-white px-3 py-1 rounded-full text-sm hover:bg-brand-vibrant-green-light font-medium">
                     Try It
                   </Link>
                 </div>
@@ -326,10 +326,10 @@ export default function Home() {
       <section className="py-16 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="heading-2 text-gray-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-purple-700">Workshops</span>
+            <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
+              Featured <span className="text-brand-burnt-orange">Workshops</span>
             </h2>
-            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Join our hands-on workshops and learn from industry experts
             </p>
           </div>
@@ -350,22 +350,22 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2">Fashion Styling Masterclass</h3>
-                <p className="text-gray-600 text-sm mb-3">Learn professional styling techniques</p>
+                <h3 className="font-bold text-brand-neutral-800 mb-2">Fashion Styling Masterclass</h3>
+                <p className="text-brand-neutral-600 text-sm mb-3">Learn professional styling techniques</p>
                 <div className="space-y-2">
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                     </svg>
                     Feb 15, 2024
                   </div>
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     3 hours
                   </div>
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
                     </svg>
@@ -373,8 +373,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="font-bold text-lg text-purple-600">₦25,000</span>
-                  <Link href="/workshops/fashion-styling-masterclass" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700">
+                  <span className="font-bold text-lg text-brand-burnt-orange">₦25,000</span>
+                  <Link href="/workshops/fashion-styling-masterclass" className="bg-brand-burnt-orange text-white px-3 py-1 rounded-full text-sm hover:bg-brand-burnt-orange-light">
                     Register
                   </Link>
                 </div>
@@ -393,22 +393,22 @@ export default function Home() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2">DIY Jewelry Making</h3>
-                <p className="text-gray-600 text-sm mb-3">Create beautiful handmade jewelry</p>
+                <h3 className="font-bold text-brand-neutral-800 mb-2">DIY Jewelry Making</h3>
+                <p className="text-brand-neutral-600 text-sm mb-3">Create beautiful handmade jewelry</p>
                 <div className="space-y-2">
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                     </svg>
                     Feb 22, 2024
                   </div>
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     4 hours
                   </div>
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
                     </svg>
@@ -416,8 +416,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="font-bold text-lg text-purple-600">₦15,000</span>
-                  <Link href="/workshops/diy-jewelry-making" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700">
+                  <span className="font-bold text-lg text-brand-burnt-orange">₦15,000</span>
+                  <Link href="/workshops/diy-jewelry-making" className="bg-brand-burnt-orange text-white px-3 py-1 rounded-full text-sm hover:bg-brand-burnt-orange-light">
                     Register
                   </Link>
                 </div>
@@ -436,22 +436,22 @@ export default function Home() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2">Natural Beauty Workshop</h3>
-                <p className="text-gray-600 text-sm mb-3">Create your own natural beauty products</p>
+                <h3 className="font-bold text-brand-neutral-800 mb-2">Natural Beauty Workshop</h3>
+                <p className="text-brand-neutral-600 text-sm mb-3">Create your own natural beauty products</p>
                 <div className="space-y-2">
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                     </svg>
                     Mar 1, 2024
                   </div>
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     2.5 hours
                   </div>
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-brand-neutral-600">
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
                     </svg>
@@ -459,8 +459,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="font-bold text-lg text-purple-600">₦18,000</span>
-                  <Link href="/workshops/natural-beauty-workshop" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700">
+                  <span className="font-bold text-lg text-brand-burnt-orange">₦18,000</span>
+                  <Link href="/workshops/natural-beauty-workshop" className="bg-brand-burnt-orange text-white px-3 py-1 rounded-full text-sm hover:bg-brand-burnt-orange-light">
                     Register
                   </Link>
                 </div>
@@ -483,10 +483,10 @@ export default function Home() {
       <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="heading-2 text-gray-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-indigo-700">Stories</span>
+            <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
+              Featured <span className="text-brand-dark-teal">Stories</span>
             </h2>
-            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Read inspiring stories, fashion tips, and lifestyle advice from our community
             </p>
           </div>
@@ -507,11 +507,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2 line-clamp-2">5 Essential Fashion Tips for Nigerian Weather</h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">Learn how to dress comfortably and stylishly in Nigeria&apos;s tropical climate...</p>
+                <h3 className="font-bold text-brand-neutral-800 mb-2 line-clamp-2">5 Essential Fashion Tips for Nigerian Weather</h3>
+                <p className="text-brand-neutral-600 text-sm mb-3 line-clamp-2">Learn how to dress comfortably and stylishly in Nigeria&apos;s tropical climate...</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-indigo-600 font-medium text-sm">Fashion Tips</span>
-                  <Link href="/blog/fashion-tips-nigerian-weather" className="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm hover:bg-indigo-700">
+                  <span className="text-brand-dark-teal font-medium text-sm">Fashion Tips</span>
+                  <Link href="/blog/fashion-tips-nigerian-weather" className="bg-brand-dark-teal text-white px-3 py-1 rounded-full text-sm hover:bg-brand-dark-teal-light">
                     Read
                   </Link>
                 </div>
@@ -530,11 +530,11 @@ export default function Home() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2 line-clamp-2">DIY Natural Beauty Remedies at Home</h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">Discover simple, effective beauty treatments using kitchen ingredients...</p>
+                <h3 className="font-bold text-brand-neutral-800 mb-2 line-clamp-2">DIY Natural Beauty Remedies at Home</h3>
+                <p className="text-brand-neutral-600 text-sm mb-3 line-clamp-2">Discover simple, effective beauty treatments using kitchen ingredients...</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-indigo-600 font-medium text-sm">Beauty</span>
-                  <Link href="/blog/diy-natural-beauty-remedies" className="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm hover:bg-indigo-700">
+                  <span className="text-brand-dark-teal font-medium text-sm">Beauty</span>
+                  <Link href="/blog/diy-natural-beauty-remedies" className="bg-brand-dark-teal text-white px-3 py-1 rounded-full text-sm hover:bg-brand-dark-teal-light">
                     Read
                   </Link>
                 </div>
@@ -553,11 +553,11 @@ export default function Home() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-gray-800 mb-2 line-clamp-2">Building a Capsule Wardrobe for Busy Professionals</h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">Streamline your morning routine with a carefully curated professional wardrobe...</p>
+                <h3 className="font-bold text-brand-neutral-800 mb-2 line-clamp-2">Building a Capsule Wardrobe for Busy Professionals</h3>
+                <p className="text-brand-neutral-600 text-sm mb-3 line-clamp-2">Streamline your morning routine with a carefully curated professional wardrobe...</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-indigo-600 font-medium text-sm">Lifestyle</span>
-                  <Link href="/blog/capsule-wardrobe-professionals" className="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm hover:bg-indigo-700">
+                  <span className="text-brand-dark-teal font-medium text-sm">Lifestyle</span>
+                  <Link href="/blog/capsule-wardrobe-professionals" className="bg-brand-dark-teal text-white px-3 py-1 rounded-full text-sm hover:bg-brand-dark-teal-light">
                     Read
                   </Link>
                 </div>
