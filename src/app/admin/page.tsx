@@ -4,9 +4,42 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 
+interface AdminStats {
+  products: number
+  blogs: number
+  diyTutorials: number
+  workshops: number
+  bookings: number
+}
+
 export default function AdminPage() {
   const [user, setUser] = useState<{ email?: string } | null>(null)
   const [loading, setLoading] = useState(true)
+  const [statsLoading, setStatsLoading] = useState(true)
+  const [stats, setStats] = useState<AdminStats>({
+    products: 0,
+    blogs: 0,
+    diyTutorials: 0,
+    workshops: 0,
+    bookings: 0
+  })
+
+  // Fetch stats data
+  const fetchStats = async () => {
+    try {
+      setStatsLoading(true)
+      const response = await fetch('/api/stats')
+      const data = await response.json()
+
+      if (data.success) {
+        setStats(data.stats)
+      }
+    } catch (error) {
+      console.error('Error fetching stats:', error)
+    } finally {
+      setStatsLoading(false)
+    }
+  }
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -15,12 +48,13 @@ export default function AdminPage() {
 
         if (user) {
           // Check if user is authorized (case-insensitive and trimmed)
-          const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
+          const allowedEmails = process.env.ADMIN_EMAILS?.split(',') || []
           const normalizedUserEmail = user.email?.toLowerCase().trim() || ''
           const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
 
           if (normalizedAllowedEmails.includes(normalizedUserEmail)) {
             setUser(user)
+            fetchStats()
           }
         }
       } catch (err) {
@@ -222,26 +256,45 @@ export default function AdminPage() {
 
         {/* Quick Stats */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Quick Overview</h2>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-gray-800">Quick Overview</h2>
+            <button
+              onClick={fetchStats}
+              disabled={statsLoading}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+            >
+              {statsLoading ? 'Loading...' : 'Refresh Stats'}
+            </button>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">--</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">
+                {statsLoading ? '...' : stats.products}
+              </div>
               <p className="text-sm text-gray-600">Total Products</p>
             </div>
             <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">--</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">
+                {statsLoading ? '...' : stats.blogs}
+              </div>
               <p className="text-sm text-gray-600">Blog Posts</p>
             </div>
             <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="text-3xl font-bold text-yellow-600 mb-2">--</div>
+              <div className="text-3xl font-bold text-yellow-600 mb-2">
+                {statsLoading ? '...' : stats.diyTutorials}
+              </div>
               <p className="text-sm text-gray-600">DIY Tutorials</p>
             </div>
             <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">--</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">
+                {statsLoading ? '...' : stats.workshops}
+              </div>
               <p className="text-sm text-gray-600">Workshops</p>
             </div>
             <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">--</div>
+              <div className="text-3xl font-bold text-orange-600 mb-2">
+                {statsLoading ? '...' : stats.bookings}
+              </div>
               <p className="text-sm text-gray-600">Registrations</p>
             </div>
           </div>

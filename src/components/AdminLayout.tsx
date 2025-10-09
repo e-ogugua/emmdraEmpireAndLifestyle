@@ -6,10 +6,13 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 
-// Authorized admin emails
-const AUTHORIZED_ADMIN_EMAILS = [
-  'emmdraempire@gmail.com'
-]
+// Authorized admin emails - fallback to environment variable or hardcoded default
+const getAuthorizedEmails = () => {
+  const envEmails = process.env.ADMIN_EMAILS?.split(',') || []
+  return envEmails.length > 0 ? envEmails : ['emmdraempire@gmail.com']
+}
+
+const AUTHORIZED_ADMIN_EMAILS = getAuthorizedEmails()
 
 interface AdminLayoutProps {
   children: React.ReactNode

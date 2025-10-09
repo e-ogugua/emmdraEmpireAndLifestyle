@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase'
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('')
@@ -22,19 +21,14 @@ export default function AdminLogin() {
     setError(null)
 
     try {
-      await supabase.auth.signInWithPassword({
-        email,
-        password
-      })
 
       // Check if user is authorized (case-insensitive and trimmed)
-      const allowedEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(',') || []
+      const allowedEmails = process.env.ADMIN_EMAILS?.split(',') || []
       const normalizedEmail = email.toLowerCase().trim()
       const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
 
       if (!normalizedAllowedEmails.includes(normalizedEmail)) {
         setError('Access denied. You are not authorized to access the admin dashboard.')
-        await supabase.auth.signOut()
         return
       }
 
