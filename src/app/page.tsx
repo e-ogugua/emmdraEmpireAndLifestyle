@@ -26,24 +26,24 @@ export default function Home() {
       <section className="relative z-10 py-16 px-3 sm:px-4 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 sm:mb-8 leading-tight">
+            <h1 className="heading-1 text-gray-800 mb-6 sm:mb-8">
               Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-800">Emmdra</span> Empire
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-body-lg text-gray-600 max-w-4xl mx-auto mb-6 sm:mb-8">
               Your complete lifestyle destination where <strong className="text-gray-800">Fashion</strong>, <strong className="text-gray-800">Beauty</strong>, <strong className="text-gray-800">DIY</strong>, <strong className="text-gray-800">Lifestyle</strong>, and <strong className="text-gray-800">Family</strong> come together in perfect harmony.
             </p>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 leading-relaxed">
+            <p className="text-body text-gray-700 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16">
               From trendy outfits that make you shine, to beauty secrets that glow from within, creative DIY projects that inspire, lifestyle tips that transform, and family moments that last forever — we have got everything to make your world more beautiful.
             </p>
 
             {/* Category Pills */}
             <div className="flex flex-wrap justify-center gap-3 mb-10 sm:mb-12">
               {[
-                { name: 'Fashion', link: '/shop', color: 'bg-pink-100 text-pink-800' },
-                { name: 'Beauty', link: '/shop', color: 'bg-purple-100 text-purple-800' },
-                { name: 'DIY', link: '/diy', color: 'bg-green-100 text-green-800' },
-                { name: 'Lifestyle', link: '/blog', color: 'bg-blue-100 text-blue-800' },
-                { name: 'Family', link: '/about', color: 'bg-orange-100 text-orange-800' }
+                { name: 'Fashion', link: '/shop', color: 'bg-pink-100 text-pink-800 hover:bg-pink-200' },
+                { name: 'Beauty', link: '/shop', color: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
+                { name: 'DIY', link: '/diy', color: 'bg-green-100 text-green-800 hover:bg-green-200' },
+                { name: 'Lifestyle', link: '/blog', color: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
+                { name: 'Family', link: '/about', color: 'bg-orange-100 text-orange-800 hover:bg-orange-200' }
               ].map((category) => (
                 <Link
                   key={category.name}
@@ -59,19 +59,19 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center">
               <Link
                 href="/shop"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[56px] flex items-center justify-center"
+                className="btn btn-primary btn-lg"
               >
                 🛍️ Shop Our Collection
               </Link>
               <Link
                 href="/diy"
-                className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[56px] flex items-center justify-center"
+                className="btn btn-primary btn-lg"
               >
                 ✨ Start Creating
               </Link>
               <Link
                 href="/blog"
-                className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-orange-700 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[56px] flex items-center justify-center"
+                className="btn btn-primary btn-lg"
               >
                 📖 Read Stories
               </Link>
@@ -109,10 +109,10 @@ export default function Home() {
       <section className="py-16 px-3 sm:px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
         <div className="container mx-auto">
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 drop-shadow-sm">
+            <h2 className="heading-2 text-gray-900 mb-3 sm:mb-4 drop-shadow-sm">
               Featured <span className="text-blue-700">Products</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto drop-shadow-sm leading-relaxed">
+            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
               Discover our handpicked selection of premium fashion, beauty, and lifestyle essentials
             </p>
           </div>
@@ -217,7 +217,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/shop"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 rounded-full font-semibold text-base sm:text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
+              className="btn btn-primary btn-lg"
             >
               🛍️ View All Products
             </Link>
@@ -229,10 +229,10 @@ export default function Home() {
       <section className="py-16 px-4 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 drop-shadow-sm">
+            <h2 className="heading-2 text-gray-900 mb-4 drop-shadow-sm">
               Featured <span className="text-green-700">DIY Projects</span>
             </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto drop-shadow-sm leading-relaxed">
+            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
               Unleash your creativity with our step-by-step tutorials and craft ideas
             </p>
           </div>
@@ -314,7 +314,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/diy"
-              className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="btn btn-primary btn-lg"
             >
               ✨ Explore All DIY Projects
             </Link>
@@ -326,10 +326,10 @@ export default function Home() {
       <section className="py-16 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 drop-shadow-sm">
+            <h2 className="heading-2 text-gray-900 mb-4 drop-shadow-sm">
               Featured <span className="text-purple-700">Workshops</span>
             </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto drop-shadow-sm leading-relaxed">
+            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
               Join our hands-on workshops and learn from industry experts
             </p>
           </div>
@@ -471,7 +471,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/workshops"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="btn btn-primary btn-lg"
             >
               🎓 View All Workshops
             </Link>
@@ -483,10 +483,10 @@ export default function Home() {
       <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 drop-shadow-sm">
+            <h2 className="heading-2 text-gray-900 mb-4 drop-shadow-sm">
               Featured <span className="text-indigo-700">Stories</span>
             </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto drop-shadow-sm leading-relaxed">
+            <p className="text-body text-gray-700 max-w-2xl mx-auto drop-shadow-sm">
               Read inspiring stories, fashion tips, and lifestyle advice from our community
             </p>
           </div>
@@ -568,7 +568,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-indigo-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="btn btn-primary btn-lg"
             >
               📖 Read More Stories
             </Link>

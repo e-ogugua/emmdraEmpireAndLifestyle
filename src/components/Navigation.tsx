@@ -61,7 +61,7 @@ export default function Navigation() {
             {/* Admin Button - Different Style */}
             <Link
               href="/admin"
-              className="ml-3 sm:ml-4 px-4 sm:px-6 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-sm font-medium rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all duration-200 shadow-sm hover:shadow-md min-h-[44px] flex items-center"
+              className="btn btn-primary btn-sm"
             >
               Admin
             </Link>
