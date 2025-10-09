@@ -23,20 +23,45 @@ export default function AdminLogin() {
 
     try {
       // Authenticate with Supabase
+      console.log('🔐 Attempting login for:', email)
       const { error: authError } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
       })
 
+      console.log('🔐 Supabase auth result:', { authError })
+
       if (authError) {
-        setError('Invalid email or password')
+        console.error('❌ Supabase auth failed:', authError.message)
+        console.error('❌ Error details:', authError)
+
+        // Provide more specific error messages
+        if (authError.message.includes('Invalid login credentials')) {
+          setError('Invalid email or password. Please check your credentials.')
+        } else if (authError.message.includes('Email not confirmed')) {
+          setError('Please confirm your email address first.')
+        } else if (authError.message.includes('Too many requests')) {
+          setError('Too many login attempts. Please try again later.')
+        } else {
+          setError(`Authentication failed: ${authError.message}`)
+        }
         return
       }
+
+      console.log('✅ Supabase auth successful')
 
       // Check if user is authorized (case-insensitive and trimmed)
       const allowedEmails = process.env.ADMIN_EMAILS?.split(',') || []
       const normalizedEmail = email.toLowerCase().trim()
       const normalizedAllowedEmails = allowedEmails.map(email => email.toLowerCase().trim())
+
+      console.log('🔍 Authorization check:', {
+        originalEmail: email,
+        normalizedEmail: normalizedEmail,
+        allowedEmails: allowedEmails,
+        normalizedAllowedEmails: normalizedAllowedEmails,
+        isAuthorized: normalizedAllowedEmails.includes(normalizedEmail)
+      })
 
       if (!normalizedAllowedEmails.includes(normalizedEmail)) {
         // Sign out if not authorized
@@ -44,6 +69,8 @@ export default function AdminLogin() {
         setError('Access denied. You are not authorized to access the admin dashboard.')
         return
       }
+
+      console.log('✅ User authorized, redirecting to admin...')
 
       // Clear any existing error and redirect to dashboard
       setError(null)
@@ -79,10 +106,10 @@ export default function AdminLogin() {
 
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-500">
-              Authorized users: Emmanuel & Chidera
+              Authorized users only
             </p>
             <p className="text-xs text-gray-400 mt-1">
-              Contact admin to set up your account
+              Sign in with your authorized admin credentials
             </p>
           </div>
         </div>
