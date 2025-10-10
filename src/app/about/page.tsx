@@ -465,9 +465,15 @@ export default function AboutPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 bg-gradient-to-br from-purple-700 via-blue-700 to-indigo-800 relative overflow-hidden">
-        {/* Enhanced animated background elements */}
-        <div className="absolute inset-0">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 relative overflow-hidden">
+        {/* Mobile Background - Simple solid color for compatibility */}
+        <div className="absolute inset-0 block sm:hidden bg-purple-800"></div>
+
+        {/* Desktop Background - Complex gradient with animations */}
+        <div className="absolute inset-0 hidden sm:block bg-gradient-to-br from-purple-700 via-blue-700 to-indigo-800"></div>
+
+        {/* Enhanced animated background elements - Desktop only */}
+        <div className="absolute inset-0 hidden sm:block">
           <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-40 sm:h-40 bg-white/3 rounded-full blur-2xl animate-pulse animation-delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-32 sm:h-32 bg-white/2 rounded-full blur-xl animate-pulse animation-delay-2000"></div>
