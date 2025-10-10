@@ -50,17 +50,19 @@ export default function CartPage() {
                     <p className="text-gray-600">₦{item.price.toLocaleString()}</p>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-2">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="w-8 h-8 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center"
+                      className="w-10 h-10 bg-white hover:bg-red-50 border-2 border-gray-300 hover:border-red-400 rounded-full flex items-center justify-center text-gray-700 hover:text-red-600 font-bold text-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:scale-105"
                     >
                       −
                     </button>
-                    <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                    <span className="w-12 text-center font-bold text-lg text-gray-800 bg-white rounded-md py-2 px-3 border-2 border-gray-200">
+                      {item.quantity}
+                    </span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="w-8 h-8 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center"
+                      className="w-10 h-10 bg-white hover:bg-green-50 border-2 border-gray-300 hover:border-green-400 rounded-full flex items-center justify-center text-gray-700 hover:text-green-600 font-bold text-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:scale-105"
                     >
                       +
                     </button>

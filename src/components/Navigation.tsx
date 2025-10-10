@@ -66,17 +66,19 @@ export default function Navigation() {
             {/* Cart Indicator - Desktop */}
             <Link
               href="/cart"
-              className="ml-2 relative bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white px-3 py-2 rounded-lg font-semibold text-sm hover:from-red-500 hover:to-brand-burnt-orange transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-brand-burnt-orange/50 hover:border-red-400/50 min-h-[44px] flex items-center gap-2"
+              className="group relative bg-slate-800 text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110 border-2 border-slate-600 hover:border-slate-500 min-h-[44px] flex items-center gap-2"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 relative z-10 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5h13M12 18a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" />
               </svg>
+              <span className="relative z-10 transition-all duration-300 group-hover:scale-110">
+                Cart
+              </span>
               {cartState.itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-black rounded-full h-6 w-6 flex items-center justify-center animate-pulse shadow-lg border-2 border-white">
                   {cartState.itemCount > 99 ? '99+' : cartState.itemCount}
                 </span>
               )}
-              <span className="hidden lg:inline">Cart</span>
             </Link>
 
             {/* Admin Button - Different Style */}
@@ -93,13 +95,13 @@ export default function Navigation() {
             {/* Cart Indicator - Mobile */}
             <Link
               href="/cart"
-              className="relative bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white p-2 rounded-lg font-semibold hover:from-red-500 hover:to-brand-burnt-orange transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-brand-burnt-orange/50 hover:border-red-400/50 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="group relative bg-slate-800 text-white p-2 rounded-full font-bold hover:bg-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-110 border-2 border-slate-600 hover:border-slate-500 min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 relative z-10 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5h13M12 18a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" />
               </svg>
               {cartState.itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-black rounded-full h-5 w-5 flex items-center justify-center animate-pulse shadow-lg border-2 border-white">
                   {cartState.itemCount > 9 ? '9+' : cartState.itemCount}
                 </span>
               )}
@@ -151,13 +153,18 @@ export default function Navigation() {
             {/* Cart Link - Mobile */}
             <Link
               href="/cart"
-              className="block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-all duration-300 min-h-[48px] flex items-center transform hover:scale-105 hover:-translate-y-0.5 relative overflow-hidden group bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white hover:from-red-500 hover:to-brand-burnt-orange border-2 border-brand-burnt-orange/50 hover:border-red-400/50 shadow-lg"
+              className="group block px-3 py-3 sm:py-4 rounded-lg text-base font-bold transition-all duration-300 min-h-[48px] flex items-center transform hover:scale-105 hover:-translate-y-0.5 bg-slate-800 text-white hover:bg-slate-900 shadow-lg border-2 border-slate-600 hover:border-slate-500"
               onClick={closeMobileMenu}
             >
-              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 mr-3 relative z-10 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5h13M12 18a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" />
               </svg>
-              Cart ({cartState.itemCount})
+              <span className="relative z-10 mr-2">Cart</span>
+              {cartState.itemCount > 0 && (
+                <span className="relative z-10 bg-red-500 text-white text-xs font-black px-2 py-1 rounded-full animate-pulse">
+                  {cartState.itemCount > 99 ? '99+' : cartState.itemCount}
+                </span>
+              )}
             </Link>
 
             {/* Admin Button - Mobile */}
