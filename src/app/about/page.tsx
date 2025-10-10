@@ -23,8 +23,8 @@ export default function AboutPage() {
     <div className="relative">
       {/* Hero Section - Brand Colors with Gradient */}
       <section className="relative py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 min-h-[45vh] sm:min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden">
-        {/* Mobile Background Gradient */}
-        <div className="absolute inset-0 z-0 block sm:hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-rose-500">
+        {/* Mobile Background - Universal Compatibility */}
+        <div className="absolute inset-0 z-0 block sm:hidden bg-slate-800">
           {/* Enhanced overlay for perfect mobile text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/80"></div>
           {/* Warm family accent overlay */}
