@@ -110,33 +110,33 @@ export default function BlogPage() {
         <div className="container mx-auto relative z-10">
           <div className="text-center max-w-5xl mx-auto">
             <div className="mb-4">
-              <span className="inline-block bg-white/20 backdrop-blur-md text-white/90 px-4 py-2 rounded-full text-sm font-medium border border-white/30">
+              <span className="inline-block bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium border-2 border-white/50 shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
                 📖 Stories & Inspiration
               </span>
             </div>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
-              Discover <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-orange-200 to-red-200 drop-shadow-lg">Amazing Stories</span>
+              Discover <span className="text-yellow-300 font-black [text-shadow:_0_5px_10px_rgb(0_0_0_/_100%),_0_10px_20px_rgb(0_0_0_/_90%),_0_15px_30px_rgb(0_0_0_/_80%)]">Amazing Stories</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed drop-shadow-xl max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/95 mb-10 leading-relaxed drop-shadow-xl max-w-3xl mx-auto [text-shadow:_0_4px_8px_rgb(0_0_0_/_100%),_0_8px_16px_rgb(0_0_0_/_90%)]">
               Your source for fashion, beauty, DIY inspiration, and family lifestyle tips.
             </p>
 
             <div className="flex flex-wrap justify-center gap-3 text-base">
-              <span className="flex items-center gap-2 bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full border border-white/40 hover:bg-white/25 transition-all duration-300">
+              <span className="flex items-center gap-2 bg-white/25 backdrop-blur-md text-white px-4 py-2 rounded-full border-2 border-white/60 hover:bg-white/35 transition-all duration-300 shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
                 <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse shadow-lg"></span>
                 <span className="font-medium">Fashion & Style</span>
               </span>
-              <span className="flex items-center gap-2 bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full border border-white/40 hover:bg-white/25 transition-all duration-300">
+              <span className="flex items-center gap-2 bg-white/25 backdrop-blur-md text-white px-4 py-2 rounded-full border-2 border-white/60 hover:bg-white/35 transition-all duration-300 shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
                 <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse shadow-lg"></span>
                 <span className="font-medium">DIY & Crafts</span>
               </span>
-              <span className="flex items-center gap-2 bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full border border-white/40 hover:bg-white/25 transition-all duration-300">
+              <span className="flex items-center gap-2 bg-white/25 backdrop-blur-md text-white px-4 py-2 rounded-full border-2 border-white/60 hover:bg-white/35 transition-all duration-300 shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg"></span>
                 <span className="font-medium">Family Life</span>
               </span>
-              <span className="flex items-center gap-2 bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full border border-white/40 hover:bg-white/25 transition-all duration-300">
+              <span className="flex items-center gap-2 bg-white/25 backdrop-blur-md text-white px-4 py-2 rounded-full border-2 border-white/60 hover:bg-white/35 transition-all duration-300 shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
                 <span className="w-2 h-2 bg-pink-400 rounded-full animate-pulse shadow-lg"></span>
                 <span className="font-medium">Beauty Hacks</span>
               </span>
@@ -232,12 +232,12 @@ export default function BlogPage() {
                     </p>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-base hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-500 hover:border-blue-400 min-h-[48px] [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v14M5 12l7-7 7 7" />
                       </svg>
-                      Discover This Story
+                      <span className="font-bold">Discover This Story</span>
                     </Link>
                   </div>
                 </article>

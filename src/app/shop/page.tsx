@@ -192,10 +192,15 @@ export default function ShopPage() {
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-8 sm:mb-12">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-              Shop Our Collection
+              <span className="text-cyan-300 font-bold [text-shadow:_0_4px_8px_rgb(0_0_0_/_100%),_0_8px_16px_rgb(0_0_0_/_90%)]">Discover</span>{' '}
+              <span className="text-yellow-300 font-black [text-shadow:_0_5px_10px_rgb(0_0_0_/_100%),_0_10px_20px_rgb(0_0_0_/_90%),_0_15px_30px_rgb(0_0_0_/_80%)]">
+                Shop Our Collection
+              </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
-              Discover quality fashion, beauty, and lifestyle products curated for the modern family.
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
+              <span className="text-cyan-300 font-medium [text-shadow:_0_4px_8px_rgb(0_0_0_/_100%),_0_8px_16px_rgb(0_0_0_/_90%)]">
+                Discover quality fashion, beauty, and lifestyle products curated for the modern family.
+              </span>
             </p>
           </div>
         </div>
@@ -209,10 +214,10 @@ export default function ShopPage() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-semibold transition-colors duration-300 min-h-[48px] flex items-center justify-center ${
+                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center ${
                   selectedCategory === category.id
-                    ? 'bg-black text-white'
-                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                    ? 'bg-brand-burnt-orange text-white shadow-lg hover:bg-brand-burnt-orange-light'
+                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200 hover:shadow-md'
                 }`}
               >
                 {category.name}

@@ -325,10 +325,157 @@ body {
 .border-brand-burnt-orange { border-color: var(--brand-burnt-orange); }
 .border-brand-vibrant-green { border-color: var(--brand-vibrant-green); }
 
-/* Brand Gradient Utilities */
-.bg-gradient-brand { background: var(--gradient-brand); }
-.bg-gradient-primary { background: var(--gradient-primary); }
-.bg-gradient-secondary { background: var(--gradient-secondary); }
+/* Additional Tailwind Utilities for v4 compatibility */
+@layer utilities {
+  .bg-clip-text {
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    background-size: 100% 100%;
+  }
+
+  .text-transparent {
+    color: transparent !important;
+  }
+
+  .bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+  }
+
+  .bg-gradient-to-l {
+    background-image: linear-gradient(to left, var(--tw-gradient-stops)) !important;
+  }
+
+  .bg-gradient-to-b {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops)) !important;
+  }
+
+  .bg-gradient-to-t {
+    background-image: linear-gradient(to top, var(--tw-gradient-stops)) !important;
+  }
+
+  /* Enhanced gradient utilities with proper color stops */
+  .from-brand-burnt-orange {
+    --tw-gradient-from: #cc5500;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(204, 85, 0, 0));
+  }
+
+  .to-brand-burnt-orange {
+    --tw-gradient-to: #cc5500;
+  }
+
+  .from-brand-vibrant-green {
+    --tw-gradient-from: #22c55e;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(34, 197, 94, 0));
+  }
+
+  .to-brand-vibrant-green {
+    --tw-gradient-to: #22c55e;
+  }
+
+  .from-brand-dark-teal {
+    --tw-gradient-from: #0d4f4f;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(13, 79, 79, 0));
+  }
+
+  .to-brand-dark-teal {
+    --tw-gradient-to: #0d4f4f;
+  }
+
+  .from-yellow-400 {
+    --tw-gradient-from: #facc15;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(250, 204, 21, 0));
+  }
+
+  .to-yellow-400 {
+    --tw-gradient-to: #facc15;
+  }
+
+  .from-amber-300 {
+    --tw-gradient-from: #fcd34d;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(252, 211, 77, 0));
+  }
+
+  .to-amber-300 {
+    --tw-gradient-to: #fcd34d;
+  }
+
+  .from-orange-300 {
+    --tw-gradient-from: #fdba74;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(253, 186, 116, 0));
+  }
+
+  .to-orange-300 {
+    --tw-gradient-to: #fdba74;
+  }
+
+  .from-red-400 {
+    --tw-gradient-from: #f87171;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(248, 113, 113, 0));
+  }
+
+  .to-red-400 {
+    --tw-gradient-to: #f87171;
+  }
+
+  .from-lime-300 {
+    --tw-gradient-from: #bef264;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(190, 242, 100, 0));
+  }
+
+  .to-lime-300 {
+    --tw-gradient-to: #bef264;
+  }
+
+  .from-emerald-300 {
+    --tw-gradient-from: #6ee7b7;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(110, 231, 183, 0));
+  }
+
+  .to-emerald-300 {
+    --tw-gradient-to: #6ee7b7;
+  }
+
+  .from-teal-300 {
+    --tw-gradient-from: #5eead4;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(94, 234, 212, 0));
+  }
+
+  .to-teal-300 {
+    --tw-gradient-to: #5eead4;
+  }
+
+  .from-sky-300 {
+    --tw-gradient-from: #7dd3fc;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(125, 211, 252, 0));
+  }
+
+  .from-emerald-400 {
+    --tw-gradient-from: #34d399;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(52, 211, 153, 0));
+  }
+
+  .to-emerald-400 {
+    --tw-gradient-to: #34d399;
+  }
+
+  .from-green-400 {
+    --tw-gradient-from: #4ade80;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(74, 222, 128, 0));
+  }
+
+  .to-green-400 {
+    --tw-gradient-to: #4ade80;
+  }
+
+  .from-emerald-600 {
+    --tw-gradient-from: #059669;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(5, 150, 105, 0));
+  }
+
+  .to-emerald-600 {
+    --tw-gradient-to: #059669;
+  }
+}
 
 /* Logo and Brand Elements */
 .brand-logo {

@@ -8,7 +8,6 @@ export interface PageView {
   page_title?: string
   referrer?: string
   user_agent?: string
-  ip_address?: string
   session_id?: string
   viewed_at: string
   metadata?: Record<string, unknown>
@@ -47,11 +46,6 @@ export async function POST(request: NextRequest) {
     const sessionId = request.headers.get('x-session-id') ||
       `api-${Math.random().toString(36).substring(2, 15)}`
 
-    // Get client IP (for analytics purposes)
-    const ipAddress = request.headers.get('x-forwarded-for') ||
-                     request.headers.get('x-real-ip') ||
-                     'unknown'
-
     // Get referrer and user agent from headers
     const referrer = request.headers.get('referer') || undefined
     const userAgent = request.headers.get('user-agent') || undefined
@@ -61,7 +55,6 @@ export async function POST(request: NextRequest) {
       session_id: sessionId,
       referrer,
       user_agent: userAgent,
-      ip_address: ipAddress,
       viewed_at: new Date().toISOString(),
     }
 

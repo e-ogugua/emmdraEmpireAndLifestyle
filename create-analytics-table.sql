@@ -5,6 +5,13 @@
 -- Run this in: https://supabase.com/dashboard/project/kjfqspuygiatifebgpkd/sql
 
 -- =============================================
+-- DROP EXISTING TABLE (IF NEEDED)
+-- =============================================
+
+-- Uncomment and run this if you need to recreate the table:
+-- DROP TABLE IF EXISTS page_views CASCADE;
+
+-- =============================================
 -- CREATE ANALYTICS TABLE
 -- =============================================
 
@@ -15,7 +22,6 @@ CREATE TABLE IF NOT EXISTS page_views (
   page_title TEXT,
   referrer TEXT,
   user_agent TEXT,
-  ip_address TEXT, -- Added missing ip_address column
   session_id TEXT NOT NULL,
   viewed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   metadata JSONB,
@@ -38,7 +44,6 @@ CREATE INDEX IF NOT EXISTS idx_page_views_type ON page_views(page_type);
 CREATE INDEX IF NOT EXISTS idx_page_views_session ON page_views(session_id);
 CREATE INDEX IF NOT EXISTS idx_page_views_date ON page_views(viewed_at);
 CREATE INDEX IF NOT EXISTS idx_page_views_content ON page_views(page_type, page_id);
-CREATE INDEX IF NOT EXISTS idx_page_views_ip ON page_views(ip_address);
 
 -- =============================================
 -- VERIFICATION QUERY
@@ -48,12 +53,9 @@ CREATE INDEX IF NOT EXISTS idx_page_views_ip ON page_views(ip_address);
 SELECT 'page_views' as table_name, COUNT(*) as count FROM page_views;
 
 -- =============================================
--- SETUP COMPLETE - UPDATED
+-- SETUP COMPLETE
 -- =============================================
 
--- Your analytics table has been updated with the missing ip_address column!
--- If you're getting "Could not find the 'ip_address' column" errors,
--- you need to run this updated SQL script in your Supabase dashboard.
---
--- The "Failed to fetch" errors should now be resolved.
--- Analytics tracking will now work properly with IP address tracking.
+-- Your analytics table has been created successfully!
+-- The analytics tracking should now work without errors.
+-- Run this script in your Supabase SQL editor to fix the missing column issue.

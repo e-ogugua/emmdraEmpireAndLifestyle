@@ -293,8 +293,8 @@ export default function WorkshopsPage() {
                       className="w-full h-48 object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border ${
+                    <div className="absolute top-3 right-3">
+                      <span className={`px-2 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border ${
                         workshop.category === 'Fashion' ? 'bg-pink-500/90 text-white border-pink-400/60' :
                         workshop.category === 'Beauty' ? 'bg-purple-500/90 text-white border-purple-400/60' :
                         workshop.category === 'Crafts' ? 'bg-blue-500/90 text-white border-blue-400/60' :
@@ -304,8 +304,8 @@ export default function WorkshopsPage() {
                       </span>
                     </div>
                     {workshop.featured && (
-                      <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/90 backdrop-blur-sm text-white border border-yellow-400/60">
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2 py-1 rounded-full text-xs font-semibold bg-yellow-500/90 backdrop-blur-sm text-white border border-yellow-400/60">
                           Featured
                         </span>
                       </div>

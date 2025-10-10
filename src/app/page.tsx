@@ -23,32 +23,32 @@ export default function Home() {
       </section>
 
       {/* Hero Text Section - Enhanced Introduction */}
-      <section className="relative z-10 py-16 px-3 sm:px-4 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="relative z-10 py-16 px-3 sm:px-4 bg-gradient-to-br from-orange-100 via-yellow-50 to-green-100">
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
-            <h1 className="heading-1 text-brand-neutral-900 mb-6 sm:mb-8">
-              Welcome to <span className="text-brand-dark-teal font-black">Emmdra</span> Empire
+            <h1 className="heading-1 text-gray-900 mb-6 sm:mb-8 font-bold drop-shadow-sm">
+              Welcome to <span className="text-brand-burnt-orange font-black drop-shadow-md">Emmdra</span> Empire
             </h1>
-            <p className="text-body-lg text-brand-neutral-700 max-w-4xl mx-auto mb-6 sm:mb-8">
-              Your complete lifestyle destination where <strong className="text-brand-neutral-900 font-semibold">Fashion</strong>, <strong className="text-brand-neutral-900 font-semibold">Beauty</strong>, <strong className="text-brand-neutral-900 font-semibold">DIY</strong>, <strong className="text-brand-neutral-900 font-semibold">Lifestyle</strong>, and <strong className="text-brand-neutral-900 font-semibold">Family</strong> come together in perfect harmony.
+            <p className="text-body-lg text-gray-800 max-w-4xl mx-auto mb-6 sm:mb-8 drop-shadow-sm">
+              Your complete lifestyle destination where <strong className="text-brand-burnt-orange font-bold">Fashion</strong>, <strong className="text-brand-vibrant-green font-bold">Beauty</strong>, <strong className="text-brand-dark-teal font-bold">DIY</strong>, <strong className="text-brand-burnt-orange font-bold">Lifestyle</strong>, and <strong className="text-brand-vibrant-green font-bold">Family</strong> come together in perfect harmony.
             </p>
-            <p className="text-body text-brand-neutral-700 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16">
+            <p className="text-body text-gray-800 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 drop-shadow-sm">
               From trendy outfits that make you shine, to beauty secrets that glow from within, creative DIY projects that inspire, lifestyle tips that transform, and family moments that last forever — we have got everything to make your world more beautiful.
             </p>
 
             {/* Category Pills */}
             <div className="flex flex-wrap justify-center gap-3 mb-10 sm:mb-12">
               {[
-                { name: 'Fashion', link: '/shop', color: 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light border-2 border-brand-burnt-orange/30 shadow-lg hover:shadow-xl hover:scale-105 font-semibold' },
-                { name: 'Beauty', link: '/shop', color: 'bg-brand-vibrant-green text-white hover:bg-brand-vibrant-green-light border-2 border-brand-vibrant-green/30 shadow-lg hover:shadow-xl hover:scale-105 font-semibold' },
-                { name: 'DIY', link: '/diy', color: 'bg-brand-dark-teal text-white hover:bg-brand-dark-teal-light border-2 border-brand-dark-teal/30 shadow-lg hover:shadow-xl hover:scale-105 font-semibold' },
-                { name: 'Lifestyle', link: '/blog', color: 'bg-brand-light-beige text-brand-neutral-800 hover:bg-brand-light-beige-dark border-2 border-brand-light-beige-dark/50 shadow-lg hover:shadow-xl hover:scale-105 font-bold' },
-                { name: 'Family', link: '/about', color: 'bg-gradient-to-r from-brand-burnt-orange via-brand-vibrant-green to-brand-dark-teal text-white hover:from-brand-burnt-orange-light hover:via-brand-vibrant-green-light hover:to-brand-dark-teal-light border-2 border-brand-burnt-orange/30 shadow-lg hover:shadow-xl hover:scale-105 font-semibold' }
+                { name: 'Fashion', link: '/shop', color: 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light border-2 border-brand-burnt-orange/50 shadow-lg hover:shadow-xl hover:scale-105 font-bold' },
+                { name: 'Beauty', link: '/shop', color: 'bg-brand-vibrant-green text-white hover:bg-brand-vibrant-green-light border-2 border-brand-vibrant-green/50 shadow-lg hover:shadow-xl hover:scale-105 font-bold' },
+                { name: 'DIY', link: '/diy', color: 'bg-brand-dark-teal text-white hover:bg-brand-dark-teal-light border-2 border-brand-dark-teal/50 shadow-lg hover:shadow-xl hover:scale-105 font-bold' },
+                { name: 'Lifestyle', link: '/blog', color: 'bg-yellow-400 text-gray-900 hover:bg-yellow-300 border-2 border-yellow-600/70 shadow-lg hover:shadow-xl hover:scale-105 font-bold' },
+                { name: 'Family', link: '/about', color: 'bg-purple-500 text-white hover:bg-purple-400 border-2 border-purple-600/60 shadow-lg hover:shadow-xl hover:scale-105 font-bold' }
               ].map((category) => (
                 <Link
                   key={category.name}
                   href={category.link}
-                  className={`${category.color} px-5 py-3 rounded-full text-sm transition-all duration-300 min-h-[48px] flex items-center backdrop-blur-sm`}
+                  className={`${category.color} px-4 py-2 sm:px-5 sm:py-3 rounded-full text-sm transition-all duration-300 min-h-[44px] flex items-center justify-center backdrop-blur-sm`}
                 >
                   {category.name}
                 </Link>
@@ -59,19 +59,19 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center">
               <Link
                 href="/shop"
-                className="bg-gradient-to-r from-brand-burnt-orange via-brand-burnt-orange-light to-brand-burnt-orange text-white font-black text-xl px-10 py-5 rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 border-3 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[64px] flex items-center justify-center"
+                className="bg-brand-burnt-orange text-white font-black text-lg sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange/70 hover:border-orange-400 hover:bg-brand-burnt-orange-light min-h-[56px] flex items-center justify-center"
               >
                 🛍️ Shop Our Collection
               </Link>
               <Link
                 href="/diy"
-                className="bg-gradient-to-r from-brand-vibrant-green via-brand-vibrant-green-light to-brand-vibrant-green text-white font-black text-xl px-10 py-5 rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 border-3 border-brand-vibrant-green hover:border-brand-vibrant-green-light min-h-[64px] flex items-center justify-center"
+                className="bg-brand-vibrant-green text-white font-black text-lg sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green/70 hover:border-green-400 hover:bg-brand-vibrant-green-light min-h-[56px] flex items-center justify-center"
               >
                 ✨ Start Creating
               </Link>
               <Link
                 href="/blog"
-                className="bg-gradient-to-r from-brand-dark-teal via-brand-dark-teal-light to-brand-dark-teal text-white font-black text-xl px-10 py-5 rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 border-3 border-brand-dark-teal hover:border-brand-dark-teal-light min-h-[64px] flex items-center justify-center"
+                className="bg-brand-dark-teal text-white font-black text-lg sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal/70 hover:border-blue-400 hover:bg-brand-dark-teal-light min-h-[56px] flex items-center justify-center"
               >
                 📖 Read Stories
               </Link>
@@ -79,25 +79,25 @@ export default function Home() {
 
             {/* Trust Indicators */}
             <div className="mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-brand-neutral-300">
-              <p className="text-body text-brand-neutral-800 mb-4 sm:mb-6 font-bold text-lg">Trusted by families across Nigeria</p>
+              <p className="text-body text-gray-900 mb-4 sm:mb-6 font-bold text-lg sm:text-xl drop-shadow-sm">Trusted by families across Nigeria</p>
               <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-8">
                 <div className="flex items-center gap-2 bg-brand-vibrant-green/10 px-4 py-2 rounded-full border border-brand-vibrant-green/30">
                   <svg className="w-5 h-5 text-brand-vibrant-green" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-bold text-brand-neutral-800">Premium Quality</span>
+                  <span className="text-sm font-bold text-gray-900">Premium Quality</span>
                 </div>
                 <div className="flex items-center gap-2 bg-brand-dark-teal/10 px-4 py-2 rounded-full border border-brand-dark-teal/30">
                   <svg className="w-5 h-5 text-brand-dark-teal" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-bold text-brand-neutral-800">Fast Delivery</span>
+                  <span className="text-sm font-bold text-gray-900">Fast Delivery</span>
                 </div>
                 <div className="flex items-center gap-2 bg-brand-burnt-orange/10 px-4 py-2 rounded-full border border-brand-burnt-orange/30">
                   <svg className="w-5 h-5 text-brand-burnt-orange" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm font-bold text-brand-neutral-800">Expert Support</span>
+                  <span className="text-sm font-bold text-gray-900">Expert Support</span>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-3 sm:mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-burnt-orange font-bold">Products</span>
+              Featured <span className="text-brand-burnt-orange font-black">Products</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Discover our handpicked selection of premium fashion, beauty, and lifestyle essentials
@@ -217,7 +217,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/shop"
-              className="bg-brand-burnt-orange text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-burnt-orange text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
             >
               🛍️ View All Products
             </Link>
@@ -230,7 +230,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-dark-teal font-bold">DIY Projects</span>
+              Featured <span className="text-brand-dark-teal font-black">DIY Projects</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Unleash your creativity with our step-by-step tutorials and craft ideas
@@ -314,7 +314,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/diy"
-              className="bg-brand-dark-teal text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal hover:border-brand-dark-teal-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-dark-teal text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal hover:border-brand-dark-teal-light min-h-[48px] flex items-center justify-center"
             >
               ✨ Explore All DIY Projects
             </Link>
@@ -327,7 +327,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-vibrant-green font-bold">Workshops</span>
+              Featured <span className="text-brand-burnt-orange font-black">Workshops</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Join our hands-on workshops and learn from industry experts
@@ -471,7 +471,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/workshops"
-              className="bg-brand-vibrant-green text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green hover:border-brand-vibrant-green-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-vibrant-green text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green hover:border-brand-vibrant-green-light min-h-[48px] flex items-center justify-center"
             >
               🎓 View All Workshops
             </Link>
@@ -484,7 +484,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
-              Featured <span className="text-brand-burnt-orange font-bold">Stories</span>
+              Featured <span className="text-brand-dark-teal font-black">Stories</span>
             </h2>
             <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Read inspiring stories, fashion tips, and lifestyle advice from our community
@@ -568,7 +568,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="bg-brand-burnt-orange text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-burnt-orange text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
             >
               📖 Read More Stories
             </Link>
