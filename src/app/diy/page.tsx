@@ -153,11 +153,13 @@ export default function DIYPage() {
       {/* Hero Section with Beautiful Background */}
       <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[50vh] sm:min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-          {/* Clean overlay for perfect text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
-          {/* Subtle brand accent */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/15 via-transparent to-teal-900/10"></div>
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 sm:from-cyan-500 sm:via-blue-600 sm:to-purple-700">
+          {/* Creative overlay for perfect text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+          {/* Creative brand accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-transparent to-green-500/15"></div>
+          {/* Additional creative sparkle overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/10 via-transparent to-pink-500/10"></div>
         </div>
 
         <div className="container mx-auto relative z-10">

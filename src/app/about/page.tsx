@@ -22,13 +22,19 @@ export default function AboutPage() {
   return (
     <div className="relative">
       {/* Hero Section - Brand Colors with Gradient */}
-      <section className="relative py-6 sm:py-8 md:py-12 lg:py-16 px-3 sm:px-4 min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] flex items-center overflow-hidden">
-        {/* Brand Color Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600"></div>
+      <section className="relative py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 min-h-[45vh] sm:min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden">
+        {/* Enhanced Brand Color Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 sm:from-blue-600 sm:via-purple-700 sm:to-pink-700"></div>
 
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10"></div>
+        {/* Enhanced pattern overlay for mobile */}
+        <div className="absolute inset-0 opacity-15 sm:opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-transparent to-black/15"></div>
+        </div>
+
+        {/* Mobile-optimized decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-16 h-16 sm:w-24 sm:h-24 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-12 h-12 sm:w-20 sm:h-20 bg-white/5 rounded-full blur-xl animate-pulse animation-delay-1000"></div>
         </div>
 
         <div className="container mx-auto px-3 sm:px-4 relative z-10">
