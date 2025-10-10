@@ -21,20 +21,23 @@ export default function Navigation() {
         <div className="flex justify-between items-center min-h-[64px] sm:h-20">
           <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-all duration-300 group">
             <div className="relative w-16 h-16 sm:w-24 sm:h-24 mr-2 sm:mr-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-burnt-orange/10 to-brand-vibrant-green/10 rounded-full shadow-lg border-2 border-brand-burnt-orange/20 group-hover:border-brand-vibrant-green/40 transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/20 to-amber-200/20 rounded-full shadow-2xl border-2 border-yellow-400/60 group-hover:border-amber-400/80 transition-all duration-300"
+                   style={{
+                     boxShadow: '0 0 20px rgba(251, 191, 36, 0.3), 0 0 40px rgba(245, 158, 11, 0.2), inset 0 0 20px rgba(251, 191, 36, 0.1)'
+                   }}></div>
               <Image
                 src="/images/EmmdraLogo.png"
                 alt="Emmdra Empire & Lifestyle"
                 fill
                 priority
                 unoptimized={true}
-                className="object-contain p-1 sm:p-2 rounded-full group-hover:scale-105 transition-transform duration-300"
+                className="object-contain p-1 sm:p-2 rounded-full group-hover:scale-105 transition-transform duration-300 drop-shadow-lg"
                 sizes="(max-width: 640px) 64px, (max-width: 768px) 96px, 96px"
               />
             </div>
-            <div className="hidden sm:block">
-              <h3 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-burnt-orange via-brand-vibrant-green to-brand-dark-teal leading-tight drop-shadow-sm">Emmdra</h3>
-              <p className="text-xs sm:text-sm font-medium text-gray-600 -mt-1">Empire & Lifestyle</p>
+            <div className="block sm:block">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-burnt-orange via-brand-vibrant-green to-brand-dark-teal leading-tight drop-shadow-sm">Emmdra</h3>
+              <p className="text-sm sm:text-base font-medium text-gray-600 -mt-1">Empire & Lifestyle</p>
             </div>
           </Link>
 

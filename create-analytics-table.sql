@@ -31,6 +31,10 @@ CREATE TABLE IF NOT EXISTS page_views (
 -- Enable RLS for analytics table
 ALTER TABLE page_views ENABLE ROW LEVEL SECURITY;
 
+-- Drop existing policies if they exist (to avoid conflicts)
+DROP POLICY IF EXISTS "Allow anonymous page view inserts" ON page_views;
+DROP POLICY IF EXISTS "Allow public page view reads" ON page_views;
+
 -- Public insert policy (for anonymous tracking)
 CREATE POLICY "Allow anonymous page view inserts" ON page_views
   FOR INSERT WITH CHECK (true);
@@ -53,9 +57,12 @@ CREATE INDEX IF NOT EXISTS idx_page_views_content ON page_views(page_type, page_
 SELECT 'page_views' as table_name, COUNT(*) as count FROM page_views;
 
 -- =============================================
--- SETUP COMPLETE
+-- SETUP COMPLETE - IDEMPOTENT VERSION
 -- =============================================
 
--- Your analytics table has been created successfully!
--- The analytics tracking should now work without errors.
--- Run this script in your Supabase SQL editor to fix the missing column issue.
+-- This script can now be run multiple times safely!
+-- It will drop existing policies before creating new ones,
+-- preventing the "policy already exists" error.
+
+-- Your analytics table is ready for use!
+-- Analytics tracking will work without errors.

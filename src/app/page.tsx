@@ -29,10 +29,10 @@ export default function Home() {
             <h1 className="heading-1 text-gray-900 mb-6 sm:mb-8 font-bold drop-shadow-sm">
               Welcome to <span className="text-brand-burnt-orange font-black drop-shadow-md">Emmdra</span> Empire
             </h1>
-            <p className="text-body-lg text-gray-800 max-w-4xl mx-auto mb-6 sm:mb-8 drop-shadow-sm">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-800 max-w-4xl mx-auto mb-6 sm:mb-8 drop-shadow-sm leading-relaxed">
               Your complete lifestyle destination where <strong className="text-brand-burnt-orange font-bold">Fashion</strong>, <strong className="text-brand-vibrant-green font-bold">Beauty</strong>, <strong className="text-brand-dark-teal font-bold">DIY</strong>, <strong className="text-brand-burnt-orange font-bold">Lifestyle</strong>, and <strong className="text-brand-vibrant-green font-bold">Family</strong> come together in perfect harmony.
             </p>
-            <p className="text-body text-gray-800 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 drop-shadow-sm">
+            <p className="text-base sm:text-lg md:text-xl text-gray-800 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 drop-shadow-sm leading-relaxed">
               From trendy outfits that make you shine, to beauty secrets that glow from within, creative DIY projects that inspire, lifestyle tips that transform, and family moments that last forever — we have got everything to make your world more beautiful.
             </p>
 

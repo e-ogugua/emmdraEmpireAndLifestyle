@@ -172,10 +172,10 @@ export default function DIYPage() {
         <div className="container mx-auto relative z-10">
           {/* Page Header */}
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
               DIY <span className="text-green-300">Tutorials</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
               Unleash your creativity with our step-by-step DIY projects.
               From beginner-friendly crafts to advanced techniques, find your next creative adventure.
             </p>
@@ -193,7 +193,7 @@ export default function DIYPage() {
                     <button
                       key={category.id}
                       onClick={() => setSelectedCategory(category.id)}
-                      className={`px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 ${
+                      className={`px-4 py-2 sm:px-5 sm:py-3 rounded-full font-medium text-sm sm:text-base transition-all duration-200 min-h-[44px] ${
                         selectedCategory === category.id
                           ? 'bg-black text-white shadow-lg'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -213,7 +213,7 @@ export default function DIYPage() {
                     <button
                       key={difficulty.id}
                       onClick={() => setSelectedDifficulty(difficulty.id)}
-                      className={`px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 ${
+                      className={`px-4 py-2 sm:px-5 sm:py-3 rounded-full font-medium text-sm sm:text-base transition-all duration-200 min-h-[44px] ${
                         selectedDifficulty === difficulty.id
                           ? 'bg-green-600 text-white shadow-lg'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -404,7 +404,7 @@ export default function DIYPage() {
                       </span>
                       <Link
                         href={`/diy/${generateSlug(tutorial.title)}`}
-                        className="bg-black text-white px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors duration-200"
+                        className="bg-black text-white px-4 py-2 sm:px-5 sm:py-3 rounded-full font-medium text-sm sm:text-base hover:bg-gray-800 transition-colors duration-200 min-h-[44px] flex items-center justify-center"
                       >
                         Start Tutorial →
                       </Link>

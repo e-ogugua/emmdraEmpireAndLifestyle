@@ -84,7 +84,7 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                       {/* Emmanuel Portrait */}
                       <div className="relative group">
-                        <div className="w-full h-40 sm:h-48 md:h-56 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
+                        <div className="w-full h-48 sm:h-56 md:h-64 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
                           <Image
                             src="/images/EmmdraEmmanuelPotrait11.png"
                             alt="Emmanuel - Co-Founder"
@@ -93,15 +93,15 @@ export default function AboutPage() {
                             sizes="(max-width: 640px) 100vw, 50vw"
                           />
                         </div>
-                        <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full shadow-md">
-                          <p className="text-xs font-bold text-gray-800">Emmanuel</p>
-                          <p className="text-xs text-gray-600">Creative Director</p>
+                        <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full shadow-md">
+                          <p className="text-sm sm:text-base font-bold text-gray-800">Emmanuel</p>
+                          <p className="text-xs sm:text-sm text-gray-600">Creative Director</p>
                         </div>
                       </div>
 
                       {/* Chidera Portrait */}
                       <div className="relative group">
-                        <div className="w-full h-40 sm:h-48 md:h-56 bg-gradient-to-br from-purple-200 to-pink-300 rounded-xl overflow-hidden shadow-lg">
+                        <div className="w-full h-48 sm:h-56 md:h-64 bg-gradient-to-br from-purple-200 to-pink-300 rounded-xl overflow-hidden shadow-lg">
                           <Image
                             src="/images/emmdraChideraPotrait10.png"
                             alt="Chidera - Co-Founder"
@@ -110,9 +110,9 @@ export default function AboutPage() {
                             sizes="(max-width: 640px) 100vw, 50vw"
                           />
                         </div>
-                        <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full shadow-md">
-                          <p className="text-xs font-bold text-gray-800">Chidera</p>
-                          <p className="text-xs text-gray-600">Style Curator</p>
+                        <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full shadow-md">
+                          <p className="text-sm sm:text-base font-bold text-gray-800">Chidera</p>
+                          <p className="text-xs sm:text-sm text-gray-600">Style Curator</p>
                         </div>
                       </div>
                     </div>
@@ -147,9 +147,9 @@ export default function AboutPage() {
 
           <div className="max-w-4xl mx-auto">
             {/* Timeline */}
-            <div className="relative">
-              {/* Timeline Line - Hidden on mobile, visible on larger screens */}
-              <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-600 to-purple-600 h-full"></div>
+            <div className="relative min-h-[800px] py-8">
+              {/* Timeline Line - Subtle outline without fill */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-2 h-full shadow-inner z-0 border-2 border-slate-400/30"></div>
 
               {/* Timeline Items */}
               <div className="space-y-4 sm:space-y-6 lg:space-y-8">
@@ -158,9 +158,9 @@ export default function AboutPage() {
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
                   <div className="w-full sm:w-1/2 sm:pr-3 md:sm:pr-4 lg:pr-6 text-center sm:text-right mb-3 sm:mb-0">
-                    <div className="bg-blue-50 p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-blue-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
-                      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-blue-900 mb-2 sm:mb-3 group-hover:text-blue-800 transition-colors">Dec 2023 - Foundation</h3>
-                      <p className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base font-medium max-w-md">
+                    <div className="bg-blue-50 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-blue-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
+                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-blue-900 mb-3 sm:mb-4 group-hover:text-blue-800 transition-colors">Dec 2023 - Foundation</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg font-medium max-w-md">
                         Emmanuel and Chidera laid the groundwork for Emmdra Empire, combining their passion
                         for fashion, beauty, and family values into a cohesive vision.
                       </p>
@@ -177,9 +177,9 @@ export default function AboutPage() {
                   <div className="w-full sm:w-1/2"></div>
                   <div className="w-4 h-4 bg-purple-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
                   <div className="w-full sm:w-1/2 sm:pl-3 md:sm:pl-4 lg:pl-6 text-center sm:text-left mt-3 sm:mt-0">
-                    <div className="bg-purple-50 p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-purple-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
-                      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-purple-900 mb-2 sm:mb-3 group-hover:text-purple-800 transition-colors">Jan 2024 - Brand Launch</h3>
-                      <p className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base font-medium max-w-md">
+                    <div className="bg-purple-50 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-purple-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
+                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-purple-900 mb-3 sm:mb-4 group-hover:text-purple-800 transition-colors">Jan 2024 - Brand Launch</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg font-medium max-w-md">
                         Official launch of Emmdra Empire with curated fashion collections, beauty essentials,
                         and DIY content that resonates with modern families.
                       </p>
@@ -192,9 +192,9 @@ export default function AboutPage() {
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
                   <div className="w-full sm:w-1/2 sm:pr-3 md:sm:pr-4 lg:pr-6 text-center sm:text-right mb-3 sm:mb-0">
-                    <div className="bg-pink-50 p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-pink-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
-                      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-pink-900 mb-2 sm:mb-3 group-hover:text-pink-800 transition-colors">Mar 2024 - Community Growth</h3>
-                      <p className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base font-medium max-w-md">
+                    <div className="bg-pink-50 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-pink-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
+                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-pink-900 mb-3 sm:mb-4 group-hover:text-pink-800 transition-colors">Mar 2024 - Community Growth</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg font-medium max-w-md">
                         Started building our community through workshops, blog content, and social media engagement.
                         Families began discovering our unique approach to lifestyle.
                       </p>
@@ -211,9 +211,9 @@ export default function AboutPage() {
                   <div className="w-full sm:w-1/2"></div>
                   <div className="w-4 h-4 bg-green-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
                   <div className="w-full sm:w-1/2 sm:pl-3 md:sm:pl-4 lg:pl-6 text-center sm:text-left mt-3 sm:mt-0">
-                    <div className="bg-green-50 p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-green-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
-                      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-green-900 mb-2 sm:mb-3 group-hover:text-green-800 transition-colors">Jun 2024 - Online Presence</h3>
-                      <p className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base font-medium max-w-md">
+                    <div className="bg-green-50 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-green-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
+                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-green-900 mb-3 sm:mb-4 group-hover:text-green-800 transition-colors">Jun 2024 - Online Presence</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg font-medium max-w-md">
                         Expanded our digital footprint with a comprehensive website featuring shop, blog,
                         and workshop bookings. Enhanced customer experience with seamless online shopping.
                       </p>
@@ -226,9 +226,9 @@ export default function AboutPage() {
                   isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
                 }`}>
                   <div className="w-full sm:w-1/2 sm:pr-3 md:sm:pr-4 lg:pr-6 text-center sm:text-right mb-3 sm:mb-0">
-                    <div className="bg-orange-50 p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-orange-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
-                      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-orange-900 mb-2 sm:mb-3 group-hover:text-orange-800 transition-colors">Sep 2024 - Product Expansion</h3>
-                      <p className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base font-medium max-w-md">
+                    <div className="bg-orange-50 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-orange-200/50 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
+                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-orange-900 mb-3 sm:mb-4 group-hover:text-orange-800 transition-colors">Sep 2024 - Product Expansion</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg font-medium max-w-md">
                         Diversified our product range with new categories including accessories, beauty products,
                         and lifestyle items. Enhanced our DIY tutorial library with step-by-step guides.
                       </p>
@@ -245,9 +245,9 @@ export default function AboutPage() {
                   <div className="w-full sm:w-1/2"></div>
                   <div className="w-4 h-4 bg-yellow-600 rounded-full mx-auto sm:mx-4 relative z-10 shadow-lg"></div>
                   <div className="w-full sm:w-1/2 sm:pl-3 md:sm:pl-4 lg:pl-6 text-center sm:text-left mt-3 sm:mt-0">
-                    <div className="bg-yellow-50 p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border-2 border-yellow-300 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
-                      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-yellow-900 mb-2 sm:mb-3 group-hover:text-yellow-800 transition-colors">Today - Growing Strong</h3>
-                      <p className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base font-medium max-w-md">
+                    <div className="bg-yellow-50 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border-2 border-yellow-300 inline-block w-full sm:w-auto hover:shadow-2xl transition-all duration-300 group">
+                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-yellow-900 mb-3 sm:mb-4 group-hover:text-yellow-800 transition-colors">Today - Growing Strong</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg font-medium max-w-md">
                         Emmdra Empire continues to grow as a beloved lifestyle brand. We&apos;re expanding our community,
                         creating more workshops, and developing new products that celebrate Nigerian creativity and family bonds.
                       </p>
@@ -475,33 +475,33 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center mb-8 sm:mb-12 lg:mb-16">
                 <Link
                   href="/shop"
-                  className="group bg-white text-purple-700 px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 md:py-5 lg:py-6 rounded-full font-bold text-base sm:text-lg md:text-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-3xl hover:shadow-4xl border-2 border-white/20 min-h-[44px] flex items-center justify-center"
+                  className="group bg-white text-purple-700 px-8 sm:px-10 md:px-12 lg:px-14 py-4 sm:py-5 md:py-6 lg:py-7 rounded-full font-bold text-lg sm:text-xl md:text-2xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-3xl hover:shadow-4xl border-2 border-white/20 min-h-[56px] flex items-center justify-center"
                 >
-                  <span className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+                  <span className="flex items-center gap-3 sm:gap-4 lg:gap-5">
                     🛍️ Explore Our Collection
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
                 </Link>
                 <Link
                   href="/blog"
-                  className="group bg-white/15 backdrop-blur-sm text-white border-2 border-white/40 px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 md:py-5 lg:py-6 rounded-full font-bold text-base sm:text-lg md:text-xl hover:bg-white hover:text-purple-700 transition-all duration-300 shadow-2xl hover:shadow-3xl min-h-[44px] flex items-center justify-center"
+                  className="group bg-white/15 backdrop-blur-sm text-white border-2 border-white/40 px-8 sm:px-10 md:px-12 lg:px-14 py-4 sm:py-5 md:py-6 lg:py-7 rounded-full font-bold text-lg sm:text-xl md:text-2xl hover:bg-white hover:text-purple-700 transition-all duration-300 shadow-2xl hover:shadow-3xl min-h-[56px] flex items-center justify-center"
                 >
-                  <span className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+                  <span className="flex items-center gap-3 sm:gap-4 lg:gap-5">
                     📖 Join Our Community
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
                 </Link>
                 <Link
                   href="/contact"
-                  className="group bg-white text-purple-700 px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 md:py-5 lg:py-6 rounded-full font-bold text-base sm:text-lg md:text-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-3xl hover:shadow-4xl border-2 border-white/20 min-h-[44px] flex items-center justify-center"
+                  className="group bg-white text-purple-700 px-8 sm:px-10 md:px-12 lg:px-14 py-4 sm:py-5 md:py-6 lg:py-7 rounded-full font-bold text-lg sm:text-xl md:text-2xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-3xl hover:shadow-4xl border-2 border-white/20 min-h-[56px] flex items-center justify-center"
                 >
-                  <span className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+                  <span className="flex items-center gap-3 sm:gap-4 lg:gap-5">
                     📞 Get In Touch
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
@@ -513,16 +513,16 @@ export default function AboutPage() {
             <div className="mt-8 sm:mt-10 lg:mt-12 pt-4 sm:pt-6 border-t border-white/20">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 text-white/90">
                 <div className="text-center">
-                  <h3 className="font-semibold mb-1 text-sm sm:text-base">📍 Location</h3>
-                  <p className="text-xs sm:text-sm">Enugu, Nigeria</p>
+                  <h3 className="font-semibold mb-1 text-base sm:text-lg">📍 Location</h3>
+                  <p className="text-sm sm:text-base">Enugu, Nigeria</p>
                 </div>
                 <div className="text-center">
-                  <h3 className="font-semibold mb-1 text-sm sm:text-base">📞 Phone</h3>
-                  <p className="text-xs sm:text-sm">+234 812 239 4397</p>
+                  <h3 className="font-semibold mb-1 text-base sm:text-lg">📞 Phone</h3>
+                  <p className="text-sm sm:text-base">+234 812 239 4397</p>
                 </div>
                 <div className="text-center sm:col-span-2 lg:col-span-1">
-                  <h3 className="font-semibold mb-1 text-sm sm:text-base">✉️ Email</h3>
-                  <p className="text-xs sm:text-sm">emmdraempire@gmail.com</p>
+                  <h3 className="font-semibold mb-1 text-base sm:text-lg">✉️ Email</h3>
+                  <p className="text-sm sm:text-base">emmdraempire@gmail.com</p>
                 </div>
               </div>
             </div>
