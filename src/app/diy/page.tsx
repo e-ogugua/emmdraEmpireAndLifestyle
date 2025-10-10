@@ -151,58 +151,37 @@ export default function DIYPage() {
   return (
     <div className="relative">
       {/* Hero Section with Beautiful Background */}
-      <section className="relative py-8 sm:py-12 md:py-16 px-4 min-h-[35vh] sm:min-h-[40vh] md:min-h-[45vh] flex items-center overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[50vh] sm:min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 sm:from-gray-200 sm:via-gray-300 sm:to-gray-400">
-          {/* Enhanced overlay for better text readability on mobile */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40 sm:from-black/50 sm:via-black/40 sm:to-black/30"></div>
-          {/* Brand color accent overlay - More visible on mobile */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/30 via-teal-900/25 to-blue-900/20 sm:from-green-900/20 sm:via-teal-900/15 sm:to-blue-900/10 mix-blend-multiply"></div>
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+          {/* Clean overlay for perfect text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+          {/* Subtle brand accent */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900/15 via-transparent to-teal-900/10"></div>
         </div>
 
         <div className="container mx-auto relative z-10">
           {/* Page Header */}
-          <div className="text-center mb-6 sm:mb-8 md:mb-12">
-            <div className="mb-3 sm:mb-4">
-              <span className="inline-block bg-gradient-to-r from-cyan-400 to-blue-400 backdrop-blur-md text-white px-4 sm:px-5 py-2 sm:py-3 rounded-full text-sm font-bold border-2 border-white/60 shadow-xl drop-shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
-                📖 Stories & Inspiration
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="mb-4 sm:mb-6">
+              <span className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold shadow-lg">
+                📖 Creative DIY Projects
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 text-white drop-shadow-lg">
-              <span className="text-brand-burnt-orange font-black drop-shadow-xl [text-shadow:_0_3px_6px_rgb(0_0_0_/_95%),_0_6px_12px_rgb(0_0_0_/_85%)]">
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 text-white leading-tight">
+              <span className="bg-gradient-to-r from-brand-burnt-orange to-red-400 bg-clip-text text-transparent">
                 DIY Tutorials
               </span>
             </h1>
 
-            <div className="relative max-w-4xl mx-auto px-2 sm:px-4">
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold leading-relaxed mb-2 sm:mb-3 text-white drop-shadow-lg">
-                <span className="text-white font-black drop-shadow-xl [text-shadow:_0_3px_6px_rgb(0_0_0_/_95%),_0_6px_12px_rgb(0_0_0_/_85%)]">
-                  Unleash your creativity
-                </span>
-                <span className="text-white font-black drop-shadow-xl [text-shadow:_0_3px_6px_rgb(0_0_0_/_95%),_0_6px_12px_rgb(0_0_0_/_85%)]">
-                  {' '}with step-by-step DIY projects.
-                </span>
+            <div className="space-y-3 sm:space-y-4">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white leading-relaxed">
+                Unleash your creativity with step-by-step DIY projects
               </p>
 
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-relaxed text-white max-w-3xl mx-auto drop-shadow-lg">
-                <span className="text-white font-bold drop-shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_95%),_0_4px_8px_rgb(0_0_0_/_85%)]">
-                  From{' '}
-                </span>
-                <span className="text-white font-bold drop-shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_95%),_0_4px_8px_rgb(0_0_0_/_85%)]">
-                  beginner crafts
-                </span>
-                <span className="text-white font-bold drop-shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_95%),_0_4px_8px_rgb(0_0_0_/_85%)]">
-                  {' '}to{' '}
-                </span>
-                <span className="text-white font-bold drop-shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_95%),_0_4px_8px_rgb(0_0_0_/_85%)]">
-                  advanced techniques
-                </span>
-                <span className="text-white font-bold drop-shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_95%),_0_4px_8px_rgb(0_0_0_/_85%)]">
-                  —find your next{' '}
-                </span>
-                <span className="text-brand-vibrant-green font-bold drop-shadow-lg [text-shadow:_0_2px_4px_rgb(0_0_0_/_95%),_0_4px_8px_rgb(0_0_0_/_85%)]">
-                  creative adventure.
-                </span>
+              <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-100 max-w-3xl mx-auto leading-relaxed">
+                From beginner crafts to advanced techniques — find your next creative adventure
               </p>
             </div>
           </div>
