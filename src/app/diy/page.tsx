@@ -164,7 +164,7 @@ export default function DIYPage() {
             sizes="100vw"
           />
           {/* Enhanced overlay for better text readability on mobile */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40 sm:from-black/40 sm:via-black/30 sm:to-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/30 sm:from-black/40 sm:via-black/30 sm:to-black/20"></div>
           {/* Brand color accent overlay - More visible on mobile */}
           <div className="absolute inset-0 bg-gradient-to-br from-green-900/30 via-teal-900/25 to-blue-900/20 sm:from-green-900/20 sm:via-teal-900/15 sm:to-blue-900/10 mix-blend-multiply"></div>
         </div>
@@ -172,18 +172,26 @@ export default function DIYPage() {
         <div className="container mx-auto relative z-10">
           {/* Page Header */}
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 drop-shadow-2xl">
-              DIY <span className="text-green-300 drop-shadow-lg">Tutorials</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 drop-shadow-2xl">
+              <span className="text-yellow-300">
+                DIY Tutorials
+              </span>
             </h1>
-            <div className="relative max-w-5xl mx-auto">
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white font-bold leading-relaxed drop-shadow-2xl px-2 sm:px-4 relative z-10">
-                Unleash your creativity with our step-by-step DIY projects.
+
+            <div className="relative max-w-6xl mx-auto px-4">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold leading-relaxed drop-shadow-2xl mb-3 text-white">
+                <span className="text-orange-300">Unleash your creativity</span>
+                <span className="text-white"> with step-by-step DIY projects.</span>
               </p>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white/95 font-semibold leading-relaxed drop-shadow-xl px-2 sm:px-4 mt-2">
-                From beginner-friendly crafts to advanced techniques, find your next creative adventure.
+
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed drop-shadow-xl text-white">
+                <span className="text-purple-300">From </span>
+                <span className="text-cyan-300">beginner crafts</span>
+                <span className="text-purple-300"> to </span>
+                <span className="text-cyan-300">advanced techniques</span>
+                <span className="text-white">—find your next </span>
+                <span className="text-green-300 font-bold">creative adventure.</span>
               </p>
-              {/* Additional text shadow overlay for extra readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 rounded-lg -z-10"></div>
             </div>
           </div>
 
