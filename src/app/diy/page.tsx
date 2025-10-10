@@ -152,15 +152,15 @@ export default function DIYPage() {
     <div className="relative">
       {/* Hero Section with Beautiful Background */}
       <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[50vh] sm:min-h-[60vh] flex items-center overflow-hidden">
-        {/* Background Gradient - Mobile Only (Desktop-like dark theme) */}
-        <div className="absolute inset-0 z-0 sm:hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+        {/* Background Gradient - Mobile First (Default) */}
+        <div className="absolute inset-0 z-0 block sm:hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
           {/* Enhanced overlay for maximum text readability on mobile */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85"></div>
           {/* Subtle brand accent overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-brand-burnt-orange/10 via-transparent to-green-500/8"></div>
         </div>
 
-        {/* Desktop Background - Unchanged */}
+        {/* Desktop Background - Larger Screens Only */}
         <div className="absolute inset-0 z-0 hidden sm:block bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
           {/* Clean overlay for perfect text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
