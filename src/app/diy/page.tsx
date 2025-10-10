@@ -176,18 +176,18 @@ export default function DIYPage() {
             </h1>
 
             <div className="space-y-4 sm:space-y-6">
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-relaxed drop-shadow-lg">
-                <span className="text-cyan-200 sm:text-white">Unleash your creativity</span>
-                <span className="text-brand-burnt-orange font-black sm:text-brand-burnt-orange"> with step-by-step DIY projects.</span>
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-relaxed drop-shadow-lg">
+                <span className="text-white">Unleash your creativity</span>
+                <span className="text-white font-black"> with step-by-step DIY projects.</span>
               </p>
 
-              <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed drop-shadow-md max-w-4xl mx-auto">
-                <span className="text-gray-300 sm:text-gray-200">From </span>
-                <span className="text-green-300 font-bold sm:text-green-400">beginner crafts </span>
-                <span className="text-gray-300 sm:text-gray-200">to </span>
-                <span className="text-cyan-300 font-bold sm:text-cyan-400">advanced techniques</span>
-                <span className="text-gray-300 sm:text-gray-200">—find your next </span>
-                <span className="text-brand-vibrant-green font-black sm:text-brand-vibrant-green">creative adventure.</span>
+              <p className="text-lg sm:text-xl md:text-2xl font-semibold text-white max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+                <span className="text-white">From </span>
+                <span className="text-white font-bold">beginner crafts </span>
+                <span className="text-white">to </span>
+                <span className="text-white font-bold">advanced techniques</span>
+                <span className="text-white">—find your next </span>
+                <span className="text-white font-black">creative adventure.</span>
               </p>
             </div>
           </div>
