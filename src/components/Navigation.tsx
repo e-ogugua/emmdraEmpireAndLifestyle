@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useCart } from '@/lib/cart-context'
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { state: cartState } = useCart()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -61,6 +63,22 @@ export default function Navigation() {
               </Link>
             ))}
 
+            {/* Cart Indicator - Desktop */}
+            <Link
+              href="/cart"
+              className="ml-2 relative bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white px-3 py-2 rounded-lg font-semibold text-sm hover:from-red-500 hover:to-brand-burnt-orange transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-brand-burnt-orange/50 hover:border-red-400/50 min-h-[44px] flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5h13M12 18a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" />
+              </svg>
+              {cartState.itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
+                  {cartState.itemCount > 99 ? '99+' : cartState.itemCount}
+                </span>
+              )}
+              <span className="hidden lg:inline">Cart</span>
+            </Link>
+
             {/* Admin Button - Different Style */}
             <Link
               href="/admin"
@@ -71,7 +89,22 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            {/* Cart Indicator - Mobile */}
+            <Link
+              href="/cart"
+              className="relative bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white p-2 rounded-lg font-semibold hover:from-red-500 hover:to-brand-burnt-orange transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border-2 border-brand-burnt-orange/50 hover:border-red-400/50 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5h13M12 18a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" />
+              </svg>
+              {cartState.itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+                  {cartState.itemCount > 9 ? '9+' : cartState.itemCount}
+                </span>
+              )}
+            </Link>
+
             <button
               onClick={toggleMobileMenu}
               className="inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-brand-burnt-orange hover:bg-brand-burnt-orange/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-burnt-orange/50 min-h-[44px] min-w-[44px] transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
@@ -103,22 +136,38 @@ export default function Navigation() {
               { name: 'Blog', href: '/blog' },
               { name: 'Workshops', href: '/workshops' },
               { name: 'About', href: '/about' },
-              { name: 'Contact', href: '/contact' },
-              { name: 'Admin', href: '/admin' }
+              { name: 'Contact', href: '/contact' }
             ].map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-all duration-300 min-h-[48px] flex items-center transform hover:scale-105 hover:-translate-y-0.5 relative overflow-hidden group ${
-                  item.name === 'Admin'
-                    ? 'bg-gradient-to-r from-brand-dark-teal to-brand-vibrant-green text-white hover:from-brand-vibrant-green hover:to-brand-dark-teal shadow-lg'
-                    : 'text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-orange-500 hover:via-orange-400 hover:to-pink-500 border border-transparent hover:border-orange-400'
-                }`}
+                className="block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-all duration-300 min-h-[48px] flex items-center transform hover:scale-105 hover:-translate-y-0.5 relative overflow-hidden group text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-orange-500 hover:via-orange-400 hover:to-pink-500 border border-transparent hover:border-orange-400"
                 onClick={closeMobileMenu}
               >
                 {item.name}
               </Link>
             ))}
+
+            {/* Cart Link - Mobile */}
+            <Link
+              href="/cart"
+              className="block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-all duration-300 min-h-[48px] flex items-center transform hover:scale-105 hover:-translate-y-0.5 relative overflow-hidden group bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white hover:from-red-500 hover:to-brand-burnt-orange border-2 border-brand-burnt-orange/50 hover:border-red-400/50 shadow-lg"
+              onClick={closeMobileMenu}
+            >
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5h13M12 18a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" />
+              </svg>
+              Cart ({cartState.itemCount})
+            </Link>
+
+            {/* Admin Button - Mobile */}
+            <Link
+              href="/admin"
+              className="block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-all duration-300 min-h-[48px] flex items-center transform hover:scale-105 hover:-translate-y-0.5 relative overflow-hidden group bg-gradient-to-r from-brand-dark-teal to-brand-vibrant-green text-white hover:from-brand-vibrant-green hover:to-brand-dark-teal shadow-lg border-2 border-brand-dark-teal/50 hover:border-brand-vibrant-green/50"
+              onClick={closeMobileMenu}
+            >
+              Admin
+            </Link>
           </div>
         </div>
       )}

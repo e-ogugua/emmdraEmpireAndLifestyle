@@ -53,9 +53,9 @@ export async function POST(request: NextRequest) {
     console.log('📦 Order stored in database:', orderData)
 
     // Send email notification to admin
-    const subject = `New Product Order from ${name} - Emmdra Empire`
+    const adminSubject = `New Product Order from ${name} - Emmdra Empire`
 
-    const orderContent = `
+    const adminContent = `
       <div class="highlight">
         <strong>New Product Order Received!</strong>
       </div>
@@ -115,8 +115,8 @@ export async function POST(request: NextRequest) {
       </p>
     `
 
-    const htmlBody = createEmailTemplate(orderContent, 'Product Order')
-    const textBody = createTextEmail(orderContent, 'Product Order')
+    const adminHtmlBody = createEmailTemplate(adminContent, 'Product Order')
+    const adminTextBody = createTextEmail(adminContent, 'Product Order')
 
     // Send email to admin (you can configure multiple admin emails)
     const adminEmails = process.env.ADMIN_EMAILS?.split(',') || [process.env.NOTIFY_EMAIL || process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com']
@@ -124,14 +124,72 @@ export async function POST(request: NextRequest) {
       if (adminEmail.trim()) {
         const emailOptions = {
           to: adminEmail.trim(),
-          subject,
-          html: htmlBody,
-          text: textBody,
+          subject: adminSubject,
+          html: adminHtmlBody,
+          text: adminTextBody,
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await sendEmail(emailOptions as any)
       }
     }
+
+    // Send confirmation email to customer
+    const customerSubject = `Order Confirmation - Emmdra Empire`
+
+    const customerContent = `
+      <div class="highlight">
+        <strong>Thank you for your order, ${name}!</strong>
+      </div>
+
+      <div class="details">
+        <p>We've received your order and will contact you soon with payment details and delivery information.</p>
+
+        <div class="label">Order Summary:</div>
+        <div class="value">
+          <strong>Product:</strong> ${product_name}<br>
+          <strong>Quantity:</strong> ${quantity}<br>
+          ${budget ? `<strong>Total:</strong> ₦${budget}<br>` : ''}
+        </div>
+
+        ${message ? `
+          <div class="label">Order Details:</div>
+          <div class="value">${message}</div>
+        ` : ''}
+
+        <p><strong>What happens next?</strong></p>
+        <ul>
+          <li>We'll review your order and contact you within 24 hours</li>
+          <li>You'll receive payment details and delivery options</li>
+          <li>Your order will be processed once payment is confirmed</li>
+        </ul>
+
+        <p>If you have any questions, please don't hesitate to contact us:</p>
+        <p>
+          📧 Email: emmdraempire@gmail.com<br>
+          📞 Phone: Available after we contact you
+        </p>
+      </div>
+
+      <p class="signature">
+        Best regards,<br>
+        The Emmdra Empire Team
+      </p>
+    `
+
+    const customerHtmlBody = createEmailTemplate(customerContent, 'Order Confirmation')
+    const customerTextBody = createTextEmail(customerContent, 'Order Confirmation')
+
+    // Send confirmation email to customer
+    const customerEmailOptions = {
+      to: email,
+      subject: customerSubject,
+      html: customerHtmlBody,
+      text: customerTextBody,
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await sendEmail(customerEmailOptions as any)
+
+    console.log('✅ Emails sent successfully to admin and customer')
 
     return NextResponse.json({
       success: true,
