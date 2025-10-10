@@ -344,7 +344,11 @@ export default function WorkshopPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-green-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300 transform shadow-lg border-2 min-h-[56px] flex items-center justify-center gap-2 ${
+                  isSubmitting
+                    ? 'bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 text-white border-gray-400/50 cursor-not-allowed opacity-75'
+                    : 'bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 text-white hover:from-emerald-600 hover:via-green-600 hover:to-green-700 hover:scale-[1.02] hover:shadow-xl border-green-700/50 hover:border-emerald-500/70'
+                }`}
               >
                 {isSubmitting ? (
                   <>
