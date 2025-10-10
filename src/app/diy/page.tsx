@@ -163,19 +163,19 @@ export default function DIYPage() {
             priority
             sizes="100vw"
           />
-          {/* Enhanced overlay for better card readability - More prominent */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/20"></div>
-          {/* Brand color accent overlay - More visible */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/20 via-teal-900/15 to-blue-900/10 mix-blend-multiply"></div>
+          {/* Enhanced overlay for better text readability on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40 sm:from-black/40 sm:via-black/30 sm:to-black/20"></div>
+          {/* Brand color accent overlay - More visible on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900/30 via-teal-900/25 to-blue-900/20 sm:from-green-900/20 sm:via-teal-900/15 sm:to-blue-900/10 mix-blend-multiply"></div>
         </div>
 
         <div className="container mx-auto relative z-10">
           {/* Page Header */}
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
-              DIY <span className="text-green-300">Tutorials</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 sm:mb-6 drop-shadow-2xl">
+              DIY <span className="text-green-300 drop-shadow-lg">Tutorials</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-medium max-w-4xl mx-auto leading-relaxed drop-shadow-xl px-2 sm:px-4">
               Unleash your creativity with our step-by-step DIY projects.
               From beginner-friendly crafts to advanced techniques, find your next creative adventure.
             </p>
