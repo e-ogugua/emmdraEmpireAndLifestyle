@@ -172,19 +172,19 @@ export default function DIYPage() {
         <div className="container mx-auto relative z-10">
           {/* Page Header */}
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 drop-shadow-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 drop-shadow-2xl">
               <span className="text-yellow-300">
                 DIY Tutorials
               </span>
             </h1>
 
-            <div className="relative max-w-6xl mx-auto px-4">
+            <div className="relative max-w-5xl mx-auto px-4">
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold leading-relaxed drop-shadow-2xl mb-3 text-white">
                 <span className="text-orange-300">Unleash your creativity</span>
                 <span className="text-white"> with step-by-step DIY projects.</span>
               </p>
 
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed drop-shadow-xl text-white">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-relaxed drop-shadow-xl text-white">
                 <span className="text-purple-300">From </span>
                 <span className="text-cyan-300">beginner crafts</span>
                 <span className="text-purple-300"> to </span>
