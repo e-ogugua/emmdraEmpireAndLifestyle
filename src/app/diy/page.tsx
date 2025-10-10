@@ -169,18 +169,18 @@ export default function DIYPage() {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 text-white leading-tight">
-              <span className="bg-gradient-to-r from-brand-burnt-orange to-red-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8 text-white leading-tight">
+              <span className="bg-gradient-to-r from-brand-burnt-orange via-red-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
                 DIY Tutorials
               </span>
             </h1>
 
-            <div className="space-y-3 sm:space-y-4">
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white leading-relaxed">
+            <div className="space-y-4 sm:space-y-6">
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-relaxed drop-shadow-lg">
                 Unleash your creativity with step-by-step DIY projects
               </p>
 
-              <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-100 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
                 From beginner crafts to advanced techniques — find your next creative adventure
               </p>
             </div>
