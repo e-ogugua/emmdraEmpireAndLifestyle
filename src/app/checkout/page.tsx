@@ -128,8 +128,8 @@ export default function CheckoutPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
             </svg>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-3">Secure Checkout</h1>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">Complete your order with our secure checkout process. We&apos;ll guide you through each step.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-brand-burnt-orange via-red-600 to-pink-600 bg-clip-text text-transparent mb-3">Secure Checkout</h1>
+          <p className="text-gray-800 text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">Complete your order with our secure checkout process. We&apos;ll guide you through each step.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
@@ -411,10 +411,10 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-lg font-bold text-lg text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-h-[56px] ${
+                  className={`w-full py-4 px-6 rounded-lg font-bold text-lg text-white transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-[1.02] min-h-[56px] ${
                     isSubmitting
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-brand-burnt-orange to-red-500 hover:from-red-500 hover:to-brand-burnt-orange'
+                      : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-emerald-700 hover:to-green-700 hover:shadow-green-500/40'
                   }`}
                 >
                   {isSubmitting ? (
