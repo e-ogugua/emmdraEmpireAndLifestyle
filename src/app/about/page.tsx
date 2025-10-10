@@ -23,22 +23,15 @@ export default function AboutPage() {
     <div className="relative">
       {/* Hero Section - Brand Colors with Gradient */}
       <section className="relative py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 min-h-[45vh] sm:min-h-[50vh] md:min-h-[55vh] flex items-center overflow-hidden">
-        {/* Mobile Background Image */}
-        <div className="absolute inset-0 z-0 sm:hidden">
-          <Image
-            src="/images/AboutBackgroundMobile.jpg"
-            alt="Emmdra Family Background"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Enhanced overlay for mobile text readability */}
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-          {/* Brand accent overlay for mobile */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-pink-600/15"></div>
+        {/* Mobile Background Gradient */}
+        <div className="absolute inset-0 z-0 sm:hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-rose-500">
+          {/* Enhanced overlay for perfect mobile text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/80"></div>
+          {/* Warm family accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-pink-400/15 via-transparent to-blue-400/10"></div>
         </div>
 
-        {/* Desktop Background - Enhanced gradient */}
+        {/* Desktop Background - Unchanged */}
         <div className="absolute inset-0 z-0 hidden sm:block bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 sm:from-blue-600 sm:via-purple-700 sm:to-pink-700"></div>
 
         {/* Enhanced pattern overlay for mobile */}
