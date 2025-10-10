@@ -210,7 +210,7 @@ export default function DIYPage() {
                       className={`px-4 py-2 sm:px-5 sm:py-3 rounded-full font-medium text-sm sm:text-base transition-all duration-200 min-h-[44px] ${
                         selectedCategory === category.id
                           ? 'bg-black text-white shadow-lg'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-gray-200 text-gray-800 hover:bg-gray-300 border border-gray-300'
                       }`}
                     >
                       {category.name}
@@ -230,7 +230,7 @@ export default function DIYPage() {
                       className={`px-4 py-2 sm:px-5 sm:py-3 rounded-full font-medium text-sm sm:text-base transition-all duration-200 min-h-[44px] ${
                         selectedDifficulty === difficulty.id
                           ? 'bg-green-600 text-white shadow-lg'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-gray-200 text-gray-800 hover:bg-gray-300 border border-gray-300'
                       }`}
                     >
                       {difficulty.name}
@@ -443,7 +443,7 @@ export default function DIYPage() {
                 </button>
                 <Link
                   href="/contact"
-                  className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-300 transition-colors duration-300"
+                  className="bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white px-6 py-3 rounded-full font-semibold hover:from-red-500 hover:to-brand-burnt-orange transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-brand-burnt-orange/50"
                 >
                   Request a Tutorial
                 </Link>

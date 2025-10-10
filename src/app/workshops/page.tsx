@@ -180,7 +180,7 @@ export default function WorkshopsPage() {
                 className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 backdrop-blur-sm border-2 ${
                   selectedCategory === category.id
                     ? 'bg-black/80 text-white shadow-lg border-black/60'
-                    : 'bg-white/80 text-gray-700 hover:bg-white/90 border-white/60 shadow-md'
+                    : 'bg-white/95 text-gray-800 hover:bg-white border-gray-300 shadow-md hover:shadow-lg'
                 }`}
               >
                 {category.name}
@@ -375,7 +375,7 @@ export default function WorkshopsPage() {
               <p className="text-white/80 mb-6 drop-shadow-sm">Check back later for new workshops in this category.</p>
               <button
                 onClick={() => setSelectedCategory('all')}
-                className="bg-white/90 backdrop-blur-sm text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-white border border-white/60 transition-colors duration-300 shadow-lg"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-semibold hover:from-pink-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-purple-500/50"
               >
                 View All Workshops
               </button>
