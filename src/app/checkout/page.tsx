@@ -71,13 +71,17 @@ export default function CheckoutPage() {
           type: 'success',
           message: '🎉 Order submitted successfully! We will contact you soon with payment details and delivery information.'
         })
-        clearCart() // Clear the cart after successful order
 
-        // Scroll to success message
+        // Show success message for a few seconds before clearing cart
         setTimeout(() => {
-          const messageElement = document.getElementById('submit-message')
-          messageElement?.scrollIntoView({ behavior: 'smooth' })
-        }, 100)
+          clearCart() // Clear the cart after showing success message
+
+          // Update message to show next steps
+          setSubmitMessage({
+            type: 'success',
+            message: '🎉 Order submitted successfully! We will contact you soon with payment details and delivery information.\n\n📞 You can also contact us directly if you have any questions.'
+          })
+        }, 3000) // Show success for 3 seconds before clearing cart
       } else {
         setSubmitMessage({
           type: 'error',
@@ -123,13 +127,20 @@ export default function CheckoutPage() {
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-brand-burnt-orange to-red-500 rounded-full shadow-lg mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg mb-4 border-4 border-green-200">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-brand-burnt-orange via-red-600 to-pink-600 bg-clip-text text-transparent mb-3">Secure Checkout</h1>
-          <p className="text-gray-800 text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">Complete your order with our secure checkout process. We&apos;ll guide you through each step.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3">🔐 Secure Checkout</h1>
+          <p className="text-gray-700 text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
+            <span className="inline-flex items-center gap-1">
+              <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              Your information is protected with enterprise-grade security
+            </span>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
@@ -188,18 +199,46 @@ export default function CheckoutPage() {
 
             <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
               {submitMessage && (
-                <div className={`p-4 rounded-lg border-2 ${submitMessage.type === 'success' ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
-                  <div className="flex items-center gap-2">
+                <div className={`p-6 rounded-lg border-2 ${submitMessage.type === 'success' ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
+                  <div className="flex items-start gap-3">
                     {submitMessage.type === 'success' ? (
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     ) : (
-                      <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      <svg className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     )}
-                    <p className="font-medium">{submitMessage.message}</p>
+                    <div className="flex-1">
+                      <p className="font-semibold text-lg mb-2">
+                        {submitMessage.type === 'success' ? 'Order Submitted Successfully!' : 'Submission Failed'}
+                      </p>
+                      <p className="whitespace-pre-line leading-relaxed mb-4">{submitMessage.message}</p>
+
+                      {submitMessage.type === 'success' && (
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <Link
+                            href="/shop"
+                            className="bg-brand-burnt-orange text-white px-4 py-2 rounded-lg font-semibold hover:bg-brand-burnt-orange-light transition-colors duration-200 text-center flex items-center justify-center gap-2"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                            </svg>
+                            Continue Shopping
+                          </Link>
+                          <Link
+                            href="/contact"
+                            className="bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 text-center flex items-center justify-center gap-2"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                            Contact Us
+                          </Link>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
@@ -411,10 +450,10 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-lg font-bold text-lg text-white transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-[1.02] min-h-[56px] ${
+                  className={`w-full py-4 px-6 rounded-lg font-bold text-lg text-white transition-all duration-300 shadow-lg min-h-[56px] ${
                     isSubmitting
-                      ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-emerald-700 hover:to-green-700 hover:shadow-green-500/40'
+                      ? 'bg-gray-600 cursor-not-allowed'
+                      : 'bg-brand-burnt-orange hover:bg-green-600 hover:shadow-lg hover:scale-105'
                   }`}
                 >
                   {isSubmitting ? (

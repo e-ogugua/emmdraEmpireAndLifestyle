@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛍️ Emmdra Empire & Lifestyle
 
-## Getting Started
+A comprehensive e-commerce and lifestyle platform built with Next.js, featuring a complete shopping cart system, admin dashboard, email notifications, and mobile-responsive design.
 
-First, run the development server:
+## ✨ Features
 
+### 🛒 **Complete Shopping Experience**
+- **Product Catalog** - Browse and search products with filtering
+- **Shopping Cart** - Add, remove, and manage cart items with persistent storage
+- **Secure Checkout** - Professional checkout flow with customer information collection
+- **Order Management** - Complete order processing with database storage
+- **Email Notifications** - Automated emails to customers and admins
+
+### 🎛️ **Admin Dashboard**
+- **Order Management** - View and manage all customer orders
+- **Product Management** - Add, edit, and manage product inventory
+- **Analytics Dashboard** - Track site performance and user engagement
+- **Content Management** - Manage blog posts, workshops, and DIY tutorials
+- **User Management** - Handle consultations, bookings, and contact messages
+
+### 📱 **Mobile-First Design**
+- **Responsive Layout** - Perfect experience on all devices
+- **Touch-Optimized** - Mobile-friendly interactions and touch targets
+- **Progressive Enhancement** - Enhanced experience on larger screens
+- **Performance Optimized** - Fast loading and smooth animations
+
+### 🔐 **Security & Professional Features**
+- **Email Integration** - Gmail SMTP for order notifications
+- **Database Integration** - Supabase for data persistence
+- **Form Validation** - Comprehensive input validation and error handling
+- **Admin Authentication** - Secure admin panel access
+- **Order Tracking** - Complete order lifecycle management
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- Supabase account (for database)
+- Gmail account (for email notifications)
+
+### Installation
+
+1. **Clone the repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/e-ogugua/emmdraEmpireAndLifestyle.git
+cd emmdraEmpireAndLifestyle
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Environment Setup**
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit `.env.local` with your credentials:
+```env
+# Database
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-## Learn More
+# Email (Gmail SMTP)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
 
-To learn more about Next.js, take a look at the following resources:
+# Admin Access
+NEXT_PUBLIC_ADMIN_EMAILS=admin1@example.com,admin2@example.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Start development server**
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Open browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+## 📋 Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏗️ Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── admin/             # Admin dashboard pages
+│   ├── api/               # API routes
+│   ├── cart/              # Shopping cart page
+│   ├── checkout/          # Checkout page
+│   ├── diy/               # DIY tutorials
+│   ├── shop/              # Product catalog
+│   └── ...                # Other pages
+├── components/            # Reusable components
+├── lib/                   # Utilities and configurations
+│   ├── cart-context.tsx   # Shopping cart state management
+│   ├── supabase.ts        # Database client
+│   └── email.ts           # Email utilities
+└── ...
+```
+
+## 🎯 Key Features Implemented
+
+### 🛒 **Shopping Cart System**
+- **Persistent Cart** - Cart items saved to localStorage
+- **Real-time Updates** - Cart count updates in navigation
+- **Quantity Management** - Add, remove, update item quantities
+- **Mobile Optimized** - Touch-friendly cart interface
+
+### 📧 **Email Notification System**
+- **Customer Confirmations** - Order confirmation emails
+- **Admin Notifications** - New order alerts to admin emails
+- **Professional Templates** - HTML email templates with branding
+- **SMTP Integration** - Gmail SMTP for reliable delivery
+
+### 🎛️ **Admin Dashboard**
+- **Order Management** - View, track, and manage orders
+- **Customer Communication** - Direct email replies to customers
+- **Analytics Tracking** - Page views and user engagement
+- **Content Management** - Blog, workshops, and product management
+
+### 📱 **Mobile Responsiveness**
+- **Mobile-First Design** - Optimized for mobile devices
+- **Touch Targets** - 44px minimum for accessibility
+- **Responsive Typography** - Scales perfectly across devices
+- **Progressive Enhancement** - Enhanced experience on larger screens
+
+## 🔧 Technical Stack
+
+- **Framework:** Next.js 15 with App Router
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Database:** Supabase (PostgreSQL)
+- **Email:** Nodemailer with Gmail SMTP
+- **State Management:** React Context API
+- **Deployment:** Vercel (optimized)
+
+## 🌟 Production Ready
+
+This application is **production-ready** with:
+- ✅ **Error handling** and validation
+- ✅ **Security measures** and authentication
+- ✅ **Performance optimization**
+- ✅ **Mobile responsiveness**
+- ✅ **SEO optimization**
+- ✅ **Professional email system**
+- ✅ **Complete admin dashboard**
+
+## 📞 Support
+
+For support or questions:
+- **Email:** emmdraempire@gmail.com
+- **Admin Panel:** `/admin` (login required)
+
+## 📄 License
+
+This project is private and proprietary to Emmdra Empire & Lifestyle.
+
+---
+
+**Built with ❤️ for the modern Nigerian lifestyle brand**

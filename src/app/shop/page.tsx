@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCart, CartProvider } from '@/lib/cart-context'
+import { useCart } from '@/lib/cart-context'
 import { trackPageView } from '@/lib/analytics'
 
 interface Product {
@@ -333,9 +333,5 @@ function ShopPageContent() {
 }
 
 export default function ShopPage() {
-  return (
-    <CartProvider>
-      <ShopPageContent />
-    </CartProvider>
-  )
+  return <ShopPageContent />
 }
