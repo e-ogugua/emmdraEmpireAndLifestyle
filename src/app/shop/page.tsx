@@ -1,7 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useCart, CartProvider } from '@/lib/cart-context'
 import { trackPageView } from '@/lib/analytics'
 
 interface Product {
@@ -22,17 +24,17 @@ const categories = [
   { id: 'All', name: 'All Products' },
   { id: 'Fashion', name: 'Adult Wears' },
   { id: 'Kids Fashion', name: 'Kiddies Wears' },
-  { id: 'Accessories', name: 'Accessories' },
   { id: 'Beauty', name: 'Beauty Hub' },
   { id: 'Workshops', name: 'Workshops & Training' }
 ]
 
-export default function ShopPage() {
+function ShopPageContent() {
+  const [selectedCategory, setSelectedCategory] = useState<string>('All')
+  const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState<Product[]>([])
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [selectedCategory, setSelectedCategory] = useState<string>('All')
+  const { addToCart, state: cartState } = useCart()
 
   useEffect(() => {
     // Track shop page view
@@ -203,6 +205,18 @@ export default function ShopPage() {
               </span>
             </p>
           </div>
+
+          {/* Cart Indicator */}
+          {cartState.itemCount > 0 && (
+            <div className="absolute top-4 right-4 z-30">
+              <Link
+                href="/cart"
+                className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-2 rounded-full font-semibold text-sm hover:bg-white/30 transition-all duration-300 flex items-center gap-2"
+              >
+                🛒 Cart ({cartState.itemCount})
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -214,7 +228,7 @@ export default function ShopPage() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center ${
+                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center transform hover:scale-105 hover:-translate-y-0.5 ${
                   selectedCategory === category.id
                     ? 'bg-brand-burnt-orange text-white shadow-lg hover:bg-brand-burnt-orange-light'
                     : 'bg-gray-100 text-gray-800 hover:bg-gray-200 hover:shadow-md'
@@ -272,6 +286,36 @@ export default function ShopPage() {
                       {product.in_stock ? 'In Stock' : 'Out of Stock'}
                     </span>
                   </div>
+                  <button
+                    onClick={(e) => {
+                      if (product.in_stock) {
+                        addToCart({
+                          id: product.id.toString(),
+                          name: product.name,
+                          price: product.price,
+                          image_url: product.image_url,
+                          quantity: 1
+                        })
+                        // Show success feedback
+                        const button = e.target as HTMLButtonElement
+                        const originalText = button.textContent
+                        button.textContent = '✓ Added!'
+                        button.classList.add('bg-green-600', 'hover:bg-green-700')
+                        setTimeout(() => {
+                          button.textContent = originalText
+                          button.classList.remove('bg-green-600', 'hover:bg-green-700')
+                        }, 1500)
+                      }
+                    }}
+                    className={`w-full mt-4 py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-0.5 ${
+                      product.in_stock
+                        ? 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light hover:scale-105 shadow-md hover:shadow-lg'
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                    disabled={!product.in_stock}
+                  >
+                    {product.in_stock ? '🛒 Add to Cart' : 'Out of Stock'}
+                  </button>
                 </div>
               </div>
             ))}
@@ -285,5 +329,13 @@ export default function ShopPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+export default function ShopPage() {
+  return (
+    <CartProvider>
+      <ShopPageContent />
+    </CartProvider>
   )
 }

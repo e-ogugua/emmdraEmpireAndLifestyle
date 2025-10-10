@@ -414,10 +414,10 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300 transform shadow-lg border-2 min-h-[56px] flex items-center justify-center gap-2 ${
+                  className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300 shadow-lg border-2 min-h-[56px] flex items-center justify-center gap-2 transform hover:scale-105 hover:-translate-y-0.5 ${
                     isSubmitting
-                      ? 'bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 text-white border-gray-400/50 cursor-not-allowed opacity-75'
-                      : 'bg-gradient-to-r from-brand-burnt-orange via-red-500 to-pink-500 text-white hover:from-red-500 hover:via-pink-500 hover:to-brand-burnt-orange hover:scale-[1.02] hover:shadow-xl border-brand-burnt-orange/50 hover:border-pink-400/70'
+                      ? 'bg-gray-400 text-white border-gray-300 cursor-not-allowed opacity-75'
+                      : 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light border-brand-burnt-orange hover:border-brand-burnt-orange-light hover:shadow-xl'
                   }`}
                 >
                   {isSubmitting ? (

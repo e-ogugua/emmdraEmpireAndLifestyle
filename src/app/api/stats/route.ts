@@ -6,7 +6,7 @@ export async function GET() {
     console.log('📊 API: Fetching admin stats...')
 
     // Fetch counts for all content types
-    const [productsRes, blogsRes, diyRes, workshopsRes, bookingsRes, ordersRes, consultationsRes, trainingRes, contactRes] = await Promise.all([
+    const [productsRes, blogsRes, diyRes, workshopsRes, bookingsRes, ordersRes, consultationsRes, trainingRes, contactRes, newsletterRes] = await Promise.all([
       supabase.from('products').select('id', { count: 'exact', head: true }),
       supabase.from('blogs').select('id', { count: 'exact', head: true }),
       supabase.from('diy_tutorials').select('id', { count: 'exact', head: true }),
@@ -15,7 +15,8 @@ export async function GET() {
       supabase.from('orders').select('id', { count: 'exact', head: true }),
       supabase.from('consultations').select('id', { count: 'exact', head: true }),
       supabase.from('training_requests').select('id', { count: 'exact', head: true }),
-      supabase.from('contact_messages').select('id', { count: 'exact', head: true })
+      supabase.from('contact_messages').select('id', { count: 'exact', head: true }),
+      supabase.from('newsletter_subscribers').select('id', { count: 'exact', head: true })
     ])
 
     const stats = {
@@ -27,7 +28,8 @@ export async function GET() {
       orders: ordersRes.count || 0,
       consultations: consultationsRes.count || 0,
       trainingRequests: trainingRes.count || 0,
-      contactMessages: contactRes.count || 0
+      contactMessages: contactRes.count || 0,
+      newsletterSubscribers: newsletterRes.count || 0
     }
 
     console.log('✅ API: Stats fetched successfully:', stats)
@@ -50,7 +52,8 @@ export async function GET() {
       orders: 0,
       consultations: 0,
       trainingRequests: 0,
-      contactMessages: 0
+      contactMessages: 0,
+      newsletterSubscribers: 0
     }
 
     return NextResponse.json({

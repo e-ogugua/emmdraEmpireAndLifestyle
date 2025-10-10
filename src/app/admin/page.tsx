@@ -10,6 +10,7 @@ interface AdminStats {
   diyTutorials: number
   workshops: number
   bookings: number
+  newsletterSubscribers: number
 }
 
 export default function AdminPage() {
@@ -22,7 +23,8 @@ export default function AdminPage() {
     blogs: 0,
     diyTutorials: 0,
     workshops: 0,
-    bookings: 0
+    bookings: 0,
+    newsletterSubscribers: 0
   })
 
   // Fetch stats data
@@ -210,21 +212,21 @@ export default function AdminPage() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
           {/* Dashboard Card */}
-          <Link href="/admin/dashboard" className="bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-shadow border border-gray-200 group">
-            <div className="flex items-center mb-4">
-              <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <Link href="/admin/dashboard" className="bg-white rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-lg transition-shadow border border-gray-200 group">
+            <div className="flex items-center mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Dashboard</h3>
-                <p className="text-sm text-gray-600">Overview and analytics</p>
+              <div className="ml-3 sm:ml-4">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Dashboard</h3>
+                <p className="text-xs sm:text-sm text-gray-600">Overview and analytics</p>
               </div>
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-xs sm:text-sm text-gray-600">
               View statistics, recent activity, and manage your content overview.
             </p>
           </Link>
@@ -301,21 +303,21 @@ export default function AdminPage() {
             </p>
           </Link>
 
-          {/* Workshop Registrations */}
-          <Link href="/admin/workshop-registrations" className="bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-shadow border border-gray-200 group">
-            <div className="flex items-center mb-4">
-              <div className="p-3 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors">
-                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          {/* Newsletter Subscribers */}
+          <Link href="/admin/newsletter-subscribers" className="bg-white rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-lg transition-shadow border border-gray-200 group">
+            <div className="flex items-center mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 transition-colors">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <div className="ml-4">
-                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">Workshop Registrations</h3>
-                <p className="text-sm text-gray-600">Manage workshop signups</p>
+              <div className="ml-3 sm:ml-4">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">Newsletter Subscribers</h3>
+                <p className="text-xs sm:text-sm text-gray-600">Manage email subscribers</p>
               </div>
             </div>
-            <p className="text-sm text-gray-600">
-              View and manage customer workshop registrations and inquiries.
+            <p className="text-xs sm:text-sm text-gray-600">
+              View and manage your newsletter subscriber list and email campaigns.
             </p>
           </Link>
         </div>
@@ -332,7 +334,7 @@ export default function AdminPage() {
               {statsLoading ? 'Loading...' : 'Refresh Stats'}
             </button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
             <div className="bg-white rounded-lg shadow-sm p-6 text-center border border-gray-200">
               <div className="text-3xl font-bold text-emerald-600 mb-2">
                 {statsLoading ? '...' : stats.products}
@@ -362,6 +364,12 @@ export default function AdminPage() {
                 {statsLoading ? '...' : stats.bookings}
               </div>
               <p className="text-sm font-medium text-gray-700">Registrations</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm p-6 text-center border border-gray-200">
+              <div className="text-3xl font-bold text-indigo-600 mb-2">
+                {statsLoading ? '...' : stats.newsletterSubscribers}
+              </div>
+              <p className="text-sm font-medium text-gray-700">Newsletter Subscribers</p>
             </div>
           </div>
         </div>

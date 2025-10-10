@@ -287,10 +287,10 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                 </div>
               )}
 
-              <form onSubmit={handleRegistrationSubmit} className="bg-gray-50 rounded-xl p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <form onSubmit={handleRegistrationSubmit} className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-200">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="name" className="block text-sm font-bold text-gray-800 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -298,12 +298,12 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                       id="name"
                       value={registrationForm.name}
                       onChange={(e) => setRegistrationForm(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-burnt-orange focus:border-brand-burnt-orange transition-all duration-300 bg-white text-gray-900 placeholder-gray-500 shadow-sm hover:shadow-md hover:border-brand-burnt-orange/50 text-base sm:text-sm"
                       required
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-gray-800 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -311,14 +311,14 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                       id="email"
                       value={registrationForm.email}
                       onChange={(e) => setRegistrationForm(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-burnt-orange focus:border-brand-burnt-orange transition-all duration-300 bg-white text-gray-900 placeholder-gray-500 shadow-sm hover:shadow-md hover:border-brand-burnt-orange/50 text-base sm:text-sm"
                       required
                     />
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-bold text-gray-800 mb-2">
                     Phone Number *
                   </label>
                   <input
@@ -326,13 +326,13 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                     id="phone"
                     value={registrationForm.phone}
                     onChange={(e) => setRegistrationForm(prev => ({ ...prev, phone: e.target.value }))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-burnt-orange focus:border-brand-burnt-orange transition-all duration-300 bg-white text-gray-900 placeholder-gray-500 shadow-sm hover:shadow-md hover:border-brand-burnt-orange/50 text-base sm:text-sm"
                     required
                   />
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-bold text-gray-800 mb-2">
                     Additional Information (Optional)
                   </label>
                   <textarea
@@ -340,7 +340,7 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                     rows={4}
                     value={registrationForm.message}
                     onChange={(e) => setRegistrationForm(prev => ({ ...prev, message: e.target.value }))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-burnt-orange focus:border-brand-burnt-orange transition-all duration-300 resize-none bg-white text-gray-900 placeholder-gray-500 shadow-sm hover:shadow-md hover:border-brand-burnt-orange/50 text-base sm:text-sm"
                     placeholder="Any questions or special requirements?"
                   />
                 </div>
@@ -348,9 +348,25 @@ export default function WorkshopPage({ params }: WorkshopPageProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-bold text-base sm:text-lg transition-all duration-300 shadow-lg border-2 min-h-[48px] sm:min-h-[56px] flex items-center justify-center gap-2 transform hover:scale-105 hover:-translate-y-0.5 ${
+                    isSubmitting
+                      ? 'bg-gray-400 text-white border-gray-300 cursor-not-allowed opacity-75'
+                      : 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light border-brand-burnt-orange hover:border-brand-burnt-orange-light hover:shadow-xl'
+                  }`}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Register for Workshop'}
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span className="text-sm sm:text-base">Registering...</span>
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                      <span className="text-sm sm:text-base">Register for Workshop</span>
+                    </>
+                  )}
                 </button>
               </form>
             </div>

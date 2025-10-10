@@ -19,7 +19,7 @@ export default function Navigation() {
     <nav className="bg-white/95 backdrop-blur-md shadow-xl border-b border-brand-burnt-orange/20 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center min-h-[64px] sm:h-20">
-          <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-all duration-300 group">
+          <Link href="/" className="flex items-center text-xl font-bold text-gray-800 hover:text-gray-900 transition-all duration-300 group relative overflow-hidden">
             <div className="relative w-16 h-16 sm:w-24 sm:h-24 mr-2 sm:mr-4">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/20 to-amber-200/20 rounded-full shadow-2xl border-2 border-yellow-400/60 group-hover:border-amber-400/80 transition-all duration-300"
                    style={{
@@ -36,7 +36,7 @@ export default function Navigation() {
               />
             </div>
             <div className="block sm:block">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-burnt-orange via-brand-vibrant-green to-brand-dark-teal leading-tight drop-shadow-sm">Emmdra</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-burnt-orange via-brand-vibrant-green to-brand-dark-teal leading-tight drop-shadow-sm group-hover:from-orange-500 group-hover:via-orange-400 group-hover:to-pink-500 transition-all duration-300">Emmdra</h3>
               <p className="text-sm sm:text-base font-medium text-gray-600 -mt-1">Empire & Lifestyle</p>
             </div>
           </Link>
@@ -55,7 +55,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-burnt-orange hover:bg-brand-burnt-orange/10 rounded-lg transition-all duration-200 border border-transparent hover:border-brand-burnt-orange/30 min-h-[44px] flex items-center shadow-sm hover:shadow-md transform hover:scale-105"
+                className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 hover:text-white rounded-lg transition-all duration-300 border border-transparent hover:border-orange-400 min-h-[44px] flex items-center shadow-sm hover:shadow-lg transform hover:scale-105 hover:-translate-y-0.5 relative overflow-hidden group hover:bg-gradient-to-r hover:from-orange-500 hover:via-orange-400 hover:to-pink-500"
               >
                 {item.name}
               </Link>
@@ -74,7 +74,7 @@ export default function Navigation() {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-brand-burnt-orange hover:bg-brand-burnt-orange/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-burnt-orange/50 min-h-[44px] min-w-[44px] transition-all duration-200 shadow-sm hover:shadow-md"
+              className="inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-brand-burnt-orange hover:bg-brand-burnt-orange/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-burnt-orange/50 min-h-[44px] min-w-[44px] transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -109,10 +109,10 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-all duration-200 min-h-[48px] flex items-center transform hover:scale-105 ${
+                className={`block px-3 py-3 sm:py-4 rounded-lg text-base font-medium transition-all duration-300 min-h-[48px] flex items-center transform hover:scale-105 hover:-translate-y-0.5 relative overflow-hidden group ${
                   item.name === 'Admin'
                     ? 'bg-gradient-to-r from-brand-dark-teal to-brand-vibrant-green text-white hover:from-brand-vibrant-green hover:to-brand-dark-teal shadow-lg'
-                    : 'text-gray-700 hover:text-brand-burnt-orange hover:bg-brand-burnt-orange/10 border border-transparent hover:border-brand-burnt-orange/30'
+                    : 'text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-orange-500 hover:via-orange-400 hover:to-pink-500 border border-transparent hover:border-orange-400'
                 }`}
                 onClick={closeMobileMenu}
               >
