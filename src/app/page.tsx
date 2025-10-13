@@ -27,13 +27,13 @@ export default function Home() {
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
             <h1 className="heading-1 text-gray-900 mb-6 sm:mb-8 font-bold drop-shadow-sm">
-              Welcome to <span className="text-brand-burnt-orange font-black drop-shadow-md">Emmdra</span> Empire
+              Discover Your <span className="text-brand-burnt-orange font-black drop-shadow-md">Style</span>, <span className="text-brand-vibrant-green font-black drop-shadow-md">Beauty</span> & <span className="text-brand-dark-teal font-black drop-shadow-md">Creativity</span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-800 max-w-4xl mx-auto mb-6 sm:mb-8 drop-shadow-sm leading-relaxed">
-              Your complete lifestyle destination where <strong className="text-brand-burnt-orange font-bold">Fashion</strong>, <strong className="text-brand-vibrant-green font-bold">Beauty</strong>, <strong className="text-brand-dark-teal font-bold">DIY</strong>, <strong className="text-brand-burnt-orange font-bold">Lifestyle</strong>, and <strong className="text-brand-vibrant-green font-bold">Family</strong> come together in perfect harmony.
+              At <strong className="text-brand-burnt-orange font-bold">Emmdra Empire</strong>, we believe every woman deserves to feel confident, beautiful, and inspired. Our curated collection brings together <strong className="text-brand-burnt-orange font-bold">authentic Nigerian fashion</strong>, <strong className="text-brand-vibrant-green font-bold">natural beauty solutions</strong>, and <strong className="text-brand-dark-teal font-bold">creative DIY projects</strong> that celebrate your unique journey.
             </p>
             <p className="text-base sm:text-lg md:text-xl text-gray-800 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 drop-shadow-sm leading-relaxed">
-              From trendy outfits that make you shine, to beauty secrets that glow from within, creative DIY projects that inspire, lifestyle tips that transform, and family moments that last forever — we have got everything to make your world more beautiful.
+              Whether you&apos;re a busy professional looking for effortless style, a mom seeking natural beauty routines, or someone wanting to unleash their creative side — we&apos;ve got everything you need to live your most beautiful life, Nigerian style.
             </p>
 
             {/* Category Pills */}
@@ -79,7 +79,7 @@ export default function Home() {
 
             {/* Trust Indicators */}
             <div className="mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-brand-neutral-300">
-              <p className="text-body text-gray-900 mb-4 sm:mb-6 font-bold text-lg sm:text-xl drop-shadow-sm">Trusted by families across Nigeria</p>
+              <p className="text-body text-gray-900 mb-4 sm:mb-6 font-bold text-lg sm:text-xl drop-shadow-sm">Trusted by over 5,000+ Nigerian families</p>
               <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-8">
                 <div className="flex items-center gap-2 bg-brand-vibrant-green/10 px-4 py-2 rounded-full border border-brand-vibrant-green/30">
                   <svg className="w-5 h-5 text-brand-vibrant-green" fill="currentColor" viewBox="0 0 20 20">
@@ -99,6 +99,9 @@ export default function Home() {
                   </svg>
                   <span className="text-sm font-bold text-gray-900">Expert Support</span>
                 </div>
+              </div>
+              <div className="mt-6 text-center">
+                <p className="text-sm text-gray-600">⭐⭐⭐⭐⭐ <span className="font-semibold text-brand-burnt-orange">4.9/5</span> from 2,847+ reviews</p>
               </div>
             </div>
           </div>
