@@ -256,37 +256,54 @@ export default function ContactPage() {
                     Follow Us
                   </span>
                 </h3>
-                <div className="flex flex-wrap gap-4 sm:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-gray-300/70 shadow-lg">
+                <div className="flex flex-wrap gap-3 sm:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-xl border-2 border-gray-300/70 shadow-lg">
                   <a href="https://facebook.com/emmdraempire" target="_blank" rel="noopener noreferrer"
-                     className="w-12 h-12 sm:w-12 sm:h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-blue-700/50">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                     className="w-12 h-12 sm:w-12 sm:h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-blue-700/50 transform hover:-translate-y-1">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
                     </svg>
                   </a>
-                  <a href="https://twitter.com/emmdraempire" target="_blank" rel="noopener noreferrer"
-                     className="w-12 h-12 sm:w-12 sm:h-12 bg-sky-600 hover:bg-sky-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-sky-700/50">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                    </svg>
-                  </a>
                   <a href="https://instagram.com/emmdraempire" target="_blank" rel="noopener noreferrer"
-                     className="w-12 h-12 sm:w-12 sm:h-12 bg-gradient-to-br from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-pink-700/50">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                     className="w-12 h-12 sm:w-12 sm:h-12 bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-pink-600/50 transform hover:-translate-y-1">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
                     </svg>
                   </a>
+                  <a href="https://twitter.com/emmdraempire" target="_blank" rel="noopener noreferrer"
+                     className="w-12 h-12 sm:w-12 sm:h-12 bg-sky-600 hover:bg-sky-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-sky-700/50 transform hover:-translate-y-1">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                  </a>
                   <a href="https://wa.me/2348122394397" target="_blank" rel="noopener noreferrer"
-                     className="w-12 h-12 sm:w-12 sm:h-12 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-green-700/50">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                     className="w-12 h-12 sm:w-12 sm:h-12 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-green-700/50 transform hover:-translate-y-1">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"/>
                     </svg>
                   </a>
                   <a href="https://pinterest.com/emmdraempire" target="_blank" rel="noopener noreferrer"
-                     className="w-12 h-12 sm:w-12 sm:h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-red-700/50">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.289 0C5.8 0 .013 5.577.013 12.069c0 5.428 3.62 10.039 8.618 11.596-.118-.968-.224-2.454.048-3.514.24-1.029 1.549-6.555 1.549-6.555s-.395-.79-.395-1.958c0-1.832 1.063-3.201 2.386-3.201 1.125 0 1.668.845 1.668 1.858 0 1.134-.721 2.824-1.094 4.39-.312 1.307.658 2.371 1.952 2.371 2.342 0 4.144-2.47 4.144-6.038 0-3.154-2.267-5.362-5.508-5.362-3.748 0-5.951 2.814-5.951 5.726 0 1.138.438 2.358.985 3.02.138.168.158.314.117.485-.128.534-.413 1.686-.469 1.916-.074.313-.241.381-.556.23-2.037-.948-3.308-3.928-3.308-6.337 0-5.156 3.746-9.891 10.782-9.891 5.661 0 10.063 4.036 10.063 9.428 0 5.636-3.556 10.168-8.486 10.168-1.658 0-3.216-.861-3.745-1.885l-1.02 3.884c-.37 1.423-1.365 3.208-2.036 4.298C11.126 23.967 12.243 24 12.289 24c7.165 0 12.979-5.805 12.979-12.97C25.268 4.829 19.454.001 12.289.001z"/>
+                     className="w-12 h-12 sm:w-12 sm:h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-red-700/50 transform hover:-translate-y-1">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.289 0C5.8 0 .013 5.577.013 12.069c0 5.428 3.62 10.039 8.618 11.596-.118-.968-.224-2.454.048-3.514.24-1.029 1.549-6.555 1.549-6.555s-.395-.79-.395-1.958c0-1.832 1.063-3.201 2.386-3.201 1.125 0 1.668.845 1.668 1.858 0 1.134-.721 2.824-1.094 4.39-.312 1.307.658 2.371 1.952 2.371 2.342 0 4.144-2.47 4.144-6.038 0-3.154-2.267-5.362-5.508-5.362-3.748 0-5.951 2.814-5.951 5.726 0 1.138.438 2.358.985 3.02.138.168.158.314.117.485-.128.534-.413 1.686-.469 1.916-.074.313-.241.381-.556.23-2.037-.948-3.308-3.928-3.308-6.337 0-5.156 3.746-9.891 10.782-9.891 5.661 0 10.063 4.036 10.063 9.428 0 5.636-3.556 10.168-8.486 10.168-1.658 0-3.216-.861-3.745-1.885l-1.02 3.884c-.37 1.423-1.365 3.208-2.036 4.298C11.126 23.967 12.243 24.009 12.289 24.009c7.165 0 12.979-5.805 12.979-12.97C25.268 4.829 19.454.001 12.289.001z"/>
                     </svg>
                   </a>
+                  <a href="https://tiktok.com/@emmdraempire" target="_blank" rel="noopener noreferrer"
+                     className="w-12 h-12 sm:w-12 sm:h-12 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl group border-2 border-gray-800/50 transform hover:-translate-y-1">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                    </svg>
+                  </a>
+                </div>
+                <div className="mt-4 text-center">
+                  <p className="text-sm text-gray-600 mb-2">Join 200+ creative minds learning together</p>
+                  <div className="flex justify-center gap-2">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border border-purple-200 shadow-sm">
+                      ✨ Creative Community
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 border border-green-200 shadow-sm">
+                      🚀 Fashion Innovation
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
