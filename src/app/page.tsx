@@ -30,21 +30,21 @@ export default function Home() {
       </section>
 
       {/* Hero Text Section - Main value proposition and call-to-action */}
-      <section className="relative z-10 py-16 px-3 sm:px-4 bg-gradient-to-br from-orange-100 via-yellow-50 to-green-100">
+      <section className="py-responsive-16 px-responsive-4 bg-gradient-to-br from-orange-100 via-yellow-50 to-green-100">
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
-            <h1 className="heading-1 text-gray-900 mb-6 sm:mb-8 font-bold drop-shadow-sm">
+            <h1 className="text-responsive-5xl text-gray-900 mb-responsive-6 font-bold drop-shadow-sm leading-tight">
               Discover Your <span className="text-brand-burnt-orange font-black drop-shadow-md">Style</span>, <span className="text-brand-vibrant-green font-black drop-shadow-md">Beauty</span> & <span className="text-brand-dark-teal font-black drop-shadow-md">Creativity</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-800 max-w-4xl mx-auto mb-6 sm:mb-8 drop-shadow-sm leading-relaxed">
+            <p className="text-responsive-xl text-gray-800 max-w-4xl mx-auto mb-responsive-6 drop-shadow-sm leading-relaxed">
               At <strong className="text-brand-burnt-orange font-bold">Emmdra Empire</strong>, we believe every woman deserves to feel confident, beautiful, and inspired. Our curated collection brings together <strong className="text-brand-burnt-orange font-bold">authentic Nigerian fashion</strong>, <strong className="text-brand-vibrant-green font-bold">natural beauty solutions</strong>, and <strong className="text-brand-dark-teal font-bold">creative DIY projects</strong> that celebrate your unique journey.
             </p>
-            <p className="text-base sm:text-lg md:text-xl text-gray-800 max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 drop-shadow-sm leading-relaxed">
+            <p className="text-responsive-lg text-gray-800 max-w-3xl mx-auto mb-responsive-12 drop-shadow-sm leading-relaxed">
               Whether you&apos;re a busy professional looking for effortless style, a mom seeking natural beauty routines, or someone wanting to unleash their creative side — we&apos;ve got everything you need to live your most beautiful life, Nigerian style.
             </p>
 
             {/* Category Navigation - Quick access to main content areas */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10 sm:mb-12">
+            <div className="flex flex-wrap justify-center gap-responsive-3 mb-responsive-12">
               {[
                 { name: 'Fashion', link: '/shop', color: 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light border-2 border-brand-burnt-orange/50 shadow-lg hover:shadow-xl hover:scale-105 font-bold' },
                 { name: 'Beauty', link: '/shop', color: 'bg-brand-vibrant-green text-white hover:bg-brand-vibrant-green-light border-2 border-brand-vibrant-green/50 shadow-lg hover:shadow-xl hover:scale-105 font-bold' },
@@ -55,7 +55,7 @@ export default function Home() {
                 <Link
                   key={category.name}
                   href={category.link}
-                  className={`${category.color} px-4 py-2 sm:px-5 sm:py-3 rounded-full text-sm transition-all duration-300 min-h-[44px] flex items-center justify-center backdrop-blur-sm`}
+                  className={`${category.color} px-responsive-4 py-responsive-2 rounded-full text-sm transition-all duration-300 min-h-[44px] flex items-center justify-center backdrop-blur-sm`}
                 >
                   {category.name}
                 </Link>
@@ -63,51 +63,51 @@ export default function Home() {
             </div>
 
             {/* Primary Call-to-Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-responsive-4 justify-center">
               <Link
                 href="/shop"
-                className="bg-brand-burnt-orange text-white font-black text-lg sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange/70 hover:border-orange-400 hover:bg-brand-burnt-orange-light min-h-[56px] flex items-center justify-center"
+                className="bg-brand-burnt-orange text-white font-black text-responsive-lg px-responsive-8 py-responsive-4 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange/70 hover:border-orange-400 hover:bg-brand-burnt-orange-light min-h-[56px] flex items-center justify-center"
               >
                 Shop Our Collection
               </Link>
               <Link
                 href="/diy"
-                className="bg-brand-vibrant-green text-white font-black text-lg sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green/70 hover:border-green-400 hover:bg-brand-vibrant-green-light min-h-[56px] flex items-center justify-center"
+                className="bg-brand-vibrant-green text-white font-black text-responsive-lg px-responsive-8 py-responsive-4 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green/70 hover:border-green-400 hover:bg-brand-vibrant-green-light min-h-[56px] flex items-center justify-center"
               >
                 Start Creating
               </Link>
               <Link
                 href="/blog"
-                className="bg-brand-dark-teal text-white font-black text-lg sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal/70 hover:border-blue-400 hover:bg-brand-dark-teal-light min-h-[56px] flex items-center justify-center"
+                className="bg-brand-dark-teal text-white font-black text-responsive-lg px-responsive-8 py-responsive-4 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal/70 hover:border-blue-400 hover:bg-brand-dark-teal-light min-h-[56px] flex items-center justify-center"
               >
                 Read Stories
               </Link>
             </div>
 
             {/* Trust Indicators - Social proof and credibility markers */}
-            <div className="mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-brand-neutral-300">
-              <p className="text-body text-gray-900 mb-4 sm:mb-6 font-bold text-lg sm:text-xl drop-shadow-sm">Trusted by over 5,000+ Nigerian families</p>
-              <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-8">
-                <div className="flex items-center gap-2 bg-brand-vibrant-green/10 px-4 py-2 rounded-full border border-brand-vibrant-green/30">
-                  <svg className="w-5 h-5 text-brand-vibrant-green" fill="currentColor" viewBox="0 0 20 20">
+            <div className="mt-responsive-12 pt-responsive-8 border-t border-brand-neutral-300">
+              <p className="text-responsive-xl text-gray-900 mb-responsive-6 font-bold drop-shadow-sm">Trusted by over 5,000+ Nigerian families</p>
+              <div className="flex flex-wrap justify-center items-center gap-responsive-6">
+                <div className="flex items-center gap-2 bg-brand-vibrant-green/10 px-responsive-4 py-responsive-2 rounded-full border border-brand-vibrant-green/30">
+                  <svg className="w-5 h-5 text-brand-vibrant-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-sm font-bold text-gray-900">Premium Quality</span>
                 </div>
-                <div className="flex items-center gap-2 bg-brand-dark-teal/10 px-4 py-2 rounded-full border border-brand-dark-teal/30">
-                  <svg className="w-5 h-5 text-brand-dark-teal" fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center gap-2 bg-brand-dark-teal/10 px-responsive-4 py-responsive-2 rounded-full border border-brand-dark-teal/30">
+                  <svg className="w-5 h-5 text-brand-dark-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-sm font-bold text-gray-900">Fast Delivery</span>
                 </div>
-                <div className="flex items-center gap-2 bg-brand-burnt-orange/10 px-4 py-2 rounded-full border border-brand-burnt-orange/30">
-                  <svg className="w-5 h-5 text-brand-burnt-orange" fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center gap-2 bg-brand-burnt-orange/10 px-responsive-4 py-responsive-2 rounded-full border border-brand-burnt-orange/30">
+                  <svg className="w-5 h-5 text-brand-burnt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-sm font-bold text-gray-900">Expert Support</span>
                 </div>
               </div>
-              <div className="mt-6 text-center">
+              <div className="mt-responsive-6 text-center">
                 <p className="text-sm text-gray-600"><span className="font-semibold text-brand-burnt-orange">4.9/5</span> from 2,847+ reviews</p>
               </div>
             </div>
@@ -116,18 +116,18 @@ export default function Home() {
       </section>
 
       {/* Featured Products Section - Showcase curated product selection */}
-      <section className="py-16 px-3 sm:px-4 bg-white">
+      <section className="py-responsive-16 px-responsive-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-            <h2 className="heading-2 text-brand-neutral-900 mb-3 sm:mb-4 drop-shadow-sm">
+          <div className="text-center mb-responsive-8 sm:mb-responsive-10 lg:mb-responsive-12">
+            <h2 className="text-responsive-4xl text-brand-neutral-900 mb-responsive-4 drop-shadow-sm">
               Featured <span className="text-brand-burnt-orange font-black">Products</span>
             </h2>
-            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-responsive-lg text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Discover our handpicked selection of premium fashion, beauty, and lifestyle essentials
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-responsive-4 sm:gap-responsive-6 mb-responsive-8 sm:mb-responsive-10">
             <ProductCard
               id="premium-leather-handbag"
               name="Premium Leather Handbag"
@@ -173,7 +173,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/shop"
-              className="bg-brand-burnt-orange text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-burnt-orange text-white font-semibold text-responsive-base px-responsive-6 py-responsive-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
             >
               View All Products
             </Link>
@@ -182,18 +182,18 @@ export default function Home() {
       </section>
 
       {/* Featured DIY Projects Section - Creative tutorials and craft ideas */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-responsive-16 px-responsive-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
+          <div className="text-center mb-responsive-12">
+            <h2 className="text-responsive-4xl text-brand-neutral-900 mb-responsive-4 drop-shadow-sm">
               Featured <span className="text-brand-dark-teal font-black">DIY Projects</span>
             </h2>
-            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-responsive-lg text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Unleash your creativity with our step-by-step tutorials and craft ideas
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-responsive-6 mb-responsive-8">
             <DIYCard
               id="handmade-beaded-necklace"
               name="Handmade Beaded Necklace"
@@ -230,7 +230,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/diy"
-              className="bg-brand-dark-teal text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal hover:border-brand-dark-teal-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-dark-teal text-white font-semibold text-responsive-base px-responsive-6 py-responsive-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-dark-teal hover:border-brand-dark-teal-light min-h-[48px] flex items-center justify-center"
             >
               Explore All DIY Projects
             </Link>
@@ -239,18 +239,18 @@ export default function Home() {
       </section>
 
       {/* Featured Workshops Section - Professional training and educational events */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-responsive-16 px-responsive-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
+          <div className="text-center mb-responsive-12">
+            <h2 className="text-responsive-4xl text-brand-neutral-900 mb-responsive-4 drop-shadow-sm">
               Featured <span className="text-brand-burnt-orange font-black">Workshops</span>
             </h2>
-            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-responsive-lg text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Join our hands-on workshops and learn from industry experts
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-responsive-6 mb-responsive-8">
             <WorkshopCard
               id="fashion-styling-masterclass"
               name="Fashion Styling Masterclass"
@@ -293,7 +293,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/workshops"
-              className="bg-brand-vibrant-green text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green hover:border-brand-vibrant-green-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-vibrant-green text-white font-semibold text-responsive-base px-responsive-6 py-responsive-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-vibrant-green hover:border-brand-vibrant-green-light min-h-[48px] flex items-center justify-center"
             >
               View All Workshops
             </Link>
@@ -302,18 +302,18 @@ export default function Home() {
       </section>
 
       {/* Featured Blog Posts Section - Content marketing and thought leadership */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-responsive-16 px-responsive-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="heading-2 text-brand-neutral-900 mb-4 drop-shadow-sm">
+          <div className="text-center mb-responsive-12">
+            <h2 className="text-responsive-4xl text-brand-neutral-900 mb-responsive-4 drop-shadow-sm">
               Featured <span className="text-brand-dark-teal font-black">Stories</span>
             </h2>
-            <p className="text-body text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-responsive-lg text-brand-neutral-700 max-w-2xl mx-auto drop-shadow-sm">
               Read inspiring stories, fashion tips, and lifestyle advice from our community
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-responsive-6 mb-responsive-8">
             <BlogCard
               id="fashion-tips-nigerian-weather"
               title="5 Essential Fashion Tips for Nigerian Weather"
@@ -346,7 +346,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="bg-brand-burnt-orange text-white font-semibold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
+              className="bg-brand-burnt-orange text-white font-semibold text-responsive-base px-responsive-6 py-responsive-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-brand-burnt-orange hover:border-brand-burnt-orange-light min-h-[48px] flex items-center justify-center"
             >
               Read More Stories
             </Link>

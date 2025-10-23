@@ -28,18 +28,28 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
 
-  /* Typography Scale - Responsive and Harmonized */
-  /* Base scale: mobile-first approach with smooth scaling */
-  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);    /* 12-14px */
-  --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);      /* 14-16px */
-  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);      /* 16-18px */
-  --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);     /* 18-20px */
-  --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);      /* 20-24px */
-  --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);           /* 24-32px */
-  --font-size-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem);   /* 30-40px */
-  --font-size-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);       /* 36-48px */
-  --font-size-5xl: clamp(3rem, 2.4rem + 3vw, 4rem);             /* 48-64px */
-  --font-size-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);         /* 60-80px */
+  /* Responsive Typography Scale - Fluid scaling across all devices */
+  --text-responsive-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);    /* 12-14px */
+  --text-responsive-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);      /* 14-16px */
+  --text-responsive-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);      /* 16-18px */
+  --text-responsive-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);     /* 18-20px */
+  --text-responsive-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);      /* 20-24px */
+  --text-responsive-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);           /* 24-32px */
+  --text-responsive-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem);   /* 30-40px */
+  --text-responsive-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);       /* 36-48px */
+  --text-responsive-5xl: clamp(3rem, 2.4rem + 3vw, 4rem);             /* 48-64px */
+  --text-responsive-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);         /* 60-80px */
+
+  /* Responsive Spacing Scale - Consistent across devices */
+  --space-responsive-1: clamp(0.25rem, 0.2rem + 0.25vw, 0.375rem);   /* 4-6px */
+  --space-responsive-2: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);     /* 8-12px */
+  --space-responsive-3: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);     /* 12-16px */
+  --space-responsive-4: clamp(1rem, 0.8rem + 1vw, 1.5rem);          /* 16-24px */
+  --space-responsive-6: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);     /* 24-36px */
+  --space-responsive-8: clamp(2rem, 1.6rem + 2vw, 3rem);            /* 32-48px */
+  --space-responsive-12: clamp(3rem, 2.4rem + 3vw, 4.5rem);         /* 48-72px */
+  --space-responsive-16: clamp(4rem, 3.2rem + 4vw, 6rem);           /* 64-96px */
+  --space-responsive-20: clamp(5rem, 4rem + 5vw, 7.5rem);           /* 80-120px */
 
   /* Line heights that scale with font size */
   --line-height-tight: 1.1;
@@ -595,21 +605,64 @@ body {
   }
 }
 
-.text-responsive-lg {
-  font-size: var(--font-size-lg);
-}
+/* Responsive Typography Utility Classes */
+.text-responsive-xs { font-size: var(--text-responsive-xs); }
+.text-responsive-sm { font-size: var(--text-responsive-sm); }
+.text-responsive-base { font-size: var(--text-responsive-base); }
+.text-responsive-lg { font-size: var(--text-responsive-lg); }
+.text-responsive-xl { font-size: var(--text-responsive-xl); }
+.text-responsive-2xl { font-size: var(--text-responsive-2xl); }
+.text-responsive-3xl { font-size: var(--text-responsive-3xl); }
+.text-responsive-4xl { font-size: var(--text-responsive-4xl); }
+.text-responsive-5xl { font-size: var(--text-responsive-5xl); }
+.text-responsive-6xl { font-size: var(--text-responsive-6xl); }
 
-@media (min-width: 640px) {
-  .text-responsive-lg {
-    font-size: var(--font-size-xl);
-  }
-}
+/* Responsive Spacing Utility Classes */
+.p-responsive-1 { padding: var(--space-responsive-1); }
+.p-responsive-2 { padding: var(--space-responsive-2); }
+.p-responsive-3 { padding: var(--space-responsive-3); }
+.p-responsive-4 { padding: var(--space-responsive-4); }
+.p-responsive-6 { padding: var(--space-responsive-6); }
+.p-responsive-8 { padding: var(--space-responsive-8); }
+.p-responsive-12 { padding: var(--space-responsive-12); }
+.p-responsive-16 { padding: var(--space-responsive-16); }
+.p-responsive-20 { padding: var(--space-responsive-20); }
 
-@media (min-width: 1024px) {
-  .text-responsive-lg {
-    font-size: var(--font-size-2xl);
-  }
-}
+.px-responsive-1 { padding-left: var(--space-responsive-1); padding-right: var(--space-responsive-1); }
+.px-responsive-2 { padding-left: var(--space-responsive-2); padding-right: var(--space-responsive-2); }
+.px-responsive-3 { padding-left: var(--space-responsive-3); padding-right: var(--space-responsive-3); }
+.px-responsive-4 { padding-left: var(--space-responsive-4); padding-right: var(--space-responsive-4); }
+.px-responsive-6 { padding-left: var(--space-responsive-6); padding-right: var(--space-responsive-6); }
+.px-responsive-8 { padding-left: var(--space-responsive-8); padding-right: var(--space-responsive-8); }
+.px-responsive-12 { padding-left: var(--space-responsive-12); padding-right: var(--space-responsive-12); }
+
+.py-responsive-1 { padding-top: var(--space-responsive-1); padding-bottom: var(--space-responsive-1); }
+.py-responsive-2 { padding-top: var(--space-responsive-2); padding-bottom: var(--space-responsive-2); }
+.py-responsive-3 { padding-top: var(--space-responsive-3); padding-bottom: var(--space-responsive-3); }
+.py-responsive-4 { padding-top: var(--space-responsive-4); padding-bottom: var(--space-responsive-4); }
+.py-responsive-6 { padding-top: var(--space-responsive-6); padding-bottom: var(--space-responsive-6); }
+.py-responsive-8 { padding-top: var(--space-responsive-8); padding-bottom: var(--space-responsive-8); }
+.py-responsive-12 { padding-top: var(--space-responsive-12); padding-bottom: var(--space-responsive-12); }
+.py-responsive-16 { padding-top: var(--space-responsive-16); padding-bottom: var(--space-responsive-16); }
+.py-responsive-20 { padding-top: var(--space-responsive-20); padding-bottom: var(--space-responsive-20); }
+
+.m-responsive-1 { margin: var(--space-responsive-1); }
+.m-responsive-2 { margin: var(--space-responsive-2); }
+.m-responsive-3 { margin: var(--space-responsive-3); }
+.m-responsive-4 { margin: var(--space-responsive-4); }
+.m-responsive-6 { margin: var(--space-responsive-6); }
+.m-responsive-8 { margin: var(--space-responsive-8); }
+.m-responsive-12 { margin: var(--space-responsive-12); }
+.m-responsive-16 { margin: var(--space-responsive-16); }
+.m-responsive-20 { margin: var(--space-responsive-20); }
+
+.gap-responsive-1 { gap: var(--space-responsive-1); }
+.gap-responsive-2 { gap: var(--space-responsive-2); }
+.gap-responsive-3 { gap: var(--space-responsive-3); }
+.gap-responsive-4 { gap: var(--space-responsive-4); }
+.gap-responsive-6 { gap: var(--space-responsive-6); }
+.gap-responsive-8 { gap: var(--space-responsive-8); }
+.gap-responsive-12 { gap: var(--space-responsive-12); }
 
 /* Responsive spacing utilities */
 .section-spacing {
@@ -880,15 +933,169 @@ body {
   }
 }
 
-/* Reduced motion support */
+/* Animation Refinements - Subtle, purposeful motion for better UX */
+@keyframes fade-in-up-subtle {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in-subtle {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-subtle {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Subtle animations that improve perceived performance */
+.animate-fade-in-up-subtle {
+  animation: fade-in-up-subtle 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in-subtle {
+  animation: scale-in-subtle 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-in-subtle {
+  animation: slide-in-subtle 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus states for accessibility */
+.focus-ring-enhanced:focus {
+  outline: 2px solid var(--brand-dark-teal);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(13, 79, 79, 0.1);
+}
+
+/* Interactive elements with better feedback */
+.interactive-enhanced {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.interactive-enhanced:hover {
+  transform: translateY(-1px);
+}
+
+.interactive-enhanced:active {
+  transform: translateY(0);
+}
+
+/* Touch-friendly interactive elements */
+@media (hover: hover) and (pointer: fine) {
+  .interactive-enhanced:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Reduced motion support - subtle animations still work */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  .animate-fade-in-up-subtle,
+  .animate-scale-in-subtle,
+  .animate-slide-in-subtle {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .interactive-enhanced:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode enhancements */
+@media (prefers-contrast: high) {
+  .interactive-enhanced {
+    border: 1px solid currentColor;
+  }
+
+  .card {
+    border: 2px solid var(--gray-300);
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Focus visible improvements */
+*:focus-visible {
+  outline: 2px solid var(--brand-dark-teal);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(13, 79, 79, 0.1);
+}
+
+/* Skip link improvements */
+.skip-link-enhanced {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--brand-dark-teal);
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  z-index: 1000;
+  font-weight: 600;
+  transition: top 0.2s ease-in-out;
+}
+
+.skip-link-enhanced:focus {
+  top: 6px;
+}
+
+/* Loading states with subtle animation */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(13, 79, 79, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--brand-dark-teal);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reduced motion for loading spinner */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    animation: none;
+    border-top-color: var(--brand-dark-teal);
   }
 }
 

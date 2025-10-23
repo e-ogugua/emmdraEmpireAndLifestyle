@@ -47,7 +47,7 @@ function ShopPageContent() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        console.log('🛒 Starting to fetch products...')
+        console.log('Starting to fetch products...')
         setLoading(true)
         setError(null)
 
@@ -55,7 +55,7 @@ function ShopPageContent() {
         const response = await fetch('/api/products')
 
         if (!response.ok) {
-          console.warn('⚠️ API route failed, falling back to static products')
+          console.warn('API route failed, falling back to static products')
           // Fallback to static products if API fails
           const staticProducts = [
             {
@@ -111,16 +111,16 @@ function ShopPageContent() {
         const data = await response.json()
 
         if (data.error) {
-          console.error('❌ Error from API:', data.error)
+          console.error('Error from API:', data.error)
           setError('Failed to load products. Please try again later.')
           return
         }
 
-        console.log('✅ Products fetched successfully:', data.count, 'products')
+        console.log('Products fetched successfully:', data.count, 'products')
         setProducts(data.products || [])
         setFilteredProducts(data.products || [])
       } catch (err) {
-        console.error('❌ Error fetching products:', err)
+        console.error('Error fetching products:', err)
         setError('Failed to load products. Please try again later.')
       } finally {
         setLoading(false)
@@ -174,7 +174,7 @@ function ShopPageContent() {
   return (
     <div className="relative">
       {/* Hero Section with Beautiful Background */}
-      <section className="relative py-12 sm:py-16 md:py-20 px-4 min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
+      <section className="relative py-responsive-12 sm:py-responsive-16 md:py-responsive-20 px-responsive-4 min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -192,14 +192,14 @@ function ShopPageContent() {
         </div>
 
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-8 sm:mb-12">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+          <div className="text-center mb-responsive-8 sm:mb-responsive-12">
+            <h1 className="text-responsive-2xl sm:text-responsive-3xl md:text-responsive-4xl lg:text-responsive-5xl xl:text-responsive-6xl font-bold text-white mb-responsive-4 drop-shadow-lg leading-tight">
               <span className="text-cyan-300 font-bold [text-shadow:_0_4px_8px_rgb(0_0_0_/_100%),_0_8px_16px_rgb(0_0_0_/_90%)]">Discover</span>{' '}
               <span className="text-yellow-300 font-black [text-shadow:_0_5px_10px_rgb(0_0_0_/_100%),_0_10px_20px_rgb(0_0_0_/_90%),_0_15px_30px_rgb(0_0_0_/_80%)]">
                 Shop Our Collection
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-2">
+            <p className="text-responsive-base sm:text-responsive-lg md:text-responsive-xl lg:text-responsive-2xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-responsive-2">
               <span className="text-cyan-300 font-medium [text-shadow:_0_4px_8px_rgb(0_0_0_/_100%),_0_8px_16px_rgb(0_0_0_/_90%)]">
                 Discover quality fashion, beauty, and lifestyle products curated for the modern family.
               </span>
@@ -208,10 +208,11 @@ function ShopPageContent() {
 
           {/* Cart Indicator */}
           {cartState.itemCount > 0 && (
-            <div className="absolute top-4 right-4 z-30">
+            <div className="absolute top-responsive-4 right-responsive-4 z-30">
               <Link
                 href="/cart"
-                className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-2 rounded-full font-semibold text-sm hover:bg-white/30 transition-all duration-300 flex items-center gap-2"
+                className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-responsive-4 py-responsive-2 rounded-full font-semibold text-responsive-sm hover:bg-white/30 transition-all duration-300 flex items-center gap-responsive-2 min-h-[44px]"
+                aria-label={`View cart with ${cartState.itemCount} items`}
               >
                 🛒 Cart ({cartState.itemCount})
               </Link>
@@ -221,18 +222,20 @@ function ShopPageContent() {
       </section>
 
       {/* Category Filter Section */}
-      <section className="py-8 px-4 bg-white">
+      <section className="py-responsive-8 px-responsive-4 bg-white">
         <div className="container mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-responsive-4 mb-responsive-8">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center transform hover:scale-105 hover:-translate-y-0.5 ${
+                className={`px-responsive-4 py-responsive-2 sm:px-responsive-6 sm:py-responsive-3 rounded-full font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center transform hover:scale-105 hover:-translate-y-0.5 ${
                   selectedCategory === category.id
                     ? 'bg-brand-burnt-orange text-white shadow-lg hover:bg-brand-burnt-orange-light'
                     : 'bg-gray-100 text-gray-800 hover:bg-gray-200 hover:shadow-md'
                 }`}
+                aria-label={`Filter products by ${category.name}`}
+                aria-pressed={selectedCategory === category.id}
               >
                 {category.name}
               </button>
@@ -242,43 +245,43 @@ function ShopPageContent() {
       </section>
 
       {/* Products Grid Section */}
-      <section className="py-8 px-4 bg-gray-50">
+      <section className="py-responsive-8 px-responsive-4 bg-gray-50">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-responsive-6">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-square bg-gray-200 relative">
+              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100">
+                <div className="aspect-square bg-gray-200 relative overflow-hidden">
                   <Image
                     src={product.image_url}
-                    alt={product.name}
+                    alt={`Product: ${product.name}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                    className="object-cover"
+                    className="object-cover hover:scale-105 transition-transform duration-300"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = '/images/placeholder.png';
                     }}
                   />
                 </div>
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">
+                <div className="p-responsive-4">
+                  <div className="flex justify-between items-start mb-responsive-2">
+                    <h3 className="text-responsive-lg font-semibold text-gray-800 line-clamp-2 leading-tight">
                       {product.name}
                     </h3>
                     {product.featured && (
-                      <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full ml-2">
+                      <span className="bg-yellow-100 text-yellow-800 text-responsive-xs px-responsive-2 py-1 rounded-full ml-responsive-2 font-medium">
                         Featured
                       </span>
                     )}
                   </div>
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                  <p className="text-gray-600 text-responsive-sm mb-responsive-3 line-clamp-2 leading-relaxed">
                     {product.short_description}
                   </p>
                   <div className="flex justify-between items-center">
-                    <span className="text-xl font-bold text-gray-800">
+                    <span className="text-responsive-xl font-bold text-gray-800">
                       ₦{product.price.toLocaleString()}
                     </span>
-                    <span className={`text-sm px-2 py-1 rounded-full ${
+                    <span className={`text-responsive-sm px-responsive-2 py-1 rounded-full font-medium ${
                       product.in_stock
                         ? 'bg-green-100 text-green-800'
                         : 'bg-red-100 text-red-800'
@@ -307,12 +310,13 @@ function ShopPageContent() {
                         }, 1500)
                       }
                     }}
-                    className={`w-full mt-4 py-3 px-4 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-0.5 ${
+                    className={`w-full mt-responsive-4 py-responsive-3 px-responsive-4 rounded-lg font-semibold text-responsive-sm transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-0.5 min-h-[44px] flex items-center justify-center ${
                       product.in_stock
                         ? 'bg-brand-burnt-orange text-white hover:bg-brand-burnt-orange-light hover:scale-105 shadow-md hover:shadow-lg'
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                     disabled={!product.in_stock}
+                    aria-label={product.in_stock ? `Add ${product.name} to cart for ${product.price.toLocaleString()} Naira` : `${product.name} is out of stock`}
                   >
                     {product.in_stock ? '🛒 Add to Cart' : 'Out of Stock'}
                   </button>
@@ -322,8 +326,8 @@ function ShopPageContent() {
           </div>
 
           {filteredProducts.length === 0 && !loading && (
-            <div className="text-center py-16">
-              <p className="text-gray-600 text-lg">No products found in this category.</p>
+            <div className="text-center py-responsive-16">
+              <p className="text-gray-600 text-responsive-lg">No products found in this category.</p>
             </div>
           )}
         </div>

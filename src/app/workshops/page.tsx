@@ -384,53 +384,54 @@ export default function WorkshopsPage() {
         </div>
 
         {/* Call to Action Section */}
-        <div className="relative bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600 rounded-3xl p-6 sm:p-8 md:p-12 text-center text-white overflow-hidden">
-          {/* Enhanced background overlay for better text contrast */}
-          <div className="absolute inset-0 bg-black/20"></div>
+        <div className="bg-brand-dark-teal rounded-3xl p-responsive-4 sm:p-responsive-6 md:p-responsive-8 lg:p-responsive-10 xl:p-responsive-12 text-center text-white relative overflow-hidden w-full">
+          {/* Subtle decorative overlay for visual depth */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/3"></div>
 
-          {/* Mobile-specific overlay for maximum readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 sm:hidden"></div>
-
-          {/* Desktop decorative elements */}
-          <div className="absolute inset-0 hidden sm:block">
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-white/3 rounded-full blur-2xl"></div>
+          {/* Responsive background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1)_0%,transparent_50%)]"></div>
+            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.05)_0%,transparent_50%)]"></div>
           </div>
 
-          <div className="relative z-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 drop-shadow-lg">
+          <div className="relative z-10 max-w-4xl mx-auto">
+            {/* Responsive heading with better scaling */}
+            <h2 className="text-responsive-2xl md:text-responsive-3xl lg:text-responsive-4xl xl:text-responsive-5xl font-bold mb-responsive-3 sm:mb-responsive-4 md:mb-responsive-6 leading-tight">
               Ready to Learn & Create?
             </h2>
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-95 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium">
+
+            {/* Responsive description with optimal line length */}
+            <p className="text-responsive-base md:text-responsive-lg lg:text-responsive-xl mb-responsive-6 sm:mb-responsive-8 md:mb-responsive-10 max-w-3xl mx-auto leading-relaxed font-medium px-responsive-2 sm:px-0">
               Join our creative community and learn from industry experts.
               Limited spots available for each workshop!
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8">
+            {/* Responsive button layout */}
+            <div className="flex flex-col sm:flex-row gap-responsive-3 sm:gap-responsive-4 md:gap-responsive-6 justify-center items-center mb-responsive-6 sm:mb-responsive-8 md:mb-responsive-10">
               <Link
                 href="/workshops"
-                className="group bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border-2 border-white/20 min-h-[48px] flex items-center justify-center"
+                className="group w-full sm:w-auto bg-white text-brand-dark-teal px-responsive-6 sm:px-responsive-8 md:px-responsive-10 py-responsive-3 sm:py-responsive-4 md:py-responsive-5 rounded-full font-semibold text-responsive-sm sm:text-responsive-base md:text-responsive-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl min-h-[48px] flex items-center justify-center"
               >
                 <span className="flex items-center gap-2">
-                  <span className="text-lg">🎨</span>
+                  <span className="text-base sm:text-lg">🎨</span>
                   <span className="group-hover:font-bold transition-all duration-200">View All Workshops</span>
                 </span>
               </Link>
               <Link
                 href="/workshop"
-                className="group bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
+                className="group w-full sm:w-auto bg-brand-burnt-orange text-white border-2 border-brand-burnt-orange px-responsive-6 sm:px-responsive-8 md:px-responsive-10 py-responsive-3 sm:py-responsive-4 md:py-responsive-5 rounded-full font-semibold text-responsive-sm sm:text-responsive-base md:text-responsive-lg hover:bg-brand-burnt-orange-light hover:border-brand-burnt-orange-light transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
               >
                 <span className="flex items-center gap-2">
-                  <span className="text-lg">📞</span>
+                  <span className="text-base sm:text-lg">📞</span>
                   <span className="group-hover:font-bold transition-all duration-200">Request Custom Workshop</span>
                 </span>
               </Link>
             </div>
 
-            {/* Community stats with better contrast */}
-            <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20 shadow-lg">
-              <p className="text-sm sm:text-base md:text-lg opacity-90 font-semibold drop-shadow-md">
-                Join <span className="text-yellow-300 font-bold text-lg sm:text-xl">200+</span> creative minds learning together!
+            {/* Enhanced community stats with responsive design */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-responsive-3 sm:p-responsive-4 md:p-responsive-6 border border-white/30 shadow-xl max-w-lg mx-auto">
+              <p className="text-responsive-xs sm:text-responsive-sm md:text-responsive-base lg:text-responsive-lg xl:text-responsive-xl font-semibold leading-relaxed">
+                Join <span className="text-yellow-300 font-bold text-responsive-sm sm:text-responsive-base md:text-responsive-lg lg:text-responsive-xl xl:text-responsive-2xl">200+</span> creative minds learning together!
               </p>
             </div>
           </div>

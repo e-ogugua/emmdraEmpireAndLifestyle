@@ -26,29 +26,33 @@ const DIYCard = React.memo<DIYCardProps>(({
   duration
 }) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 border border-gray-100" data-diy-id={id}>
       <div className="relative h-48 overflow-hidden">
         <Image
           src={image}
-          alt={name}
+          alt={`DIY Project: ${name}`}
           fill
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         {badge && (
-          <div className="absolute top-3 left-3">
-            <span className={`${badgeColor} text-white px-3 py-1 rounded-full text-xs font-bold shadow-md border border-current/50`}>
+          <div className="absolute top-responsive-3 left-responsive-3">
+            <span className={`${badgeColor} text-white px-responsive-3 py-1 rounded-full text-responsive-xs font-bold shadow-md border border-current/50`}>
               {badge}
             </span>
           </div>
         )}
       </div>
-      <div className="p-4">
-        <h3 className="font-bold text-brand-neutral-900 mb-2 text-lg leading-tight">{name}</h3>
-        <p className="text-brand-neutral-700 text-sm mb-3 leading-relaxed">{description}</p>
+      <div className="p-responsive-4">
+        <h3 className="font-bold text-brand-neutral-900 mb-responsive-2 text-responsive-lg leading-tight line-clamp-2" title={name}>{name}</h3>
+        <p className="text-brand-neutral-700 text-responsive-sm mb-responsive-3 leading-relaxed line-clamp-2" title={description}>{description}</p>
         <div className="flex items-center justify-between">
-          <span className="text-brand-vibrant-green font-semibold text-sm">{level} • {duration}</span>
-          <Link href={link} className="bg-brand-vibrant-green text-white px-3 py-1 rounded-full text-sm hover:bg-brand-vibrant-green-light font-medium transition-colors">
+          <span className="text-brand-vibrant-green font-semibold text-responsive-sm" aria-label={`Difficulty: ${level}, Duration: ${duration}`}>{level} • {duration}</span>
+          <Link
+            href={link}
+            className="bg-brand-vibrant-green text-white px-responsive-3 py-responsive-1 rounded-full text-responsive-sm hover:bg-brand-vibrant-green-light font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg min-h-[44px] flex items-center justify-center"
+            aria-label={`Try DIY project: ${name} (${level} level, ${duration})`}
+          >
             Try It
           </Link>
         </div>
