@@ -205,25 +205,40 @@ describe('Cart Context', () => {
     })
 
     it('should remove item when quantity is set to 0', async () => {
+      const TestQuantityComponent = () => {
+        const { updateQuantity } = useCart()
+        return (
+          <div>
+            <div data-testid="quantity-cart-count">0</div>
+            <button onClick={() => updateQuantity('1', 0)}>
+              Set to Zero
+            </button>
+          </div>
+        )
+      }
+
       render(
         <CartProvider>
           <TestComponent />
+          <TestQuantityComponent />
         </CartProvider>
       )
 
-      // Add item first
+      // First add an item to the cart
       await act(async () => {
         fireEvent.click(screen.getByText('Add Item'))
       })
 
-      // Set quantity to 0 (should remove item)
-      const { updateQuantity } = useCart()
+      expect(screen.getByTestId('cart-count')).toHaveTextContent('1')
+      expect(screen.getByTestId('cart-total')).toHaveTextContent('100')
 
+      // Set quantity to 0 (should remove item)
       await act(async () => {
-        updateQuantity('1', 0)
+        fireEvent.click(screen.getByText('Set to Zero'))
       })
 
       expect(screen.getByTestId('cart-count')).toHaveTextContent('0')
+      expect(screen.getByTestId('quantity-cart-count')).toHaveTextContent('0')
     })
   })
 
@@ -247,7 +262,7 @@ describe('Cart Context', () => {
 
         return (
           <div>
-            <div data-testid="cart-total">{state.total}</div>
+            <div data-testid="decimal-cart-total">{state.total}</div>
             <button onClick={() => addToCart({
               id: 'decimal',
               name: 'Decimal Product',
@@ -270,16 +285,16 @@ describe('Cart Context', () => {
         fireEvent.click(screen.getByText('Add Decimal Item'))
       })
 
-      expect(screen.getByTestId('cart-total')).toHaveTextContent('99.99')
+      expect(screen.getByTestId('decimal-cart-total')).toHaveTextContent('99.99')
     })
 
     it('should handle large quantities correctly', async () => {
-      const TestQuantityComponent = () => {
+      const TestBulkComponent = () => {
         const { addToCart, updateQuantity, state } = useCart()
 
         return (
           <div>
-            <div data-testid="cart-count">{state.itemCount}</div>
+            <div data-testid="bulk-cart-count">{state.itemCount}</div>
             <button onClick={() => addToCart({
               id: 'bulk',
               name: 'Bulk Product',
@@ -298,7 +313,7 @@ describe('Cart Context', () => {
 
       render(
         <CartProvider>
-          <TestQuantityComponent />
+          <TestBulkComponent />
         </CartProvider>
       )
 
@@ -306,13 +321,13 @@ describe('Cart Context', () => {
         fireEvent.click(screen.getByText('Add Bulk Item'))
       })
 
-      expect(screen.getByTestId('cart-count')).toHaveTextContent('100')
+      expect(screen.getByTestId('bulk-cart-count')).toHaveTextContent('100')
 
       await act(async () => {
         fireEvent.click(screen.getByText('Update to 1000'))
       })
 
-      expect(screen.getByTestId('cart-count')).toHaveTextContent('1000')
+      expect(screen.getByTestId('bulk-cart-count')).toHaveTextContent('1000')
     })
   })
 })

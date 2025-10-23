@@ -120,9 +120,9 @@ describe('ProductCard', () => {
     it('should apply responsive classes correctly', () => {
       render(<ProductCard {...mockProduct} />)
 
-      // Check responsive padding classes
-      const card = document.querySelector('[data-product-id]')
-      expect(card).toHaveClass('p-responsive-3', 'sm:p-responsive-4')
+      // Check responsive padding classes on the inner content div
+      const contentDiv = screen.getByText(mockProduct.name).closest('.p-responsive-3')
+      expect(contentDiv).toHaveClass('p-responsive-3', 'sm:p-responsive-4')
     })
 
     it('should apply responsive typography classes', () => {
@@ -144,7 +144,7 @@ describe('ProductCard', () => {
     it('should apply responsive spacing classes', () => {
       render(<ProductCard {...mockProduct} />)
 
-      // Check responsive margin classes
+      // Check responsive margin classes on badge container
       const badge = screen.getByText('Featured')
       expect(badge.parentElement).toHaveClass('top-responsive-2', 'left-responsive-2')
     })
@@ -216,7 +216,7 @@ describe('ProductCard', () => {
       const colors = ['bg-brand-burnt-orange', 'bg-brand-vibrant-green', 'bg-yellow-400']
 
       colors.forEach((color) => {
-        const product = { ...mockProduct, badgeColor: color.replace('bg-', '') }
+        const product = { ...mockProduct, badgeColor: color }
         const { unmount } = render(<ProductCard {...product} />)
 
         const badge = screen.getByText('Featured')

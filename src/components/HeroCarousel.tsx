@@ -126,12 +126,14 @@ export default function HeroCarousel() {
                 {slide.ctaText && slide.ctaLink && (
                   <a
                     href={slide.ctaLink}
-                    className={`inline-block bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 sm:px-6 sm:py-3 md:px-10 md:py-4 rounded-full font-bold text-sm sm:text-base md:text-lg border-2 border-white/80 shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 transform min-h-[44px] ${
+                    className={`inline-block bg-white/95 backdrop-blur-md text-gray-900 px-4 py-2 sm:px-6 sm:py-3 md:px-10 md:py-4 rounded-full font-bold text-sm sm:text-base md:text-lg border-2 border-white/80 shadow-xl hover:bg-white hover:scale-[1.02] hover:shadow-2xl hover:border-white transition-all duration-500 ease-out transform min-h-[44px] group ${
                       index === currentSlide ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'
                     }`}
                     style={{ transitionDelay: '600ms' }}
                   >
-                    {slide.ctaText}
+                    <span className="group-hover:tracking-wide transition-all duration-300 ease-out">
+                      {slide.ctaText}
+                    </span>
                   </a>
                 )}
               </div>
@@ -143,20 +145,20 @@ export default function HeroCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-1 sm:left-2 md:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white rounded-full w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center transition-all duration-300 hover:scale-110 group touch-manipulation shadow-lg"
+        className="absolute left-1 sm:left-2 md:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white rounded-full w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl group touch-manipulation shadow-lg"
         aria-label="Previous slide"
       >
-        <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform duration-200 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform duration-300 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
       <button
         onClick={goToNext}
-        className="absolute right-1 sm:right-2 md:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white rounded-full w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center transition-all duration-300 hover:scale-110 group touch-manipulation shadow-lg"
+        className="absolute right-1 sm:right-2 md:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white rounded-full w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl group touch-manipulation shadow-lg"
         aria-label="Next slide"
       >
-        <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform duration-200 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform duration-300 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
@@ -167,10 +169,10 @@ export default function HeroCarousel() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-300 rounded-full touch-manipulation shadow-md ${
+            className={`transition-all duration-500 ease-out rounded-full touch-manipulation shadow-md hover:shadow-lg hover:scale-125 group ${
               index === currentSlide
                 ? 'w-5 sm:w-6 md:w-8 lg:w-12 h-3 bg-white shadow-lg'
-                : 'w-3 h-3 bg-white/70 hover:bg-white/90 shadow-sm'
+                : 'w-3 h-3 bg-white/70 hover:bg-white/90 hover:shadow-lg'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

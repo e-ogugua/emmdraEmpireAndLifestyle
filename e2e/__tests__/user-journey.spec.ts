@@ -27,12 +27,11 @@ test.describe('Emmdra Empire E2E Tests', () => {
 
     test('should navigate through product categories', async ({ page }) => {
       // Look for category filters or navigation
-      const categoryLinks = page.locator('a[href*="category"]')
       const productGrid = page.locator('.grid').first()
 
       // Verify products are displayed
       await expect(productGrid).toBeVisible()
-      await expect(page.locator('[data-product-id]')).toHaveCount({ min: 1 })
+      await expect(page.locator('[data-product-id]')).toHaveCount(1)
     })
   })
 
@@ -123,7 +122,7 @@ test.describe('Emmdra Empire E2E Tests', () => {
 
       // Check for validation errors
       const errorMessages = page.locator('.text-red-500')
-      await expect(errorMessages).toHaveCount({ min: 1 })
+      await expect(errorMessages).toHaveCount(1)
     })
 
     test('should handle different service types', async ({ page }) => {
@@ -215,15 +214,17 @@ test.describe('Social Media Integration', () => {
     const pinterestLink = page.locator('a[href*="pinterest.com"]')
 
     // Verify at least some social links are present
-    const socialLinksCount = await [facebookLink, instagramLink, twitterLink, whatsappLink, pinterestLink]
-      .reduce(async (count, link) => {
-        return count + (await link.isVisible() ? 1 : 0)
-      }, Promise.resolve(0))
+    let socialLinksCount = 0
+    for (const link of [facebookLink, instagramLink, twitterLink, whatsappLink, pinterestLink]) {
+      if (await link.isVisible()) {
+        socialLinksCount++
+      }
+    }
 
     expect(socialLinksCount).toBeGreaterThan(0)
   })
 
-  test('should open social media links in new tab', async ({ page, context }) => {
+  test('should open social media links in new tab', async ({ page }) => {
     await page.goto('/contact')
 
     // Mock external link clicks

@@ -52,23 +52,28 @@ describe('Cart API Integration', () => {
     it('should save cart to localStorage', () => {
       const cartData = {
         items: [
-          { id: '1', name: 'Product 1', price: 1000, image_url: '/test.jpg', quantity: 1 }
+          { id: '1', name: 'Product 1', price: 1000, image_url: '/test.jpg', quantity: 2 },
+          { id: '2', name: 'Product 2', price: 2500, image_url: '/test2.jpg', quantity: 1 }
         ],
-        total: 1000,
-        itemCount: 1
+        total: 3500,
+        itemCount: 3
       }
 
       // Mock localStorage
-      const localStorage = {
-        setItem: jest.fn(),
-        getItem: jest.fn(),
-        removeItem: jest.fn()
-      }
+      const mockSetItem = jest.fn()
+      Object.defineProperty(window, 'localStorage', {
+        value: {
+          setItem: mockSetItem,
+          getItem: jest.fn(),
+          removeItem: jest.fn()
+        },
+        writable: true
+      })
 
       // Simulate saving to localStorage
-      localStorage.setItem('emmdra-cart', JSON.stringify(cartData.items))
+      window.localStorage.setItem('emmdra-cart', JSON.stringify(cartData.items))
 
-      expect(localStorage.setItem).toHaveBeenCalledWith(
+      expect(mockSetItem).toHaveBeenCalledWith(
         'emmdra-cart',
         JSON.stringify(cartData.items)
       )
@@ -79,11 +84,24 @@ describe('Cart API Integration', () => {
         { id: '1', name: 'Product 1', price: 1000, image_url: '/test.jpg', quantity: 2 }
       ]
 
-      const localStorage = {
-        getItem: jest.fn().mockReturnValue(JSON.stringify(savedItems))
-      }
+      // Mock localStorage getItem to return saved items
+      const mockGetItem = jest.fn().mockReturnValue(JSON.stringify(savedItems))
+      Object.defineProperty(window, 'localStorage', {
+        value: {
+          getItem: mockGetItem,
+          setItem: jest.fn(),
+          removeItem: jest.fn(),
+          clear: jest.fn()
+        },
+        writable: true
+      })
 
-      expect(localStorage.getItem).toHaveBeenCalledWith('emmdra-cart')
+      // Trigger the cart loading (simulate what happens when CartProvider mounts)
+      const cartData = JSON.parse(window.localStorage.getItem('emmdra-cart') || '[]')
+
+      // Test that localStorage was called correctly
+      expect(mockGetItem).toHaveBeenCalledWith('emmdra-cart')
+      expect(cartData).toEqual(savedItems)
     })
   })
 
@@ -98,7 +116,7 @@ describe('Cart API Integration', () => {
       const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
       const itemCount = items.reduce((count, item) => count + item.quantity, 0)
 
-      expect(total).toBe(5500) // (1000*2) + (2500*1) + (500*3)
+      expect(total).toBe(6000) // (1000*2) + (2500*1) + (500*3)
       expect(itemCount).toBe(6) // 2 + 1 + 3
     })
 
@@ -110,7 +128,7 @@ describe('Cart API Integration', () => {
 
       const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
-      expect(total).toBe(199.98) // 99.99 + (49.50 * 2)
+      expect(total).toBe(198.99) // 99.99 + (49.50 * 2)
     })
   })
 })

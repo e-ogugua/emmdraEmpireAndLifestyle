@@ -407,31 +407,31 @@ export default function WorkshopsPage() {
             </p>
 
             {/* Responsive button layout */}
-            <div className="flex flex-col sm:flex-row gap-responsive-3 sm:gap-responsive-4 md:gap-responsive-6 justify-center items-center mb-responsive-6 sm:mb-responsive-8 md:mb-responsive-10">
+            <div className="flex flex-col sm:flex-row gap-responsive-3 sm:gap-responsive-4 md:gap-responsive-6 justify-center items-center mb-responsive-8 sm:mb-responsive-10 md:mb-responsive-12 lg:mb-responsive-16">
               <Link
                 href="/workshops"
-                className="group w-full sm:w-auto bg-white text-brand-dark-teal px-responsive-6 sm:px-responsive-8 md:px-responsive-10 py-responsive-3 sm:py-responsive-4 md:py-responsive-5 rounded-full font-semibold text-responsive-sm sm:text-responsive-base md:text-responsive-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl min-h-[48px] flex items-center justify-center"
+                className="group w-full sm:w-auto bg-white text-brand-dark-teal px-responsive-6 sm:px-responsive-8 md:px-responsive-10 py-responsive-3 sm:py-responsive-4 md:py-responsive-5 rounded-full font-semibold text-responsive-sm sm:text-responsive-base md:text-responsive-lg hover:bg-gray-100 hover:scale-[1.02] hover:shadow-2xl hover:border-gray-200 transition-all duration-500 ease-out transform min-h-[48px] flex items-center justify-center border-2 border-white/50"
               >
                 <span className="flex items-center gap-2">
                   <span className="text-base sm:text-lg">🎨</span>
-                  <span className="group-hover:font-bold transition-all duration-200">View All Workshops</span>
+                  <span className="group-hover:tracking-wide transition-all duration-300 ease-out">View All Workshops</span>
                 </span>
               </Link>
               <Link
                 href="/workshop"
-                className="group w-full sm:w-auto bg-brand-burnt-orange text-white border-2 border-brand-burnt-orange px-responsive-6 sm:px-responsive-8 md:px-responsive-10 py-responsive-3 sm:py-responsive-4 md:py-responsive-5 rounded-full font-semibold text-responsive-sm sm:text-responsive-base md:text-responsive-lg hover:bg-brand-burnt-orange-light hover:border-brand-burnt-orange-light transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
+                className="group w-full sm:w-auto bg-brand-burnt-orange text-white border-2 border-brand-burnt-orange px-responsive-6 sm:px-responsive-8 md:px-responsive-10 py-responsive-3 sm:py-responsive-4 md:py-responsive-5 rounded-full font-semibold text-responsive-sm sm:text-responsive-base md:text-responsive-lg hover:bg-brand-burnt-orange-light hover:border-brand-burnt-orange-light hover:scale-[1.02] hover:shadow-2xl transition-all duration-500 ease-out transform min-h-[48px] flex items-center justify-center"
               >
                 <span className="flex items-center gap-2">
                   <span className="text-base sm:text-lg">📞</span>
-                  <span className="group-hover:font-bold transition-all duration-200">Request Custom Workshop</span>
+                  <span className="group-hover:tracking-wide transition-all duration-300 ease-out">Request Custom Workshop</span>
                 </span>
               </Link>
             </div>
 
-            {/* Enhanced community stats with responsive design */}
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-responsive-3 sm:p-responsive-4 md:p-responsive-6 border border-white/30 shadow-xl max-w-lg mx-auto">
-              <p className="text-responsive-xs sm:text-responsive-sm md:text-responsive-base lg:text-responsive-lg xl:text-responsive-xl font-semibold leading-relaxed">
-                Join <span className="text-yellow-300 font-bold text-responsive-sm sm:text-responsive-base md:text-responsive-lg lg:text-responsive-xl xl:text-responsive-2xl">200+</span> creative minds learning together!
+            {/* Enhanced community stats with better spacing and responsive design */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-responsive-4 sm:p-responsive-5 md:p-responsive-6 lg:p-responsive-8 border border-white/30 shadow-xl max-w-lg mx-auto">
+              <p className="text-responsive-sm sm:text-responsive-base md:text-responsive-lg lg:text-responsive-xl xl:text-responsive-2xl font-semibold leading-relaxed text-center">
+                Join <span className="text-yellow-300 font-bold text-responsive-base sm:text-responsive-lg md:text-responsive-xl lg:text-responsive-2xl xl:text-responsive-3xl">200+</span> creative minds learning together!
               </p>
             </div>
           </div>
