@@ -17,7 +17,7 @@ interface Product {
 
 export async function GET() {
   try {
-    console.log('🛒 API: Fetching products...')
+    console.log('API: Fetching products...')
 
     // Try to fetch from database first
     const { data, error } = await supabase
@@ -26,7 +26,7 @@ export async function GET() {
       .order('id', { ascending: true })
 
     if (error) {
-      console.error('❌ API Error fetching products:', error)
+      console.error('API Error fetching products:', error)
 
       // Return fallback static products if database fails
       const fallbackProducts = [
@@ -95,15 +95,21 @@ export async function GET() {
       return product
     })
 
-    console.log('✅ API: Products fetched successfully:', fixedProducts?.length || 0, 'products')
+    console.log('API: Products fetched successfully:', fixedProducts?.length || 0, 'products')
 
     return NextResponse.json({
       products: fixedProducts,
       count: fixedProducts?.length || 0,
       fallback: false
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600', // Cache for 5 minutes, stale for 10 minutes
+        'CDN-Cache-Control': 'public, max-age=300',
+        'Vercel-CDN-Cache-Control': 'public, max-age=300'
+      }
     })
   } catch (error) {
-    console.error('❌ API: Unexpected error:', error)
+    console.error('API: Unexpected error:', error)
 
     // Return fallback products on any error
     const fallbackProducts = [
@@ -125,6 +131,12 @@ export async function GET() {
       count: fallbackProducts.length,
       fallback: true,
       error: 'Unexpected error occurred, using fallback products'
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120', // Cache fallback for 1 minute
+        'CDN-Cache-Control': 'public, max-age=60',
+        'Vercel-CDN-Cache-Control': 'public, max-age=60'
+      }
     })
   }
 }

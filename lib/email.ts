@@ -7,9 +7,9 @@ export interface EmailOptions {
   text?: string;
 }
 
-// Create Gmail SMTP transporter
+// Create Gmail SMTP transporter - handles email delivery configuration
 const createTransporter = () => {
-  console.log('🔧 SMTP Configuration:', {
+  console.log('SMTP Configuration:', {
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: process.env.SMTP_PORT || '587',
     user: process.env.SMTP_USER || 'emmdraempire@gmail.com',
@@ -31,7 +31,7 @@ const createTransporter = () => {
   })
 }
 
-// Email template function
+// Email template function - generates consistent HTML email layouts
 export const createEmailTemplate = (content: string, type: string) => {
   const isOrderConfirmation = type.toLowerCase().includes('confirmation')
 
@@ -40,7 +40,7 @@ export const createEmailTemplate = (content: string, type: string) => {
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>New ${type} - Emmdra Empire</title>
+      <title>New ${type} - Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)</title>
       <style>
         body {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -156,14 +156,14 @@ export const createEmailTemplate = (content: string, type: string) => {
     <body>
       <div class="container">
         <div class="header">
-          <h1>🎯 ${isOrderConfirmation ? 'Order Confirmation' : `New ${type}`} - Emmdra Empire</h1>
+          <h1>${isOrderConfirmation ? 'Order Confirmation' : `New ${type}`} - Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)</h1>
         </div>
         <div class="content">
           ${content}
         </div>
         <div class="footer">
-          <p>This email was sent from your Emmdra Empire website</p>
-          <p>📍 Nigeria | 🌟 Quality Products & Lifestyle</p>
+          <p>This email was sent from your Emmdra Empire website - Developed by CEO (Chukwuka Emmanuel Ogugua)</p>
+          <p>Nigeria | Quality Products and Lifestyle</p>
         </div>
       </div>
     </body>
@@ -171,7 +171,7 @@ export const createEmailTemplate = (content: string, type: string) => {
   `
 }
 
-// Send email function using Gmail SMTP
+// Send email function using Gmail SMTP - handles email delivery with error handling
 interface EmailResponse {
   success: boolean;
   error?: string;
@@ -187,17 +187,17 @@ interface EmailResponse {
 
 export async function sendEmail(options: EmailOptions): Promise<EmailResponse> {
   try {
-    console.log('🔍 Starting email send process...');
-    
-    // Verify required environment variables
+    console.log('Starting email send process...');
+
+    // Verify required environment variables - ensures SMTP configuration is complete
     const requiredVars = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS'];
     const missingVars = requiredVars.filter(varName => !process.env[varName]);
-    
+
     if (missingVars.length > 0) {
       const errorMsg = `Missing required SMTP environment variables: ${missingVars.join(', ')}`;
-      console.error('❌', errorMsg);
-      return { 
-        success: false, 
+      console.error('Email configuration error:', errorMsg);
+      return {
+        success: false,
         error: errorMsg,
         details: {
           missingVariables: missingVars,
@@ -216,9 +216,9 @@ export async function sendEmail(options: EmailOptions): Promise<EmailResponse> {
       text: options.text || options.html.replace(/<[^>]*>/g, ''),
     }
 
-    console.log('📧 Sending email via Gmail SMTP to:', options.to)
-    console.log('📧 Subject:', options.subject)
-    console.log('📧 SMTP config:', {
+    console.log('Sending email via Gmail SMTP to:', options.to)
+    console.log('Subject:', options.subject)
+    console.log('SMTP config:', {
       host: process.env.SMTP_HOST,
       port: process.env.SMTP_PORT,
       user: process.env.SMTP_USER,
@@ -226,19 +226,19 @@ export async function sendEmail(options: EmailOptions): Promise<EmailResponse> {
     });
 
     const result = await transporter.sendMail(mailOptions as nodemailer.SendMailOptions)
-    console.log('✅ Email sent successfully:', result.messageId)
+    console.log('Email sent successfully:', result.messageId)
     return { success: true, details: { messageId: result.messageId } }
   } catch (error: unknown) {
     const err = error as Error & { code?: string; command?: string; response?: string };
-    console.error('❌ Email sending failed:', {
+    console.error('Email sending failed:', {
       error: err.message,
       stack: err.stack,
       code: err.code,
       response: err.response
     });
-    
-    return { 
-      success: false, 
+
+    return {
+      success: false,
       error: err.message,
       details: {
         code: err.code,
@@ -249,12 +249,12 @@ export async function sendEmail(options: EmailOptions): Promise<EmailResponse> {
   }
 }
 
-// Create text-only email (fallback)
+// Create text-only email (fallback) - provides plain text alternative for email clients
 export const createTextEmail = (content: string, type: string) => {
-  return `New ${type} - Emmdra Empire
+  return `New ${type} - Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)
 
 ${content.replace(/<[^>]*>/g, '')}
 
 ---
-This email was sent from your Emmdra Empire website`
+This email was sent from your Emmdra Empire website - Developed by CEO (Chukwuka Emmanuel Ogugua)`
 }

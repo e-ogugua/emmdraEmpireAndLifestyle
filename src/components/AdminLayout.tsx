@@ -27,13 +27,13 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
 
   const checkAuth = useCallback(async () => {
     try {
-      console.log('🔍 AdminLayout: Checking authentication...')
+      console.log('AdminLayout: Checking authentication...')
 
       // First check for Supabase session
       const { data: { session } } = await supabase.auth.getSession()
 
       if (session && AUTHORIZED_ADMIN_EMAILS.includes(session.user.email || '')) {
-        console.log('✅ AdminLayout: Valid Supabase session found')
+        console.log('AdminLayout: Valid Supabase session found')
         setUser(session.user)
         return
       }

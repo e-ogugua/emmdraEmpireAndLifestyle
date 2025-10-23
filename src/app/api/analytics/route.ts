@@ -143,6 +143,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       data: pageViews,
       summary
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120', // Cache for 1 minute, stale for 2 minutes
+        'CDN-Cache-Control': 'public, max-age=60',
+        'Vercel-CDN-Cache-Control': 'public, max-age=60'
+      }
     })
 
   } catch (error) {

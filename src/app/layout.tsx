@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   title: "Emmdra Empire - Fashion, Beauty, DIY & Lifestyle",
   description: "Discover your complete lifestyle destination at Emmdra Empire. From trendy fashion and beauty secrets to creative DIY projects and family activities - we have everything to make your world more beautiful.",
   keywords: "fashion, beauty, DIY, lifestyle, family activities, shopping, Nigerian lifestyle, Emmdra Empire",
-  authors: [{ name: "Emmdra Empire" }],
-  creator: "Emmdra Empire & Lifestyle",
-  publisher: "Emmdra Empire",
+  authors: [{ name: "Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)" }],
+  creator: "Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)",
+  publisher: "Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)",
   formatDetection: {
     email: false,
     address: false,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Emmdra Empire - Your Complete Lifestyle Destination",
     description: "Fashion, Beauty, DIY, Lifestyle, and Family - all in one place. Discover, create, and live beautifully with Emmdra Empire.",
     url: "https://emmdra-empire.vercel.app",
-    siteName: "Emmdra Empire",
+    siteName: "Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)",
     images: [
       {
         url: "/images/EmmdraLogo.png",

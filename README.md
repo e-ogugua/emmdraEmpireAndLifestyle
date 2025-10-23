@@ -1,37 +1,37 @@
-# 🛍️ Emmdra Empire & Lifestyle
+# Emmdra Empire - E-commerce and Lifestyle Platform
 
 A comprehensive e-commerce and lifestyle platform built with Next.js, featuring a complete shopping cart system, admin dashboard, email notifications, and mobile-responsive design.
 
-## ✨ Features
+## Features
 
-### 🛒 **Complete Shopping Experience**
+### Complete Shopping Experience
 - **Product Catalog** - Browse and search products with filtering
 - **Shopping Cart** - Add, remove, and manage cart items with persistent storage
 - **Secure Checkout** - Professional checkout flow with customer information collection
 - **Order Management** - Complete order processing with database storage
 - **Email Notifications** - Automated emails to customers and admins
 
-### 🎛️ **Admin Dashboard**
+### Admin Dashboard
 - **Order Management** - View and manage all customer orders
 - **Product Management** - Add, edit, and manage product inventory
 - **Analytics Dashboard** - Track site performance and user engagement
 - **Content Management** - Manage blog posts, workshops, and DIY tutorials
 - **User Management** - Handle consultations, bookings, and contact messages
 
-### 📱 **Mobile-First Design**
+### Mobile-First Design
 - **Responsive Layout** - Perfect experience on all devices
 - **Touch-Optimized** - Mobile-friendly interactions and touch targets
 - **Progressive Enhancement** - Enhanced experience on larger screens
 - **Performance Optimized** - Fast loading and smooth animations
 
-### 🔐 **Security & Professional Features**
+### Security and Professional Features
 - **Email Integration** - Gmail SMTP for order notifications
 - **Database Integration** - Supabase for data persistence
 - **Form Validation** - Comprehensive input validation and error handling
 - **Admin Authentication** - Secure admin panel access
 - **Order Tracking** - Complete order lifecycle management
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js 18+
@@ -81,14 +81,14 @@ npm run dev
 5. **Open browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 📋 Available Scripts
+## Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 src/
@@ -108,33 +108,33 @@ src/
 └── ...
 ```
 
-## 🎯 Key Features Implemented
+## Key Features Implemented
 
-### 🛒 **Shopping Cart System**
+### Shopping Cart System
 - **Persistent Cart** - Cart items saved to localStorage
 - **Real-time Updates** - Cart count updates in navigation
 - **Quantity Management** - Add, remove, update item quantities
 - **Mobile Optimized** - Touch-friendly cart interface
 
-### 📧 **Email Notification System**
+### Email Notification System
 - **Customer Confirmations** - Order confirmation emails
 - **Admin Notifications** - New order alerts to admin emails
 - **Professional Templates** - HTML email templates with branding
 - **SMTP Integration** - Gmail SMTP for reliable delivery
 
-### 🎛️ **Admin Dashboard**
+### Admin Dashboard
 - **Order Management** - View, track, and manage orders
 - **Customer Communication** - Direct email replies to customers
 - **Analytics Tracking** - Page views and user engagement
 - **Content Management** - Blog, workshops, and product management
 
-### 📱 **Mobile Responsiveness**
+### Mobile Responsiveness
 - **Mobile-First Design** - Optimized for mobile devices
 - **Touch Targets** - 44px minimum for accessibility
 - **Responsive Typography** - Scales perfectly across devices
 - **Progressive Enhancement** - Enhanced experience on larger screens
 
-## 🔧 Technical Stack
+## Technical Stack
 
 - **Framework:** Next.js 15 with App Router
 - **Language:** TypeScript
@@ -144,27 +144,27 @@ src/
 - **State Management:** React Context API
 - **Deployment:** Vercel (optimized)
 
-## 🌟 Production Ready
+## Production Ready
 
-This application is **production-ready** with:
-- ✅ **Error handling** and validation
-- ✅ **Security measures** and authentication
-- ✅ **Performance optimization**
-- ✅ **Mobile responsiveness**
-- ✅ **SEO optimization**
-- ✅ **Professional email system**
-- ✅ **Complete admin dashboard**
+This application is production-ready with:
+- Error handling and validation
+- Security measures and authentication
+- Performance optimization
+- Mobile responsiveness
+- SEO optimization
+- Professional email system
+- Complete admin dashboard
 
-## 📞 Support
+## Support
 
 For support or questions:
 - **Email:** emmdraempire@gmail.com
 - **Admin Panel:** `/admin` (login required)
 
-## 📄 License
+## License
 
-This project is private and proprietary to Emmdra Empire & Lifestyle.
+This project is private and proprietary to Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua).
 
 ---
 
-**Built with ❤️ for the modern Nigerian lifestyle brand**
+**Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)**

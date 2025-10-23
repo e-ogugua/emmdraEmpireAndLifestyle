@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase'
 import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -13,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
+import { supabase } from '@/lib/supabase'
 
 ChartJS.register(
   CategoryScale,

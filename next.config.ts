@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
   images: {
@@ -11,5 +12,14 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react'],
   },
 };
+
+// Bundle analyzer configuration
+if (process.env.ANALYZE === 'true') {
+  const bundleAnalyzer = withBundleAnalyzer({
+    enabled: true,
+    openAnalyzer: true,
+  });
+  module.exports = bundleAnalyzer(nextConfig);
+}
 
 export default nextConfig;

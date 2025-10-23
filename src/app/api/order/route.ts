@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, email, phone, product_name, product_id, quantity, budget, size, color, message } = body
 
-    // Validate required fields
+    // Validate required fields - ensures data integrity before processing
     if (!name || !email || !product_name || !quantity) {
       return NextResponse.json(
         { error: 'Name, email, product name, and quantity are required' },
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate email format
+    // Validate email format - prevents invalid email submissions
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
       return NextResponse.json(
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Store order in database
+    // Store order in database - persist order data for processing
     const { data: orderData, error: orderError } = await supabase
       .from('orders')
       .insert({
@@ -50,10 +50,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('📦 Order stored in database:', orderData)
+    console.log('Order stored in database:', orderData)
 
-    // Send email notification to admin
-    const adminSubject = `New Product Order from ${name} - Emmdra Empire`
+    // Send notification email to administrators
+    const adminSubject = `New Product Order from ${name} - Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)`
 
     const adminContent = `
       <div class="highlight">
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
     const adminHtmlBody = createEmailTemplate(adminContent, 'Product Order')
     const adminTextBody = createTextEmail(adminContent, 'Product Order')
 
-    // Send email to admin (you can configure multiple admin emails)
+    // Send email notifications to configured administrators
     const adminEmails = process.env.ADMIN_EMAILS?.split(',') || [process.env.NOTIFY_EMAIL || process.env.ORDER_NOTIFICATIONS_EMAIL || 'emmdraempire@gmail.com']
     for (const adminEmail of adminEmails) {
       if (adminEmail.trim()) {
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send confirmation email to customer
-    const customerSubject = `Order Confirmation - Emmdra Empire`
+    const customerSubject = `Order Confirmation - Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)`
 
     const customerContent = `
       <div class="highlight">
@@ -165,14 +165,14 @@ export async function POST(request: NextRequest) {
 
         <p>If you have any questions, please don't hesitate to contact us:</p>
         <p>
-          📧 Email: emmdraempire@gmail.com<br>
-          📞 Phone: Available after we contact you
+          Email: emmdraempire@gmail.com<br>
+          Phone: Available after we contact you
         </p>
       </div>
 
       <p class="signature">
         Best regards,<br>
-        The Emmdra Empire Team
+        The Emmdra Empire Team - Developed by CEO (Chukwuka Emmanuel Ogugua)
       </p>
     `
 
@@ -189,11 +189,11 @@ export async function POST(request: NextRequest) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await sendEmail(customerEmailOptions as any)
 
-    console.log('✅ Emails sent successfully to admin and customer')
+    console.log('Emails sent successfully to admin and customer')
 
     return NextResponse.json({
       success: true,
-      message: 'Order submitted successfully - we will contact you soon!',
+      message: 'Order submitted successfully - we will contact you soon! Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)',
       data: orderData
     })
 

@@ -5,10 +5,10 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Database types (you can generate these from your Supabase project)
-// You can generate these types by running: npx supabase gen types typescript --project-id YOUR_PROJECT_ID > src/lib/database.types.ts
+// Database types - generated from Supabase project schema
+// Generate types by running: npx supabase gen types typescript --project-id YOUR_PROJECT_ID > src/lib/database.types.ts
 export type Database = {
-  // Add your database types here
+  // Database schema types - extend as needed for type safety
   public: {
     Tables: Record<string, unknown>
     Views: Record<string, unknown>

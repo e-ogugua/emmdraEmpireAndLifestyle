@@ -100,11 +100,12 @@ export default function AboutPage() {
                       <div className="relative group">
                         <div className="w-full h-48 sm:h-56 md:h-64 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl overflow-hidden shadow-lg">
                           <Image
-                            src="/images/EmmdraEmmanuelPotrait11.png"
+                            src="/images/shortAboutSideimage1.png"
                             alt="Emmanuel - Co-Founder"
                             fill
                             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                             sizes="(max-width: 640px) 100vw, 50vw"
+                            priority
                           />
                         </div>
                         <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full shadow-md">

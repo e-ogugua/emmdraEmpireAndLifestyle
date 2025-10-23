@@ -68,16 +68,16 @@ export default function WorkshopsPage() {
           .order('created_at', { ascending: false })
 
         if (supabaseError) {
-          console.error('❌ Error fetching workshops:', supabaseError)
+          console.error('Error fetching workshops:', supabaseError)
           setError('Failed to load workshops. Please try again later.')
           return
         }
 
-        console.log('✅ Workshops fetched successfully:', data?.length || 0, 'workshops')
+        console.log('Workshops fetched successfully:', data?.length || 0, 'workshops')
         setWorkshops(data || [])
         setFilteredWorkshops(data || [])
       } catch (err) {
-        console.error('❌ Error fetching workshops:', err)
+        console.error('Error fetching workshops:', err)
         setError('Failed to load workshops. Please try again later.')
       } finally {
         setLoading(false)
@@ -384,33 +384,56 @@ export default function WorkshopsPage() {
         </div>
 
         {/* Call to Action Section */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-12 text-center text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Ready to Learn & Create?
-          </h2>
-          <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Join our creative community and learn from industry experts.
-            Limited spots available for each workshop!
-          </p>
+        <div className="relative bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600 rounded-3xl p-6 sm:p-8 md:p-12 text-center text-white overflow-hidden">
+          {/* Enhanced background overlay for better text contrast */}
+          <div className="absolute inset-0 bg-black/20"></div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/workshops"
-              className="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              🎨 View All Workshops
-            </Link>
-            <Link
-              href="/workshop"
-              className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300"
-            >
-              📞 Request Custom Workshop
-            </Link>
+          {/* Mobile-specific overlay for maximum readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 sm:hidden"></div>
+
+          {/* Desktop decorative elements */}
+          <div className="absolute inset-0 hidden sm:block">
+            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-white/3 rounded-full blur-2xl"></div>
           </div>
 
-          <p className="text-sm opacity-75 mt-6">
-            Join 200+ creative minds learning together!
-          </p>
+          <div className="relative z-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 drop-shadow-lg">
+              Ready to Learn & Create?
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-95 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium">
+              Join our creative community and learn from industry experts.
+              Limited spots available for each workshop!
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8">
+              <Link
+                href="/workshops"
+                className="group bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border-2 border-white/20 min-h-[48px] flex items-center justify-center"
+              >
+                <span className="flex items-center gap-2">
+                  <span className="text-lg">🎨</span>
+                  <span className="group-hover:font-bold transition-all duration-200">View All Workshops</span>
+                </span>
+              </Link>
+              <Link
+                href="/workshop"
+                className="group bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[48px] flex items-center justify-center"
+              >
+                <span className="flex items-center gap-2">
+                  <span className="text-lg">📞</span>
+                  <span className="group-hover:font-bold transition-all duration-200">Request Custom Workshop</span>
+                </span>
+              </Link>
+            </div>
+
+            {/* Community stats with better contrast */}
+            <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20 shadow-lg">
+              <p className="text-sm sm:text-base md:text-lg opacity-90 font-semibold drop-shadow-md">
+                Join <span className="text-yellow-300 font-bold text-lg sm:text-xl">200+</span> creative minds learning together!
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

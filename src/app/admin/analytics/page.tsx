@@ -2,8 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
-import AdminLayout from '@/components/AdminLayout'
-import { trackPageView } from '@/lib/analytics'
 import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -16,6 +14,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
+import AdminLayout from '@/components/AdminLayout'
+import { trackPageView } from '@/lib/analytics'
 
 ChartJS.register(
   CategoryScale,

@@ -69,7 +69,7 @@ export default function CheckoutPage() {
       if (result.success) {
         setSubmitMessage({
           type: 'success',
-          message: '🎉 Order submitted successfully! We will contact you soon with payment details and delivery information.'
+          message: 'Order submitted successfully! We will contact you soon with payment details and delivery information.'
         })
 
         // Show success message for a few seconds before clearing cart
@@ -79,7 +79,7 @@ export default function CheckoutPage() {
           // Update message to show next steps
           setSubmitMessage({
             type: 'success',
-            message: '🎉 Order submitted successfully! We will contact you soon with payment details and delivery information.\n\n📞 You can also contact us directly if you have any questions.'
+            message: 'Order submitted successfully! We will contact you soon with payment details and delivery information.\n\nYou can also contact us directly if you have any questions.'
           })
         }, 3000) // Show success for 3 seconds before clearing cart
       } else {
@@ -104,7 +104,11 @@ export default function CheckoutPage() {
       <div className="py-16 px-4 bg-gray-50 min-h-screen">
         <div className="container mx-auto text-center max-w-md">
           <div className="bg-white rounded-2xl shadow-lg p-8">
-            <div className="text-6xl mb-4">🛒</div>
+            <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+              <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5-6M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
+              </svg>
+            </div>
             <h1 className="text-2xl font-bold text-gray-800 mb-4">Your Cart is Empty</h1>
             <p className="text-gray-600 mb-6">Add some products to your cart before checking out.</p>
             <Link
@@ -125,14 +129,14 @@ export default function CheckoutPage() {
   return (
     <div className="py-8 px-4 bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 min-h-screen">
       <div className="container mx-auto max-w-4xl">
-        {/* Header */}
+        {/* Checkout Header - Security assurance and form introduction */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg mb-4 border-4 border-green-200">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3">🔐 Secure Checkout</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3">Secure Checkout</h1>
           <p className="text-gray-700 text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
             <span className="inline-flex items-center gap-1">
               <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,7 +148,7 @@ export default function CheckoutPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {/* Order Summary */}
+          {/* Order Summary - Displays cart contents and total */}
           <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
             <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white p-4 sm:p-6">
               <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
@@ -186,7 +190,7 @@ export default function CheckoutPage() {
             </div>
           </div>
 
-          {/* Checkout Form */}
+          {/* Checkout Form - Customer information collection */}
           <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
             <div className="bg-gradient-to-r from-brand-burnt-orange to-red-500 text-white p-4 sm:p-6">
               <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
@@ -243,7 +247,7 @@ export default function CheckoutPage() {
                 </div>
               )}
 
-              {/* Personal Information */}
+              {/* Personal Information - Contact details collection */}
               <div className="space-y-4">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">Personal Details</h3>
 
@@ -312,7 +316,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              {/* Delivery Address */}
+              {/* Delivery Address - Shipping information collection */}
               <div className="space-y-4">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">Delivery Address</h3>
 
@@ -386,7 +390,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              {/* Additional Information */}
+              {/* Additional Information - Optional preferences and instructions */}
               <div className="space-y-4">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">Additional Information</h3>
 
@@ -445,7 +449,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button - Order finalization and processing */}
               <div className="pt-4 border-t border-gray-200">
                 <button
                   type="submit"

@@ -1,8 +1,8 @@
-# Emmdra Empire & Lifestyle - Setup Guide
+# Emmdra Empire - Setup Guide
 
 A comprehensive Nigerian lifestyle platform built with Next.js 15, featuring e-commerce functionality, content management, and community engagement tools.
 
-## 🌟 About Emmdra Empire
+## About Emmdra Empire
 
 Emmdra Empire is Nigeria's premier lifestyle destination, empowering women through:
 
@@ -12,7 +12,7 @@ Emmdra Empire is Nigeria's premier lifestyle destination, empowering women throu
 - **Inspiring Content** - Fashion tips, beauty tutorials, and lifestyle stories
 - **Community Building** - Connecting creative women across Nigeria
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js 18+
@@ -58,43 +58,43 @@ npm run dev
 4. **Access Your Site**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🛠️ Available Commands
+## Available Commands
 
 - `npm run dev` - Start development server with Turbopack
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint checks
 
-## 📋 Key Features Implemented
+## Key Features Implemented
 
-### 🛒 **E-Commerce Platform**
+### E-Commerce Platform
 - **Product Catalog** - Fashion, beauty, and lifestyle products
 - **Shopping Cart** - Persistent cart with real-time updates
 - **Secure Checkout** - Customer information collection
 - **Order Management** - Complete order lifecycle tracking
 - **Email Notifications** - Automated customer confirmations
 
-### 🎛️ **Admin Dashboard**
+### Admin Dashboard
 - **Order Management** - View and process all orders
 - **Product Management** - Add/edit inventory
 - **Content Management** - Blog posts and DIY tutorials
 - **Customer Communication** - Direct email responses
 - **Analytics Tracking** - User engagement metrics
 
-### 📱 **Mobile-First Design**
+### Mobile-First Design
 - **Responsive Layout** - Optimized for all devices
 - **Touch-Friendly** - 44px minimum touch targets
 - **Progressive Enhancement** - Enhanced desktop experience
 - **Performance Optimized** - Fast loading and smooth animations
 
-### 🔐 **Professional Features**
+### Professional Features
 - **Email Integration** - Gmail SMTP for reliability
 - **Database Integration** - Supabase PostgreSQL
 - **Form Validation** - Comprehensive input validation
 - **SEO Optimization** - Meta tags and Open Graph
 - **Security Headers** - Production-ready security
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 src/
@@ -118,9 +118,9 @@ src/
     └── email.ts           # Email utilities
 ```
 
-## 🎯 Technical Stack
+## Technical Stack
 
-- **Framework:** Next.js 15 with App Router & Turbopack
+- **Framework:** Next.js 15 with App Router and Turbopack
 - **Language:** TypeScript for type safety
 - **Styling:** Tailwind CSS with custom design system
 - **Database:** Supabase (PostgreSQL)
@@ -128,7 +128,7 @@ src/
 - **State Management:** React Context API
 - **Deployment:** Vercel (optimized for performance)
 
-## 🔧 Configuration
+## Configuration
 
 ### Database Setup (Supabase)
 1. Create a new project at [supabase.com](https://supabase.com)
@@ -140,7 +140,7 @@ src/
 2. Generate an [app password](https://support.google.com/accounts/answer/185833)
 3. Use the app password in your SMTP_PASS environment variable
 
-## 🚀 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 1. Connect your GitHub repository to Vercel
@@ -153,17 +153,17 @@ npm run build
 npm run start
 ```
 
-## 📞 Support & Contact
+## Support and Contact
 
 **Emmdra Empire Support:**
 - Email: support@emmdraempire.com
 - Admin Panel: `/admin` (login required)
 - Business Hours: Monday - Saturday, 9 AM - 6 PM WAT
 
-## 📄 License
+## License
 
-© 2024 Emmdra Empire & Lifestyle. All rights reserved.
+Copyright 2024 Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua). All rights reserved.
 
 ---
 
-*Built with ❤️ for the modern Nigerian woman*
+**Emmdra Empire - Developed by CEO (Chukwuka Emmanuel Ogugua)**
