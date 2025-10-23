@@ -1,34 +1,6 @@
-import request from 'supertest'
-import { NextRequest } from 'next/server'
-
-// Mock Next.js server
-const createServer = () => {
-  // This would typically be your Next.js app instance
-  // For testing, we'll create mock responses
-  return {
-    post: (route: string, handler: Function) => ({ route, handler }),
-    get: (route: string, handler: Function) => ({ route, handler }),
-  }
-}
-
 describe('Cart API Integration', () => {
-  let server: any
-
-  beforeEach(() => {
-    server = createServer()
-  })
-
   describe('Cart State Management', () => {
     it('should add item to cart successfully', async () => {
-      const cartData = {
-        product_id: 'prod_123',
-        quantity: 2,
-        name: 'Premium Handbag',
-        price: 45000,
-        image_url: '/images/handbag.jpg'
-      }
-
-      // Mock successful cart addition
       const mockResponse = {
         items: [{
           id: 'item_1',
@@ -49,18 +21,6 @@ describe('Cart API Integration', () => {
     })
 
     it('should update existing item quantity', async () => {
-      // Start with item in cart
-      const initialCart = {
-        items: [{
-          product_id: 'prod_123',
-          quantity: 1,
-          price: 45000
-        }],
-        total: 45000,
-        itemCount: 1
-      }
-
-      // Add same item again
       const updatedCart = {
         items: [{
           product_id: 'prod_123',
@@ -76,15 +36,6 @@ describe('Cart API Integration', () => {
     })
 
     it('should remove item from cart', async () => {
-      const initialCart = {
-        items: [
-          { product_id: 'prod_123', quantity: 1, price: 45000 },
-          { product_id: 'prod_456', quantity: 1, price: 25000 }
-        ],
-        total: 70000,
-        itemCount: 2
-      }
-
       const updatedCart = {
         items: [{ product_id: 'prod_456', quantity: 1, price: 25000 }],
         total: 25000,

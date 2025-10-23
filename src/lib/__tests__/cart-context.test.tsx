@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { CartProvider, useCart } from '@/lib/cart-context'
 

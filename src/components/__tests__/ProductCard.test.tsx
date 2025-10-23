@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import ProductCard from '@/components/ProductCard'
 
@@ -68,9 +69,9 @@ describe('ProductCard', () => {
       ]
 
       products.forEach((product) => {
-        const { rerender } = render(<ProductCard {...product} />)
+        const { unmount } = render(<ProductCard {...product} />)
         expect(screen.getByText(`₦${product.price.toLocaleString()}`)).toBeInTheDocument()
-        rerender(<div />)
+        unmount()
       })
     })
   })
@@ -120,7 +121,7 @@ describe('ProductCard', () => {
       render(<ProductCard {...mockProduct} />)
 
       // Check responsive padding classes
-      const card = screen.getByTestId ? screen.getByTestId('product-card') : document.querySelector('[data-product-id]')
+      const card = document.querySelector('[data-product-id]')
       expect(card).toHaveClass('p-responsive-3', 'sm:p-responsive-4')
     })
 
@@ -216,7 +217,7 @@ describe('ProductCard', () => {
 
       colors.forEach((color) => {
         const product = { ...mockProduct, badgeColor: color.replace('bg-', '') }
-        const { rerender, unmount } = render(<ProductCard {...product} />)
+        const { unmount } = render(<ProductCard {...product} />)
 
         const badge = screen.getByText('Featured')
         expect(badge).toHaveClass(color)
@@ -276,14 +277,14 @@ describe('ProductCard', () => {
 
   describe('Performance', () => {
     it('should be memoized to prevent unnecessary re-renders', () => {
-      const { rerender } = render(<ProductCard {...mockProduct} />)
-      const initialRender = screen.getByText('Premium Leather Handbag')
+      const { unmount } = render(<ProductCard {...mockProduct} />)
 
       // Re-render with same props
-      rerender(<ProductCard {...mockProduct} />)
+      unmount()
+      render(<ProductCard {...mockProduct} />)
 
       // Component should not re-render due to memo
-      expect(initialRender).toBeInTheDocument()
+      expect(screen.getByText('Premium Leather Handbag')).toBeInTheDocument()
     })
 
     it('should have displayName for debugging', () => {
